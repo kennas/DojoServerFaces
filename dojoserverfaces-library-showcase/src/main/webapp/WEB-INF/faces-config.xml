@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+	version="2.0">
+	<application>
+		<resource-bundle>
+			<base-name>org.dojoserverfaces.showcase.bundle.ShowCaseResourceBundle</base-name>
+			<var>dojoServerFacesUsage</var>
+		</resource-bundle>
+
+<!-- Using AppInitServlet to replace AppInitListener, as currently AppInitListener not work sometimes. -->
+<!--		<system-event-listener>-->
+<!--			<system-event-listener-class>org.dojoserverfaces.showcase.listener.AppInitListener</system-event-listener-class>-->
+<!--			<system-event-class>javax.faces.event.PostConstructApplicationEvent</system-event-class>-->
+<!--		</system-event-listener>-->
+	</application>
+
+</faces-config>

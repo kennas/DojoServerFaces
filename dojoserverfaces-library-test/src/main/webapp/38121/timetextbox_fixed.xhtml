@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<f:view contentType="text/html"/>
+<h:head>
+	<title>debug timetextbox</title>
+	<dojo:theme name="tundra" />
+</h:head>
+<h:body>
+	<h:form
+		styleClass="form"
+		id="form1">
+		<dojo:timeTextBox
+			value="#{store.record.time}"
+			pattern="HH:mm:ss"
+			clickableIncrement="T00:05:00"
+			visiableRange="T00:01:00">
+		</dojo:timeTextBox>
+	</h:form>
+</h:body>
+</html>

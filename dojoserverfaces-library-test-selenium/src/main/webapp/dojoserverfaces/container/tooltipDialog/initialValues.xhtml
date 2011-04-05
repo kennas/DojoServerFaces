@@ -1,0 +1,28 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
+	<div class="testCase">
+	<f:subview id="initialValues"> 
+		<span class="testTitle">Test case to display a value bound to a managed bean</span>
+		<h:panelGrid columns="1">
+			<jd:dropDownButton id="dropdown" label="Show TooltipDialog">
+				<jd:tooltipDialog id="widgetSimple" style="width: 350px; height: 200px;" title="TooltipDialog" tooltip="This is DojoServerFaces TooltipDialog." duration="80" refocus="true" autofocus="true" draggable="true" href="" errorMessage="TooltipDialog couldn't be loaded." loadingMessage="TooltipDialog is Loading." extractContent="true" preLoad="true" preventCache="true" refreshOnShow="true">
+					<jd:tableContainer id="tableContainer" cols="1" orientation="horiz" spacing="1" style="width: 100%;">
+						<jd:textBox title="First Name: " value="#{ textBoxBean.beanBoundValue.data }" />
+						<jd:textBox title="Last Name: " value="#{ textBoxBean.beanBoundValue.data }" />
+						<jd:booleanCheckBox title="Employed" value="#{ booleanCheckBoxBean.beanBoundValue.data }" />
+						<jd:numberSpinner title="Age" value="#{ numberSpinnerBean.beanBoundValue.data }" min="1" max="100" />
+					</jd:tableContainer>
+					<jd:button label="OK" type="submit"></jd:button>
+					<jd:button label="Close" type="submit"></jd:button>
+				</jd:tooltipDialog>
+	        </jd:dropDownButton> 
+		</h:panelGrid> 
+	</f:subview>
+	</div>
+</ui:composition>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.dojoserverfaces</groupId>
+  <artifactId>dojoserverfaces-library-example</artifactId>
+  <packaging>war</packaging>
+  <name>DojoServerFaces - Library Example App</name>
+
+  <parent>
+    <groupId>org.dojoserverfaces</groupId>
+    <artifactId>dojoserverfaces</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>dojoserverfaces-library-assembly</artifactId>
+      <version>${project.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>6.0</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1.1</version>
+        <configuration>
+          <packagingExcludes>WEB-INF/lib/dojoserverfaces-annotations-1.0.0.jar,WEB-INF/lib/dojoserverfaces-dojo-1.0.0.jar,WEB-INF/lib/dojoserverfaces-core-1.0.0.jar,WEB-INF/lib/dojoserverfaces-library-definition-1.0.0.jar</packagingExcludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

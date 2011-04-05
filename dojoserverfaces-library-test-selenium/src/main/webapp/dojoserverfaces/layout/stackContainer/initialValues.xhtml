@@ -1,0 +1,30 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
+	<div class="testCase">		
+		<f:subview id="initialValues">
+		<span class="testTitle">Test case to display a value bound to a managed bean</span>
+		<h:panelGrid columns="2">
+			<h:commandButton value="Previous" id="myButton2"> 
+              <f:ajax event="click" render="widgetSimple"/> 
+            </h:commandButton>
+            <h:commandButton value="Forward" id="myButton3"> 
+              <f:ajax event="click" render="widgetSimple"/> 
+            </h:commandButton>
+			<jd:stackContainer id="widgetSimple" style="width: 400px; height: 100px;" tooltip="This is Stack Container." title="#{stackContainerBean.beanBoundValue.data}" persist="true" doLayout="true" showTitle="true">
+				<jd:contentPane label="DojoServerFaces" id="stack1">
+					<h:outputText value="#{stackContainerBean.beanBoundValue.data}" />
+				</jd:contentPane>
+				<jd:contentPane label="DojoServerFaces" id="stack2">
+					<h:outputText value="#{stackContainerBean.beanBoundValue.data}" />
+				</jd:contentPane> 
+			</jd:stackContainer>
+		</h:panelGrid>
+		</f:subview>
+	</div>
+</ui:composition>

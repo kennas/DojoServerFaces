@@ -1,0 +1,26 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testFacesMsgRegisteredCorrectly() -->
+	<div class="testCase">
+		<f:subview id="facesMessageRegistration">
+		    <span class="testTitle">Test case to see if the custom message is registered properly with the faces validator</span>
+			<h:panelGrid columns="2">
+				<h:panelGroup>Enter a value (but not second)
+					<jd:dynamicTextArea id="widgetFacesMessage" value="#{dynamicTextAreaBean.widgetFacesMessage.data}" validatorMessage="This value should not be entered!">
+						<f:validator validatorId="dojoserverfaces.ExcludeValidator" />
+						<f:attribute name="dojoserverfaces.ExcludeValidator.index" value="1"></f:attribute>
+					</jd:dynamicTextArea>
+				</h:panelGroup>
+				<h:panelGroup>
+				ValidationMessage: 
+				<h:message for="widgetFacesMessage" errorClass="errorMessage" id="errMsgTextBoxFacesMessage" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</f:subview>
+	</div>
+</ui:composition>

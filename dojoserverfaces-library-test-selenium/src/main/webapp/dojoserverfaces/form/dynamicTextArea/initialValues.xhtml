@@ -1,0 +1,29 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
+	<div class="testCase">
+		<f:subview id="initialValues">
+		    <span class="testTitle">Test Simple Value</span>
+			<h:panelGrid columns="1">
+				<jd:dynamicTextArea id="widgetSimple" value="a"></jd:dynamicTextArea>
+			</h:panelGrid>
+			<span class="testTitle">Test case to display a value bound to a managed bean</span>
+			<h:panelGrid columns="1">
+				<jd:dynamicTextArea id="widgetBeanBoundValue" value="#{dynamicTextAreaBean.beanBoundValue.data}"></jd:dynamicTextArea>
+			</h:panelGrid>
+			<span class="testTitle">Test case to display value bound to a managed bean (page compile time evaluation)</span>
+			<h:panelGrid columns="1">
+				<jd:dynamicTextArea id="widgetBeanBoundValueImmediate" value="${dynamicTextAreaBean.beanBoundValue.data}"></jd:dynamicTextArea>
+			</h:panelGrid>
+			<span class="testTitle">Test case where rendered attribute of the component is set to false</span>
+			<h:panelGrid columns="1">
+				<jd:dynamicTextArea id="widgetRenderedFalse" value="renderedFalse" rendered="false"></jd:dynamicTextArea>
+			</h:panelGrid>
+		</f:subview>
+	</div>
+</ui:composition>

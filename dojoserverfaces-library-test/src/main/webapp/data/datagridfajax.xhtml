@@ -1,0 +1,62 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+
+</h:head>
+<h:body>
+	<dojo:itemFileWriteStore id="st"
+		url="http://localhost:8080/eclipse-dojoserverfaces-library-test/data/jsondata.faces?id=all"></dojo:itemFileWriteStore>
+	<dojo:menu id="fruit" style="display:none">
+		<dojo:menuItem label="apple"></dojo:menuItem>
+		<dojo:menuItem label="pear"></dojo:menuItem>
+		<dojo:menuItem label="banana"></dojo:menuItem>
+	</dojo:menu>
+	<dojo:menu id="vehicle" style="display:none">
+		<dojo:menuItem label="car"></dojo:menuItem>
+		<dojo:menuItem label="truck"></dojo:menuItem>
+		<dojo:menuItem label="train"></dojo:menuItem>
+	</dojo:menu>
+
+	<h:form>
+		<dojo:textBox title="20px" value="#{dataGrid.rowSelector}"></dojo:textBox>
+		<dojo:button label="apply">
+			<f:ajax execute="@form" render=":grid"></f:ajax>
+		</dojo:button>
+	</h:form>
+	<dojo:dataGrid id="grid" store="st" headerMenuId="vehicle"
+		selectable="true" selectionMode="single"
+		loadingMessage="#{dataGrid.loadingMessage}" errorMessage="error"
+		autoHeight="3" rowSelector="#{dataGrid.rowSelector}"
+		singleClickEdit="true">
+		<dojo:view name="first" noscroll="true" />
+		<dojo:defaultCell type="Select" options="countries continent city"
+			field="id" name="countrycode" view="first" width="200px"
+			editable="true"></dojo:defaultCell>
+		<ui:remove>
+			<dojo:cell view="first" editable="false"></dojo:cell>
+		</ui:remove>
+		<dojo:cell view="first" field="name" name="countryname" type="_Widget"></dojo:cell>
+		<dojo:cell view="first" field="type" name="type"></dojo:cell>
+		<dojo:defaultCell view="second" width="200px" editable="true"></dojo:defaultCell>
+		<dojo:cell view="second.0" field="Money" name="GDP" width="200px" />
+		<dojo:cell view="second.1" field="Mark" name="Mark" type="Bool"
+			width="200px" />
+	</dojo:dataGrid>
+	<ui:remove>
+		<dojo:button label="addrow" onClick="addRow()">
+		</dojo:button>
+		<dojo:button label="deleterow" onClick="deleteSelectedRow()" />
+	</ui:remove>
+</h:body>
+</html>

@@ -1,0 +1,37 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+
+<h:head>
+	<title>textbox</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra"/>
+</h:head>
+<h:body>
+	<h:form styleClass="form" id="form1">
+		<h:panelGrid id="grid" cols="1">
+            #{"textBox target for ajax update"} 
+            <dojo:textBox value="#{store.record.hitMe}">
+			</dojo:textBox>
+            <h:commandButton type="button">
+                <f:ajax render="grid"/>
+            </h:commandButton>
+            <dojo:textBox id="box2" value="#{store.record.text}"/>
+            <h:commandButton type="button">
+                <f:ajax render="box2"/>
+            </h:commandButton>
+        </h:panelGrid>
+	</h:form>
+</h:body>
+</html>

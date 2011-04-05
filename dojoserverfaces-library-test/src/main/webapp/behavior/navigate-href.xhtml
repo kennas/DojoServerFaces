@@ -1,0 +1,46 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jd="http://www.dojoserverfaces.org/core">
+
+<h:head>
+	<title>navigate-href</title>
+</h:head>
+<h:body>
+	<h:form styleClass="form" id="form1">
+		<jd:calendar id="calendar">
+			<jd:behaviorNavigate outcome="./dialogcontent1.xhtml" target="dialog"
+				params="@this" />
+			<jd:behaviorShow target="dialog" />
+		</jd:calendar>
+		<jd:button label="set href 2 and show dialog">
+			<jd:behaviorNavigate outcome="./dialogcontent2.xhtml" target="dialog" />
+			<jd:behaviorShow target="dialog" />
+		</jd:button>
+		<jd:dialog id="dialog" href="./dialogcontent1.faces" title="pane one"
+			tooltip="tooltip" refreshOnShow="true">
+		</jd:dialog>
+
+		<jd:button label="set href 1 and show dialog">
+			<jd:behaviorNavigate outcome="./dialogcontent1.xhtml"
+				target="contentPane" />
+		</jd:button>
+		<jd:button label="set href 2 and show dialog">
+			<jd:behaviorNavigate outcome="./dialogcontent2.xhtml"
+				target="contentPane" />
+		</jd:button>
+		<jd:contentPane id="contentPane" href="./dialogcontent1.faces"
+			title="pane one" tooltip="tooltip" extractContent="true">
+		</jd:contentPane>
+	</h:form>
+</h:body>
+</html>

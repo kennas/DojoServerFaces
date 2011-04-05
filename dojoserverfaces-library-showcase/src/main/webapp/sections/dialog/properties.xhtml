@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<dojo:tableContainer
+		cols="3" orientation="horiz" spacing="1"
+		style="width: 100%;"
+	>
+		<dojo:textBox title="title: " value="#{ dialog.title }" />
+		<dojo:textBox title="duration: " value="#{ dialog.duration }" />
+		
+		<dojo:textBox title="" style="visibility: hidden;" />
+	</dojo:tableContainer>
+	
+	<hr class="separator" />
+	<dojo:tableContainer
+		cols="3" orientation="horiz" spacing="1"
+		style="width: 100%;"
+	>
+		<dojo:booleanCheckBox title="refocus" value="#{ dialog.refocus }" />
+		<dojo:booleanCheckBox title="autofocus" value="#{ dialog.autofocus }" />
+		<dojo:booleanCheckBox title="draggable" value="#{ dialog.draggable }" />
+	</dojo:tableContainer>
+	
+	<hr class="separator" />
+	<dojo:button label="Apply">
+		<f:ajax execute="@form" event="click" render=":plainDialog :formDialog" />
+	</dojo:button>
+</ui:composition>

@@ -1,0 +1,10 @@
+	{
+	identifier: 'id',
+	label: 'name',
+	items: [
+					{ id: 'CN', name:'China', type:'country',Money:'50',Mark:true},
+	        		{ id: 'IN', name:'India', type:'country',Money:'20',Mark:false },
+	        		{ id: 'RU', name:'Russia', type:'country',Money:'40',Mark:true },
+	        		{ id: 'MN', name:'Mongolia', type:'country',Money:'10',Mark:false }
+	        ]
+	 }

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright (c) 2011, The Dojo Foundation 
+	All Rights Reserved. Available via Academic Free License >= 2.1 OR the modified 
+	BSD license. see: http://dojotoolkit.org/license for details -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.dojoserverfaces</groupId>
+	<artifactId>dojoserverfaces</artifactId>
+	<packaging>pom</packaging>
+	<name>dojoserverfaces</name>
+	<version>1.0.0</version>
+
+	<modules>
+		<module>dojoserverfaces-constants</module>
+		<module>dojoserverfaces-maven-plugin</module>
+		<module>dojoserverfaces-annotation-processor</module>
+		<module>dojoserverfaces-annotations</module>
+		<module>dojoserverfaces-core</module>
+		<module>dojoserverfaces-library-assembly</module>
+		<module>dojoserverfaces-library-showcase</module>
+		<module>dojoserverfaces-library-definition</module>
+		<module>dojoserverfaces-library-example</module>
+		<module>dojoserverfaces-library-test</module>
+		<module>dojoserverfaces-library-test-selenium</module>
+	</modules>
+
+	<profiles>
+		<profile>
+			<id>buildDojo</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>dojoserverfaces-constants</module>
+				<module>dojoserverfaces-maven-plugin</module>
+				<module>dojoserverfaces-annotation-processor</module>
+				<module>dojoserverfaces-annotations</module>
+				<module>dojoserverfaces-core</module>
+				<module>dojoserverfaces-dojo</module>
+				<module>dojoserverfaces-library-assembly</module>
+				<module>dojoserverfaces-library-example</module>
+				<module>dojoserverfaces-library-showcase</module>
+				<module>dojoserverfaces-library-definition</module>
+				<module>dojoserverfaces-library-test</module>
+				<module>dojoserverfaces-library-test-selenium</module>
+			</modules>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Maven repository</name>
+			<url>http://download.java.net/maven/2/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Maven repository</name>
+			<url>http://download.java.net/maven/2/</url>
+			<layout>default</layout>
+		</pluginRepository>
+	</pluginRepositories>
+</project>

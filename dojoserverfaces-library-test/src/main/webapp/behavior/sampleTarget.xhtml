@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:jd="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>dialog</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<jd:theme name="tundra" />
+</h:head>
+<h:body>
+	<f:ajax />
+	<jd:borderContainer id="mainContainer">
+		<jd:titlePane id="leftPanel" region="left">
+			<h:form id="inviteForm">
+				<jd:tableContainer id="loginLayout">
+					<h:inputHidden id="descriptionValue" />
+					<jd:editor id="descriptionEditor">
+						<jd:behaviorSet event="onLoadDeferred" target="."
+							value="..\descriptonValue" />
+					</jd:editor>
+
+					<jd:textBox id="password" secret="true"></jd:textBox>
+					<jd:button label="login">
+						<jd:behaviorSubmit event="click" target="???" />
+					</jd:button>
+					<jd:button label="two">
+						<jd:behaviorShow event="click" target="group:dialogTwo" />
+					</jd:button>
+					<jd:button label="three">
+						<jd:behaviorShow event="click" target="dialogThree" />
+					</jd:button>
+				</jd:tableContainer>
+
+				<jd:dialog id="dialogOne" title="dialog title" ariaDescribedBy=""
+					tooltip="dialog tooltip">
+					<h:outputText value="dialog one"></h:outputText>
+					<h:commandButton />
+				</jd:dialog>
+				<h:panelGroup id="group">
+					<jd:dialog id="dialogTwo" title="dialog title" ariaDescribedBy=""
+						tooltip="dialog tooltip">
+						<h:outputText value="dialog two"></h:outputText>
+						<h:commandButton />
+					</jd:dialog>
+				</h:panelGroup>
+				<f:subview id="subview">
+					<jd:dialog id="dialogThree" title="dialog title" ariaDescribedBy=""
+						tooltip="dialog tooltip">
+						<h:outputText value="dialog three"></h:outputText>
+						<h:commandButton />
+					</jd:dialog>
+				</f:subview>
+				<br />
+
+			</h:form>
+		</jd:titlePane>
+		<p>Outside form</p>
+		<h:panelGroup id="group2">
+			<jd:button label="one">
+				<jd:behaviorShow event="click" target="form1:dialogOne" />
+			</jd:button>
+			<jd:button label="two">
+				<jd:behaviorShow event="click" target=":form1:dialogTwo" />
+			</jd:button>
+			<jd:button label="three">
+				<jd:behaviorShow event="click" target=":form1:subview:dialogThree" />
+			</jd:button>
+		</h:panelGroup>
+		<jd:button label="one">
+			<jd:behaviorShow event="click" target="form1:dialogOne" />
+		</jd:button>
+		<jd:button label="two">
+			<jd:behaviorShow event="click" target=":form1:dialogTwo" />
+		</jd:button>
+		<jd:button label="three">
+			<jd:behaviorShow event="click" target=":form1:subview:dialogThree" />
+		</jd:button>
+	</jd:borderContainer>
+	<ui:debug />
+</h:body>
+</html>

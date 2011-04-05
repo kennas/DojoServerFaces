@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<dojo:selectItemStore id="highlightMatchs">
+		<f:selectItems value="#{ filteringSelect.highlightMatchs }" />
+	</dojo:selectItemStore>
+
+	<dojo:tableContainer
+		cols="3" orientation="horiz" spacing="1"
+		style="width: 100%;"
+	>
+		<dojo:filteringSelect title="highlightMatch" 
+			store="highlightMatchs" value="#{ filteringSelect.highlightMatch }" />
+	</dojo:tableContainer>
+	
+	<hr class="separator" />
+	<dojo:tableContainer
+		cols="3" orientation="horiz" spacing="1"
+		style="width: 100%;"
+	>
+		<dojo:booleanCheckBox title="ignoreCase" value="#{ filteringSelect.ignoreCase }" />
+		<dojo:booleanCheckBox title="autoComplete" value="#{ filteringSelect.autoComplete }" />
+		<dojo:booleanCheckBox title="disabled" value="#{ filteringSelect.disabled }" />
+		<dojo:booleanCheckBox title="readOnly" value="#{ filteringSelect.readOnly }" />
+		<dojo:booleanCheckBox title="required" value="#{ filteringSelect.required }" />
+	</dojo:tableContainer>
+	
+	<hr class="separator" />
+	<dojo:button label="Apply">
+		<f:ajax execute="@form" render=":form:filteringSelect" />
+	</dojo:button>
+</ui:composition>

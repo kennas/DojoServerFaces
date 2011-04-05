@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>dialog</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra" />
+</h:head>
+<h:body>
+	<h:form id="form1">
+		<h:outputText value="dialog demo description"></h:outputText>
+
+		<dojo:button type="button" label="show dialog">
+			<dojo:behaviorShow event="click" target="dialogOne" />
+		</dojo:button>
+		<dojo:dialog id="dialogOne" title="dialog title" ariaDescribedBy=""
+			tooltip="dialog tooltip">
+			<h:outputText id="dialogDescription" value="dialog description"></h:outputText>
+			<h:commandButton />
+		</dojo:dialog>
+		<br />
+
+	</h:form>
+	<ui:debug hotkey="v" />
+</h:body>
+</html>

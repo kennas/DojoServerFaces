@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+
+<f:metadata>
+	<f:viewParam name="customerId" value="#{queryParam.customerId}"></f:viewParam>
+</f:metadata>
+
+<h:head>
+	<title>accordionContainer</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra" />
+</h:head>
+<h:body>
+
+	<jd:dataGrid value="#{store.customerOrders}">
+		<jd:dataGridCell property="orderDate", name="Order Date", width="100px">
+			<f:convertDateTime type="both"/>
+		</jd:dataGridCell>
+		<jd:dataGridCell property="itemCode", name="Item Code", width="100px"></jd:dataGridCell>
+		<jd:dataGridCell property="itemCost", name="Cost per Item", width="100px"></jd:dataGridCell>
+		<jd:dataGridCell property="quantity", name="Quantity", width="100px"></jd:dataGridCell>
+	</jd:dataGrid>
+
+	<jd:dataStore value="#{store.customerOrders}"></jd:dataStore>
+
+	would an ajax call back to the page create the view param objects?
+	or perhaps can nave rules be used some how?
+
+<script>
+	dojo
+			.addOnLoad(function() {
+				// our test data store for this example:
+				var store4 = new dojox.data.CsvStore(
+						{
+							url : '/moin_static185/js/dojo/trunk/dojo/../dojox/grid/tests/support/movies.csv'
+						});
+
+				// set the layout structure:
+				var layout4 = [ {
+					field : 'Title',
+					name : 'Title of Movie',
+					width : '200px'
+				}, {
+					field : 'Year',
+					name : 'Year',
+					width : '50px'
+				}, {
+					field : 'Producer',
+					name : 'Producer',
+					width : 'auto'
+				} ];
+
+				// create a new grid:
+				var grid4 = new dojox.grid.DataGrid( {
+					query : {
+						Title : '*'
+					},
+					store : store4,
+					clientSort : true,
+					rowSelector : '20px',
+					structure : layout4
+				}, document.createElement('div'));
+
+				// append the new grid to the div "gridContainer4":
+				dojo.byId("gridContainer4").appendChild(grid4.domNode);
+
+				// Call startup, in order to render the grid:
+				grid4.startup();
+			});
+</script>
+	<link rel="stylesheet" type="text/css"
+		href="/moin_static185/js/dojo/trunk/dojo/../dijit/themes/claro/claro.css" />
+	<style type="text/css">
+@import
+	"/moin_static185/js/dojo/trunk/dojo/../dojox/grid/resources/Grid.css";
+
+@import
+	"/moin_static185/js/dojo/trunk/dojo/../dojox/grid/resources/claroGrid.css"
+	;
+
+.dojoxGrid table {
+	margin: 0;
+}
+
+html,body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+</style>
+	</head>
+
+	<body class=" claro ">
+	<div id="gridContainer4" style="width: 100%; height: 100%;"></div>
+</h:body>
+</html>

@@ -1,0 +1,43 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jd="http://www.dojoserverfaces.org/core">
+
+<h:head>
+	<title>form</title>
+	<meta
+		http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<jd:theme name="tundra" />
+</h:head>
+<h:body>
+	<jd:form
+		id="myForm"
+		request="queryResults"
+		method="post">
+		<jd:numberTextBox id="somenumber" />
+		<jd:validationTextBox
+			required="true"
+			id="search"
+			value="#{store.record.text}" />
+		<jd:button
+			label="submit"
+			type="submit"></jd:button>
+		<jd:set
+			event="submit"
+			target="search"
+			value="sometext.value" />
+	</jd:form>
+	<h:outputText value="#{store.record.text}" />
+</h:body>
+</html>

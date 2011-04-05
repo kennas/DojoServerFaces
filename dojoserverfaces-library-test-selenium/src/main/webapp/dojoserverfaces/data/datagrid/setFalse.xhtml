@@ -1,0 +1,44 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
+	<div class="testCase" style="height: 300px;"><span
+		class="testTitle">Test case to display a value bound to a
+	managed bean</span>
+	<div id="initialValues2" style="height: 300px;"> <dojo:dataGrid id="widgetSimple2" store="st" headerMenuId="vehicle"
+		selectable="false" selectionMode="multiple" loadingMessage="loading...."
+		errorMessage="error" autoHeight="3" rowSelector="20px"
+		singleClickEdit="false">
+		<dojo:view name="first" noscroll="true" />
+		<dojo:defaultCell type="Select" options="countries continent city"
+			field="id" name="countrycode" view="first" width="200px"
+			editable="true"></dojo:defaultCell>
+		<dojo:cell view="first" editable="false"></dojo:cell>
+		<dojo:cell view="first" field="name" name="countryname" type="_Widget"></dojo:cell>
+		<dojo:cell view="first" field="type" name="type"></dojo:cell>
+
+		<dojo:defaultCell view="second" width="200px" editable="true"></dojo:defaultCell>
+		<dojo:cell view="second.0" field="Money" name="GDP" width="200px" />
+		<dojo:cell view="second.1" field="Mark" name="Mark" type="Bool"
+			width="200px" />
+
+	</dojo:dataGrid></div>
+
+	</div>
+	<!-- <script type="text/javascript">
+		dojo.ready(function() {
+			dojo.subscribe('dojoserverfaces-init-complete', function() {
+				alert('XX - ' + window.dijit.byId('widgetSimple').get('store'));
+			});
+		});
+	//var wk = ;
+	//alert(wk);
+</script> -->
+</ui:composition>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<h:form id="form">
+		<dojo:verticalSlider id="verticalSlider" style="height:300px;width:1px;"
+			minimum="#{verticalSlider.minimum}"
+			maximum="#{verticalSlider.maximum}" value="#{verticalSlider.value}"
+			showButtons="#{verticalSlider.showButtons}"
+			discreteValues="#{verticalSlider.discreteValues}"
+			pageIncrement="#{verticalSlider.pageIncrement}"
+			clickSelect="#{verticalSlider.clickSelect}"
+			slideDuration="#{verticalSlider.slideDuration}">
+			<dojo:verticalRule count="17" ruleStyle="width:5px;"
+				container="rightDecoration" />
+			<dojo:verticalRule count="5"
+				ruleStyle="width:1.5em;font-size:75%;color:gray;"
+				container="leftDecoration" />
+			<dojo:verticalRuleLabels style="width:1.5em;"
+				container="rightDecoration" labels="0% 50% 100%" />
+		</dojo:verticalSlider>
+		<hr class="separator" />
+		<dojo:button label="Submit">
+			<f:ajax execute="@form" render=":result" />
+		</dojo:button>
+	</h:form>
+	
+	<h:panelGrid columns="1" id="result">
+		<div>
+			You value is: 
+			<span style="font-weight: bold;">#{ verticalSlider.value }</span>
+		</div>
+	</h:panelGrid>
+</ui:composition>

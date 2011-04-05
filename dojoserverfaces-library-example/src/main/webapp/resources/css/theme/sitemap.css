@@ -1,0 +1,136 @@
+@CHARSET "UTF-8";
+
+/******************************************
+  Site Map Sample
+  Specification file: sitemap
+ ******************************************/
+
+/*
+ * Each link of the site navigation is organized into rows/colomns using a table.
+ * This style applies to the table.
+ */
+.sitemap_table {
+	border-style:solid;
+	border-width:1px;
+	background-color: #fafea7;
+	border-right-color: #828DAF;
+	border-bottom-color: #828DAF;
+	border-top-color:#828DAF;
+	border-left-color: #828DAF;
+}
+
+/*
+ * This style applies to the body in the table.
+ */
+.sitemap_table_body {
+}
+
+/*
+ * This style applies to the row in the table.
+ */
+.sitemap_table_row {
+	font : normal;
+	border-bottom-color: #1D290D;
+	border-bottom-style: solid;
+	border-bottom-width: 3px;	
+	text-align : left;
+}
+
+/*
+ * This style applies to each cell in the table.
+ */
+.sitemap_cell_normal{
+	text-align : left;
+	border-width : 0px;
+	padding-left : 7px;
+	margin : 0px 0px 0px 0px;	
+}
+
+/*
+ * This style applies to the cell which contains a link to top page.
+ */
+.sitemap_cell_top {
+	background-color: #C2D2E8;
+    width : 100%;
+	margin:1px;
+	padding-top :3px;
+	padding-bottom :3px;
+	padding-left:4px;
+	padding-right:4px;
+	text-align : center;
+}
+
+/*
+ * This style applies to each item in the cell. (e.g., to the <a> tag)
+ */
+.sitemap_item_normal {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #2E67B4;
+	font-weight: normal;
+    font-size: 11px;
+	text-decoration : none;
+}
+
+/*
+ * This style applies to the item which links to top page. (e.g., to the <a> tag)
+ */
+.sitemap_item_top {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #ffffff;
+	text-decoration : none;
+	font-weight: bold;
+    font-size: 11px;
+	text-transform: uppercase;
+}
+
+/*
+ * This style applies to the item which displays a group name. (e.g., to the <span> tag)
+ */
+.sitemap_item_group {  
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #89888D;
+	font-weight: bold;
+	text-decoration: none;
+    font-size: 11px;
+    padding-left: 3px;
+    padding-right: 3px;
+	text-transform: uppercase;
+}
+
+/* Hyperlinks */
+.sitemap_table a:visited {
+	color: #D64E27;
+	text-decoration : none;
+}
+
+.sitemap_table a:hover {
+	color:  #FF9933;
+	text-decoration : underline;
+}
+
+.sitemap_table a:active {
+	color : #CE092F;
+	text-decoration : none;	
+}
+
+/* List */
+.sitemap_UL1 {
+	margin-left : 7%;
+	list-style-type : circle;
+	list-style-image : url(circle.gif);
+	list-style-position : outside;
+}
+
+.sitemap_UL2 {
+	margin-left : 7%;
+	list-style-type : square;
+	list-style-image : url(square.gif);
+	list-style-position : outside;
+}
+
+.sitemap_UL3 {
+	margin-left : 7%;
+	list-style-type : square;
+	list-style-image : url(arrow.gif);
+	list-style-position : outside;
+}

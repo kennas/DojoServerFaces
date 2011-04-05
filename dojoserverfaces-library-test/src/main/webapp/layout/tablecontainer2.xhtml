@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:jd="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>tableContainer</title>
+</h:head>
+<h:body>
+	<jd:form id="form1">
+		<jd:tableContainer orientation="vert"  cols="2" style="width: 400px; height: 600px;">
+			<jd:dateTextBox title="Event Date" value="#{store.record.birthDate}">
+				<f:convertDateTime pattern="yyyy-MM-dd"></f:convertDateTime>
+			</jd:dateTextBox>
+			<jd:timeTextBox  title="Event Time" value="#{store.record.time}" pattern="HH:mm:ss"
+				clickableIncrement="T01:00:00" visiableRange="T00:30:00">
+			</jd:timeTextBox>
+			<jd:editor colspan="2"/>
+		</jd:tableContainer>
+	</jd:form>
+</h:body>
+</html>

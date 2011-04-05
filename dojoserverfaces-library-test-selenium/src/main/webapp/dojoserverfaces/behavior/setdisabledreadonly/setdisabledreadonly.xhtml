@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+<ui:composition template="../../_template.xhtml">
+	<ui:define name="title">DojoServerFaces Disabled Readonly</ui:define>
+	<ui:define name="header">
+		<div class="header">DojoServerFaces Disabled Readonly</div>
+	</ui:define>
+	<ui:define name="tableContent">
+		<div class="testCase"><f:subview id="initialValues">
+			<span class="testTitle">Test case to display a value bound to
+			a managed bean</span>
+			<h:panelGrid columns="2">
+				<jd:button label="Disable Button A" id="buttonDisable">
+					<jd:behaviorSetDisabled target="buttonA" value="true"/>
+				</jd:button>
+				<jd:button label="Enable Button A" id="buttonEnable">
+					<jd:behaviorSetDisabled target="buttonA" value="false" />
+				</jd:button>
+				<jd:button label="Disable TextBox B" id="textBoxDisable">
+					<jd:behaviorSetDisabled target="textB" value="true" />
+				</jd:button>
+				<jd:button label="Enable TextBox B" id="textBoxEnable">
+					<jd:behaviorSetDisabled target="textB" value="false" />
+				</jd:button>
+				<jd:button label="Make TextBox B Readonly" id="textBoxReadOnly">
+					<jd:behaviorSetReadonly target="textB" value="true" />
+				</jd:button>
+				<jd:button label="Make TextBox B Writable" id="textBoxWritable">
+					<jd:behaviorSetReadonly target="textB" value="false" />
+				</jd:button>
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<jd:button id="buttonA" label="Button A" >
+				    <jd:behaviorAlert message="Hello DojoServerFaces"/>
+				</jd:button>
+				<jd:textBox id="textB" value="TextBox B" />
+			</h:panelGrid>
+		</f:subview></div>
+	</ui:define>
+</ui:composition>
+</html>

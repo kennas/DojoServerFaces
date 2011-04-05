@@ -1,0 +1,36 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testAjaxRefresh() -->
+	<div class="testCase">
+	<f:subview id="ajaxRefresh"> 
+		<span class="testTitle">Test case which ajaxically updates ManagedBean's value bound to the component</span>
+		<h:panelGrid columns="1">
+			<jd:dialog id="widgetAjaxCall" style="width: 350px; height: 200px;" title="#{ dialogBean.currentTime }" tooltip="This is DojoServerFaces Dialog." duration="80" refocus="true" autofocus="true" draggable="true" href="" errorMessage="Dialog couldn't be loaded." loadingMessage="Dialog is Loading." extractContent="true" preLoad="true" preventCache="true" refreshOnShow="true">
+				<jd:tableContainer id="tableContainer" cols="1" orientation="horiz" spacing="1" style="width: 100%;">
+					<jd:textBox title="TextBox: " value="#{ textBoxBean.beanBoundValue.data }" />
+					<jd:textBox title="TextBox: " value="#{ textBoxBean.beanBoundValue.data }" />
+					<jd:booleanCheckBox title="BooleanCheckBox" value="#{ booleanCheckBoxBean.beanBoundValue.data }" />
+					<jd:numberSpinner title="NumberSpinner" value="#{ numberSpinnerBean.beanBoundValue.data }" min="1" max="100" />
+				</jd:tableContainer>
+				<jd:button label="OK"> 
+					<jd:behaviorHide event="click" target="widgetAjaxCall" />
+				</jd:button>
+				<jd:button label="Close">
+					<jd:behaviorHide event="click" target="widgetAjaxCall" />
+				</jd:button>
+				<jd:button id="button" label="Change Title">
+					<f:ajax render="widgetAjaxCall" />
+				</jd:button>
+			</jd:dialog>
+			<jd:button label="Show Dialog">
+		          <jd:behaviorShow event="click" target="widgetAjaxCall" />
+	        </jd:button>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition>

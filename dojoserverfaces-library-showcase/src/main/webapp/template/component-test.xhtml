@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+<h:head>
+    <title>#{component}</title>
+    <meta
+        http-equiv="Content-Type"
+        content="application/xhtml+xml; charset=UTF-8"
+    />
+    <h:outputStylesheet
+        library="css"
+        name="theme/sitemap.css"
+    />
+    <h:outputStylesheet
+        library="css"
+        name="theme/stylesheet.css"
+    />
+    <dojo:theme name="tundra" />
+    <style type="text/css">
+xbody {
+	background-color: #ffffff;
+	text-align: center;
+	color: #ffffff;
+}
+
+#pagewidth {
+	position: relative;
+	background-color: #000000;
+	text-align: left;
+}
+</style>
+</h:head>
+<h:body>
+    <div id="pagewidth">
+    <table border="0">
+        <tbody>
+            <tr>
+                <td><ui:include src="/template/toc.xhtml"></ui:include></td>
+                <td style="background-color: lime;">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                            <h1>#{component}</h1>
+                            <h:outputLink
+                                styleClass="outputLink"
+                                id="link1"
+                                value="docs/html/#{component}.xhtml"
+                            >
+                                <h:outputText
+                                    id="text1"
+                                    styleClass="outputText"
+                                    value="doc"
+                                ></h:outputText>
+                            </h:outputLink> <h:form
+                                styleClass="form"
+                                id="form1"
+                            >
+                                <h:panelGrid columns="2">
+                                    <h:panelGrid
+                                        id="attributes"
+                                        columns="1"
+                                        style="background-color: silver;"
+                                    >
+                                        <f:ajax render=":form1:testPanel">
+                                            <f:subview name="test">
+                                                <ui:insert name="attributes" />
+                                            </f:subview>
+                                        </f:ajax>
+                                        <h:commandButton
+                                            value="Apply"
+                                            type="button"
+                                        ></h:commandButton>
+                                    </h:panelGrid>
+                                    <h:panelGrid
+                                        columns="2"
+                                        id="testPanel"
+                                    >
+                                        <h:panelGrid
+                                            styleClass="panelGrid"
+                                            columns="1"
+                                        >
+                                            <h:panelGroup id="componentTestPanel">
+                                                <f:ajax
+                                                    disabled="#{componentTest.enableAjax ne true}"
+                                                    render=":form1:componentTestOutputPanel"
+                                                >
+                                                    <ui:insert name="test" />
+                                                </f:ajax>
+                                            </h:panelGroup>
+                                            <h:panelGroup
+                                                id="componentTestOutputPanel"
+                                                columns="1"
+                                            >
+                                                <ui:insert name="testOutput" />
+                                            </h:panelGroup>
+                                            <h:panelGrid
+                                                columns="1"
+                                                style="width:100%;"
+                                            >
+                                                <h:messages styleClass="messages" />
+                                                <h:commandButton
+                                                    type="submit"
+                                                    value="submit"
+                                                    styleClass="commandButton"
+                                                    style=""
+                                                    id="submitButton"
+                                                    disabled="#{componentTest.enableAjax}"
+                                                ></h:commandButton>
+                                                <h:panelGrid
+                                                    columns="3"
+                                                    id="propertyGrid"
+                                                >
+                                                    <h:selectBooleanCheckbox
+                                                        styleClass="selectBooleanCheckbox"
+                                                        id="enableAjax1"
+                                                        value="#{componentTest.enableAjax}"
+                                                    >
+                                                        <f:ajax render="componentTestPanel submitButton"></f:ajax>
+                                                    </h:selectBooleanCheckbox>
+                                                    <span>&#160;</span>
+                                                    <h:outputLabel for="enableAjax1">
+                                                        <h:outputText value="Ajax update enabled"></h:outputText>
+                                                    </h:outputLabel>
+                                                </h:panelGrid>
+                                            </h:panelGrid>
+                                        </h:panelGrid>
+                                        <h:panelGroup styleClass="panelGroup">
+                                            <f:subview name="test">
+                                                <ui:insert name="source" />
+                                            </f:subview>
+                                        </h:panelGroup>
+                                    </h:panelGrid>
+                                </h:panelGrid>
+                            </h:form></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</h:body>
+</html>

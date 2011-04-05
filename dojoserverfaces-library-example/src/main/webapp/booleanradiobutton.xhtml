@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:dojo="http://www.dojoserverfaces.org/core"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:src="http://java.sun.com/jsf/composite/taglib/source"
+    template="/template/component-test.xhtml"
+>
+    <ui:param
+        value="booleanRadioButton"
+        name="component"
+    ></ui:param>
+    <ui:define name="attributes">
+        <h:panelGrid
+            columns="3"
+            id="propertyGrid"
+        >
+            <h:outputLabel for="disabled1">
+                <h:outputText value="disabled:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="disabled1"
+                value="#{booleanRadioButton.disabled}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="readOnly1">
+                <h:outputText value="readOnly:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="readOnly1"
+                value="#{booleanRadioButton.readOnly}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="onBlur1">
+                <h:outputText value="onBlur:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onBlur1"
+                value="#{booleanRadioButton.onBlur}"
+            >
+            </h:inputText>
+            <h:outputLabel for="onFocus1">
+                <h:outputText value="onFocus:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onFocus1"
+                value="#{booleanRadioButton.onFocus}"
+            >
+            </h:inputText>
+            <h:outputLabel for="onChange1">
+                <h:outputText value="onChange:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onChange1"
+                value="#{booleanRadioButton.onChange}"
+            >
+            </h:inputText>
+            <h:outputLabel for="onClick1">
+                <h:outputText value="onClick:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onClick1"
+                value="#{booleanRadioButton.onClick}"
+            >
+            </h:inputText>
+        </h:panelGrid>
+    </ui:define>
+    <ui:define name="test">
+        <h:panelGrid columns="6">
+            <c:forEach
+                items="#{store.record.options}"
+                var="option"
+            >
+                <h:outputText value="#{option.name}" />
+                <dojo:booleanRadioButton
+                    groupId="option"
+                    value="#{option.selected}"
+                    readOnly="#{booleanRadioButton.readOnly}"
+                    disabled="#{booleanRadioButton.disabled}"
+                    onBlur="#{booleanRadioButton.onBlur}"
+                    onFocus="#{booleanRadioButton.onFocus}"
+                    onChange="#{booleanRadioButton.onChange}"
+                />
+            </c:forEach>
+        </h:panelGrid>
+    </ui:define>
+    <ui:define name="testOutput">
+        <h:panelGroup styleClass="panelGroup">
+            <p>selected</p>
+            <ul>
+                <ui:repeat
+                    var="item"
+                    value="#{store.record.selectedOptions}"
+                >
+                    <li><h:outputText value="#{item}" /></li>
+                </ui:repeat>
+            </ul>
+        </h:panelGroup>
+    </ui:define>
+    <ui:define name="source">
+        <src:tagWithChildren name="h:panelGrid">
+            <f:facet name="attributes">
+                <src:attribute
+                    name="columns"
+                    value="6"
+                />
+            </f:facet>
+            <src:tagWithChildren name="c:forEach">
+                <f:facet name="attributes">
+                    <src:attributeExpression
+                        name="items"
+                        value="store.record.options"
+                    />
+                    <src:attribute
+                        name="var"
+                        value="option"
+                    />
+                </f:facet>
+                <src:tagNoChildren name="h:outputText">
+                    <f:facet name="attributes">
+                        <src:attributeExpression
+                            name="items"
+                            value="option.name"
+                        />
+                    </f:facet>
+                </src:tagNoChildren>
+                <src:tagNoChildren name="dojo:booleanRadioButton">
+                    <f:facet name="attributes">
+                        <src:attribute
+                            name="groupId"
+                            value="option"
+                        />
+                        <src:attributeExpression
+                            name="value"
+                            value="option.selected"
+                        />
+                        <src:attribute
+                            name="readOnly"
+                            value="#{booleanCheckBox.readOnly}"
+                        />
+                        <src:attribute
+                            name="disabled"
+                            value="#{booleanCheckBox.disabled}"
+                        />
+                        <src:attribute
+                            name="onBlur"
+                            value="#{booleanCheckBox.onBlur}"
+                        />
+                        <src:attribute
+                            name="onFocus"
+                            value="#{booleanCheckBox.onFocus}"
+                        />
+                        <src:attribute
+                            name="onChange"
+                            value="#{booleanCheckBox.onChange}"
+                        />
+                    </f:facet>
+                </src:tagNoChildren>
+            </src:tagWithChildren>
+        </src:tagWithChildren>
+    </ui:define>
+</ui:composition>

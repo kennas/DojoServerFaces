@@ -1,0 +1,42 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jd="http://www.dojoserverfaces.org/core">
+
+<h:head>
+	<title>calendar</title>
+</h:head>
+<h:body>
+	<h:form styleClass="form" id="form1">
+		<h:panelGrid colums="1">
+			<jd:calendar id="colorpalette" palette="7x10">
+				<jd:behaviorCopyValue source="@this" destination="dateTextbox" />
+				<jd:behaviorCopyValue source="@this" destination="textbox" />
+				<f:ajax execute="@form" render="updateBlock" />
+			</jd:calendar>
+			<jd:dateTextBox id="dateTextbox" value="#{store.record.birthDate}"
+				title="dataTextbox">
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+			</jd:dateTextBox>
+			<h:inputText id="textbox" value="#{store.record.birthDate}">
+				<f:convertDateTime dateStyle="full" type="both" />
+			</h:inputText>
+			<h:panelGroup id="updateBlock">
+				<h:outputText value="#{store.record.birthDate}">
+					<f:convertDateTime dateStyle="full" type="both" />
+				</h:outputText>
+			</h:panelGroup>
+			<h:messages />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

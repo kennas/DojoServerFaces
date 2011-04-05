@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<h:panelGrid id="grid" columns="3">
+		<dojo:button label="Copy from Text A">
+			<dojo:behaviorCopyValue source="textA" destination="valueHolder" />
+		</dojo:button>
+		
+		<dojo:button label="Copy from Text Area B">
+			<dojo:behaviorCopyValue source="textAreaB" destination="valueHolder" />
+		</dojo:button>
+		
+		<dojo:button label="Copy from prompt input">
+			<dojo:behaviorPrompt message="Input anything you like." broadcastOk="text-entered" />
+		</dojo:button>
+		
+		<dojo:listener topic="text-entered">
+			<dojo:behaviorCopyValue source="@event" destination="valueHolder" />
+		</dojo:listener>
+	</h:panelGrid>
+	
+	<hr class="separator" />
+	<table class="copy" cellspacing="8">
+		<tr>
+			<th colspan="2">Copy From</th>
+			<th>Copy To</th>
+		</tr>
+		<tr>
+			<td align="right" style="padding-right: 0;">
+				<h:outputLabel for="textA" value="Text A:" />
+			</td>
+			<td style="padding-left: 0; padding-bottom: 0;">
+				<dojo:textBox id="textA" placeHolder="Text A" 
+					value="I'm Text A." style="width: 100%;" />
+			</td>
+			
+			<td rowspan="2">
+				<dojo:textArea id="valueHolder" readOnly="true" 
+					rows="5" style="width: 99%; height: 100%;" />
+			</td>
+		</tr>
+		<tr>
+			<td align="right"  style="padding-right: 0;">
+				<h:outputLabel for="textA" value="Text Area B:" />
+			</td>
+			<td style="padding-left: 0; padding-top: 0;">
+				<dojo:textArea id="textAreaB" title="Text Area B" 
+					value="I'm Text Area B." style="width: 99%;" />
+			</td>
+		</tr>
+	</table>
+</ui:composition>

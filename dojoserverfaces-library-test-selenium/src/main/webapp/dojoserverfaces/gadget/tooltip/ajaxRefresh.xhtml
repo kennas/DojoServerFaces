@@ -1,0 +1,29 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testAjaxRefresh() -->
+	<div class="testCase">
+	<f:subview id="ajaxRefresh">
+		<span class="testTitle">Test case which ajaxically updates ManagedBean's value bound to the component</span>
+		<h:panelGrid columns="1">
+			<jd:tableContainer cols="3" orientation="horiz" spacing="1" style="width: 100%;">
+                <jd:textBox id="textBox" value="#{tooltipBean.beanBoundValue.data}">
+					<f:ajax execute="textBox" event="change" render="text1"/>
+	            </jd:textBox>
+		    </jd:tableContainer>
+		    <jd:button label="Apply" id="apply">
+		        <f:ajax execute="@form" event="click" render="widgetAjaxCall" />
+		    </jd:button><br></br>
+			<jd:button id="cut" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconCut"/>
+		    <jd:button id="copy" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconCopy"/>
+		    <jd:button id="paste" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconPaste"/>
+			<jd:tooltip id="widgetAjaxCall" style="width: 400px; height: 100px;" label="This is DojoServerFaces Tooltip." showDelay="400" connectTo="#{ tooltipBean.beanBoundValue.data }" position="above"></jd:tooltip>
+			<h:outputText value="Tooltip will display at #{tooltipBean.beanBoundValue.data} icon." id="text1"/>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition>

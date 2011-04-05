@@ -1,0 +1,57 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+
+<h:head>
+	<title>ajax test</title>
+</h:head>
+<h:body>
+	<h:form styleClass="form" id="form1">
+		<h:inputHidden id="hidden1" value="hidden input" />
+	</h:form>
+	<h:form styleClass="form" id="form2">
+		<h:inputHidden id="hidden2" value="hidden input" />
+		<h:panelGrid colums="3">
+			<dojo:button label="ajax the following two dateTextbox components">
+				<f:ajax render="dateTextbox dateTextbox2" />
+			</dojo:button>
+			<dojo:dateTextBox id="dateTextbox" value="#{store.record.birthDate}"
+				title="dataTextbox">
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+			</dojo:dateTextBox>
+			<dojo:dateTextBox id="dateTextbox2" value="#{store.record.birthDate}"
+				title="dataTextbox two">
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+			</dojo:dateTextBox>
+			<dojo:button label="ajax the following textbox component" >
+				<f:ajax render="textbox" />
+			</dojo:button>
+			<dojo:textBox id="textbox" value="#{store.record.text}"
+				title="textbox">
+			</dojo:textBox>
+
+			<dojo:button label="ajax the following button component" >
+				<f:ajax render="button" />
+			</dojo:button>
+			<dojo:button id="button" label="dojo hitme">
+				<f:ajax render="hitMe" />
+			</dojo:button>
+
+			<h:outputText id="hitMe" value="#{store.record.hitMe}" />
+		</h:panelGrid>
+		<h:commandButton action="#{store.record.doAction}"></h:commandButton>
+		<h:messages></h:messages>
+		<br />
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<dojo:dialog id="copyDialog" title="Prompt"
+		style="width: 200px; height: 100px;"
+	>
+		<h3 style="text-align: center;">Copy!</h3>
+	</dojo:dialog>
+	
+	<dojo:dialog id="cutDialog" title="Prompt"
+		style="width: 200px; height: 100px;"
+	>
+		<h3 style="text-align: center;">Cut!</h3>
+	</dojo:dialog>
+	
+	<dojo:dialog id="pasteDialog" title="Prompt"
+		style="width: 200px; height: 100px;"
+	>
+		<h3 style="text-align: center;">Paste!</h3>
+	</dojo:dialog>
+
+	<dojo:toolbar id="toolbar">
+		<dojo:button label="Cut" showLabel="false"
+			iconClass="dijitEditorIcon dijitEditorIconCut"
+		>
+			<dojo:behaviorShow event="click" target="cutDialog" />
+		</dojo:button>
+		<dojo:button label="Copy" showLabel="false"
+			iconClass="dijitEditorIcon dijitEditorIconCopy"
+		>
+			<dojo:behaviorShow event="click" target="copyDialog" />
+		</dojo:button>
+		<dojo:button label="Paste" showLabel="false"
+			iconClass="dijitEditorIcon dijitEditorIconPaste"
+		>
+			<dojo:behaviorShow event="click" target="pasteDialog" />
+		</dojo:button>
+		
+		<dojo:toolbarSeparator />
+		
+		<dojo:button showLabel="false"
+			iconClass="dijitEditorIcon dijitEditorIconBold"
+		/>
+		<dojo:button showLabel="false"
+			iconClass="dijitEditorIcon dijitEditorIconItalic"
+		/>
+	</dojo:toolbar>
+</ui:composition>

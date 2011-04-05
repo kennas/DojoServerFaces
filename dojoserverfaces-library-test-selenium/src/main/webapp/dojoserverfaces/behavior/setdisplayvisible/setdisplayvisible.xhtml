@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+<ui:composition template="../../_template.xhtml">
+	<ui:define name="title">DojoServerFaces Display Visible</ui:define>
+	<ui:define name="header">
+		<div class="header">DojoServerFaces Display Visible</div>
+	</ui:define>
+	<ui:define name="tableContent">
+		<div class="testCase"><f:subview id="initialValues">
+			<span class="testTitle">Test case to display a value bound to
+			a managed bean</span>
+			<h:panelGrid cols="1">
+				<jd:button type="button" label="(display(none)) pane/div" id="button1">
+					<jd:behaviorSetDisplay value="false" target="paneOne" />
+					<jd:behaviorSetDisplay value="false" target="testDiv" />
+				</jd:button>
+				<jd:button type="button" label="(display(default)) pane/div" id="button2">
+					<jd:behaviorSetDisplay value="true" target="paneOne" />
+					<jd:behaviorSetDisplay value="true" target="testDiv" />
+				</jd:button>
+				<jd:button type="button" label="Visible(hidden)) pane/div" id="button3">
+					<jd:behaviorSetVisible value="false" target="paneOne" />
+					<jd:behaviorSetVisible value="false" target="testDiv" />
+				</jd:button>
+				<jd:button type="button" label="Visible(visible)) pane/div" id="button4">
+					<jd:behaviorSetVisible value="true" target="paneOne" />
+					<jd:behaviorSetVisible value="true" target="testDiv" />
+				</jd:button>
+				<h:panelGroup>
+					<h:outputText value="pane:" />
+					<jd:contentPane id="paneOne" title="pane title" ariaDescribedBy="">
+						<h:outputText value="pane description" />
+						<h:commandButton>
+							<f:ajax />
+						</h:commandButton>
+					</jd:contentPane>
+					<h:outputText value="end pane" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:outputText value="div:" />
+					<div id="testDiv">div content</div>
+					<h:outputText value="end div" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</f:subview></div>
+	</ui:define>
+</ui:composition>
+</html>

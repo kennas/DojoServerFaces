@@ -1,0 +1,33 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
+	<div class="testCase">
+	<f:subview id="initialValues">
+		<span class="testTitle">Test case to display a value bound to a managed bean</span>
+		<h:panelGrid columns="1">
+		    <jd:dialog id="dione" title="Prompt"><h3 style="text-align: center;">not actually cutting anything, just a test!</h3></jd:dialog>
+	        <jd:dialog id="ditwo" title="Prompt"><h3 style="text-align: center;">not actually copying anything, just a test!</h3></jd:dialog>
+			<jd:menu id="widgetSimple" style="width: 50px; height: 100px;" connectTo="dione ditwo" contextMenuForWindow="true" leftClickToOpen="false" refocus="true" popupDelay="50">
+			    <jd:menuItem label="cut" showLabel="true" iconClass="dijitEditorIcon dijitEditorIconCut">
+			          <jd:behaviorShow event="click" target="dione"></jd:behaviorShow>
+		        </jd:menuItem> 
+		        <jd:menuItem label="copy" showLabel="true" disabled="false" tabIndex="1" iconClass="dijitEditorIcon dijitEditorIconCopy">
+			          <jd:behaviorShow event="click" target="ditwo"></jd:behaviorShow>
+		        </jd:menuItem>
+		        <jd:menuSeparator></jd:menuSeparator>
+				<jd:popupMenuItem label="333" disabled="false" tabIndex="1">
+					<jd:menu>
+						<jd:menuItem label="sub1" disabled="false" tabIndex="1"></jd:menuItem>
+						<jd:menuItem label="333" disabled="false" tabIndex="1"></jd:menuItem>
+					</jd:menu>
+				</jd:popupMenuItem>
+			</jd:menu>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>timetextbox</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra"/>
+</h:head>
+<h:body>
+	<h:form styleClass="form" id="form1">
+    <h:panelGrid>
+        <dojo:timeTextBox value="#{store.record.time}">
+            <f:ajax execute="@this" render="time" ></f:ajax>
+        </dojo:timeTextBox>
+        <h:outputText id="time" value="#{store.record.time}">
+            <f:convertDateTime timeStyle="long" dateStyle="long" type="both"></f:convertDateTime>
+        </h:outputText>
+        <dojo:timeTextBox value="#{store.record.birthTime.time}" pattern="HH:mm:ss" >
+            <f:ajax execute="@this" render="birthTime"></f:ajax>
+        </dojo:timeTextBox>
+        <h:outputText id="birthTime" value="#{store.record.birthTime}">
+            <f:convertDateTime timeStyle="long" dateStyle="long" type="both"></f:convertDateTime>
+        </h:outputText>
+    </h:panelGrid>
+    <h:messages /><br/>
+        <h:commandButton />
+
+		<br />
+
+	</h:form>
+</h:body>
+</html>

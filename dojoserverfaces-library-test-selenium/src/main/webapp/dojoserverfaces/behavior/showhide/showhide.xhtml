@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+<ui:composition template="../../_template.xhtml">
+	<ui:define name="title">DojoServerFaces Show Hide</ui:define>
+	<ui:define name="header">
+		<div class="header">DojoServerFaces Show Hide</div>
+	</ui:define>
+	<ui:define name="tableContent">
+		<div class="testCase"><f:subview id="initialValues">
+			<span class="testTitle">Test case to display a value bound to
+			a managed bean</span>
+			<jd:dialog id="dialog" title="A Dialog" duration="300"
+				refocus="true" autofocus="true" draggable="true">
+				<jd:borderContainer
+					style="width: 300px; height: 200px; border: none;">
+					<jd:contentPane title="Center Pane" region="center">
+						<h3 id="intro" style="text-align: center;">Hello, <strong><em>DojoServerFaces</em></strong>!</h3>
+					</jd:contentPane>
+					<jd:contentPane title="Bottom Pane" region="bottom"
+						style="text-align: center; border: none;">
+						<jd:button label="Hide Me!" id="buttonB">
+							<jd:behaviorHide target="dialog" />
+						</jd:button>
+					</jd:contentPane>
+				</jd:borderContainer>
+			</jd:dialog>
+			<h:panelGrid columns="1">
+				<jd:button label="Show Dialog" id="buttonA">
+					<jd:behaviorShow target="dialog" />
+				</jd:button>
+			</h:panelGrid>
+		</f:subview></div>
+	</ui:define>
+</ui:composition>
+</html>

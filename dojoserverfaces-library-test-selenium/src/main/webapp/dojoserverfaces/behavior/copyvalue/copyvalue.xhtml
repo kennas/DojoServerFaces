@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+<ui:composition template="../../_template.xhtml">
+	<ui:define name="title">DojoServerFaces CopyValue</ui:define>
+	<ui:define name="header">
+		<div class="header">DojoServerFaces CopyValue</div>
+	</ui:define>
+	<ui:define name="tableContent">
+		<div class="testCase"><f:subview id="initialValues">
+			<span class="testTitle">Test case to display a value bound to
+			a managed bean</span>
+			<fieldset><legend>Copy from:</legend> <h:panelGrid
+				cols="1">
+				<h:panelGroup>
+					<jd:button label="Copy from plain text box" type="button" id="buttonA">
+						<jd:behaviorCopyValue source="text1" destination="holder" />
+					</jd:button>
+					<h:inputText id="text1" value="I'm simple TextBox."/>
+				</h:panelGroup>
+				<h:panelGroup>
+					<jd:button label="Copy from dojo text box" type="button" id="buttonB">
+						<jd:behaviorCopyValue source="text2" destination="holder" />
+					</jd:button>
+					<jd:textBox id="text2" value="I'm DojoServerFaces TextBox." />
+				</h:panelGroup>
+			</h:panelGrid></fieldset>
+			<fieldset><legend>Copy to:</legend> <h:panelGrid cols="1">
+				<jd:textBox id="holder" />
+			</h:panelGrid></fieldset>
+		</f:subview></div>
+	</ui:define>
+</ui:composition>
+</html>

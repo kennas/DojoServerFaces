@@ -1,0 +1,147 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+
+
+<style>
+<!-- /* Style Definitions */
+p.MsoNormal,li.MsoNormal,div.MsoNormal {
+	mso-style-parent: "";
+	margin: 0in;
+	margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 12.0pt;
+	font-family: "Times New Roman";
+	mso-fareast-font-family: "Times New Roman";
+}
+
+span.tab1 {
+	margin-left: 33px;
+}
+
+span.tab2 {
+	margin-left: 66px;
+}
+
+span.tab3 {
+	margin-left: 99px;
+}
+
+span.tab4 {
+	margin-left: 132px;
+}
+
+span.tag_name {
+	color: #3F8080
+}
+
+span.tag_attribute {
+	color: purple
+}
+
+span.markup_symbol {
+	color: teal
+}
+
+span.plain_text {
+	color: black
+}
+
+span.string {
+	color: #4200FF;
+	font-style: italic;
+}
+
+-->
+</style>
+
+</head>
+
+<body lang=EN-US style='tab-interval: .5in'>
+
+<code> <span class='tab1'></span><span
+	class='markup_symbol'>&lt;</span><span class="tag_name">h:panelGrid</span><span
+	class='markup_symbol'> </span><span class='tag_attribute'>columns</span><span
+	class='markup_symbol'>=</span><span class='string'>&quot;6&quot;</span><span
+	class='markup_symbol'>&gt;</span><br />
+
+
+<span class=tab2></span><span class='markup_symbol'>&lt;</span><span
+	class="tag_name">c:forEach</span><span class='markup_symbol'> </span><span
+	class='tag_attribute'>items</span><span class='markup_symbol'>=</span><span
+	class='string'>&quot;${store.record.options}&quot;</span><span
+	class='markup_symbol'> </span><span class='tag_attribute'>var</span><span
+	class='markup_symbol'>=</span><span class='string'>&quot;option&quot;</span><span
+	class='markup_symbol'>&gt;</span><br />
+
+
+<span class=tab3></span><span class='markup_symbol'>&lt;</span><span
+	class="tag_name">h:outputText</span><span class='markup_symbol'>
+</span><span class='tag_attribute'>value</span><span class='markup_symbol'>=</span><span
+	class='string'>&quot;${option.name}&quot;</span><span
+	class='markup_symbol'> </span><span class='markup_symbol'>/&gt;</span><br />
+
+
+<span class=tab3></span><span class='markup_symbol'>&lt;</span><span
+	class="tag_name">jd:booleanCheckBox</span><span class='markup_symbol'>
+</span><span class='tag_attribute'>value</span><span class='markup_symbol'>=</span><span
+	class='string'>&quot;${option.selected}&quot;</span><span
+	class='markup_symbol'> </span><span class='markup_symbol'>/&gt;</span><br />
+
+<span class='tab2'></span><span class='markup_symbol'>&lt;/</span><span
+	class="tag_name">c:forEach</span><span class='markup_symbol'>&gt;</span><br />
+
+<span class='tab1'></span><span class='markup_symbol'>&lt;/</span><span
+	class="tag_name">h:panelGrid</span><span class='markup_symbol'>&gt;</span><br />
+
+
+<span class='tab3'></span><span class='markup_symbol'>&lt;</span><span
+	class="tag_name">br</span><span class='markup_symbol'> </span><span
+	class='markup_symbol'>/&gt;</span><br />
+
+
+<span class='tab1'></span><span class='markup_symbol'>&lt;</span><span
+	class="tag_name">p</span><span class='markup_symbol'>&gt;</span><span
+	class="plain_text">selected</span><span class='markup_symbol'>&lt;/</span><span
+	class="tag_name">p</span><span class='markup_symbol'>&gt;</span><br />
+
+
+<span class='tab1'></span><span class='markup_symbol'>&lt;</span><span
+	class="tag_name">ul</span><span class='markup_symbol'>&gt;</span><br />
+
+
+<span class=tab2></span><span class='markup_symbol'>&lt;</span><span
+	class="tag_name">ui:repeat</span><span class='markup_symbol'> </span><span
+	class='tag_attribute'>var</span><span class='markup_symbol'>=</span><span
+	class='string'>&quot;item&quot;</span><span class='markup_symbol'>
+</span><span class='tag_attribute'>items</span><span class='markup_symbol'>=</span><span
+	class='string'>&quot;#{store.record.selectedOptions}&quot;</span><span
+	class='markup_symbol'>&gt;</span><br />
+
+<span class=tab3></span><span class='markup_symbol'>&lt;</span><span
+	class="tag_name">li</span><span class='markup_symbol'>&gt;&lt;</span><span
+	class="tag_name">h:outputText</span><span class='markup_symbol'>
+</span><span class='tag_attribute'>value</span><span class='markup_symbol'>=</span><span
+	class='string'>&quot;#{item}&quot;</span><span class='markup_symbol'>
+</span><span class='markup_symbol'>/&gt;&lt;/</span><span class="tag_name">li</span><span
+	class='markup_symbol'>&gt;</span><br />
+
+<span class='tab2'></span><span class='markup_symbol'>&lt;/</span><span
+	class="tag_name">ui:repeat</span><span class='markup_symbol'>&gt;</span><br />
+
+<span class='tab1'></span><span class='markup_symbol'>&lt;/</span><span
+	class="tag_name">ul</span><span class='markup_symbol'>&gt;</span><br />
+
+</code>
+
+<code><pre>
+        &lt;h:panelGrid columns="6"&gt;
+            &lt;c:forEach items="${store.record.options}" var="option"&gt;
+                &lt;h:outputText value="${option.name}" /&gt;
+                &lt;jd:booleanCheckBox value="${option.selected}" /&gt;
+</pre></code>
+
+</body>
+
+</html>

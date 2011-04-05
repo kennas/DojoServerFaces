@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<dojo:comboStore id="showcasePatterns" 
+		options="#{ dateTextBox.showcasePatterns }" />
+
+	<dojo:selectItemStore id="showcaseFormatLengths">
+		<f:selectItems value="#{ dateTextBox.showcaseFormatLengths }" />
+	</dojo:selectItemStore>
+
+	<dojo:tableContainer
+		cols="3" orientation="horiz" spacing="1"
+		style="width: 100%;"
+	>
+		<dojo:comboBox 
+			title="pattern: " value="#{ dateTextBox.pattern }"
+			hasDownArrow="true" autoComplete="true"
+			selectOnClick="true" highlightMatch="first"
+			store="showcasePatterns"
+		/>
+		<dojo:filteringSelect title="formatLength: " 
+			store="showcaseFormatLengths" value="#{ dateTextBox.formatLength }" />
+	</dojo:tableContainer>
+	
+	<hr class="separator" />
+	<dojo:tableContainer
+		cols="3" orientation="horiz" spacing="1"
+		style="width: 100%;"
+	>
+		<dojo:booleanCheckBox title="hasDownArrow" value="#{ dateTextBox.hasDownArrow }" />
+		<dojo:booleanCheckBox title="openOnClick" value="#{ dateTextBox.openOnClick }" />
+		<dojo:booleanCheckBox title="forceWidth" value="#{ dateTextBox.forceWidth }" />
+		<dojo:booleanCheckBox title="fullYear" value="#{ dateTextBox.fullYear }" />
+		<dojo:booleanCheckBox title="required" value="#{ dateTextBox.required }" />
+	</dojo:tableContainer>
+	
+	<hr class="separator" />
+	<dojo:button label="Apply">
+		<f:ajax execute="@form" render=":form:dateTextBox :result" />
+	</dojo:button>
+</ui:composition>

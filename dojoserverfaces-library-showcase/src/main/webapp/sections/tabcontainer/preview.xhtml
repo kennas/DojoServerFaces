@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<!-- <h:panelGroup id="grid"> -->
+		<div style="width: 100%"><dojo:tabContainer id="tab"
+			tabPosition="#{ empty tabContainer.tabPosition ? 'top' : tabContainer.tabPosition }"
+			style="width: 400px; height:100px" useMenu="#{tabContainer.useMenu}"
+			doLayout="true" useSlider="#{tabContainer.useSlider}">
+			<dojo:tabContainer title="subcon" nested="#{tabContainer.nested}"
+				style="width: 300px; height:80px">
+				<dojo:contentPane title="sub tab one"
+					tooltip="#{tabContainer.tooltip}">
+					<h:outputText value="sub content one" />
+				</dojo:contentPane>
+				<dojo:contentPane title="sub tab two" closable="true"
+					tooltip="#{tabContainer.tooltip}">
+					<h:outputText value="sub two" />
+					<br />
+					<h:outputText value="sub content two" />
+					<br />
+					<h:outputText value=" sub content two" />
+				</dojo:contentPane>
+			</dojo:tabContainer>
+			<dojo:contentPane title="tab one" tooltip="#{tabContainer.tooltip}">
+				<h:outputText value="content one" />
+			</dojo:contentPane>
+			<dojo:contentPane title="tab two" closable="true"
+				tooltip="#{tabContainer.tooltip}">
+				<h:outputText value="content two" />
+				<br />
+				<h:outputText value="content two" />
+				<br />
+				<h:outputText value="content two" />
+			</dojo:contentPane>
+			<dojo:contentPane title="tab three" closable="true"
+				tooltip="#{tabContainer.tooltip}">
+				<h:outputText value="content three " />
+			</dojo:contentPane>
+			<dojo:contentPane title="tab four" closable="true">
+				<h:outputText value="content four" />
+			</dojo:contentPane>
+			<dojo:contentPane title="tab five" tooltip="#{tabContainer.tooltip}">
+				<h:outputText value="content five" />
+				<h:outputText value="content five" />
+				<br />
+				<h:outputText value="content five" />
+				<br />
+				<h:outputText value="content five" />
+			</dojo:contentPane>
+			<dojo:contentPane title="tab six" closable="true">
+				<h:outputText value="content six" />
+			</dojo:contentPane>
+		</dojo:tabContainer></div>
+	<!--</h:panelGroup>-->
+</ui:composition>

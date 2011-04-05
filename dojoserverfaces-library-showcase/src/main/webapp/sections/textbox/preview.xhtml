@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<h:form id="form">
+		<h:panelGroup>
+			<dojo:textBox id="textBox" value="#{textBox.value}" disabled="#{textBox.disabled}"
+				readOnly="#{textBox.readOnly}" required="#{textBox.required}"
+				forceCase="#{textBox.forceCase}"
+				placeHolder="#{textBox.placeHolder}"
+				maxLength="#{textBox.maxLength}"
+				selectOnClick="#{textBox.selectOnClick}" trim="#{textBox.trim}"
+				onBlur="#{textBox.onBlur}" onChange="#{textBox.onChange}"
+				onFocus="#{textBox.onFocus}" secret="#{textBox.secret}">
+			</dojo:textBox>
+		</h:panelGroup>
+		<hr class="separator" />
+		<dojo:button label="Submit">
+			<f:ajax execute="@form" render=":result" />
+		</dojo:button>
+	</h:form>
+	
+	<h:panelGrid columns="1" id="result">
+		<div>
+			Hi, <span style="font-weight: bold;">#{ textBox.value }</span>
+		</div>
+	</h:panelGrid>
+</ui:composition>

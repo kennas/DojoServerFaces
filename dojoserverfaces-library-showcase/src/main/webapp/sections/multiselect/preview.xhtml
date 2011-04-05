@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<h:form id="form">
+		<h:panelGrid id="grid" columns="1">
+			<h:panelGroup>
+				<h:outputLabel for="multiSelect" value="Where would like to travel to? "/> <br />
+				<dojo:multiSelect id="multiSelect" value="#{ multiSelect.travels }"
+					disabled="#{ multiSelect.disabled }"
+					readOnly="#{ multiSelect.readOnly }"
+					required="#{ multiSelect.required }"
+					onBlur="#{ multiSelect.onBlur }"
+					onChange="#{ multiSelect.onChange }"
+					onFocus="#{ multiSelect.onFocus }"
+					style="width: 360px;"
+				>
+					<f:selectItems value="#{ store.states }" />
+				</dojo:multiSelect>
+			</h:panelGroup>
+			
+			<h:panelGroup>
+				<dojo:button label="Submit">
+					<f:ajax execute="@form" render=":result" />
+				</dojo:button>
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
+	
+	<hr class="separator" />
+	<h:panelGrid id="result" columns="1">
+		You would like to travel to:   
+		<span style="font-weight: bold;">#{ store.getStateNames(multiSelect.travels) }</span>
+	</h:panelGrid>
+</ui:composition>

@@ -1,0 +1,26 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testAjaxRefresh() -->
+	<div class="testCase">
+	<f:subview id="ajaxRefresh">
+		<span class="testTitle">Test case which ajaxically updates ManagedBean's value bound to the component</span>
+		<h:panelGrid columns="2">
+			<jd:textBox id="widgetAjax" title="dayWidth: " value="#{ calendarBean.beanBoundValue.data }" />
+	        <jd:button label="Apply" id="button">
+		        <f:ajax execute="@form" event="click" render="widgetAjaxCall" />
+		        <f:ajax execute="@form" event="click" render="ajaxCall" />
+	        </jd:button>
+	        Calendar Value: <h:outputText id="ajaxCall" value="#{calendarBean.beanBoundValue.data}"/>
+	        <jd:calendar id="widgetAjaxCall" dayWidth="#{calendarBean.beanBoundValue.data}">
+			    <jd:behaviorCopyValue source="widgetAjaxCall" destination="outputAjaxCall"/>
+			</jd:calendar>
+			<jd:textBox id="outputAjaxCall" style="width: 230px;"></jd:textBox>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition>

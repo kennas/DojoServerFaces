@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:dojo="http://www.dojoserverfaces.org/core"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:src="http://java.sun.com/jsf/composite/taglib/source"
+    template="/template/component-test.xhtml"
+>
+    <ui:param
+        name="component"
+        value="comboBox"
+    />
+    <ui:define name="attributes">
+        <h:panelGrid
+            columns="3"
+            id="propertyGrid"
+        >
+            <h:outputLabel for="disabled1">
+                <h:outputText value="disabled:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="disabled1"
+                value="#{comboBox.disabled}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="readOnly1">
+                <h:outputText value="readOnly:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="readOnly1"
+                value="#{comboBox.readOnly}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="required1">
+                <h:outputText value="required:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="required1"
+                value="#{comboBox.required}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="autoComplete1">
+                <h:outputText value="autoComplete:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="autoComplete1"
+                value="#{comboBox.autoComplete}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="hasDownArrow1">
+                <h:outputText value="hasDownArrow:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="hasDownArrow1"
+                value="#{comboBox.hasDownArrow}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="highlightMatch1">
+                <h:outputText value="highlightMatch:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectOneMenu
+                styleClass="selectOneMenu"
+                id="highlightMatch1"
+                value="#{comboBox.highlightMatch}"
+            >
+                <f:selectItem
+                    itemLabel=""
+                    itemValue=""
+                    noSelectionOption="true"
+                />
+                <f:selectItem
+                    itemLabel="first"
+                    itemValue="first"
+                />
+                <f:selectItem
+                    itemLabel="all"
+                    itemValue="all"
+                />
+                <f:selectItem
+                    itemLabel="none"
+                    itemValue="none"
+                />
+            </h:selectOneMenu>
+            <h:outputLabel for="ignoreCase1">
+                <h:outputText value="ignoreCase:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="ignoreCase1"
+                value="#{comboBox.ignoreCase}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="maxLength1">
+                <h:outputText value="maxLength:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="maxLength1"
+                value="#{comboBox.maxLength}"
+            >
+            </h:inputText>
+            <h:outputLabel for="placeHolder1">
+                <h:outputText value="placeHolder:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="placeHolder1"
+                value="#{comboBox.placeHolder}"
+            >
+            </h:inputText>
+            <h:outputLabel for="searchDelay1">
+                <h:outputText value="searchDelay:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="searchDelay1"
+                value="#{comboBox.searchDelay}"
+            >
+            </h:inputText>
+            <h:outputLabel for="selectOnClick1">
+                <h:outputText value="selectOnClick:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="selectOnClick1"
+                value="#{comboBox.selectOnClick}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="trim1">
+                <h:outputText value="trim:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="trim1"
+                value="#{comboBox.trim}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="onBlur1">
+                <h:outputText value="onBlur:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onBlur1"
+                value="#{comboBox.onBlur}"
+            >
+            </h:inputText>
+            <h:outputLabel for="onChange1">
+                <h:outputText value="onChange:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onChange1"
+                value="#{comboBox.onChange}"
+            >
+            </h:inputText>
+            <h:outputLabel for="onFocus1">
+                <h:outputText value="onFocus:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onFocus1"
+                value="#{comboBox.onFocus}"
+            >
+            </h:inputText>
+            <h:outputLabel for="onSelect1">
+                <h:outputText value="onSelect:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onSelect1"
+                value="#{comboBox.onSelect}"
+            >
+            </h:inputText>
+        </h:panelGrid>
+    </ui:define>
+    <ui:define name="test">
+        <h:panelGrid columns="1">
+            <h:outputText value="Entries will be remembered" />
+            <br />
+            <h:outputText value="Float: (pre-initialized)" />
+            <dojo:comboBox binding="#{comboBox.wrapper[0]}"
+                value="#{store.record.amount}" searchAttr="l"
+            >
+            </dojo:comboBox>
+            <br />
+            <h:outputText value="Text:" />
+            <span>entries will be remembered</span>
+            <dojo:comboBox binding="#{comboBox.wrapper[1]}"
+                value="#{store.record.text}" searchAttr="l"
+            >
+            </dojo:comboBox>
+        </h:panelGrid>
+    </ui:define>
+    <ui:define name="testOutput">
+        <h:panelGrid
+            columns="1"
+            styleClass="panelGrid"
+        >
+            <h:outputText
+                id="box1Output"
+                value="amount: #{store.record.amount}"
+            >
+            </h:outputText>
+            <h:outputText
+                id="box2Output"
+                value="text: #{store.record.text}"
+            >
+            </h:outputText>
+        </h:panelGrid>
+    </ui:define>
+    <ui:define name="source">
+        <src:tagWithChildren name="h:panelGrid">
+            <f:facet name="attributes">
+                <src:attribute
+                    name="columns"
+                    value="1"
+                />
+            </f:facet>
+            <src:tagNoChildren name="h:outputText">
+                <f:facet name="attributes">
+                    <src:attribute
+                        name="value"
+                        value="Float: (pre-initialized)"
+                    />
+                </f:facet>
+            </src:tagNoChildren>
+            <src:tagNoChildren name="dojo:comboBox">
+                <f:facet name="attributes">
+                    <src:attributeExpression
+                        name="value"
+                        value="store.record.amount"
+                    />
+                    <src:attributeExpression
+                        name="options"
+                        value="store.record.savedAmountValues"
+                    />
+                    <src:attribute
+                        name="readOnly"
+                        value="#{comboBox.readOnly}"
+                    />
+                    <src:attribute
+                        name="disabled"
+                        value="#{comboBox.disabled}"
+                    />
+                    <src:attribute
+                        name="required"
+                        value="#{comboBox.required}"
+                    />
+                    <src:attribute
+                        name="autoComplete"
+                        value="#{comboBox.autoComplete}"
+                    />
+                    <src:attribute
+                        name="hasDownArrow"
+                        value="#{comboBox.hasDownArrow}"
+                    />
+                    <src:attribute
+                        name="highlightMatch"
+                        value="#{comboBox.highlightMatch}"
+                    />
+                    <src:attribute
+                        name="ignoreCase"
+                        value="#{comboBox.ignoreCase}"
+                    />
+                    <src:attribute
+                        name="maxLength"
+                        value="#{comboBox.maxLength}"
+                    />
+                    <src:attribute
+                        name="placeHolder"
+                        value="#{comboBox.placeHolder}"
+                    />
+                    <src:attribute
+                        name="searchDelay"
+                        value="#{comboBox.searchDelay}"
+                    />
+                    <src:attribute
+                        name="selectOnClick"
+                        value="#{comboBox.selectOnClick}"
+                    />
+                    <src:attribute
+                        name="trim"
+                        value="#{comboBox.trim}"
+                    />
+                    <src:attribute
+                        name="onBlur"
+                        value="#{comboBox.onBlur}"
+                    />
+                    <src:attribute
+                        name="onFocus"
+                        value="#{comboBox.onFocus}"
+                    />
+                    <src:attribute
+                        name="onChange"
+                        value="#{comboBox.onChange}"
+                    />
+                </f:facet>
+            </src:tagNoChildren>
+            <src:tagNoChildren name="br" />
+            <src:tagNoChildren name="br" />
+            <src:tagNoChildren name="h:outputText">
+                <f:facet name="attributes">
+                    <src:attribute
+                        name="value"
+                        value="Text:"
+                    />
+                </f:facet>
+            </src:tagNoChildren>
+            <src:tagNoChildren name="dojo:comboBox">
+                <f:facet name="attributes">
+                    <src:attributeExpression
+                        name="value"
+                        value="store.record.text"
+                    />
+                    <src:attributeExpression
+                        name="options"
+                        value="store.record.savedTextValues"
+                    />
+                    <src:attribute
+                        name="readOnly"
+                        value="#{comboBox.readOnly}"
+                    />
+                    <src:attribute
+                        name="disabled"
+                        value="#{comboBox.disabled}"
+                    />
+                    <src:attribute
+                        name="required"
+                        value="#{comboBox.required}"
+                    />
+                    <src:attribute
+                        name="autoComplete"
+                        value="#{comboBox.autoComplete}"
+                    />
+                    <src:attribute
+                        name="hasDownArrow"
+                        value="#{comboBox.hasDownArrow}"
+                    />
+                    <src:attribute
+                        name="highlightMatch"
+                        value="#{comboBox.highlightMatch}"
+                    />
+                    <src:attribute
+                        name="ignoreCase"
+                        value="#{comboBox.ignoreCase}"
+                    />
+                    <src:attribute
+                        name="maxLength"
+                        value="#{comboBox.maxLength}"
+                    />
+                    <src:attribute
+                        name="placeHolder"
+                        value="#{comboBox.placeHolder}"
+                    />
+                    <src:attribute
+                        name="searchDelay"
+                        value="#{comboBox.searchDelay}"
+                    />
+                    <src:attribute
+                        name="selectOnClick"
+                        value="#{comboBox.selectOnClick}"
+                    />
+                    <src:attribute
+                        name="trim"
+                        value="#{comboBox.trim}"
+                    />
+                    <src:attribute
+                        name="onBlur"
+                        value="#{comboBox.onBlur}"
+                    />
+                    <src:attribute
+                        name="onFocus"
+                        value="#{comboBox.onFocus}"
+                    />
+                    <src:attribute
+                        name="onChange"
+                        value="#{comboBox.onChange}"
+                    />
+                </f:facet>
+            </src:tagNoChildren>
+        </src:tagWithChildren>
+    </ui:define>
+</ui:composition>

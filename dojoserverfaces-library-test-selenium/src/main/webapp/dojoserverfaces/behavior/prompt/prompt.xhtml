@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+<ui:composition template="../../_template.xhtml">
+	<ui:define name="title">DojoServerFaces Prompt</ui:define>
+	<ui:define name="header">
+		<div class="header">DojoServerFaces Prompt</div>
+	</ui:define>
+	<ui:define name="tableContent">
+		<div class="testCase"><f:subview id="initialValues">
+			<span class="testTitle">Test case to display a value bound to
+			a managed bean</span>
+				<h:panelGrid cols="1">
+					<h:panelGroup>
+						<jd:button label="Click Me" type="button" id="promptbutton">
+							<jd:behaviorPrompt message="How old are you?" broadcastOk="user-age"
+								broadcastCancel="user-age-cancel" />
+						</jd:button>
+						<jd:listener topic="user-age">
+							<jd:behaviorCopyValue source="@event" destination="form:initialValues:holder" />
+						</jd:listener>
+						<jd:listener topic="user-age-cancel">
+							<jd:behaviorAlert message="Please input your age." />
+						</jd:listener>
+					</h:panelGroup>
+					<h:panelGroup>
+				You are: <jd:textBox id="holder" style="width: 30px;" /> years old.
+			</h:panelGroup>
+				</h:panelGrid>
+		</f:subview></div>
+	</ui:define>
+</ui:composition>
+</html>

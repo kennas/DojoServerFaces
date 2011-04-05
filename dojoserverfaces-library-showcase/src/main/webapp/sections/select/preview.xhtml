@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<dojo:selectItemStore id="jsFrameworks">
+		<f:selectItems value="#{ select.jsFrameworks }" />
+	</dojo:selectItemStore>
+
+	<h:form id="form">
+		<h:panelGrid id="grid" columns="1">
+			<h:panelGroup>
+				<h:outputLabel for="select" value="What's your favourite frameworks? "/>
+				<dojo:select id="select" value="#{ select.favouriteFwk }"
+					store="jsFrameworks"
+					disabled="#{ select.disabled }"
+					readOnly="#{ select.readOnly }"
+					required="#{ select.required }"
+					onBlur="#{ select.onBlur }"
+					onChange="#{ select.onChange }"
+					onFocus="#{ select.onFocus }"
+					style="width: 150px;"
+				/>
+			</h:panelGroup>
+			
+			<h:panelGroup>
+				<dojo:button label="Submit">
+					<f:ajax execute="@form" render=":result" />
+				</dojo:button>
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
+	
+	<hr class="separator" />
+	<h:panelGrid id="result" columns="1">
+		Your favourite framework is: 
+		<span style="font-weight: bold;">#{ select.favouriteFwk }</span>
+	</h:panelGrid>
+</ui:composition>

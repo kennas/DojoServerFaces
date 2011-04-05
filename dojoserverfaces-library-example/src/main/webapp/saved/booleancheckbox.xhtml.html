@@ -1,0 +1,113 @@
+<html>
+<head>
+   <title>booleancheckbox.xhtml</title>
+   <meta name="generator" content="Lore&#039;s Source to HTML Converter - http://www.newty.de/lsc/index.html">
+</head>
+
+<body style="background:#ffffff;"><a name="top"></a>
+<tr><td><a href="Overview.html"><font color="#000000">Back </font></a>
+
+<pre><code><font color="#000000">
+&lt;?xml version=<font color="#0000ff">&quot;1.0&quot;</font> encoding=<font color="#0000ff">&quot;UTF-8&quot;</font> ?&gt;
+<font color="#800080"><b>&lt;ui</b></font>:<b>composition xmlns</b>=<font color="#0000ff">&quot;http://www.w3.org/1999/xhtml&quot;</font>
+   <b>xmlns</b>:<b>ui</b>=<font color="#0000ff">&quot;http://java.sun.com/jsf/facelets&quot;</font>
+   <b>xmlns</b>:<b>f</b>=<font color="#0000ff">&quot;http://java.sun.com/jsf/core&quot;</font>
+   <b>xmlns</b>:<b>h</b>=<font color="#0000ff">&quot;http://java.sun.com/jsf/html&quot;</font>
+   <b>xmlns</b>:<b>dojo</b>=<font color="#0000ff">&quot;http://www.dojoserverfaces.org/xml/ns/core&quot;</font>
+   <b>xmlns</b>:<b>c</b>=<font color="#0000ff">&quot;http://java.sun.com/jsp/jstl/core&quot;</font>
+   <b>template</b>=<font color="#0000ff">&quot;/template/component-test.xhtml&quot;</font>&gt;
+   <font color="#800080"><b>&lt;ui</b></font>:<b>param value</b>=<font color="#0000ff">&quot;select&quot;</font> <b>name</b>=<font color="#0000ff">&quot;component&quot;</font>&gt;<font color="#800080"><b>&lt;/ui</b></font>:param&gt;
+   <font color="#800080"><b>&lt;ui</b></font>:<b>define name</b>=<font color="#0000ff">&quot;attributes&quot;</font>&gt;
+      <font color="#800080"><b>&lt;h</b></font>:<b>panelGrid columns</b>=<font color="#0000ff">&quot;3&quot;</font> <b>id</b>=<font color="#0000ff">&quot;propertyGrid&quot;</font>&gt;
+         <font color="#800080"><b>&lt;h</b></font>:<b>outputLabel for</b>=<font color="#0000ff">&quot;disabled1&quot;</font>&gt;
+            <font color="#800080"><b>&lt;h</b></font>:<b>outputText value</b>=<font color="#0000ff">&quot;disabled:&quot;</font>&gt;<font color="#800080"><b>&lt;/h</b></font>:outputText&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:outputLabel&gt;
+         <font color="#800080"><b>&lt;span</b></font>&gt;&amp;#160;<font color="#800080"><b>&lt;/span</b></font>&gt;
+         <font color="#800080"><b>&lt;h</b></font>:<b>selectBooleanCheckbox styleClass</b>=<font color="#0000ff">&quot;selectBooleanCheckbox&quot;</font>
+            <b>id</b>=<font color="#0000ff">&quot;disabled1&quot;</font> <b>value</b>=<font color="#0000ff">&quot;#{booleanCheckBox.disabled}&quot;</font>&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:selectBooleanCheckbox&gt;
+
+         <font color="#800080"><b>&lt;h</b></font>:<b>outputLabel for</b>=<font color="#0000ff">&quot;readOnly1&quot;</font>&gt;
+            <font color="#800080"><b>&lt;h</b></font>:<b>outputText value</b>=<font color="#0000ff">&quot;readOnly:&quot;</font>&gt;<font color="#800080"><b>&lt;/h</b></font>:outputText&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:outputLabel&gt;
+         <font color="#800080"><b>&lt;span</b></font>&gt;&amp;#160;<font color="#800080"><b>&lt;/span</b></font>&gt;
+         <font color="#800080"><b>&lt;h</b></font>:<b>selectBooleanCheckbox styleClass</b>=<font color="#0000ff">&quot;selectBooleanCheckbox&quot;</font>
+            <b>id</b>=<font color="#0000ff">&quot;readOnly1&quot;</font> <b>value</b>=<font color="#0000ff">&quot;#{booleanCheckBox.readOnly}&quot;</font>&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:selectBooleanCheckbox&gt;
+
+         <font color="#800080"><b>&lt;h</b></font>:<b>outputLabel for</b>=<font color="#0000ff">&quot;required1&quot;</font>&gt;
+            <font color="#800080"><b>&lt;h</b></font>:<b>outputText value</b>=<font color="#0000ff">&quot;required:&quot;</font>&gt;<font color="#800080"><b>&lt;/h</b></font>:outputText&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:outputLabel&gt;
+         <font color="#800080"><b>&lt;span</b></font>&gt;&amp;#160;<font color="#800080"><b>&lt;/span</b></font>&gt;
+         <font color="#800080"><b>&lt;h</b></font>:<b>selectBooleanCheckbox styleClass</b>=<font color="#0000ff">&quot;selectBooleanCheckbox&quot;</font>
+            <b>id</b>=<font color="#0000ff">&quot;required1&quot;</font> <b>value</b>=<font color="#0000ff">&quot;#{booleanCheckBox.required}&quot;</font>&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:selectBooleanCheckbox&gt;
+
+         <font color="#800080"><b>&lt;h</b></font>:<b>outputLabel for</b>=<font color="#0000ff">&quot;onBlur1&quot;</font>&gt;
+            <font color="#800080"><b>&lt;h</b></font>:<b>outputText value</b>=<font color="#0000ff">&quot;onBlur:&quot;</font>&gt;<font color="#800080"><b>&lt;/h</b></font>:outputText&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:outputLabel&gt;
+         <font color="#800080"><b>&lt;span</b></font>&gt;&amp;#160;<font color="#800080"><b>&lt;/span</b></font>&gt;
+         <font color="#800080"><b>&lt;h</b></font>:<b>inputText styleClass</b>=<font color="#0000ff">&quot;inputText&quot;</font> <b>id</b>=<font color="#0000ff">&quot;onBlur1&quot;</font>
+            <b>value</b>=<font color="#0000ff">&quot;#{booleanCheckBox.onBlur}&quot;</font>&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:inputText&gt;
+
+         <font color="#800080"><b>&lt;h</b></font>:<b>outputLabel for</b>=<font color="#0000ff">&quot;onFocus1&quot;</font>&gt;
+            <font color="#800080"><b>&lt;h</b></font>:<b>outputText value</b>=<font color="#0000ff">&quot;onFocus:&quot;</font>&gt;<font color="#800080"><b>&lt;/h</b></font>:outputText&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:outputLabel&gt;
+         <font color="#800080"><b>&lt;span</b></font>&gt;&amp;#160;<font color="#800080"><b>&lt;/span</b></font>&gt;
+         <font color="#800080"><b>&lt;h</b></font>:<b>inputText styleClass</b>=<font color="#0000ff">&quot;inputText&quot;</font> <b>id</b>=<font color="#0000ff">&quot;onFocus1&quot;</font>
+            <b>value</b>=<font color="#0000ff">&quot;#{booleanCheckBox.onFocus}&quot;</font>&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:inputText&gt;
+
+         <font color="#800080"><b>&lt;h</b></font>:<b>outputLabel for</b>=<font color="#0000ff">&quot;onChange1&quot;</font>&gt;
+            <font color="#800080"><b>&lt;h</b></font>:<b>outputText value</b>=<font color="#0000ff">&quot;onChange:&quot;</font>&gt;<font color="#800080"><b>&lt;/h</b></font>:outputText&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:outputLabel&gt;
+         <font color="#800080"><b>&lt;span</b></font>&gt;&amp;#160;<font color="#800080"><b>&lt;/span</b></font>&gt;
+         <font color="#800080"><b>&lt;h</b></font>:<b>inputText styleClass</b>=<font color="#0000ff">&quot;inputText&quot;</font> <b>id</b>=<font color="#0000ff">&quot;onChange1&quot;</font>
+            <b>value</b>=<font color="#0000ff">&quot;#{booleanCheckBox.onChange}&quot;</font>&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:inputText&gt;
+
+         <font color="#800080"><b>&lt;h</b></font>:<b>outputLabel for</b>=<font color="#0000ff">&quot;onClick1&quot;</font>&gt;
+            <font color="#800080"><b>&lt;h</b></font>:<b>outputText value</b>=<font color="#0000ff">&quot;onClick:&quot;</font>&gt;<font color="#800080"><b>&lt;/h</b></font>:outputText&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:outputLabel&gt;
+         <font color="#800080"><b>&lt;span</b></font>&gt;&amp;#160;<font color="#800080"><b>&lt;/span</b></font>&gt;
+         <font color="#800080"><b>&lt;h</b></font>:<b>inputText styleClass</b>=<font color="#0000ff">&quot;inputText&quot;</font> <b>id</b>=<font color="#0000ff">&quot;onClick1&quot;</font>
+            <b>value</b>=<font color="#0000ff">&quot;#{booleanCheckBox.onClick}&quot;</font>&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:inputText&gt;
+
+
+      <font color="#800080"><b>&lt;/h</b></font>:panelGrid&gt;
+
+      <font color="#800080"><b>&lt;h</b></font>:<b>messages styleClass</b>=<font color="#0000ff">&quot;messages&quot;</font> <b>id</b>=<font color="#0000ff">&quot;booleanCheckBox1messages&quot;</font>&gt;<font color="#800080"><b>&lt;/h</b></font>:messages&gt;
+   <font color="#800080"><b>&lt;/ui</b></font>:define&gt;
+   <font color="#800080"><b>&lt;ui</b></font>:<b>define name</b>=<font color="#0000ff">&quot;test&quot;</font>&gt;
+      <font color="#800080"><b>&lt;h</b></font>:<b>panelGrid columns</b>=<font color="#0000ff">&quot;2&quot;</font>&gt;
+         <font color="#800080"><b>&lt;h</b></font>:<b>panelGrid columns</b>=<font color="#0000ff">&quot;6&quot;</font>&gt;
+            <font color="#800080"><b>&lt;c</b></font>:<b>forEach items</b>=<font color="#0000ff">&quot;${store.record.options}&quot;</font> <b>var</b>=<font color="#0000ff">&quot;option&quot;</font>&gt;
+               <font color="#800080"><b>&lt;h</b></font>:<b>outputText value</b>=<font color="#0000ff">&quot;${option.name}&quot;</font> /&gt;
+               <font color="#800080"><b>&lt;dojo</b></font>:<b>booleanCheckBox value</b>=<font color="#0000ff">&quot;${option.selected}&quot;</font>
+                  <b>readOnly</b>=<font color="#0000ff">&quot;#{booleanCheckBox.readOnly}&quot;</font>
+                  <b>disabled</b>=<font color="#0000ff">&quot;#{booleanCheckBox.disabled}&quot;</font>
+                  <b>onBlur</b>=<font color="#0000ff">&quot;#{booleanCheckBox.onBlur}&quot;</font>
+                  <b>onFocus</b>=<font color="#0000ff">&quot;#{booleanCheckBox.onFocus}&quot;</font>
+                  <b>onChange</b>=<font color="#0000ff">&quot;#{booleanCheckBox.onChange}&quot;</font> /&gt;
+            <font color="#800080"><b>&lt;/c</b></font>:forEach&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:panelGrid&gt;
+         <font color="#800080"><b>&lt;h</b></font>:<b>panelGroup styleClass</b>=<font color="#0000ff">&quot;panelGroup&quot;</font>&gt;
+            <font color="#800080"><b>&lt;p</b></font>&gt;selected<font color="#800080"><b>&lt;/p</b></font>&gt;
+            <font color="#800080"><b>&lt;ul</b></font>&gt;
+               <font color="#800080"><b>&lt;ui</b></font>:<b>repeat var</b>=<font color="#0000ff">&quot;item&quot;</font> <b>value</b>=<font color="#0000ff">&quot;#{store.record.selectedOptions}&quot;</font>&gt;
+                  <font color="#800080"><b>&lt;li</b></font>&gt;<font color="#800080"><b>&lt;h</b></font>:<b>outputText value</b>=<font color="#0000ff">&quot;#{item}&quot;</font> /&gt;<font color="#800080"><b>&lt;/li</b></font>&gt;
+               <font color="#800080"><b>&lt;/ui</b></font>:repeat&gt;
+            <font color="#800080"><b>&lt;/ul</b></font>&gt;
+         <font color="#800080"><b>&lt;/h</b></font>:panelGroup&gt;
+      <font color="#800080"><b>&lt;/h</b></font>:panelGrid&gt;
+   <font color="#800080"><b>&lt;/ui</b></font>:define&gt;
+   <font color="#800080"><b>&lt;ui</b></font>:<b>define name</b>=<font color="#0000ff">&quot;source&quot;</font>&gt;<font color="#800080"><b>&lt;/ui</b></font>:define&gt;
+
+<font color="#800080"><b>&lt;/ui</b></font>:composition&gt;
+</font>
+</code></pre>
+<a href="#top"><font color="#000000">Top</a></font></body></html>
+
+<!-- Generated by Lore&#039;s Source to HTML Converter(http://www.newty.de/lsc/index.html) -->

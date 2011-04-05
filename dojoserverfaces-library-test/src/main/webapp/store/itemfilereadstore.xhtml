@@ -1,0 +1,36 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+
+</h:head>
+<h:body>
+	<dojo:menu id="fruit" style="display:none">
+		<dojo:menuItem label="apple"></dojo:menuItem>
+		<dojo:menuItem label="pear"></dojo:menuItem>
+		<dojo:menuItem label="banana"></dojo:menuItem>
+	</dojo:menu>
+	<dojo:menu id="vehicle" style="display:none">
+		<dojo:menuItem label="car"></dojo:menuItem>
+		<dojo:menuItem label="truck"></dojo:menuItem>
+		<dojo:menuItem label="train"></dojo:menuItem>
+	</dojo:menu>
+	<dojo:itemFileWriteStore id="st" url="countries.json"></dojo:itemFileWriteStore>
+	<dojo:dataGrid store="st" headerMenuId="fruit" selectionMode="single">
+
+		<dojo:defaultCell width="200px" editable="true" ></dojo:defaultCell>
+		<dojo:cell field="id" name="countrycode" editable="false"/>
+		<dojo:cell field="name" name="countryname"/>
+		<dojo:cell field="type" name="type" widgetClass="dijit.form.TextBox"/>
+
+		<!-- <dojo:cell  field="type" name="type" type="Select" options="countries continent city" ></dojo:cell> -->
+	</dojo:dataGrid>
+</h:body>
+</html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<dojo:dialog id="plainDialog"
+		duration="#{ dialog.duration }"
+		refocus="#{ dialog.refocus }"
+		autofocus="#{ dialog.autofocus }"
+		draggable="#{ dialog.draggable }"
+		title="#{ dialog.title }"
+	>
+		<dojo:borderContainer style="width: 300px; height: 200px; border: none;">
+			<dojo:contentPane title="Center Pane" region="center">
+				<h3 id="intro" style="text-align: center;">Hello, DojoServerFaces!</h3>
+			</dojo:contentPane>
+			
+			<dojo:contentPane title="Bottom Pane" region="bottom" 
+				style="text-align: center; border: none;">
+				<dojo:button label="OK">
+					<dojo:behaviorHide event="click" target="plainDialog" />
+				</dojo:button>
+				<dojo:button label="Close">
+					<dojo:behaviorHide event="click" target="plainDialog" />
+				</dojo:button>
+			</dojo:contentPane>
+		</dojo:borderContainer>
+	</dojo:dialog>
+	
+	<dojo:dialog id="formDialog"
+		duration="#{ dialog.duration }"
+		refocus="#{ dialog.refocus }"
+		autofocus="#{ dialog.autofocus }"
+		draggable="#{ dialog.draggable }"
+		ariaDescribedBy="#{ dialog.ariaDescribedBy }"
+		title="#{ dialog.title }"
+	>
+		<dojo:borderContainer style="width: 300px; height: 200px; border: none;">
+			<dojo:contentPane region="center">
+				<dojo:tableContainer id="tableContainer" 
+					cols="1" orientation="horiz" spacing="1"
+					style="width: 100%;"
+				>
+					<dojo:textBox title="First Name: " value="#{ record.firstName }" />
+					<dojo:textBox title="Last Name: " value="#{ record.lastName }" />
+					<dojo:booleanCheckBox title="Employed: " value="#{ record.employed }" />
+					<dojo:numberSpinner 
+						title="Age(1-100): " value="#{ record.age }"
+						min="1" max="100"
+					/>
+				</dojo:tableContainer>
+			</dojo:contentPane>
+			
+			<dojo:contentPane region="bottom" 
+				style="text-align: center; border: none;">
+				<dojo:button label="OK">
+					<dojo:behaviorHide event="click" target="formDialog" />
+				</dojo:button>
+				<dojo:button label="Close">
+					<dojo:behaviorHide event="click" target="formDialog" />
+				</dojo:button>
+			</dojo:contentPane>
+		</dojo:borderContainer>
+	</dojo:dialog>
+	
+	<dojo:button label="Plain Dialog">
+		<dojo:behaviorShow event="click" target="plainDialog" />
+	</dojo:button>
+	
+	<dojo:button label="Form Dialog">
+		<dojo:behaviorShow event="click" target="formDialog" />
+	</dojo:button>
+</ui:composition>

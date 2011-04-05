@@ -1,0 +1,49 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<dojo:selectItemStore id="highlightMatchStore">
+		<f:selectItem itemLabel="first" itemValue="first" />
+		<f:selectItem itemLabel="all" itemValue="all" />
+		<f:selectItem itemLabel="none" itemValue="none" />
+	</dojo:selectItemStore>
+	<dojo:tableContainer cols="2" orientation="horiz" spacing="1"
+		style="width: 100%;">
+		<dojo:booleanCheckBox title="disabled" value="#{ comboBox.disabled }" />
+		<dojo:booleanCheckBox title="readOnly" value="#{ comboBox.readOnly }" />
+		<dojo:booleanCheckBox title="required" value="#{ comboBox.required }" />
+		<dojo:booleanCheckBox title="selectOnClick"
+			value="#{ comboBox.selectOnClick }" />
+		<dojo:booleanCheckBox title="trim" value="#{ comboBox.trim }" />
+		<dojo:booleanCheckBox title="autoComplete"
+			value="#{ comboBox.autoComplete }" />
+		<dojo:booleanCheckBox title="hasDownArrow"
+			value="#{ comboBox.hasDownArrow }" />
+		<dojo:booleanCheckBox title="ignoreCase"
+			value="#{ comboBox.ignoreCase }" />
+		<dojo:filteringSelect title="highlightMatch: "
+			value="#{ comboBox.highlightMatch }" store="highlightMatchStore" />
+		<dojo:textBox title="maxLength " value="#{ comboBox.maxLength }" />
+		<dojo:textBox title="placeHolder " value="#{ comboBox.placeHolder }" />
+		<dojo:textBox title="searchDelay " value="#{ comboBox.searchDelay }" />
+		<ui:remove>
+			<dojo:textBox title="onBlur " value="#{ comboBox.onBlur }" />
+			<dojo:textBox title="onFocus " value="#{ comboBox.onFocus }" />
+			<dojo:textBox title="onChange" value="#{ comboBox.onChange }" />
+			<dojo:textBox title="onSelect" value="#{ comboBox.onSelect }" />
+		</ui:remove>
+	</dojo:tableContainer>
+	<hr class="separator" />
+	<dojo:button label="Apply">
+		<f:ajax execute="@form" render=":form:comboBox" />
+	</dojo:button>
+</ui:composition>

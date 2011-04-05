@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+              version="2.0">
+<%
+for (artifact in context.artifacts) {
+
+    if (artifact.artifactType.toString().equals("COMPONENT")) { 
+%>        
+    <component>
+        <component-type>${artifact.uniqueId}</component-type>
+        <component-class>${artifact.className}</component-class>
+    </component>
+<%
+    }
+    else if (artifact.artifactType.toString().equals("BEHAVIOR")) { %>        
+    <behavior>
+        <behavior-id>${artifact.uniqueId}</behavior-id>
+	    <behavior-class>${artifact.className}</behavior-class>
+    </behavior>
+<% 
+    }
+}
+%>
+</faces-config>

@@ -1,0 +1,33 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testAjaxRefresh() -->
+	<div class="testCase">
+	<f:subview id="ajaxRefresh">
+		<span class="testTitle">Test case which ajaxically updates ManagedBean's value bound to the component</span>
+		<h:panelGrid columns="1">
+			<jd:menu id="widgetAjaxCall" style="width: 50px; height: 100px;" connectTo="dione ditwo" contextMenuForWindow="true" leftClickToOpen="false" refocus="true" popupDelay="50">
+			    <jd:menuItem label="cut" id="menuitem1" showLabel="true" iconClass="dijitEditorIcon dijitEditorIconCut">
+			          <f:ajax event="click" render="text1" />
+		        </jd:menuItem> 
+		        <jd:menuItem label="copy" id="menuitem2" showLabel="true" disabled="false" tabIndex="1" iconClass="dijitEditorIcon dijitEditorIconCopy">
+			          <f:ajax event="click" render="text2" />
+		        </jd:menuItem>
+		        <jd:menuSeparator></jd:menuSeparator>
+				<jd:popupMenuItem label="333" disabled="false" tabIndex="1">
+					<jd:menu>
+						<jd:menuItem label="sub1" disabled="false" tabIndex="1"></jd:menuItem>
+						<jd:menuItem label="333" disabled="false" tabIndex="1"></jd:menuItem>
+					</jd:menu>
+				</jd:popupMenuItem>
+			</jd:menu>
+			<h:outputText value="Cut time is: #{menuBean.currentTime}" id="text1"/>
+			<h:outputText value="Copy time is: #{menuBean.currentTime}" id="text2"/>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition> 

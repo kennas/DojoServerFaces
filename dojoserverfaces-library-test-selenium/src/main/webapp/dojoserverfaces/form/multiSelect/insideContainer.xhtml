@@ -1,0 +1,31 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInsideContainer() -->
+	<div class="testCase">
+		<f:subview id="insideContainer">
+		    <span class="testTitle">Test case where the component is used inside a container, which control its rendering, and has rendered attribute set
+		    to true</span>
+			<h:panelGrid columns="1">
+				<h:panelGroup id="panelGroup1">
+					<jd:multiSelect id="widgetInsidePanel" value="#{multiSelectBean.widgetInsidePanel.data}">
+						<f:selectItems value="#{multiSelectBean.values}"/>
+					</jd:multiSelect>
+				</h:panelGroup>
+			</h:panelGrid>
+			<span class="testTitle">Test case where the component is used inside a container, which controls its rendering and has rendered attribute set
+			to false</span>
+			<h:panelGrid columns="1">
+				<h:panelGroup id="panelGroup2" rendered="false">
+					<jd:multiSelect id="widgetInsidePanelRenderedFalse" value="#{multiSelectBean.widgetInsidePanel2.data}">
+						<f:selectItems value="#{multiSelectBean.values}"/>
+					</jd:multiSelect>
+				</h:panelGroup>
+			</h:panelGrid>
+		</f:subview>
+	</div>
+</ui:composition>

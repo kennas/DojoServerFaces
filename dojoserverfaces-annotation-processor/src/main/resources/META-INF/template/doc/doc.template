@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../css/doc.css" />
+  </head>
+  <body>
+    <div id="content">
+    <h2>${context.artifact.tagName}</h2>
+    <h3>${context.artifact.xmlDescription}</h3>
+    <br/>
+    <table width="600px" border="1" cellpadding="5">
+    <thead><tr><th>name</th><th>type</th><th>required</th><th>description</th></tr></thead>
+    <tbody>
+    <% for (attribute in context.artifact.attributes) {%>
+      <tr>      
+      <td>${attribute.name}</td>
+      <td>${attribute.type}</td>
+      <td>${attribute.required}</td>
+      <td>${attribute.xmlDescription}</td>
+      </tr>
+    <% } %>
+    </tbody>
+    </table>
+    </div>
+  </body>
+</html>

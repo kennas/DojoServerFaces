@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>dialog</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra" />
+</h:head>
+<h:body>
+	<h:panelGrid cols="1">
+		<p>h:form</p>
+		<dojo:button label="button before form" type="button">
+			<dojo:behaviorSubmit target="form1" />
+		</dojo:button>
+		<h:form styleClass="form" id="form1">
+			<dojo:button label="button in form" type="button">
+				<dojo:behaviorSubmit event="click" />
+			</dojo:button>
+			<dojo:textBox id="box1" value="#{store.record.text}">
+			</dojo:textBox>
+			<h:outputText id="box1Output" value="#{store.record.text}">
+			</h:outputText>
+		</h:form>
+		<dojo:button label="button after form" type="button">
+			<dojo:behaviorSubmit event="click" target="form1" />
+		</dojo:button>
+	</h:panelGrid>
+	<h:panelGrid cols="1">
+		<p>dojo form</p>
+		<dojo:button label="button before form" type="button">
+			<dojo:behaviorSubmit event="click" target="form2" />
+		</dojo:button>
+		<dojo:form styleClass="form" id="form2">
+			<dojo:button label="button in form" type="button">
+				<dojo:behaviorSubmit event="click" />
+			</dojo:button>
+			<dojo:textBox id="box1" value="#{store.record.text}">
+			</dojo:textBox>
+			<h:outputText id="box1Output" value="#{store.record.text}">
+			</h:outputText>
+		</dojo:form>
+		<dojo:button label="button after form" type="button">
+			<dojo:behaviorSubmit event="click" target="form2" />
+		</dojo:button>
+	</h:panelGrid>
+	<h:panelGrid cols="1">
+		<p>no form</p>
+		<dojo:button label="button before form" type="button">
+			<dojo:behaviorSubmit event="click" target="formx" />
+		</dojo:button>
+		<dojo:button label="button in form" type="button">
+			<dojo:behaviorSubmit event="click" />
+		</dojo:button>
+	</h:panelGrid>
+	<ui:debug />
+</h:body>
+</html>

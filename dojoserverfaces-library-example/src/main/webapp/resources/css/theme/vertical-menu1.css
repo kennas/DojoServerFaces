@@ -1,0 +1,444 @@
+@CHARSET "UTF-8";
+
+/************************************
+    Vertical Menu : Sample Style 1 
+       StyleClass : vmenu1       
+ ************************************/
+ 
+/*
+ * Required. Supply as the class of the <div> tag. 
+ * Defines the base name of the set of CSS classes used to style the menu.
+ * Styles the <div> tag that contains the top-level menu. 
+ * Note that <base>_1_div styles the same <div> tag.
+ */
+.vmenu1 {
+	background-color:#e7e7e7;
+	width:160px;
+}
+
+/**************************************************  
+  Classes that apply to the menu bar of level 1
+ **************************************************/
+
+/*
+ * Required. Each menu is contained in a <div> tag. Specifies the style of the <div> tag.
+ * The following classes are given priority over this class.
+ */
+.vmenu1_1_div {
+}
+
+/*
+ * Optional. Each menu is organized into rows/columns in a <div> tag using a <table> tag.
+ * This style applies to the entire table used at this level.
+ */
+.vmenu1_1_table {
+	font-family:Verdana,sans-serif;
+	font-size:8pt;
+}
+
+/*
+ * Optional. The first separator can be treated distinctly.
+ */
+.vmenu1_1_separator_first {
+}
+
+/*
+ * Optional. The last separator can be treated distinctly.
+ */
+.vmenu1_1_separator_last {
+}
+
+/*
+ * Optional. 
+ * If this level of menus uses separator menu items, this class styles the separator.
+ * The separator is a table cell (i.e., this styles a <td> tag).
+ */
+.vmenu1_1_separator {
+	width:160px;
+	height: 20px;
+    padding-left:10px;
+	background-color: #e7e7e7;
+    background-image: url("vs.gif");
+	background-repeat: no-repeat;
+	color:black;
+	text-align:left;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/*
+ * Required. Each menu item is contained in a table cell.
+ * This style applies to all cells at this level of the menu (unless one of the following applies).
+ */
+.vmenu1_1_cell_normal {
+	width:160px;
+	height: 20px;
+	padding-left:14px;
+	background-color: #e7e7e7;
+    background-image: url("vs.gif");
+	background-repeat: no-repeat;
+	text-align:left;
+}
+
+/*
+ * Same as above, but used when the mouse is over the cell.
+ * If not supplied, the selected class is used.
+ * If neither provided, the normal class is used.
+ */
+.vmenu1_1_cell_moused {
+	width:160px;
+	height: 20px;
+	padding-left:14px;
+	background-color: #ffffff;
+	background-image: url("vs_o.gif");
+	background-repeat: no-repeat;
+	text-align:left;
+}
+
+/*
+ * Same as above, but used when the menu item is selected.
+ * Selected state happens only when "keepSelection=true".
+ * If not supplied, the moused class is used.
+ * If neither provided, the normal class is used.
+ */
+.vmenu1_1_cell_selected {
+	width:160px;
+	height: 20px;
+	padding-left:14px;
+	background-color: #ffffff;
+	background-image: url("vs_o.gif");
+	background-repeat: no-repeat;
+	text-align:left;
+}
+
+/*
+ * Required. The class is applied to all menu items at this level.
+ * If the item already has a class (or classes) assigned to it, the class is appended to the end of the list.
+ */
+.vmenu1_1_item_normal {
+	color:black;
+	text-decoration: none;
+}
+
+/*
+ * As above, but moused state.
+ */
+.vmenu1_1_item_moused {
+	color:black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/*
+ * As above, but selected state.
+ */
+.vmenu1_1_item_selected {
+	color:black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/*
+ * Optional.
+ * If a menu item opens a child submenu, an "arrow" is displayed at the right edge of the cell that contains the item.
+ * This style is applied to the arrow. 
+ * If the style does not specify a background image, it styles the text arrow ">" that is displayed by default. 
+ * If the style includes a background image, the text arrow is not displayed and the background image is used as the arrow.
+ */
+.vmenu1_1_arrow_normal {
+	right: 1px;
+	background-image: url("vs-arrow.gif");
+	background-repeat: no-repeat;
+}
+
+/*
+ * As above, but moused state.
+ * If not present, a ">>" character is used as the arrow.
+ */
+.vmenu1_1_arrow_moused {
+	right: 1px;
+	background-image: url("vs-o-arrow.gif");
+	background-repeat: no-repeat;
+}
+
+/*
+ * As above, but selected state.
+ * If not present, a ">>" character is used as the arrow.
+ */
+.vmenu1_1_arrow_selected {
+	right: 1px;
+	background-image: url("vs-o-arrow.gif");
+	background-repeat: no-repeat;
+}
+
+/**************************************************  
+  Classes that apply to the menu bar of level 2
+ **************************************************/
+
+/*
+ * Required. Each menu is contained in a <div> tag. Specifies the style of the <div> tag.
+ * The following classes are given priority over this class.
+ */
+.vmenu1_2_div {
+    margin-top:1px;
+}
+
+/*
+ * Optional. Each menu is organized into rows/columns in a <div> tag using a <table> tag.
+ * This style applies to the entire table used at this level.
+ */
+.vmenu1_2_table {
+    border-style: solid;
+	border-width: 1px;
+	border-color: #BCC1D8;
+	background-color: #CBD1DE;
+	font-family:Verdana,sans-serif;
+	font-size:8pt;
+	text-decoration: none;
+}
+
+/*
+ * Optional. 
+ * If this level of menus uses separator menu items, this class styles the separator.
+ */
+.vmenu1_2_separator {
+	width:140px;
+	height: 20px;
+    padding-left: 6px;
+	padding-top: 3px;
+	font-weight: bold;
+	text-align: left;
+	color:black;
+}
+
+/*
+ * Required. Each menu item is contained in a table cell.
+ * This style applies to all cells at this level of the menu (unless one of the following applies).
+ */
+.vmenu1_2_cell_normal {
+	width:140px;
+	height: 20px;
+	padding:2px;
+	padding-left:12px;
+	background-color:#E0E1E7;
+	text-align: left;
+}
+
+/*
+ * Same as above, but used when the mouse is over the cell.
+ * If not supplied, the selected class is used.
+ * If neither provided, the normal class is used.
+ */
+.vmenu1_2_cell_moused {
+	width:140px;
+	height: 20px;
+	padding:2px;
+	padding-left:12px;
+	background-color: #A6ADC4;
+	text-align: left;
+}
+
+/*
+ * Same as above, but used when the menu item is selected.
+ * Selected state happens only when "keepSelection=true".
+ * If not supplied, the moused class is used.
+ * If neither provided, the normal class is used.
+ */
+.vmenu1_2_cell_selected {
+	width:140px;
+	height: 20px;
+	padding:2px;
+	padding-left:12px;
+	background-color: #A6ADC4;
+	text-align: left;
+}
+
+/*
+ * Required. The class is applied to all menu items at this level.
+ * If the item already has a class (or classes) assigned to it, the class is appended to the end of the list.
+ */
+.vmenu1_2_item_normal {
+	color: black;
+	text-decoration: none;
+}
+
+/*
+ * As above, but moused state.
+ */
+.vmenu1_2_item_moused {
+	color: #000000;
+	text-decoration: none;
+}
+
+/*
+ * As above, but selected state.
+ */
+.vmenu1_2_item_selected {
+	color: #000000;
+	text-decoration: none;
+}
+
+/*
+ * Optional.
+ * If a menu item opens a child submenu, an "arrow" is displayed at the right edge of the cell that contains the item.
+ * This style is applied to the arrow. 
+ * If the style does not specify a background image, it styles the text arrow ">" that is displayed by default. 
+ * If the style includes a background image, the text arrow is not displayed and the background image is used as the arrow.
+ */
+.vmenu1_2_arrow_normal {
+	right: 8px;
+	color: #5C5C5C;
+}
+
+/*
+ * As above, but moused state.
+ * If not present, a ">>" character is used as the arrow.
+ */
+.vmenu1_2_arrow_moused {
+	right: 8px;
+	color: #5C5C5C;
+}
+
+/*
+ * As above, but selected state.
+ * If not present, a ">>" character is used as the arrow.
+ */
+.vmenu1_2_arrow_selected {
+	right: 8px;
+	color: #5C5C5C;
+}
+
+/**************************************************  
+  Classes that apply to the menu bar of level 3
+ **************************************************/
+
+/*
+ * Required. Each menu is contained in a <div> tag. Specifies the style of the <div> tag.
+ * The following classes are given priority over this class.
+ */
+.vmenu1_3_div {
+    margin-top:1px;
+}
+
+/*
+ * Optional. Each menu is organized into rows/columns in a <div> tag using a <table> tag.
+ * This style applies to the entire table used at this level.
+ */
+.vmenu1_3_table {
+	background-color: white;
+	font-family:Verdana,sans-serif;
+	font-size:8pt;
+	text-decoration: none;
+}
+
+/*
+ * Optional. 
+ * If this level of menus uses separator menu items, this class styles the separator.
+ */
+.vmenu1_3_separator {
+	width:140px;
+	height: 20px;
+	padding-left:6px; 
+	padding-top:3px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #A6ADC4;
+	text-align: left;
+	font-weight: bold;
+	color:black;
+}
+
+/*
+ * Required. Each menu item is contained in a table cell.
+ * This style applies to all cells at this level of the menu (unless one of the following applies).
+ */
+.vmenu1_3_cell_normal {
+	width: 140px;
+	height: 20px;
+	padding:2px;
+	padding-left:12px;
+	background-color:#A6ADC4;
+	text-align: left;
+}
+
+/*
+ * Same as above, but used when the mouse is over the cell.
+ * If not supplied, the selected class is used.
+ * If neither provided, the normal class is used.
+ */
+.vmenu1_3_cell_moused {
+	width:140px;
+	height: 20px;
+	padding:2px;
+	padding-left:12px;
+	background-color: #8D97B7;
+	text-align: left;
+}
+
+/*
+ * Same as above, but used when the menu item is selected.
+ * Selected state happens only when "keepSelection=true".
+ * If not supplied, the moused class is used.
+ * If neither provided, the normal class is used.
+ */
+.vmenu1_3_cell_selected {
+	width:140px;
+	height: 20px;
+	padding:2px;
+	padding-left:12px;
+	background-color: #8D97B7;
+	text-align: left;
+}
+
+/*
+ * Required. The class is applied to all menu items at this level.
+ * If the item already has a class (or classes) assigned to it, the class is appended to the end of the list.
+ */
+.vmenu1_3_item_normal {
+	color: black;
+	text-decoration: none;
+}
+
+/*
+ * As above, but moused state.
+ */
+.vmenu1_3_item_moused {
+	color: #ffcf00;
+	text-decoration: none;
+}
+
+/*
+ * As above, but selected state.
+ */
+.vmenu1_3_item_selected {
+	color: #ffcf00;
+	text-decoration: none;
+}
+
+
+/*
+ * Optional.
+ * If a menu item opens a child submenu, an "arrow" is displayed at the right edge of the cell that contains the item.
+ * This style is applied to the arrow. 
+ * If the style does not specify a background image, it styles the text arrow ">" that is displayed by default. 
+ * If the style includes a background image, the text arrow is not displayed and the background image is used as the arrow.
+ */
+.vmenu1_3_arrow_normal {
+	right: 8px;
+}
+
+/*
+ * As above, but moused state.
+ * If not present, a ">>" character is used as the arrow.
+ */
+.vmenu1_3_arrow_moused {
+	right: 8px;
+}
+
+/*
+ * As above, but selected state.
+ * If not present, a ">>" character is used as the arrow.
+ */
+.vmenu1_3_arrow_selected {
+	right: 8px;
+}

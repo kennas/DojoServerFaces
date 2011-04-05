@@ -1,0 +1,30 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInsideContainer() -->
+	<div class="testCase"> 
+	<f:subview id="insideContainer">
+	    <span class="testTitle">Test case where the component is used inside a container, which control its rendering, and
+	    has rendered attribute set to true</span>
+		<h:panelGrid columns="1">
+			<h:panelGroup id="panelGroup1">
+				<jd:dateTextBox id="widgetInsidePanel" value="#{dateTextBoxBean.widgetInsidePanel.data}" pattern="yyyy-MM-dd" locale="en">
+					<f:convertDateTime pattern="yyyy-MM-dd"></f:convertDateTime>
+				</jd:dateTextBox>
+			</h:panelGroup>
+		</h:panelGrid>
+		<span class="testTitle">Test case where the component is used inside a container, which controls its rendering and has rendered attribute set
+		to false</span>
+		<h:panelGrid columns="1">
+			<h:panelGroup id="panelGroup2" rendered="false">
+				<jd:dateTextBox id="widgetInsidePanelRenderedFalse" value="#{dateTextBoxBean.widgetInsidePanel2.data}" pattern="yyyy-MM-dd" locale="en">
+					<f:convertDateTime pattern="yyyy-MM-dd"></f:convertDateTime>
+				</jd:dateTextBox>
+			</h:panelGroup>
+		</h:panelGrid>
+	</f:subview></div>
+</ui:composition>

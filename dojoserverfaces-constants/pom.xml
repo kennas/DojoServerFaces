@@ -1,0 +1,22 @@
+<?xml version="1.0"?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.dojoserverfaces</groupId>
+	<artifactId>dojoserverfaces-constants</artifactId>
+	<version>1.0.0</version>
+	<name>DojoServerFaces - Constants</name>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>org.dojoserverfaces</groupId>
+                <artifactId>dojoserverfaces</artifactId>
+		<version>1.0.0</version>
+	</parent>
+</project>

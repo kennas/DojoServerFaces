@@ -1,0 +1,32 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
+	<div class="testCase">
+	<f:subview id="initialValues">
+		<span class="testTitle">Test case to display a value bound to a managed bean</span>
+		<h:panelGrid columns="1">
+		    <jd:dialog id="msgDialog1" title="Prompt" style="width: 250px; height: 100px;">
+		          <h3 style="text-align: center;">Nothing cut, just a test.</h3>
+	        </jd:dialog>
+	        <jd:dialog id="msgDialog2" title="Prompt" style="width: 250px; height: 100px;">
+		          <h3 style="text-align: center;">Nothing copied, just a test.</h3>
+	        </jd:dialog>
+		    <jd:comboButton id="widgetSimple" label="Click" showLabel="true" style="width: 100px; height: 20px;">
+				<jd:menu>
+					<jd:menuItem label="cut">
+		    			<jd:behaviorShow event="click" target="msgDialog1" />
+					</jd:menuItem> 
+					<jd:menuItem label="copy">
+						<jd:behaviorShow event="click" target="msgDialog2" />
+					</jd:menuItem>
+				</jd:menu>
+	        </jd:comboButton>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<h:form id="form">
+		<dojo:horizontalSlider id="slider" style="width: 500px; height: 20px;"
+			labelStyle="font-style:monospace;font-size:.7em;margin:-1em 0px 0px -.35em;"
+			minimum="#{horizontalSlider.minimum}"
+			maximum="#{horizontalSlider.maximum}"
+			value="#{horizontalSlider.value}"
+			showButtons="#{horizontalSlider.showButtons}"
+			discreteValues="#{horizontalSlider.discreteValues}"
+			pageIncrement="#{horizontalSlider.pageIncrement}"
+			clickSelect="#{horizontalSlider.clickSelect}"
+			slideDuration="#{horizontalSlider.slideDuration}"
+			intermediateChanges="true">
+			<dojo:horizontalRule id="topRule" count="17" ruleStyle="height:10px;"
+				container="topDecoration" />
+			<dojo:horizontalRuleLabels id="bottomLabels"
+				labelStyle="height:1.5em;font-size:75%;color:gray;"
+				container="bottomDecoration" labels="&#160; 20% 40% 60% 80% &#160;" />
+		</dojo:horizontalSlider>
+		<br />
+		<dojo:button label="Submit">
+			<f:ajax execute="@form" render=":result" />
+		</dojo:button>
+	</h:form>
+	<hr class="separator" />
+	<h:panelGroup id="result">
+		<div>
+			Your value is: 
+			<span style="font-weight: bold;">#{ horizontalSlider.value }</span>
+		</div>
+	</h:panelGroup>
+</ui:composition>

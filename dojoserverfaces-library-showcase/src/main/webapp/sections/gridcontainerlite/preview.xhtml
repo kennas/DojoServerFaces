@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<dojo:gridContainerLite
+		nbZones="#{ gridContainerLite.nbZones }"
+		isAutoOrganized="#{ gridContainerLite.isAutoOrganized }"
+		colWidths="#{ gridContainerLite.colWidths }"
+		style="width: 100%; height: 200px;"
+	>
+		<dojo:titlePane id="portletA" 
+			title="Portlet A" toggleable="false"
+			style="margin-right: 8px;"
+		>
+			Hello <strong><em>DojoServerFaces!</em></strong>
+		</dojo:titlePane>
+		
+		<dojo:titlePane id="portletB" 
+			title="Portlet B" toggleable="false"
+			style="margin-right: 8px;"
+		>
+			I Want To Be A Portlet!
+		</dojo:titlePane>
+	</dojo:gridContainerLite>
+</ui:composition>

@@ -1,0 +1,138 @@
+@CHARSET "UTF-8";
+
+/******************************************
+  Vertical Tabs Sample
+  Specification file: vertical-tab01
+ ******************************************/
+
+/*
+ * Each link of the site navigation is organized into rows/colomns using a table.
+ * This style applies to the table.
+ */
+.vtab01_table {
+    background-image:url(bg_vt.gif);
+	padding-top:5px;
+	padding-left:5px;
+	padding-right:5px;
+	border-width:1px;
+    border-color: #C0C1D2;
+	border-style:solid;
+	background-color: #E8E8E8;	  	
+}
+   
+/*
+ * This style applies to the body in the table.
+ */
+.vtab01_table_body {
+}
+
+/*
+ * This style applies to the row in the table.
+ */
+.vtab01_table_row {
+}
+
+/*
+ * This style applies to each cell in the table.
+ */
+.vtab01_cell_normal {
+}
+
+/*
+ * This style applies to the cell which contains a link to current page.
+ */
+.vtab01_cell_self {
+}
+	
+/*
+ * This style applies to the cell which represents a group.
+ */
+.vtab01_cell_group {
+}
+
+/*
+ * This style applies to each item in the cell. (e.g., to the <a> tag)
+ */
+.vtab01_item_normal {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #ffffff;
+	font-weight: bold;
+	text-decoration: none;
+    font-size: 10px;
+	text-transform: lowercase;
+    padding-left:5px;
+	padding-right:5px;
+}
+
+/*
+ * This style applies to the item which links to current page. (e.g., to the <a> tag)
+ */
+.vtab01_item_self {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color:#ffffff;
+	font-weight: bold;
+    font-size: 10px;
+	text-transform: lowercase;
+	text-decoration: none;
+    padding-left:5px;
+	padding-right:5px;
+}
+
+/*
+ * This style applies to the item which displays a group name. (e.g., to the <span> tag)
+ */
+.vtab01_item_group {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #ffffff;
+	font-weight: bold;
+    font-size: 10px;
+	text-transform: uppercase;
+    text-decoration: none;
+    padding-left:5px;
+	padding-right:5px;
+}
+
+/* Group */
+.vtab01_group_tl {	
+	background-image:url(vertical-tab01_g_tl.gif);
+}
+
+.vtab01_group_t {	
+	background-image:url(vertical-tab01_g_t.gif);
+}
+
+.vtab01_group_tr {	
+	background-image:url(vertical-tab01_g_tr.gif)
+}
+
+.vtab01_group_l {	
+	background-image:url(vertical-tab01_g_l.gif);
+}
+
+.vtab01_group_c {	
+	background-image:url(vertical-tab01_g_c.gif);
+	text-align: center;
+}
+
+.vtab01_group_r {	
+	background-image:url(vertical-tab01_g_r.gif);
+}
+
+.vtab01_group_bl {	
+	background-image:url(vertical-tab01_g_bl.gif);
+}
+
+.vtab01_group_b {	
+	background-image:url(vertical-tab01_g_b.gif);
+}
+
+.vtab01_group_br {	
+    background-image:url(vertical-tab01_g_br.gif);
+}
+
+
+
+
+
+
+

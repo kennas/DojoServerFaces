@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<h:form id="form">
+		Input your essay in the next area:
+		<br />
+		<dojo:dynamicTextArea id="dynamicTextArea" value="#{dynamicTextArea.value}"
+			disabled="#{dynamicTextArea.disabled}"
+			readOnly="#{dynamicTextArea.readOnly}"
+			required="#{dynamicTextArea.required}" cols="#{dynamicTextArea.cols}"
+			rows="#{dynamicTextArea.rows}"
+			maxLength="#{dynamicTextArea.maxLength}"
+			selectOnClick="#{dynamicTextArea.selectOnClick}"
+			trim="#{dynamicTextArea.trim}" onBlur="#{dynamicTextArea.onBlur}"
+			onChange="#{dynamicTextArea.onChange}"
+			onFocus="#{dynamicTextArea.onFocus}">
+		</dojo:dynamicTextArea>
+		<hr class="separator" />
+		<dojo:button label="Submit">
+			<f:ajax execute="@form" render=":result" />
+		</dojo:button>
+	</h:form>
+	<hr class="separator" />
+	<h:panelGroup id="result">
+		<div>
+			Your input essay is: 
+			<span style="font-weight: bold;">#{ dynamicTextArea.value }</span>
+		</div>
+	</h:panelGroup>
+</ui:composition>

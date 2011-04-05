@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:composite="http://java.sun.com/jsf/composite"
+    xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+<composite:interface>
+    <composite:attribute name="name" required="true"></composite:attribute>
+    <composite:attribute name="hasChildren" default="f"></composite:attribute>
+</composite:interface>
+<composite:implementation>
+<h:panelGroup rendered="#{cc.attrs.hasChildren eq 'f'}"><tr><td></h:panelGroup>
+<h:panelGroup rendered="#{cc.attrs.hasChildren ne 'f'}"><tr><td colspan="2"></h:panelGroup>
+    <span style='font-size: 10.0pt; font-family: "Courier New"; color: #3F8080'>&lt;/#{cc.attrs.name}&gt;</span>
+</td></tr></table>
+</composite:implementation>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<dojo:comboStore id="states" options="#{ store.ss }"/>
+	<h:form id="form">
+		<h:panelGroup>
+			<dojo:comboBox id="comboBox" value="#{comboBox.value}"
+				hasDownArrow="#{comboBox.hasDownArrow}"
+				autoComplete="#{comboBox.autoComplete}"
+				searchDelay="#{comboBox.searchDelay}"
+				disabled="#{comboBox.disabled}" readOnly="#{comboBox.readOnly}"
+				required="#{comboBox.required}" forceCase="#{comboBox.forceCase}"
+				placeHolder="#{comboBox.placeHolder}"
+				maxLength="#{comboBox.maxLength}"
+				selectOnClick="#{comboBox.selectOnClick}" trim="#{comboBox.trim}"
+				onBlur="#{comboBox.onBlur}" onChange="#{comboBox.onChange}"
+				onFocus="#{comboBox.onFocus}"
+				highlightMatch="#{comboBox.highlightMatch}" store="states" />
+			
+		</h:panelGroup>
+		<hr class="separator" />
+		<dojo:button label="Submit">
+			<f:ajax execute="@form" render=":result" />
+		</dojo:button>
+	</h:form>
+	<h:panelGrid id="result">
+		<div>
+			Your faviorate state is: 
+			<span style="font-weight: bold;">#{ comboBox.value }</span>
+		</div>
+	</h:panelGrid>
+</ui:composition>

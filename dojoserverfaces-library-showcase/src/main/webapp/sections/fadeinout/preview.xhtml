@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<h:panelGrid columns="1">
+		<h:panelGroup>
+			<dojo:button id="fadeInBtn" label="Fade In" disabled="true">
+				<dojo:behaviorFadeIn target="portletA" 
+					duration="500" broadcastOnEnd="faded-in" />
+			</dojo:button>
+			
+			<dojo:button id="fadeOutBtn" label="Fade Out">
+				<dojo:behaviorFadeOut target="portletA" 
+					duration="500" broadcastOnEnd="faded-out" />
+			</dojo:button>
+		</h:panelGroup>
+		
+		<h:panelGroup>
+			<dojo:titlePane id="portletA" 
+				title="Portlet A" toggleable="false"
+			>
+				Hello <strong><em>DojoServerFaces!</em></strong>
+			</dojo:titlePane>
+		</h:panelGroup>
+		
+		<dojo:listener topic="faded-in">
+			<dojo:behaviorAlert message="I'm back." />
+			<dojo:behaviorSetDisabled value="true" target="fadeInBtn" />
+			<dojo:behaviorSetDisabled value="false" target="fadeOutBtn" />
+		</dojo:listener>
+		
+		<dojo:listener topic="faded-out">
+			<dojo:behaviorAlert message="I'm disappered." />
+			<dojo:behaviorSetDisabled value="true" target="fadeOutBtn" />
+			<dojo:behaviorSetDisabled value="false" target="fadeInBtn" />
+		</dojo:listener>
+	</h:panelGrid>
+</ui:composition>

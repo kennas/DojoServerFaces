@@ -1,0 +1,27 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testConverters() -->
+	<div class="testCase">
+		<f:subview id="converter">
+		    <span class="testTitle">Test case to display a component value using converter </span> 
+			<h:panelGrid columns="2">
+				<jd:currencyTextBox id="widgetConverter" value="#{currencyTextBoxBean.widgetConverter}">
+					<f:converter converterId="dojoserverfaces.ValueConverter" />
+				</jd:currencyTextBox>
+				<h:panelGroup>
+					Submitted Value:		
+					<h:outputText id="outputConverter" value="#{currencyTextBoxBean.widgetConverter}"></h:outputText>
+				</h:panelGroup>
+				<h:panelGroup>
+					ValidationMessage:
+					<h:message for="widgetConverter" errorClass="errorMessage" id="errMsgTextBoxConverter" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</f:subview>
+	</div>
+</ui:composition>

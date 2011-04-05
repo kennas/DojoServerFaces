@@ -1,0 +1,37 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testAjaxRefresh() -->
+	<div class="testCase">
+	<f:subview id="ajaxRefresh">
+		<span class="testTitle">Test case which ajaxically updates ManagedBean's value bound to the component</span>
+		<h:panelGrid columns="1">
+			<jd:toolbar id="widgetAjaxCall" style="width: 400px;" title="DojoServerFaces Toolbar" showTitle="true" >
+			    <jd:button label="Cut" id="cut" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconCut">
+			        <f:ajax event="click" render="text1" />
+			    </jd:button>
+			    <jd:button label="Copy" id="copy" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconCopy">
+			        <f:ajax event="click" render="text2" />
+			    </jd:button>
+			    <jd:button label="Paste" id="paste" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconPaste">
+			        <f:ajax event="click" render="text3" />
+			    </jd:button>
+			    <jd:toolbarSeparator></jd:toolbarSeparator>
+			    <jd:button label="Bold" id="bold" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconBold">
+			    </jd:button>
+			    <jd:button label="Italic" id="italic" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconItalic">
+			    </jd:button>
+			    <jd:button label="Underline" id="underline" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconUnderline">
+			    </jd:button>
+			</jd:toolbar>
+			<h:outputText value="Cut time is: #{toolbarBean.currentTime}" id="text1"/>
+			<h:outputText value="Copy time is: #{toolbarBean.currentTime}" id="text2"/>
+			<h:outputText value="Paste time is: #{toolbarBean.currentTime}" id="text3"/>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition>

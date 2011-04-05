@@ -1,0 +1,23 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testValueChangeListener() -->
+	<div class="testCase">
+		<f:subview id="valueChangeListener">
+		    <span class="testTitle">With valueChangeListener</span>
+			<jd:selectItemStore id="values">
+				<f:selectItem itemValue="" itemLabel="" />
+				<f:selectItems value="#{ filteringSelectBean.values }" />
+			</jd:selectItemStore>
+			<h:panelGrid columns="2">
+				<jd:filteringSelect value="#{filteringSelectBean.widgetValueChangeListener.data}" id="widgetValueChangeListener" valueChangeListener="#{filteringSelectBean.valueChangeMethod}" store="values">
+				</jd:filteringSelect>
+				<h:outputText id="outputValueChangeListener" value="#{filteringSelectBean.strValueChangeListener}" />
+			</h:panelGrid>
+		</f:subview>
+	</div>
+</ui:composition>

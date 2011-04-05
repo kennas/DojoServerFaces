@@ -1,0 +1,63 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+
+<h:head>
+	<title>horizontal slider</title>
+	<meta
+		http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="claro" />
+</h:head>
+<h:body>
+	<h:form
+		styleClass="form"
+		id="form1">
+		<dojo:horizontalSlider id="slider"
+			style="width: 500px; height: 20px;"
+			minimum="0"
+			maximum="100"
+			value="#{store.record.amount}"
+			showButtons="true"
+			discreteValues="21"
+			pageIncrement="20"
+			intermediateChanges="true"
+			slideDuration="500">
+			<dojo:horizontalRuleLabels id="topLabels"
+				style="height: 1.2em; fontSize: 75%;"
+				count="6"
+				numericMargin="1"
+				container="topDecoration" />
+			<dojo:horizontalRule id="topRule"
+				count="6"
+				style="height: 5px;"
+				container="topDecoration" />
+			<dojo:horizontalRuleLabels id="bottomLabels"
+				style="height: 1em; fontSize: 75%;"
+				container="bottomDecoration" 
+				labels="lowest normal highest" />
+			<dojo:horizontalRule id="bottomRule"
+				count="5"
+				style="height: 5px;"
+				container="bottomDecoration"
+				/>
+		</dojo:horizontalSlider>
+		<hr class="seperator" />
+		<dojo:button label="Submit">
+			<dojo:behaviorSubmit event="click" />
+		</dojo:button>
+		<div>You value is: <span style="font-weight: bold;">#{store.record.amount}</span></div>
+	</h:form>
+</h:body>
+</html>

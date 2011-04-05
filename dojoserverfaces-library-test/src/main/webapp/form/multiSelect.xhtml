@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:jd="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>multiSelect</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<jd:theme name="tundra" />
+</h:head>
+<h:body>
+	<h:form styleClass="form" id="form1">
+		<jd:multiSelect value="#{store.record.textArray}"
+			style="width: 150px">
+			<f:selectItem itemLabel="Bob" itemValue="bg" />
+			<f:selectItem itemLabel="Deb" itemValue="dg" />
+			<f:selectItem itemLabel="Casey" itemValue="cg" />
+			<f:ajax disabled="true" execute="@this" render="outputResults"></f:ajax>
+		</jd:multiSelect>
+		<p>selected</p>
+		<ul>
+			<ui:repeat var="item" items="#{store.record.textArray}">
+				<li><h:outputText value="#{item}" /></li>
+			</ui:repeat>
+		</ul>
+
+
+		<h:messages />
+		<br />
+		<h:commandButton />
+
+		<h:panelGrid>
+			<h:selectOneListbox >
+				<f:selectItem itemLabel="Bob" itemValue="bg" />
+				<f:selectItem itemLabel="Deb" itemValue="dg" />
+				<f:selectItem itemLabel="Casey" itemValue="cg" />
+			</h:selectOneListbox>
+			<h:selectOneMenu >
+				<f:selectItem itemLabel="Bob" itemValue="bg" />
+				<f:selectItem itemLabel="Deb" itemValue="dg" />
+				<f:selectItem itemLabel="Casey" itemValue="cg" />
+			</h:selectOneMenu>
+			<h:selectManyListbox >
+				<f:selectItem itemLabel="Bob" itemValue="bg" />
+				<f:selectItem itemLabel="Deb" itemValue="dg" />
+				<f:selectItem itemLabel="Casey" itemValue="cg" />
+			</h:selectManyListbox>
+			<h:selectManyMenu >
+				<f:selectItem itemLabel="Bob" itemValue="bg" />
+				<f:selectItem itemLabel="Deb" itemValue="dg" />
+				<f:selectItem itemLabel="Casey" itemValue="cg" />
+			</h:selectManyMenu>
+		</h:panelGrid>
+
+	</h:form>
+</h:body>
+</html>

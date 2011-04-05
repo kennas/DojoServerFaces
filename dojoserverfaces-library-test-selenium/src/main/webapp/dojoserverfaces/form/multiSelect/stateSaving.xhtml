@@ -1,0 +1,35 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testStateSaving() -->
+	<div class="testCase">
+		<f:subview id="stateSaving">
+		    <span class="testTitle">State Saving - Transient</span>
+			<h:panelGrid columns="3">
+				<!-- Test case to check that the state of transient component is not saved -->
+				<!-- Test the same again after setting javax.faces.PARTIAL_STATE_SAVING to false -->
+				<jd:multiSelect id="widgetTransient" binding="#{multiSelectBean.widgetTransient}" transient="true" value="#{multiSelectBean.widgetTransientValue.data}">
+					<f:selectItems value="#{multiSelectBean.values}"/>
+				</jd:multiSelect>
+				<h:commandButton id="testTransientStateBtn" value="testTransientState" action="#{multiSelectBean.testTransientState}" />
+				<h:panelGroup>isTransient <h:outputText id="outputTransientState" value="#{multiSelectBean.transientState}"></h:outputText>
+				</h:panelGroup>
+			</h:panelGrid>
+			<span class="testTitle">State Saving - Full</span>
+			<h:panelGrid columns="3">
+				<!-- Test case to check that the state of a non-transient component is saved -->
+				<!-- Test the same again after setting javax.faces.PARTIAL_STATE_SAVING to false -->
+				<jd:multiSelect id="widgetFull" binding="#{multiSelectBean.widgetFull}" value="#{multiSelectBean.widgetFullValue.data}">
+					<f:selectItems value="#{multiSelectBean.values}"/>
+				</jd:multiSelect>
+				<h:commandButton id="testFullStateBtn" value="testFullState" action="#{multiSelectBean.testFullState}" />
+				<h:panelGroup>State Saved ? <h:outputText id="outputFullState" value="#{multiSelectBean.fullState}"></h:outputText>
+				</h:panelGroup>
+			</h:panelGrid>
+		</f:subview>
+	</div>
+</ui:composition>

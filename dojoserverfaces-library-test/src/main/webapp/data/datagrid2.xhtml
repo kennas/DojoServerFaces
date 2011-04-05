@@ -1,0 +1,51 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:jd="http://www.dojoserverfaces.org/core">
+
+<h:head>
+	<title>dataGrid</title>
+	<style type="text/css">
+body {
+	font-size: 0.9em;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+}
+
+.heading {
+	font-weight: bold;
+	padding-bottom: 0.25em;
+}
+
+.grid {
+	width: 85%;
+	height: 20em;
+	padding: 1px;
+}
+</style>
+
+</h:head>
+<h:body>
+
+	<jd:dataGrid store="store">
+
+		<jd:view name="first" noScroll="true" />
+		<jd:cell view="first" field="id" name="Country Code" />
+		<jd:cell view="first" field="name" name="Country Name" width="20" />
+
+		<jd:cell view="second.0" field="timezone" name="Timezone" />
+		<jd:cell view="second.0" field="type" name="Type" width="20" />
+		<jd:cell view="second.2" field="population" name="Population" />
+		<jd:cell view="second.2" field="area" name="Area" />
+	</jd:dataGrid>
+	<jd:itemFileReadStore id="store"
+		data="{identifier:'id',label:'name',items:[{id:'AF',name:'Africa',type:'continent',population:'900million',area:'30,221,532sqkm',timezone:'-1UTCto+4UTC',children:[{_reference:'EG'},{_reference:'KE'},{_reference:'SD'}]},{id:'EG',name:'Egypt',type:'country'},{id:'KE',name:'Kenya',type:'country',children:[{_reference:'Nairobi'},{_reference:'Mombasa'}]},{id:'Nairobi',name:'Nairobi',type:'city'},{id:'Mombasa',name:'Mombasa',type:'city'},{id:'SD',name:'Sudan',type:'country',children:{_reference:'Khartoum'}},{id:'Khartoum',name:'Khartoum',type:'city'},{id:'AS',name:'Asia',type:'continent',children:[{_reference:'CN'},{_reference:'IN'},{_reference:'RU'},{_reference:'MN'}]},{id:'CN',name:'China',type:'country'},{id:'IN',name:'India',type:'country'},{id:'RU',name:'Russia',type:'country'},{id:'MN',name:'Mongolia',type:'country'},{id:'OC',name:'Oceania',type:'continent',population:'21million',children:{_reference:'AU'}},{id:'AU',name:'Australia',type:'country',population:'21million'},{id:'EU',name:'Europe',type:'continent',children:[{_reference:'DE'},{_reference:'FR'},{_reference:'ES'},{_reference:'IT'}]},{id:'DE',name:'Germany',type:'country'},{id:'FR',name:'France',type:'country'},{id:'ES',name:'Spain',type:'country'},{id:'IT',name:'Italy',type:'country'},{id:'NA',name:'NorthAmerica',type:'continent',children:[{_reference:'MX'},{_reference:'CA'},{_reference:'US'}]},{id:'MX',name:'Mexico',type:'country',population:'108million',area:'1,972,550sqkm',children:[{_reference:'MexicoCity'},{_reference:'Guadalajara'}]},{id:'MexicoCity',name:'MexicoCity',type:'city',population:'19million',timezone:'-6UTC'},{id:'Guadalajara',name:'Guadalajara',type:'city',population:'4million',timezone:'-6UTC'},{id:'CA',name:'Canada',type:'country',population:'33million',area:'9,984,670sqkm',children:[{_reference:'Ottawa'},{_reference:'Toronto'}]},{id:'Ottawa',name:'Ottawa',type:'city',population:'0.9million',timezone:'-5UTC'},{id:'Toronto',name:'Toronto',type:'city',population:'2.5million',timezone:'-5UTC'},{id:'US',name:'UnitedStatesofAmerica',type:'country'},{id:'SA',name:'SouthAmerica',type:'continent',children:[{_reference:'BR'},{_reference:'AR'}]},{id:'BR',name:'Brazil',type:'country',population:'186million'},{id:'AR',name:'Argentina',type:'country',population:'40million'}]}" />
+	<div style="width: 400px"></div>
+
+</h:body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>alert confirm</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra" />
+</h:head>
+<h:body>
+	<p>dojo form</p>
+	<dojo:form method="post" styleClass="form" id="form2">
+		<h:panelGrid cols="1">
+			<dojo:button label="alert" type="button">
+				<dojo:behaviorAlert message="alert" />
+			</dojo:button>
+			<dojo:button label="confirm (try yes and no)" type="button">
+				<dojo:behaviorConfirm message="confirm (try yes and no)"
+					broadcastCancel="cancelPressed" broadcastOk="okayPressed" />
+			</dojo:button>
+			<dojo:textBox id="box1" value="#{store.record.text}">
+			</dojo:textBox>
+			<dojo:button label="submit" type="submit" />
+			<h:outputText id="box1Output" value="#{store.record.text}">
+			</h:outputText>
+		</h:panelGrid>
+	</dojo:form>
+	<dojo:listener topic="cancelPressed">
+		<dojo:behaviorAlert message="cancelPressed" />
+	</dojo:listener>
+	<dojo:listener topic="okayPressed">
+		<dojo:behaviorAlert message="okayPressed" />
+	</dojo:listener>
+	<ui:debug />
+</h:body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link rel="stylesheet" type="text/css" href="../css/doc.css" />
+  </head>
+  <body><div>
+  <table style="border-width: 0px">
+	<thead>
+		<tr>
+			<th>Components</th>
+			<th width="30"></th>
+			<th>Behaviors</th>
+		</tr>
+	</thead>
+	<tbody>
+  	<tr>
+  	  <td><div>
+	    <table>
+<% for (artifact in context.artifacts) { 
+if (artifact.artifactType.toString().equals("COMPONENT")) { %>
+	        <tr><td>
+	          <a href="${artifact.tagName}.html">${artifact.tagName}</a>
+	        </td></tr>
+<% }} %>
+	    </table>
+      </div></td>
+	  <td></td>
+  	  <td valign="top"><div>
+  	    <table>
+	      <% for (artifact in context.artifacts) { 
+	          if (artifact.artifactType.toString().equals("BEHAVIOR")) { %>
+	        <tr><td>
+	          <a href="${artifact.tagName}.html">${artifact.tagName}</a>
+	        </td></tr>
+	      <% }} %>
+	    </table>
+      </div></td>
+  	</tr>
+	</tbody>
+  </table>  
+  </div></body>
+</html>

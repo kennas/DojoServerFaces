@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<table>
+		<tr>
+			<td style="width: 400px;">
+				<dojo:button label="Broadcast topic: change-text-color">
+					<dojo:behaviorBroadcast topic="change-text-color" />
+				</dojo:button>
+				<dojo:listener topic="change-text-color">
+					<f:ajax render="buttonA textA" />
+				</dojo:listener>
+				
+				<div class="separator" style="margin-top: 5px; margin-bottom: 5px; width: 365px;" />
+			</td>
+			
+			<td>
+				<dojo:button label="Broadcast topic: change-background-color">
+					<dojo:behaviorBroadcast topic="change-background-color" />
+				</dojo:button>
+				<dojo:listener topic="change-background-color">
+					<f:ajax render="textB" />
+				</dojo:listener>
+				<div class="separator" style="margin-top: 5px; margin-bottom: 5px; width: 365px;" />
+			</td>
+		</tr>
+		
+		<tr>
+			<td valign="top">
+				<dojo:button id="buttonA"
+					style="font-weight: bold; color: #{ broadcast.buttonTextColor }; margin-bottom: 6px;" 
+					label="I'm listening topic: change-text-color." />
+				<dojo:textBox id="textA" readOnly="true"
+					style="font-weight: bold; color: #{ broadcast.textBoxColor }; width: 360px;"
+					value="I'm listening topic: change-text-color." />
+			</td>
+			
+			<td valign="top">
+				<dojo:textArea id="textB" readOnly="true" rows="3"
+					style="font-weight: bold; color: white; background-color: #{ broadcast.bgColor }; width: 360px;"
+					value="I'm listening topic: change-background-color." />
+			</td>
+		</tr>
+	</table>
+</ui:composition>

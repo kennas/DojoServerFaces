@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>borderContainer nested</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="claro" />
+</h:head>
+<h:body>
+    <dojo:tabContainer style="width:800px;height:600px;">
+        <dojo:borderContainer title="Tab 1"
+            style="border: 2px solid black; width: 90%; height: 500px; padding: 10px;">
+            <dojo:contentPane region="left" style="background-color: #acb386; width: 100px;">
+                left
+            </dojo:contentPane>
+            <dojo:contentPane region="right" style="background-color: #acb386; width: 100px;">
+                right
+            </dojo:contentPane>
+            <dojo:contentPane region="top" style="background-color: #b39b86; height: 100px;">
+                top bar
+            </dojo:contentPane>
+            <dojo:contentPane region="bottom" style="background-color: #b39b86; height: 100px;">
+                bottom bar
+            </dojo:contentPane>
+
+            <dojo:borderContainer region="center" design="sidebar"
+                style="border: 2px solid black; padding: 0px;">
+                <dojo:contentPane region="left" style="background-color: #acb386; width: 100px;">
+                    left
+                </dojo:contentPane>
+                <dojo:contentPane region="right" style="background-color: #acb386; width: 100px;">
+                    right
+                </dojo:contentPane>
+                <dojo:contentPane region="top" style="background-color: #b39b86; height: 100px;">
+                    top bar
+                </dojo:contentPane>
+                <dojo:contentPane region="bottom" style="background-color: #b39b86; height: 100px;">
+                    bottom bar
+                </dojo:contentPane>
+                <dojo:contentPane region="center" style="background-color: #f5ffbf; padding: 10px;">
+                    main panel with <a href="http://www.dojotoolkit.org/">a link</a>.<br />
+                    (to check we're copying children around properly).<br />
+                    <dojo:filteringSelect>
+                        <f:selectItem itemValue="1" itemLabel="foo"/>
+                        <f:selectItem itemValue="2" itemLabel="bar"/>
+                        <f:selectItem itemValue="3" itemLabel="baz"/>
+                    </dojo:filteringSelect>
+                    Here's some text that comes AFTER the combo box.
+                </dojo:contentPane>
+            </dojo:borderContainer>
+        </dojo:borderContainer>
+        <dojo:borderContainer title="Tab 2">
+            <dojo:contentPane region="left" splitter="true" style="background-color: #770; width: 100px;">
+                left
+            </dojo:contentPane>
+            <dojo:contentPane region="right" splitter="true" style="background-color: #077; width: 100px;">
+                right
+            </dojo:contentPane>
+            <dojo:contentPane region="top" splitter="true" style="background-color: #700; height: 100px;">
+                top bar
+            </dojo:contentPane>
+            <dojo:contentPane region="bottom" splitter="true" style="background-color: #007; height: 100px;">
+                bottom bar
+            </dojo:contentPane>
+
+            <dojo:borderContainer region="center" design="sidebar"
+                style="border: 2px solid black; padding: 0px;">
+                <dojo:contentPane region="left" style="background-color: #acb386; width: 100px;">
+                    left
+                </dojo:contentPane>
+                <dojo:contentPane region="right" style="background-color: #acb386; width: 100px;">
+                    right
+                </dojo:contentPane>
+                <dojo:contentPane region="top" style="background-color: #b39b86; height: 100px;">
+                    top bar
+                </dojo:contentPane>
+                <dojo:contentPane region="bottom" style="background-color: #b39b86; height: 100px;">
+                    bottom bar
+                </dojo:contentPane>
+                <dojo:contentPane region="center" style="background-color: #f5ffbf; padding: 10px;">
+                    main panel with <a href="http://www.dojotoolkit.org/">a link</a>.<br />
+                    (to check we're copying children around properly).<br />
+                    <dojo:filteringSelect>
+                        <f:selectItem itemValue="1" itemLabel="foo"/>
+                        <f:selectItem itemValue="2" itemLabel="bar"/>
+                        <f:selectItem itemValue="3" itemLabel="baz"/>
+                    </dojo:filteringSelect>
+                    Here's some text that comes AFTER the combo box.
+                </dojo:contentPane>
+            </dojo:borderContainer>
+        </dojo:borderContainer>
+    </dojo:tabContainer>
+</h:body>
+</html>

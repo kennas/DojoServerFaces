@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<div style="width: 100%">Horizontal Rule are Hash marks for
+	Horizontal Slider <br />
+	<dojo:button label="Usage">
+		<dojo:behaviorShow event="click" target="dia"></dojo:behaviorShow>
+	</dojo:button> <dojo:dialog id="dia" style="width:60%">
+		<table id="usageTable" class="usage">
+			<colgroup>
+				<col width="11%" />
+				<col width="89%" />
+			</colgroup>
+			<tbody valign="top">
+				<tr>
+					<td><strong>count</strong></td>
+					<td>Number of hash marks to generate. Default is 3.</td>
+				</tr>
+				<tr>
+					<td><strong>container</strong></td>
+					<td>For HorizontalSlider, this is either "topDecoration" or
+					"bottomDecoration", and indicates whether this rule goes above or
+					below the slider.</td>
+				</tr>
+				<tr>
+					<td><strong>labels</strong></td>
+					<td>Array of text labels to render - evenly spaced from
+					left-to-right or bottom-to-top. Alternately, minimum and maximum
+					can be specified, to get numeric labels.</td>
+				</tr>
+				<tr>
+					<td><strong>numericMagin</strong></td>
+					<td>Number of generated numeric labels that should be rendered
+					as '' on the ends when labels[] are not specified. Default is 0.</td>
+				</tr>
+				<tr>
+					<td><strong>minimum</strong></td>
+					<td>Leftmost label value for generated numeric labels when
+					labels[] are not specified. Default is 0.</td>
+				</tr>
+				<tr>
+					<td><strong>maximum</strong></td>
+					<td>Rightmost label value for generated numeric labels when
+					labels[] are not specified. Default is 1.</td>
+				</tr>
+			</tbody>
+		</table>
+	</dojo:dialog></div>
+</ui:composition>

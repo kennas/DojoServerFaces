@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<h:panelGrid columns="2">
+		<h:panelGroup layout="block" style="margin-right: 20px;">
+			<dojo:button id="disappearMessageA" label="Disappear the message">
+				<dojo:behaviorSetDisplay value="false" target="messageA" />
+				<dojo:behaviorSetDisabled value="true" target="disappearMessageA" />
+				<dojo:behaviorSetDisabled value="false" target="displayMessageA" />
+			</dojo:button>
+			<dojo:button id="displayMessageA" label="Display the message" disabled="true">
+				<dojo:behaviorSetDisplay value="true" target="messageA" />
+				<dojo:behaviorSetDisabled value="true" target="displayMessageA" />
+				<dojo:behaviorSetDisabled value="false" target="disappearMessageA" />
+			</dojo:button>
+			
+			<hr class="separator" />
+			<p id="messageA" style="text-align: center; background-color: #F3F3F3; padding: 16px;">
+				<strong>Hello DojoServerFaces!</strong>
+			</p>
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block">
+			<dojo:button id="invisibleMessageB" label="Make the message invisible">
+				<dojo:behaviorSetVisible value="false" target="messageB" />
+				<dojo:behaviorSetDisabled value="true" target="invisibleMessageB" />
+				<dojo:behaviorSetDisabled value="false" target="visibleMessageB" />
+			</dojo:button>
+			<dojo:button id="visibleMessageB" label="Make the message visible" disabled="true">
+				<dojo:behaviorSetVisible value="true" target="messageB" />
+				<dojo:behaviorSetDisabled value="true" target="visibleMessageB" />
+				<dojo:behaviorSetDisabled value="false" target="invisibleMessageB" />
+			</dojo:button>
+			
+			<hr class="separator" />
+			<p id="messageB" style="text-align: center; background-color: #F3F3F3; padding: 16px;">
+				<strong>Have a good day!</strong>
+			</p>	
+		</h:panelGroup>
+	</h:panelGrid>
+</ui:composition>

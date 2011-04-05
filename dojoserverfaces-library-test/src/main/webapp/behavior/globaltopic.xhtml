@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>pane/div</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra" />
+</h:head>
+<h:body>
+	<div id="loader">
+	<div id="loaderInner">Loading ... what!</div>
+	</div>
+	<h:panelGrid cols="2">
+		<dojo:button label="Click Me" type="button">
+			<dojo:behaviorAlert message="click!" />
+			<dojo:behaviorBroadcast topic="my-topic">
+				</dojo:broadcast>
+		</dojo:button>
+	</h:panelGrid>
+
+	<dojo:listener topic="my-topic">
+		<dojo:behaviorAlert message="my topic" />
+	</dojo:listener>
+	<dojo:listener topic="my-topic-2">
+		<dojo:behaviorAlert message="my topic 2" />
+	</dojo:listener>
+	<dojo:listener topic="dojoserverfaces-init-complete">
+		<dojo:behaviorBroadcast topic="my-topic-2">
+			</dojo:broadcast>
+	</dojo:listener>
+</h:body>
+</html>

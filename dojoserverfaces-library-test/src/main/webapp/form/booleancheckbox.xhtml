@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:jd="http://www.dojoserverfaces.org/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>booleanCheckBox</title>
+	<link rel="stylesheet" type="text/css"
+		href="/DojoServerFaces/resource.dojoserverfaces.org/dojotoolkit/dijit/themes/tundra/tundra.css" />
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+</h:head>
+<h:body styleClass="tundra">
+	<h:form styleClass="form" id="form1">
+
+		<h:panelGrid columns="6">
+			<c:forEach items="${store.record.options}" var="option">
+				<h:outputText value="${option.name}" />
+				<jd:booleanCheckBox value="${option.selected}" />
+			</c:forEach>
+		</h:panelGrid>
+		<br />
+		<p>selected</p>
+		<ul>
+			<ui:repeat var="item" items="#{store.record.selectedOptions}">
+				<li><h:outputText value="#{item}" /></li>
+			</ui:repeat>
+		</ul>
+
+
+		<h:messages />
+		<br />
+		<h:commandButton />
+
+		<br />
+
+	</h:form>
+</h:body>
+</html>

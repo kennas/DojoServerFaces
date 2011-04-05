@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.dojoserverfaces</groupId>
+  <artifactId>dojoserverfaces-annotations</artifactId>
+  <packaging>jar</packaging>
+  <name>DojoServerFaces - Annotations</name>
+
+  <parent>
+    <groupId>org.dojoserverfaces</groupId>
+    <artifactId>dojoserverfaces</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <dependencies>
+  	<dependency>
+  		<groupId>${project.groupId}</groupId>
+  		<artifactId>dojoserverfaces-constants</artifactId>
+  		<version>${project.version}</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,33 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testTargetAjaxRefresh() -->
+	<div class="testCase">
+		<f:subview id="targetAjaxRefresh">
+		    <span class="testTitle">Test case where the component which was not rendered earlier gets rendered as a target of Ajax refresh</span>
+			<h:panelGrid columns="2">
+				<h:panelGroup id="panelGroupTargetAjax">
+					<h:panelGrid rendered="#{booleanRadioButtonBean.render}" id="panelGrid">
+						<jd:booleanRadioButton id="widgetTargetAjax" value="#{booleanRadioButtonBean.targetAjax.data}"></jd:booleanRadioButton>
+					</h:panelGrid>
+				</h:panelGroup>
+				<h:commandButton id="toggleButton" value="#{booleanRadioButtonBean.toggleMessage}" action="#{booleanRadioButtonBean.togglePanel}">
+					<f:ajax execute="@this" render="@this :form:targetAjaxRefresh:panelGroupTargetAjax" />
+				</h:commandButton>
+			</h:panelGrid>
+			<span class="testTitle">Test case where the component's displayed value is changed as a target of Ajax refresh</span>
+			<h:panelGrid columns="2">
+				<h:panelGroup id="panelGroupTargetAjaxRefresh">
+					<jd:booleanRadioButton id="widgetTargetAjaxRefresh" value="#{booleanRadioButtonBean.targetAjaxRefresh.data}"></jd:booleanRadioButton>
+				</h:panelGroup>
+				<h:commandButton id="btnChangeTargetAjaxRefreshValue" value="Change Text" action="#{booleanRadioButtonBean.changeTargetAjaxRefresh}">
+					<f:ajax execute="@this" render=":form:targetAjaxRefresh:panelGroupTargetAjaxRefresh" />
+				</h:commandButton>
+			</h:panelGrid>
+		</f:subview>
+	</div>
+</ui:composition>

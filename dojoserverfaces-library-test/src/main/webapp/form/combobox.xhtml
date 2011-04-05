@@ -1,0 +1,66 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:dojo="http://www.dojoserverfaces.org/core">
+
+<h:head>
+	<title>comboBox</title>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra" />
+</h:head>
+<h:body>
+	<h:form styleClass="form" id="form1">
+		<h:panelGrid colums="3">
+			<dojo:comboBox placeHolder="placeholder" id="box1" value="#{store.record.amount}"
+				options="#{store.record.savedAmountValues}">
+			</dojo:comboBox>
+			<h:outputText id="box1Output" value="#{store.record.amount}">
+			</h:outputText>
+		</h:panelGrid>
+		<h:commandButton action="#{store.record.doActionAndStayHere}"></h:commandButton>
+		<h:messages></h:messages>
+		<br />
+		<ui:remove>
+		#{"fire ajax update of text:"}
+		<h:panelGrid columns="1">
+				<dojo:comboBox id="box2" value="#{store.record.text}" options="#{store.record.savedTextValues}">
+					<f:ajax execute="@this" render="box2Output" />
+				</dojo:comboBox>
+				<h:outputText id="box2Output" value="#{store.record.text}">
+				</h:outputText>
+			</h:panelGrid>
+		</ui:remove>
+		#{"target of ajax update:"}
+		<h:panelGrid id="grid2" columns="1">
+			<dojo:button label="ajax the following combobox component">
+				<f:ajax render="boxajax" />
+			</dojo:button>
+			<dojo:comboBox id="boxajax" value="#{store.record.text}" options="#{store.record.savedTextValues}">
+				<f:ajax execute="@this" render="grid2" />
+			</dojo:comboBox>
+			<h:outputText id="boxajaxOutput" value="#{store.record.text}">
+			</h:outputText>
+		</h:panelGrid>
+		<ui:remove>
+		#{"target of ajax update:"}
+		<h:panelGrid id="grid22" columns="1">
+				<dojo:button label="ajax the following combobox component">
+					<f:ajax render="boxajax2" />
+				</dojo:button>
+				<dojo:textBox id="boxajax2" value="#{store.record.text}">
+					<f:ajax execute="@this" render="grid22" disabled="true" />
+				</dojo:textBox>
+				<h:outputText id="boxajaxOutput2" value="#{store.record.text}">
+				</h:outputText>
+			</h:panelGrid>
+		</ui:remove>
+
+	</h:form>
+</h:body>
+</html>

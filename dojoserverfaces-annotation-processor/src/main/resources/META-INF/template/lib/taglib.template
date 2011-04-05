@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<facelet-taglib 
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+    version="2.0">
+    
+    <namespace>${context.namespace}</namespace>
+    
+<%
+for (artifact in context.artifacts) {
+	String artifactTagName = artifact.getTagName();
+	if (artifact.artifactType.toString().equals("BEHAVIOR")) {
+		artifactTagName = "behavior" + 
+			Character.toUpperCase(artifactTagName.charAt(0)) + artifactTagName.substring(1);
+	}
+%>
+    <tag>
+        <description>${artifact.xmlDescription}</description>
+        <display-name>${artifact.displayName}</display-name>
+        <tag-name>${artifactTagName}</tag-name>    
+<% 
+    if (artifact.artifactType.toString().equals("COMPONENT")) { 
+%>        
+        <component>
+            <component-type>${artifact.uniqueId}</component-type>
+            <renderer-type>dojoserverfaces.renderer.default</renderer-type>
+        </component>
+<%
+    }
+    else if (artifact.artifactType.toString().equals("BEHAVIOR")) { %>        
+        <behavior>
+            <behavior-id>${artifact.uniqueId}</behavior-id>
+        </behavior>
+<%
+    }
+    else if (artifact.artifactType.toString().equals("FACELET_TAG")) { %>        
+        <handler-class>
+            ${artifact.className}
+        </handler-class>
+<%
+    } 
+    for (attribute in artifact.attributes) {
+%>
+        <attribute>
+            <description>${attribute.xmlDescription}</description>
+            <display-name>${attribute.name}</display-name>
+            <name>${attribute.name}</name>
+            <required>${attribute.required}</required>
+            <type>${attribute.type}</type>
+        </attribute>
+<%        
+    } %>
+    </tag>
+<% 
+} 
+%>
+
+</facelet-taglib>

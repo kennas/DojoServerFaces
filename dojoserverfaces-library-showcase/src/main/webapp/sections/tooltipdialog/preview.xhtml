@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<dojo:dropDownButton label="Register">
+		<dojo:tooltipDialog>
+			<dojo:tableContainer id="tableContainer" 
+				cols="1" orientation="horiz" spacing="1"
+				style="width: 100%;"
+			>
+				<dojo:textBox title="First Name: " value="#{ record.firstName }" />
+				<dojo:textBox title="Last Name: " value="#{ record.lastName }" />
+				<dojo:booleanCheckBox title="Employed: " value="#{ record.employed }" />
+				<dojo:numberSpinner 
+					title="Age(1-100):" value="#{ record.age }"
+					min="1" max="100"
+				/>
+			</dojo:tableContainer>
+		</dojo:tooltipDialog>
+	</dojo:dropDownButton>
+</ui:composition>

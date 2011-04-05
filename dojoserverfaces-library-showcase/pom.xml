@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.dojoserverfaces</groupId>
+	<artifactId>dojoserverfaces-library-showcase</artifactId>
+	<version>1.0.0</version>
+	<packaging>war</packaging>
+	<name>DojoServerFaces - Library Showcase App</name>
+
+	<parent>
+		<artifactId>dojoserverfaces</artifactId>
+		<groupId>org.dojoserverfaces</groupId>
+		<version>1.0.0</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>dojoserverfaces-library-assembly</artifactId>
+			<version>${project.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+		  <groupId>${project.groupId}</groupId>
+		  <artifactId>dojoserverfaces-dojo</artifactId>
+		  <version>${project.version}</version>
+		  <type>war</type>
+		  <scope>runtime</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<packagingExcludes>WEB-INF/lib/dojoserverfaces-annotations-1.0.0.jar,WEB-INF/lib/dojoserverfaces-core-1.0.0.jar,WEB-INF/lib/dojoserverfaces-library-definition-1.0.0.jar</packagingExcludes>
+					<overlays>
+					  <overlay>
+					    <groupId>${project.groupId}</groupId>
+					    <artifactId>dojoserverfaces-dojo</artifactId>
+					  </overlay>
+					</overlays>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

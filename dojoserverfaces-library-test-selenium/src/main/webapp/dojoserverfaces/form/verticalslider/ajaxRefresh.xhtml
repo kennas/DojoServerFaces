@@ -1,0 +1,28 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testAjaxRefresh() -->
+	<div class="testCase">
+	<f:subview id="ajaxRefresh"> 
+		<span class="testTitle">Test case which ajaxically updates ManagedBean's value bound to the component</span>
+		<h:panelGrid>
+			<jd:verticalSlider id="widgetAjaxCall" style="height: 300px;" minimum="0" maximum="100" value="#{verticalSliderBean.beanBoundValue.data}" showButtons="true" discreteValues="21" pageIncrement="20" clickSelect="true" slideDuration="500">
+				<jd:verticalRuleLabels id="leftLabels" style="width: 1.2em; fontSize: 75%;" count="6" numericMargin="1" container="leftDecoration" />
+				<jd:verticalRule id="leftRule" count="6" style="width: 5px;" container="leftDecoration" />
+				<jd:verticalRule id="rightRule" count="5" style="width: 5px;" container="rightDecoration" />
+				<jd:verticalRuleLabels id="rightLabels" style="width: 1em; fontSize: 75%;" container="rightDecoration" />
+				<f:ajax execute="widgetAjaxCall" render="outputAjaxCall" event="change" />
+			</jd:verticalSlider>
+			<br></br>
+			Slider's Value:<h:outputText id="outputAjaxCall" value="#{verticalSliderBean.beanBoundValue.data}.0%" />
+			<br></br>
+			<jd:button id="disableButton" label="Disable slider" showLabel="true" onClick="dijit.byId('form:initialValues:widgetSimple').setAttribute('disabled', true);dijit.byId('form:initialValues:disableButton').setAttribute('disabled',true);dijit.byId('form:initialValues:enableButton').setAttribute('disabled',false);"></jd:button>
+			<jd:button id="enableButton" label="Enable slider" disabled="true" showLabel="true" onClick="dijit.byId('form:initialValues:widgetSimple').setAttribute('disabled', false);dijit.byId('form:initialValues:disableButton').setAttribute('disabled',false);dijit.byId('form:initialValues:enableButton').setAttribute('disabled',true);"></jd:button>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition>

@@ -1,0 +1,102 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+
+<h:head>
+	<title>textbox</title>
+	<meta
+		http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="claro" />
+</h:head>
+<h:body>
+	<p>---------------------------------------------------------------------- <h:outputText
+		id="outer"
+		value="#{store.record.text}" /> ---------------------------------------</p>
+	<h:form id="F3">
+		<h:panelGrid
+			id="grid3"
+			columns="3">
+			<p>#{"textBox value for ajax update"} ---- #{store.record.text}</p>
+
+			<h:inputText
+				id="boxvalue3"
+				value="#{store.record.text}">
+			</h:inputText>
+
+			<dojo:button
+				label="btn"
+				id="hbtn3">
+				<f:ajax
+					execute="boxvalue3 hbtn3"
+					event="click"
+					render=":F1:opt1" />
+			</dojo:button>
+			<h:outputText
+				id="opt3"
+				value="#{store.record.text}"></h:outputText>
+		</h:panelGrid>
+
+
+		<h:commandButton
+			id="hcbn3"
+			value="HBC"
+			type="button">
+			<f:ajax
+				execute="@form"
+				render=":F1:opt1 :F1:grid1 :outer"></f:ajax>
+		</h:commandButton>
+	</h:form>
+	-------------------------------------------------------------------		
+		<h:form id="F1">
+		<h:panelGrid
+			id="grid1"
+			columns="3">
+			<p>#{"textBox onBlur for ajax update"} ---- #{store.record.text}</p>
+			<h:inputText
+				id="boxvalue1"
+				value="#{store.record.text}">
+			</h:inputText>
+			<dojo:button
+				label="btn1"
+				id="hbtn1">
+				<f:ajax
+					execute="F1 hbtn1"
+					event="click"
+					render=":F3:grid3" />
+			</dojo:button>
+
+			<h:outputText
+				id="opt1"
+				value="#{store.record.text}" />
+		</h:panelGrid>
+		<h:commandButton
+			id="hcb1"
+			value="f2231"
+			type="button">
+			<f:ajax
+				execute="boxvalue1 hcb1"
+				render=":F3:grid3" />
+		</h:commandButton>
+	</h:form>
+	<h:outputText id="outputGrid" />
+	<h:form id="myForm">
+		<dojo:button
+			label="click me"
+			id="btn1">
+			<f:ajax render=":outputGrid" />
+		</dojo:button>
+	</h:form>
+</h:body>
+</html>

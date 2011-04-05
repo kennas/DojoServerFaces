@@ -1,0 +1,99 @@
+.claro {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: .688em;
+	color: #131313;
+}
+
+table.usage {
+	border-collapse: separate;
+}
+
+table.usage td {
+	border: 1px solid #C0C0C0;
+	border-color: -moz-use-text-color -moz-use-text-color #AAAAAA;
+	border-style: none none solid;
+	border-width: 0 0 1px;
+	padding: 3px 8px 3px 5px;
+}
+
+#prompt .usage-button {
+	display: block;
+}
+
+#prompt .behavior td {
+	vertical-align: top;
+}
+
+#prompt .behavior .usage-button {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#prompt .behavior .tag-desc {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 8px;
+	margin-right: 8px;
+	width: 600px;
+}
+
+.box {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	vertical-align: text-bottom;
+}
+
+#main {
+	width: 960px;
+	margin: 8px auto;
+}
+
+#main .dijitContentPane {
+	text-align: center;
+	font-weight: bold;
+}
+
+#main>div {
+	border: 1px solid #D9D9D9;
+	margin: 18px;
+	padding: 18px;
+}
+
+#dojoserverfaces_script {
+	display: none;
+}
+
+form .label {
+	display: inline-block;
+	width: 100px;
+}
+
+form input[type=text],form select {
+	width: 150px;
+}
+
+form textarea {
+	width: 350px;
+}
+
+.separator {
+	border: none;
+	border-top: 1px solid #D9D9D9;
+	width: 100%;
+}
+
+.justLabels-labelCell {
+	background-color: lightgrey;
+	padding-left: 5px;
+}
+
+.labelsAndValues-labelCell {
+	background-color: lightgrey;
+	padding-left: 5px;
+}
+
+.labelsAndValues-valueCell {
+	padding-left: 20px;
+	background-color: lightblue;
+}

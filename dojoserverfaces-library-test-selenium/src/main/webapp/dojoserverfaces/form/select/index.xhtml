@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+<ui:composition template="../../_template.xhtml">
+	<ui:define name="topContent">
+		<f:event type="preRenderView" listener="#{selectBean.preRenderViewHandler}" />
+	</ui:define>
+	<ui:define name="title">DojoServerFaces Select</ui:define>
+	<ui:define name="header">
+		<div class="header">DojoServerFaces Select</div>
+	</ui:define>
+	<ui:define name="buttons"> 
+		<button onclick="return false;" id="getFocusBtn">Get Focus</button>
+		<!-- A submit button to submit the form -->
+		<h:commandButton value="Submit" id="submitBtn" />
+		<!-- A button to invoke an action which sets the values of both the webapp init parameter 'javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL' and 'javax.faces.VALIDATE_EMPTY_FIELDS' to false  -->
+		<h:commandButton value="SetValidationParamsFalse" id="setSessionBtn" action="#{selectBean.setValidationSession}" />
+		<!-- A button to invoke an action which sets the value of webapp init paramter 'javax.faces.PARTIAL_STATE_SAVING' to false (default is true for JSF2.0 projects) -->
+		<h:commandButton value="SetPartialStateSavingFalse" id="setPartialStateSavingBtn" action="#{selectBean.setPartialStateSaving}" />
+	</ui:define>
+	<ui:define name="tableContent">		
+		<ui:include src="initialValues.xhtml" />
+		<ui:include src="ajaxRefresh.xhtml" />
+		<ui:include src="insideContainer.xhtml" />
+		<ui:include src="insideRepeatable.xhtml" />
+		<ui:include src="targetAjaxRefresh.xhtml" />
+		<ui:include src="stateSaving.xhtml" />
+		<ui:include src="clientEvents.xhtml" />
+		<ui:include src="readonlyDisabled.xhtml" />
+		<ui:include src="converter.xhtml" />	
+		<ui:include src="validators.xhtml" />
+	    <ui:include src="valueChangeListener.xhtml" />
+		<ui:include src="facesMessageRegistration.xhtml" />
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,27 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testReadOnlyDisabled() -->	
+	<div class="testCase">
+		<f:subview id="readonlyDisabled">
+		    <span class="testTitle"> Test case to check that readonly component cannot be edited</span>
+			<h:panelGrid columns="1"> 		
+				<jd:multiSelect id="widgetReadOnly" value="#{multiSelectBean.widgetReadOnly.data}" readOnly="true">
+					<f:selectItems value="#{multiSelectBean.values}"/>
+				</jd:multiSelect>
+				</h:panelGrid>
+			<span class="testTitle">Test case to check that disabled component can not react on user clicks</span>
+			<h:panelGrid columns="1"> 
+				<jd:multiSelect id="widgetDisabled" value="#{multiSelectBean.widgetDisabled.data}" disabled="true"
+					onclick="document.getElementById('form:readonlyDisabled:outputDisabled').innerHTML='Oops'">
+					<f:selectItems value="#{multiSelectBean.values}"/>
+				</jd:multiSelect>
+				<h:outputText id="outputDisabled" value="Should not change on client event"></h:outputText>
+			</h:panelGrid>
+		</f:subview>
+	</div>
+</ui:composition>

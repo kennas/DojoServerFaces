@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>pane/div</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra" />
+</h:head>
+<h:body>
+	<h:form id="form1">
+		<h:panelGrid cols="1">
+			<dojo:button type="button" label="(display(none)) pane/div">
+				<dojo:behaviorSetDisplay value="false" target="paneOne" />
+				<dojo:behaviorSetDisplay value="false" target="testDiv" />
+			</dojo:button>
+			<dojo:button type="button" label="(display(default)) pane/div">
+				<dojo:behaviorSetDisplay value="true" target="paneOne" />
+				<dojo:behaviorSetDisplay value="true" target="testDiv" />
+			</dojo:button>
+			<dojo:button type="button" label="Visible(hidden)) pane/div">
+				<dojo:behaviorSetVisible value="false" target="paneOne" />
+				<dojo:behaviorSetVisible value="false" target="testDiv" />
+			</dojo:button>
+			<dojo:button type="button" label="Visible(visible)) pane/div">
+				<dojo:behaviorSetVisible value="true" target="paneOne" />
+				<dojo:behaviorSetVisible value="true" target="testDiv" />
+			</dojo:button>
+			<h:panelGroup>
+				<h:outputText value="pane:" />
+				<dojo:contentPane id="paneOne" title="pane title" ariaDescribedBy="">
+					<h:outputText value="pane description" />
+					<h:commandButton>
+						<f:ajax />
+					</h:commandButton>
+				</dojo:contentPane>
+				<h:outputText value="end pane" />
+			</h:panelGroup>
+			<h:panelGroup>
+				<h:outputText value="div:" />
+				<div id="testDiv">div content</div>
+				<h:outputText value="end div" />
+			</h:panelGroup>
+		</h:panelGrid>
+
+	</h:form>
+	<ui:debug hotkey="v" />
+</h:body>
+</html>

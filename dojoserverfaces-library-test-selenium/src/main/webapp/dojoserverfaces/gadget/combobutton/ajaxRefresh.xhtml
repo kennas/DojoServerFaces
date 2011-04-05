@@ -1,0 +1,28 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testAjaxRefresh() -->
+	<div class="testCase">
+	<f:subview id="ajaxRefresh">
+		<span class="testTitle">Test case which ajaxically updates ManagedBean's value bound to the component</span>
+		<h:panelGrid columns="1">
+		    <jd:comboButton id="widgetAjaxCall" label="Click" showLabel="true" style="width: 100px; height: 20px;">
+				<jd:menu>
+					<jd:menuItem label="cut" id="menuitem1">
+		    			<f:ajax event="click" render="text1" />
+					</jd:menuItem> 
+					<jd:menuItem label="copy" id="menuitem2">
+						<f:ajax event="click" render="text2" />
+					</jd:menuItem>
+				</jd:menu>
+	        </jd:comboButton>
+	        <h:outputText value="Cut time is: #{comboButtonBean.currentTime}" id="text1"/>
+			<h:outputText value="Copy time is: #{comboButtonBean.currentTime}" id="text2"/>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition>

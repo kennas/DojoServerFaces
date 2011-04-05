@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<dojo:comboStore id="showcaseWeather" 
+		options="#{ stopEvent.showcaseWeather }" />
+	
+	<h:form id="form">
+		<h:panelGrid id="grid" columns="1">
+			<h:panelGroup>
+				<h:outputLabel for="comboBox" value="What's the weather like today? " />
+				<dojo:comboBox id="comboBox" 
+					store="showcaseWeather" value="#{ stopEvent.weather }"
+					highlightMatch="first" selectOnClick="true" trim="true"
+				/>
+			</h:panelGroup>
+			
+			<h:panelGroup id="submitButton">
+				<dojo:button id="submit" label="Submit" 
+					type="submit" rendered="#{ not stopEvent.stop }" />
+				<dojo:button id="submitStopped" 
+					label="Submit (Attached with stopEvent behavior)" 
+					type="submit" rendered="#{ stopEvent.stop }">
+					<dojo:behaviorStopEvent />
+				</dojo:button>
+			</h:panelGroup>
+			
+			<h:panelGroup>
+				<dojo:booleanCheckBox id="checkBox" value="#{ stopEvent.stop }">
+					<f:ajax execute="@form" render="submitButton" />
+				</dojo:booleanCheckBox>
+				<h:outputLabel for="checkBox" value="Attach stopEvent behavior?" />
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
+
+	<hr class="separator" />
+	<div>
+		Any plans? 
+		<h:outputText style="font-weight: bold;"
+			rendered="#{ not empty stopEvent.willDo }" value="- #{ stopEvent.willDo }" />
+	</div>
+</ui:composition>

@@ -1,0 +1,24 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
+	<div class="testCase">
+	<f:subview id="initialValues">
+		<span class="testTitle">Test case to display a value bound to a managed bean</span>
+		<h:panelGrid columns="1">
+			<jd:contentPane id="widgetSimple" style="border: 2px solid black;" tooltip="This is Content Pane." doLayout="true" href="" errorMessage="ContentPane couldn't be loaded." loadingMessage="ContentPane is Loading." extractContent="true" preLoad="true" preventCache="true" refreshOnShow="true">
+				<jd:contentPane style="border: 2px solid black;">
+				   <h:outputText value="#{contentPaneBean.beanBoundValue.data}"/>
+				</jd:contentPane>
+				<jd:contentPane style="border: 2px solid black;">
+				   <h:outputText value="#{contentPaneBean.beanBoundValue.data}"/>
+				</jd:contentPane>
+			</jd:contentPane>
+		</h:panelGrid>
+	</f:subview> 
+	</div>
+</ui:composition>

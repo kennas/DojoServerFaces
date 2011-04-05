@@ -1,0 +1,16 @@
+/*******************************************************************************
+ * 	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+ * 	Available via Academic Free License >= 2.1 OR the modified BSD license.
+ * 	see: http://dojotoolkit.org/license for details
+ *******************************************************************************/
+package org.dojoserverfaces.tests.layout.tabcontainer;
+
+import org.dojoserverfaces.tests.widget.interaction.AbstractSingleValuedWidgetInteraction;
+import org.dojoserverfaces.tests.widget.values.WidgetValues;
+
+public class TabContainerInteraction extends
+        AbstractSingleValuedWidgetInteraction {
+    public TabContainerInteraction(WidgetValues widgetValues) {
+        super(widgetValues);
+    }
+}

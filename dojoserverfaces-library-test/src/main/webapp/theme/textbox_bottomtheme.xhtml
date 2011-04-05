@@ -1,0 +1,35 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+
+<h:head>
+	<title>textbox</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+</h:head>
+<h:body>
+	<h:form styleClass="form" id="form1">
+		<h:panelGrid colums="3">
+            <dojo:textBox  id="box1" value="#{store.record.count}" selectOnClick="true" title="box1 title" tooltip="box1 tooltip">
+			</dojo:textBox>
+			<h:outputText id="box1Output" value="#{store.record.count}">
+			</h:outputText>
+		</h:panelGrid>
+		<dojo:button action="#{store.record.doAction}" label="submit" type="submit"></dojo:button>
+		<dojo:button action="#{store.record.doAction}" label="immediate" immediate="true" type="submit"></dojo:button>
+		<h:messages></h:messages>
+	</h:form>
+    <dojo:theme name="tundra"/>
+    <dojo:theme name="nihilo"/>
+</h:body>
+</html>

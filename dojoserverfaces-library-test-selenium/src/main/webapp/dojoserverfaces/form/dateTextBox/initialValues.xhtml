@@ -1,0 +1,34 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
+	<div class="testCase"> 
+	<f:subview id="initialValues">
+	    <span class="testTitle">Test Simple Value</span>
+		<h:panelGrid columns="1">
+			<jd:dateTextBox id="widgetSimple" value="2010-01-20" pattern="yyyy-MM-dd" locale="en">
+			</jd:dateTextBox>
+		</h:panelGrid>
+		<span class="testTitle">Test case to display a value bound to a managed bean</span>
+		<h:panelGrid columns="1">
+			<jd:dateTextBox id="widgetBeanBoundValue" value="#{dateTextBoxBean.beanBoundValue.data}" pattern="yyyy-MM-dd" locale="en">
+				<f:convertDateTime pattern="yyyy-MM-dd"></f:convertDateTime>
+			</jd:dateTextBox>
+		</h:panelGrid>
+		<span class="testTitle">Test case to display value bound to a managed bean (page compile time evaluation)</span>
+		<h:panelGrid columns="1">
+			<jd:dateTextBox id="widgetBeanBoundValueImmediate" value="${dateTextBoxBean.beanBoundValue.data}" pattern="yyyy-MM-dd" locale="en">
+				<f:convertDateTime pattern="yyyy-MM-dd"></f:convertDateTime>
+			</jd:dateTextBox>
+		</h:panelGrid>
+		<span class="testTitle">Test case where rendered attribute of the component is set to false</span>
+		<h:panelGrid columns="1">
+			<jd:dateTextBox id="widgetRenderedFalse" value="2010-01-20" rendered="false" pattern="yyyy-MM-dd" locale="en">
+			</jd:dateTextBox>
+		</h:panelGrid>
+	</f:subview></div>
+</ui:composition>

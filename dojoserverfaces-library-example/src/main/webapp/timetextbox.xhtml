@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:dojo="http://www.dojoserverfaces.org/core"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:src="http://java.sun.com/jsf/composite/taglib/source"
+    template="/template/component-test.xhtml"
+>
+    <ui:param
+        name="component"
+        value="timeTextBox"
+    />
+    <ui:define name="attributes">
+        <h:panelGrid
+            columns="3"
+            id="propertyGrid"
+        >
+            <h:outputLabel for="disabled1">
+                <h:outputText value="disabled:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="disabled1"
+                value="#{timeTextBox.disabled}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="readOnly1">
+                <h:outputText value="readOnly:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="readOnly1"
+                value="#{timeTextBox.readOnly}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="required1">
+                <h:outputText value="required:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="required1"
+                value="#{timeTextBox.required}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="am1">
+                <h:outputText value="am:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="am1"
+                value="#{timeTextBox.am}"
+            />
+            <h:outputLabel for="pm1">
+                <h:outputText value="pm:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="pm1"
+                value="#{timeTextBox.pm}"
+            >
+            </h:inputText>
+            <h:outputLabel for="clickableIncrement1">
+                <h:outputText value="clickableIncrement:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="clickableIncrement1"
+                value="#{timeTextBox.clickableIncrement}"
+            />
+            <h:outputLabel for="visibleIncrement1">
+                <h:outputText value="visibleIncrement:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="visibleIncrement1"
+                value="#{timeTextBox.visibleIncrement}"
+            />
+            <h:outputLabel for="visibleRange1">
+                <h:outputText value="visibleRange:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="visibleRange1"
+                value="#{timeTextBox.visibleRange}"
+            />
+            <h:outputLabel for="locale1">
+                <h:outputText value="locale:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="locale1"
+                value="#{timeTextBox.locale}"
+            >
+            </h:inputText>
+            <h:outputLabel for="pattern1">
+                <h:outputText value="pattern:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="pattern1"
+                value="#{timeTextBox.pattern}"
+            >
+            </h:inputText>
+            <h:outputLabel for="placeHolder1">
+                <h:outputText value="placeHolder:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="placeHolder1"
+                value="#{timeTextBox.placeHolder}"
+            >
+            </h:inputText>
+            <h:outputLabel for="selectOnClick1">
+                <h:outputText value="selectOnClick:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:selectBooleanCheckbox
+                styleClass="selectBooleanCheckbox"
+                id="selectOnClick1"
+                value="#{timeTextBox.selectOnClick}"
+            >
+            </h:selectBooleanCheckbox>
+            <h:outputLabel for="onBlur1">
+                <h:outputText value="onBlur:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onBlur1"
+                value="#{timeTextBox.onBlur}"
+            >
+            </h:inputText>
+            <h:outputLabel for="onChange1">
+                <h:outputText value="onChange:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onChange1"
+                value="#{timeTextBox.onChange}"
+            >
+            </h:inputText>
+            <h:outputLabel for="onClick1">
+                <h:outputText value="onClick:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onClick1"
+                value="#{timeTextBox.onClick}"
+            >
+            </h:inputText>
+            <h:outputLabel for="onFocus1">
+                <h:outputText value="onFocus:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onFocus1"
+                value="#{timeTextBox.onFocus}"
+            >
+            </h:inputText>
+            <h:outputLabel for="onSelect1">
+                <h:outputText value="onSelect:"></h:outputText>
+            </h:outputLabel>
+            <span>&#160;</span>
+            <h:inputText
+                styleClass="inputText"
+                id="onSelect1"
+                value="#{timeTextBox.onSelect}"
+            >
+            </h:inputText>
+        </h:panelGrid>
+    </ui:define>
+    <ui:define name="test">
+        <h:panelGrid columns="1">
+            <h:outputText value="Long" />
+            <dojo:timeTextBox binding="#{timeTextBox.wrapper[0]}" 
+                value="#{store.record.time}"
+            >
+            </dojo:timeTextBox>
+        </h:panelGrid>
+    </ui:define>
+    <ui:define name="testOutput">
+        <h:panelGrid columns="1">
+            <h:outputText value="time: #{store.record.time}">
+                <f:convertDateTime type="time" />
+            </h:outputText>
+        </h:panelGrid>
+    </ui:define>
+    <ui:define name="source">
+        <src:tagNoChildren name="dojo:timeTextBox">
+            <f:facet name="attributes">
+                <src:attributeExpression
+                    name="value"
+                    value="store.record.time"
+                />
+                <src:attribute
+                    name="readOnly"
+                    value="#{timeTextBox.readOnly}"
+                />
+                <src:attribute
+                    name="disabled"
+                    value="#{timeTextBox.disabled}"
+                />
+                <src:attribute
+                    name="required"
+                    value="#{timeTextBox.required}"
+                />
+                <src:attribute
+                    name="am"
+                    value="#{timeTextBox.am}"
+                />
+                <src:attribute
+                    name="pm"
+                    value="#{timeTextBox.pm}"
+                />
+                <src:attribute
+                    name="clickableIncrement"
+                    value="#{timeTextBox.clickableIncrement}"
+                />
+                <src:attribute
+                    name="visibleIncrement"
+                    value="#{timeTextBox.visibleIncrement}"
+                />
+                <src:attribute
+                    name="visibleRange"
+                    value="#{timeTextBox.visibleRange}"
+                />
+                <src:attribute
+                    name="locale"
+                    value="#{timeTextBox.locale}"
+                />
+                <src:attribute
+                    name="pattern"
+                    value="#{timeTextBox.pattern}"
+                />
+                <src:attribute
+                    name="placeHolder"
+                    value="#{timeTextBox.placeHolder}"
+                />
+                <src:attribute
+                    name="selectOnClick"
+                    value="#{timeTextBox.selectOnClick}"
+                />
+                <src:attribute
+                    name="onBlur"
+                    value="#{timeTextBox.onBlur}"
+                />
+                <src:attribute
+                    name="onFocus"
+                    value="#{timeTextBox.onFocus}"
+                />
+                <src:attribute
+                    name="onChange"
+                    value="#{timeTextBox.onChange}"
+                />
+            </f:facet>
+        </src:tagNoChildren>
+    </ui:define>
+</ui:composition>

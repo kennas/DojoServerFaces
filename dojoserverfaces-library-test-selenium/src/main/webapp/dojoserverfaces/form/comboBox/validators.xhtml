@@ -1,0 +1,90 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testValidators() -->
+	<div class="testCase">
+		<f:subview id="validators">
+		    <span class="testTitle">Test Required validator (Also test empty submit condition)</span>
+			<h:panelGrid columns="2">
+				<!-- Test case for empty condition and with required validator-->
+				<!-- Test once for setting the following attributes true and then false 
+				javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL
+	  				javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
+	         		 -->
+				<jd:comboBox options="#{comboBoxBean.values.data}" id="widgetEmptyRequiredValidator" value="#{comboBoxBean.emptyRequiredValidator.data}">
+					<f:validateRequired />
+				</jd:comboBox>
+				<h:panelGroup>Submitted value is null ? <h:outputText id="outputEmptyRequiredValidator"
+						value="#{comboBoxBean.emptyRequiredValidator.data == null}"></h:outputText>
+				</h:panelGroup>
+				<h:panelGroup>ValidationMessage: <h:message for="widgetEmptyRequiredValidator" errorClass="errorMessage"
+						id="errMsgTextBoxEmptyRequiredValidator" />
+				</h:panelGroup>
+			</h:panelGrid>
+			<span class="testTitle">With Single Validator (Also test empty submit condition)</span>
+			<h:panelGrid columns="2">
+				<!-- Test case for empty condition and with a non-required validator -->
+				<!-- Test once for setting the following attributes true and then false 
+				javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL
+	  				javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
+	         		 -->
+				<h:panelGroup>Do not enter "b" 
+					<jd:comboBox options="#{comboBoxBean.values.data}" value="#{comboBoxBean.lengthSingleValidator.data}" id="widgetSingleValidator">
+						<f:validator validatorId="dojoserverfaces.ExcludeValidator" />
+						<f:attribute name="dojoserverfaces.ExcludeValidator.index" value="1"></f:attribute>
+					</jd:comboBox>
+				</h:panelGroup>
+				<h:panelGroup>Submitted value is null ?
+					<h:outputText id="outputSingleValidator" value="#{comboBoxBean.lengthSingleValidator.data == null}" />
+				</h:panelGroup>
+				<h:panelGroup>
+					ValidationMessage: 
+					<h:message for="widgetSingleValidator" errorClass="errorMessage" id="errMsgTextBoxSingleValidator" />
+				</h:panelGroup>				
+			</h:panelGrid>
+			<span class="testTitle">With required attribute</span>
+			<h:panelGrid columns="1">
+				<!-- Test case after setting the required attribute value to true -->
+				<h:panelGroup>Enter a value: <jd:comboBox options="#{comboBoxBean.values.data}" value="#{comboBoxBean.widgetRequiredAttr.data}" id="widgetRequiredAttr" required="true">
+					</jd:comboBox>
+				</h:panelGroup>
+				<h:panelGroup>ValidationMessage: <h:message for="widgetRequiredAttr" errorClass="errorMessage" id="errMsgTextBoxRequiredAttr" />
+				</h:panelGroup>
+			</h:panelGrid>
+			<span class="testTitle">With Multiple Validators</span>
+			<h:panelGrid columns="1">
+				<h:panelGroup>Do not leave empty, Do not enter "b"<jd:comboBox options="#{comboBoxBean.values.data}" value="#{comboBoxBean.widgetMultipleValidators.data}"
+						id="widgetMultipleValidators" required="true">
+						<f:validator validatorId="dojoserverfaces.ExcludeValidator" />
+						<f:attribute name="dojoserverfaces.ExcludeValidator.index" value="1"></f:attribute>
+					</jd:comboBox>
+				</h:panelGroup>
+				<h:panelGroup>ValidationMessage: <h:message for="widgetMultipleValidators" errorClass="errorMessage"
+						id="errMsgTextBoxMultipleValidators" />
+				</h:panelGroup>
+			</h:panelGrid>
+			<span class="testTitle">With validator attribute</span>
+			<h:panelGrid columns="1">
+				<h:panelGroup>Only "a" can be set<jd:comboBox options="#{comboBoxBean.values.data}" value="#{comboBoxBean.widgetValidatorAttr.data}" id="widgetValidatorAttr"
+						validator="#{comboBoxBean.validateWidgetValidatorAttr}">
+					</jd:comboBox>
+				</h:panelGroup>
+				<h:panelGroup>ValidationMessage: <h:message for="widgetValidatorAttr" errorClass="errorMessage" id="errMsgTextBoxValidatorAttr" />
+				</h:panelGroup>
+			</h:panelGrid>
+			<span class="testTitle">With JSR303 Bean Validation</span>
+			<h:panelGrid columns="1">
+				<h:panelGroup>Only "a" can be set <jd:comboBox options="#{comboBoxBean.values.data}" value="#{comboBoxBean.widgetBeanValidation}"
+						id="widgetBeanValidation">
+					</jd:comboBox>
+				</h:panelGroup>
+				<h:panelGroup>ValidationMessage: <h:message for="widgetBeanValidation" errorClass="errorMessage" id="errMsgTextBoxBeanValidation" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</f:subview>
+	</div>
+</ui:composition>

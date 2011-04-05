@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.dojoserverfaces</groupId>
+  <artifactId>dojoserverfaces-dojo</artifactId>
+  <packaging>war</packaging>
+  <name>DojoServerFaces - Dojo</name>
+
+  <parent>
+    <groupId>org.dojoserverfaces</groupId>
+    <artifactId>dojoserverfaces</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <version>1.4</version>
+        <executions>
+          <execution>
+            <id>get-dijit</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>checkout</goal>
+            </goals>
+            <configuration>
+              <checkoutDirectory>${project.build.directory}/dojo-sources/dojotoolkit/dijit</checkoutDirectory>
+              <connectionUrl>scm:svn:http://svn.dojotoolkit.org/src/dijit/trunk</connectionUrl>
+            </configuration>
+          </execution>
+          <execution>
+            <id>get-dojo</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>checkout</goal>
+            </goals>
+            <configuration>
+              <checkoutDirectory>${project.build.directory}/dojo-sources/dojotoolkit/dojo</checkoutDirectory>
+              <connectionUrl>scm:svn:http://svn.dojotoolkit.org/src/dojo/trunk</connectionUrl>
+            </configuration>
+          </execution>
+          <execution>
+            <id>get-dojox</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>checkout</goal>
+            </goals>
+            <configuration>
+              <checkoutDirectory>${project.build.directory}/dojo-sources/dojotoolkit/dojox</checkoutDirectory>
+              <connectionUrl>scm:svn:http://svn.dojotoolkit.org/src/dojox/trunk</connectionUrl>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1.1</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+          <warSourceDirectory>${project.build.directory}/dojo-sources</warSourceDirectory>
+          <packagingExcludes>**/tests/**/*,**/tests</packagingExcludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,26 @@
+<items>
+  <item>
+    <name>item0</name>
+    <value>value0</value>
+  </item>
+  <item>
+    <name>item1</name>
+    <value>value1</value>
+  </item>
+  <item>
+    <name>item2</name>
+    <value>value2</value>
+  </item>
+  <item>
+    <name>item3</name>
+    <value>value3</value>
+  </item>
+  <item>
+    <name>item4</name>
+    <value>value4</value>
+  </item>
+  <item>
+    <name>item5</name>
+    <value>value5</value>
+  </item>
+</items>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<h:panelGrid columns="2">
+		<h:panelGroup style="margin-right: 20px;" layout="block">
+			<dojo:button id="enableBtnA" label="Enable Button A" disabled="true">
+				<dojo:behaviorSetDisabled value="false" target="buttonA" />
+				<dojo:behaviorSetDisabled value="true" target="enableBtnA" />
+				<dojo:behaviorSetDisabled value="false" target="disableBtnA" />
+			</dojo:button>
+			<br />
+			<dojo:button id="disableBtnA" label="Disable Button A">
+				<dojo:behaviorSetDisabled value="true" target="buttonA" />
+				<dojo:behaviorSetDisabled value="true" target="disableBtnA" />
+				<dojo:behaviorSetDisabled value="false" target="enableBtnA" />
+			</dojo:button>
+			
+			<hr class="separator" />
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block">
+			<dojo:button id="enableTextB" label="Enable TextBox B" disabled="true">
+				<dojo:behaviorSetDisabled value="false" target="textB" />
+				<dojo:behaviorSetDisabled value="true" target="enableTextB" />
+				<dojo:behaviorSetDisabled value="true" target="writableTextB" />
+				
+				<dojo:behaviorSetDisabled value="false" target="disableTextB" />
+				<dojo:behaviorSetDisabled value="false" target="readonlyTextB" />
+			</dojo:button>
+			<dojo:button id="writableTextB" label="Make TextBox B Writable" disabled="true">
+				<dojo:behaviorSetReadonly value="false" target="textB" />
+				<dojo:behaviorFocus target="textB" />
+				<dojo:behaviorSetDisabled value="true" target="writableTextB" />
+				<dojo:behaviorSetDisabled value="true" target="enableTextB" />
+				
+				<dojo:behaviorSetDisabled value="false" target="readonlyTextB" />
+				<dojo:behaviorSetDisabled value="false" target="disableTextB" />
+			</dojo:button>
+			<br />
+			<dojo:button id="disableTextB" label="Disable TextBox B">
+				<dojo:behaviorSetDisabled value="true" target="textB" />
+				<dojo:behaviorSetDisabled value="true" target="disableTextB" />
+				
+				<dojo:behaviorSetDisabled value="false" target="enableTextB" />
+				<dojo:behaviorSetDisabled value="true" target="writableTextB" />
+				<dojo:behaviorSetDisabled value="true" target="readonlyTextB" />
+			</dojo:button>
+			<dojo:button id="readonlyTextB" label="Make TextBox B Readonly">
+				<dojo:behaviorSetReadonly value="true" target="textB" />
+				<dojo:behaviorFocus target="textB" />
+				<dojo:behaviorSetDisabled value="true" target="readonlyTextB" />
+				
+				<dojo:behaviorSetDisabled value="false" target="writableTextB" />
+				<dojo:behaviorSetDisabled value="true" target="enableTextB" />
+				<dojo:behaviorSetDisabled value="true" target="disableTextB" />
+			</dojo:button>
+			
+			<hr class="separator" />
+		</h:panelGroup>
+		
+		<dojo:button id="buttonA" label="Button A" />
+		
+		<dojo:textBox id="textB" placeHolder="TextBox B" />
+	</h:panelGrid>
+</ui:composition>

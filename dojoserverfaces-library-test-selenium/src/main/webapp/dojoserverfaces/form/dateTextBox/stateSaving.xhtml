@@ -1,0 +1,37 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testStateSaving() -->
+	<div class="testCase"> 
+	<f:subview id="stateSaving">
+	    <span class="testTitle">State Saving - Transient</span>
+		<h:panelGrid columns="3">
+			<!-- Test case to check that the state of transient component is not saved -->
+			<!-- Test the same again after setting javax.faces.PARTIAL_STATE_SAVING to false -->
+			<jd:dateTextBox id="widgetTransient" binding="#{dateTextBoxBean.widgetTransient}" transient="true"
+				value="#{dateTextBoxBean.widgetTransientValue.data}" pattern="yyyy-MM-dd" locale="en">
+				<f:convertDateTime pattern="yyyy-MM-dd"></f:convertDateTime>
+			</jd:dateTextBox>
+			<h:commandButton id="testTransientStateBtn" value="testTransientState" action="#{dateTextBoxBean.testTransientState}" />
+			<h:panelGroup>isTransient <h:outputText id="outputTransientState" value="#{dateTextBoxBean.transientState}">
+			</h:outputText>
+			</h:panelGroup>
+		</h:panelGrid>
+		<span class="testTitle">State Saving - Full</span>
+		<h:panelGrid columns="3">
+			<!-- Test case to check that the state of a non-transient component is saved -->
+			<!-- Test the same again after setting javax.faces.PARTIAL_STATE_SAVING to false -->
+			<jd:dateTextBox id="widgetFull" binding="#{dateTextBoxBean.widgetFull}" value="#{dateTextBoxBean.widgetFullValue.data}" pattern="yyyy-MM-dd" locale="en">
+				<f:convertDateTime pattern="yyyy-MM-dd"></f:convertDateTime>
+			</jd:dateTextBox>
+			<h:commandButton id="testFullStateBtn" value="testFullState" action="#{dateTextBoxBean.testFullState}" />
+			<h:panelGroup>State Saved ? <h:outputText id="outputFullState" value="#{dateTextBoxBean.fullState}">
+			</h:outputText>
+			</h:panelGroup>
+		</h:panelGrid>
+	</f:subview></div>
+</ui:composition>

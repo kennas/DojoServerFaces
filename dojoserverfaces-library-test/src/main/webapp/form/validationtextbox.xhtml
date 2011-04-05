@@ -1,0 +1,55 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+
+<h:head>
+	<title>validationTextBox</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra"/>
+</h:head>
+<h:body>
+	<h:form styleClass="form" id="form1">
+		<h:panelGrid colums="3">
+            <dojo:validationTextBox id="box1" 
+            	regExp="\d{5}"  
+                placeHolder="placeHolder (a*b)"
+                required="true"
+                message="message text"
+                promptMessage="prompt message text"
+                requiredMessage="required message text"
+                validatorMessage="validation message text"
+                title="box1 title" tooltip="box1 tooltip">
+			</dojo:validationTextBox>
+			<h:outputText id="box1Output" value="#{store.record.count}">
+			</h:outputText>
+		</h:panelGrid>
+		<h:panelGrid colums="3">
+            <dojo:validationTextBox id="box11" 
+            	regExp="1*2"  
+                disabled="true"
+                message="message text (no placeholder specified)"
+                promptMessage="prompt message text"
+                requiredMessage="required message text"
+                validatorMessage="validation message text"
+                title="box1 title" tooltip="box1 tooltip">
+			</dojo:validationTextBox>
+			<h:outputText id="box11Output" value="#{store.record.count}">
+			</h:outputText>
+		</h:panelGrid>
+		<dojo:button action="#{store.record.doAction}" label="submit" type="submit"></dojo:button>
+		<dojo:button action="#{store.record.doAction}" label="immediate" immediate="true" type="submit"></dojo:button>
+		<h:messages></h:messages>
+	</h:form>
+</h:body>
+</html>

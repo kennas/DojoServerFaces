@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<dojo:dialog id="dione">
+	not actually cutting anything, just a test!
+	</dojo:dialog>
+	<dojo:dialog id="ditwo">
+	not actually copying anything, just a test!
+	</dojo:dialog>
+	<h:panelGrid id="grid3" columns="3">
+		<dojo:editor name="edn" isTabIndent="#{editor.isTabIndent}"
+			disableSpellCheck="#{editor.disableSpellCheck}"
+			plugins="#{editor.plugins}">
+		</dojo:editor>
+	</h:panelGrid>
+</ui:composition>

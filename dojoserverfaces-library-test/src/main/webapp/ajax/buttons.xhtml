@@ -1,0 +1,100 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+
+<h:head>
+	<title>ajax buttons</title>
+	<meta
+		http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="claro" />
+</h:head>
+<h:body>
+	<h:form id="form1">
+		<h:panelGrid
+			id="targetGrid"
+			columns="1">
+h
+			<h:inputText
+				id="boxvalue3"
+				value="#{store.record.text}">
+			</h:inputText>
+
+			<dojo:button
+				label="#{store.record.hitMe}"
+				id="buttonOne">
+			</dojo:button>
+
+            <dojo:dropDownButton
+                id="dropDown"
+                label="#{store.record.hitMe}"
+                showLabel="true">
+                <dojo:menu style="display: none;">
+                    <dojo:menuItem
+                        label="Copy"
+                        iconClass="dijitEditorIcon dijitEditorIconCopy">
+                        <dojo:show
+                            event="click"
+                            target="copyDialog" />
+                    </dojo:menuItem>
+                    <dojo:menuItem
+                        label="Cut"
+                        iconClass="dijitEditorIcon dijitEditorIconCut">
+                        <dojo:show
+                            event="click"
+                            target="cutDialog" />
+                    </dojo:menuItem>
+                </dojo:menu>
+            </dojo:dropDownButton>
+
+            <dojo:comboButton
+                id="comboButton"
+                label="#{store.record.hitMe}"
+                showLabel="true">
+                <dojo:menu style="display: none;">
+                    <dojo:menuItem
+                        label="Copy"
+                        iconClass="dijitEditorIcon dijitEditorIconCopy">
+                        <dojo:show
+                            event="click"
+                            target="copyDialog" />
+                    </dojo:menuItem>
+                    <dojo:menuItem
+                        label="Cut"
+                        iconClass="dijitEditorIcon dijitEditorIconCut">
+                        <dojo:show
+                            event="click"
+                            target="cutDialog" />
+                    </dojo:menuItem>
+                </dojo:menu>
+            </dojo:comboButton>
+
+
+            <dojo:button
+                label="ajax the button">
+                <f:ajax render="buttonOne" />
+            </dojo:button>
+
+            <dojo:button
+                label="ajax the dropDown">
+                <f:ajax render="dropDown" />
+            </dojo:button>
+
+			<h:outputText
+				id="outputText"
+				value="#{store.record.text}"></h:outputText>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

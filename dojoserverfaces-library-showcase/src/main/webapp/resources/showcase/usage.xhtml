@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<cc:interface>
+		<cc:attribute name="tagName" required="true" />
+		<cc:attribute name="tagAttrs" required="false" />
+		<cc:attribute name="showUsageButton" required="false" default="true" />
+		<cc:attribute name="usageButtonClass" required="false" default="usage-button" />
+		<cc:attribute name="tagDescClass" required="false" default="tag-desc" />
+	</cc:interface>
+	
+	<cc:implementation>
+		<c:set var="tagKey" value="tag_#{ cc.attrs.tagName }" />
+		<span class="#{ cc.attrs.tagDescClass }">#{ dojoServerFacesUsage[tagKey] }</span>
+		
+		<c:if test="#{ cc.attrs.showUsageButton }">
+			<c:set var="tagAttrs" value="#{ cc.attrs.tagAttrs }" />
+			<c:if test="#{ empty tagAttrs }">
+				<c:set var="attrKey" value="#{ tagKey }_attributes" />
+				<c:set var="tagAttrs" value="#{ dojoServerFacesUsage[attrKey] }" />
+			</c:if>
+			
+			<dojo:button label="Usage" styleClass="#{ cc.attrs.usageButtonClass }">
+				<dojo:behaviorShow event="click" target="#{cc.clientId}:usageDialog" />
+			</dojo:button>
+		
+			<dojo:dialog id="usageDialog" title="Usage" style="width: 60%;">
+			<table id="usageTable" class="usage">
+				<colgroup>
+					<col width="11%" />
+					<col width="89%" />
+				</colgroup>
+				<tbody valign="top">
+				
+				<c:forEach items="#{ fn:split(tagAttrs, ' ') }" var="attr">
+					<c:set var="attrKey" value="#{ tagKey }_#{ attr }" />
+					<tr>
+						<td><strong>#{ attr }</strong></td>
+						<td>#{ dojoServerFacesUsage[attrKey] }</td>
+					</tr>
+				</c:forEach>
+				
+				</tbody>
+			</table>
+			</dojo:dialog>
+		</c:if>
+	</cc:implementation>
+</html>

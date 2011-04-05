@@ -1,0 +1,30 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
+	<div class="testCase">
+	<f:subview id="initialValues">
+		<span class="testTitle">Test case to display a value bound to a managed bean</span>
+		<h:panelGrid columns="3">
+			<jd:textArea id="richtext" value="#{richTextEditorBean.beanBoundValue.data}" />
+		    <jd:button id="toEditorButton" label="textarea to editor">
+			    <jd:behaviorSet event="click" target="widgetSimple" value="richtext.value" />
+		    </jd:button>
+		    <jd:button id="toTextAreaButton" label="editor to textarea">
+			    <jd:behaviorSet event="click" target="richtext" value="widgetSimple.value" />
+		    </jd:button>
+		    <jd:behaviorSet event="submit" target="richtext" value="widgetSimple.value" />
+		    <jd:editor id="widgetSimple" inheritWidth="false" name="description" height="300px" minHeight="100px" isTabIndent="false" disableSpellCheck="false" customUndo="true" editActionInterval="5" style="width: 500px">
+		        <jd:behaviorSet event="loadDeferred" target="@this" value="richtext.value" />
+	        </jd:editor>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<dojo:selectItemStore id="orientations">
+		<f:selectItems value="#{ tableContainer.orientations }" />
+	</dojo:selectItemStore>
+	<dojo:selectItemStore id="customClasses">
+		<f:selectItems value="#{ tableContainer.customClasses }" />
+	</dojo:selectItemStore>
+
+	<dojo:tableContainer
+		cols="3" orientation="horiz" spacing="1"
+		style="width: 100%;"
+	>
+		<dojo:textBox title="cols: " value="#{ tableContainer.cols }" />
+		<dojo:textBox title="spacing: " value="#{ tableContainer.spacing }" />
+		<dojo:textBox title="labelWidth: " value="#{ tableContainer.labelWidth }" />
+		
+		<dojo:filteringSelect title="orientation: " 
+			store="orientations" value="#{ tableContainer.orientation }" />
+		
+		<dojo:filteringSelect title="customClass: " 
+			store="customClasses" value="#{ tableContainer.customClass }" />
+	</dojo:tableContainer>
+	
+	<hr class="separator" />
+	<dojo:tableContainer
+		cols="3" orientation="horiz" spacing="1"
+		style="width: 100%;"
+	>
+		<dojo:booleanCheckBox title="showLabels" value="#{ tableContainer.showLabels }" />
+	</dojo:tableContainer>
+	
+	<hr id="hr" class="separator" />
+	<dojo:button label="Apply">
+		<f:ajax execute="@form" event="click" render=":tableContainer" />
+	</dojo:button>
+</ui:composition>

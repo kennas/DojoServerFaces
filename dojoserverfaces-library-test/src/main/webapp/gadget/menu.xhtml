@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>dialog</title>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra" />
+</h:head>
+<h:body>
+	<h:form styleClass="form" id="form1">
+		<dojo:button id="button1" label="button one">
+		</dojo:button>
+		<dojo:button id="button2" label="button two">
+		</dojo:button>
+	<dojo:menu connectTo="button2" style="display:none">
+		<dojo:menuItem label="cut" iconClass="dijitEditorIcon dijitEditorIconCut"
+			onClick="alert('not actually cutting anything, just a test!')"></dojo:menuItem>
+		<dojo:menuItem label="copy" iconClass="dijitEditorIcon dijitEditorIconCopy"
+			onClick="alert('not actually copying anything, just a test!')"></dojo:menuItem>
+
+		<dojo:menuSeparator></dojo:menuSeparator>
+		<dojo:popupMenuItem label="333">
+			<dojo:menu>
+				<dojo:menuItem label="sub1"></dojo:menuItem>
+				<dojo:menuItem label="333"></dojo:menuItem>
+			</dojo:menu>
+		</dojo:popupMenuItem>
+	</dojo:menu>
+		<br />
+
+	</h:form>
+	<ui:debug hotkey="v" />
+</h:body>
+</html>

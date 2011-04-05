@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>syntaxHighlight</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra" />
+	<style type="text/css">
+		/* CSS rules for debugging */
+		pre code[class]:after {
+			content: 'highlight: ' attr(class);
+			display: block;
+			text-align: right;
+			font-size: smaller;
+			color: #CCC;
+			background: white;
+			border-top: solid 1px;
+			padding-top: 0.5em;
+		}
+		
+		pre code {
+			display: block;
+		}
+		
+		code {
+			background: #F0F0F0;
+		}
+		
+		pre code,.ruby .subst {
+			color: black;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css"
+		href="/eclipse-dojotoolkit/dojotoolkit/dojox/highlight/resources/highlight.css" />
+
+</h:head>
+<h:body>
+	<h:form styleClass="form" id="form1">
+		<script type="text/javascript">	dojo.require("dojox.highlight");-->
+<!--	dojo.require("dojox.highlight.languages._all");-->
+<!--	dojo.require("dojox.highlight.languages.pygments.html");</script>
+		<dojo:syntaxHighlight title="pane one" lang="html">
+			&lt;dojo:syntaxHighlight title="pane one" lang="java">
+			&lt;/dojo:syntaxHighlight>
+		</dojo:syntaxHighlight>
+		<br />
+
+	</h:form>
+	<ui:debug hotkey="v" />
+</h:body>
+</html>

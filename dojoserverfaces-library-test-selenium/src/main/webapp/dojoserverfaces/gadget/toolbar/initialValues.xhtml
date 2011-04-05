@@ -1,0 +1,55 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
+	<div class="testCase">
+	<f:subview id="initialValues">
+		<span class="testTitle">Test case to display a value bound to a managed bean</span>
+		<h:panelGrid columns="1">
+			<jd:toolbar id="widgetSimple" style="width: 400px;" title="DojoServerFaces Toolbar" showTitle="true" >
+			    <jd:dialog id="copyDialog" title="Prompt" style="width: 200px; height: 100px;">
+					<h3 style="text-align: center;">Copy!</h3>
+				</jd:dialog> 
+				<jd:dialog id="cutDialog" title="Prompt" style="width: 200px; height: 100px;">
+					<h3 style="text-align: center;">Cut!</h3>
+				</jd:dialog>
+				<jd:dialog id="pasteDialog" title="Prompt" style="width: 200px; height: 100px;">
+					<h3 style="text-align: center;">Paste!</h3>
+				</jd:dialog>
+				<jd:dialog id="boldDialog" title="Prompt" style="width: 200px; height: 100px;">
+					<h3 style="text-align: center;">Bold!</h3>
+				</jd:dialog>
+				<jd:dialog id="italicDialog" title="Prompt" style="width: 200px; height: 100px;">
+					<h3 style="text-align: center;">Italic!</h3>
+				</jd:dialog>
+				<jd:dialog id="underlineDialog" title="Prompt" style="width: 200px; height: 100px;">
+					<h3 style="text-align: center;">Underline!</h3>
+				</jd:dialog>
+			    <jd:button label="Cut" id="cut" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconCut">
+			        <jd:behaviorShow event="click" target="cutDialog" />
+			    </jd:button>
+			    <jd:button label="Copy" id="copy" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconCopy">
+			        <jd:behaviorShow event="click" target="copyDialog" />
+			    </jd:button>
+			    <jd:button label="Paste" id="paste" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconPaste">
+			        <jd:behaviorShow event="click" target="pasteDialog" />
+			    </jd:button>
+			    <jd:toolbarSeparator></jd:toolbarSeparator>
+			    <jd:button label="Bold" id="bold" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconBold">
+			        <jd:behaviorShow event="click" target="boldDialog" />
+			    </jd:button>
+			    <jd:button label="Italic" id="italic" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconItalic">
+			        <jd:behaviorShow event="click" target="italicDialog" />
+			    </jd:button>
+			    <jd:button label="Underline" id="underline" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconUnderline">
+			        <jd:behaviorShow event="click" target="underlineDialog" />
+			    </jd:button>
+			</jd:toolbar>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition>

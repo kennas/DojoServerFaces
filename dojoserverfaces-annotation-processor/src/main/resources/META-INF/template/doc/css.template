@@ -1,0 +1,22 @@
+
+.inner {
+     margin: 15px;
+}
+
+#content {
+     bottom: 0;
+     left: 250px;
+     overflow: auto;
+     position: fixed;
+     right: 0;
+     top: 0;
+}
+
+#navBar {
+     bottom: 0;
+     left: 0;
+     overflow: hidden;
+     position: absolute;
+     top: 0;
+     width: 250px;
+}

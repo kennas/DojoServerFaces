@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:composite="http://java.sun.com/jsf/composite"
+    xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+<composite:interface>
+    <composite:attribute name="name" required="true" />
+    <composite:facet name="attributes"></composite:facet>
+</composite:interface>
+<composite:implementation>
+    <table>
+        <tr>
+            <td colspan="2"><span style='font-size: 10.0pt; font-family: "Courier New"; color: #3F8080'>&lt;#{cc.attrs.name}</span>
+            <composite:renderFacet name="attributes" /> <span
+                style='font-size: 10.0pt; font-family: "Courier New"; color: #3F8080'>&gt;</span></td>
+        </tr>
+        <tr>
+            <td width="10px"></td>
+            <td><composite:insertChildren /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><span style='font-size: 10.0pt; font-family: "Courier New"; color: #3F8080'>&lt;/#{cc.attrs.name}&gt;</span></td>
+        </tr>
+    </table>
+</composite:implementation>
+</html>

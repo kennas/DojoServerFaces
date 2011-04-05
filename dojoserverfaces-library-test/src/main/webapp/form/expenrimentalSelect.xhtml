@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:data="http://www.dojoserverfaces.org/core/data"
+	xmlns:jd="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>filteringSelect</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<jd:theme name="tundra" />
+</h:head>
+<h:body>
+	<jd:itemFileReadStore id="st" url="../store/countries.json"></jd:itemFileReadStore>
+	<h:form styleClass="form" id="form1">
+		<jd:booleanCheckBox title="autoComplete"
+			value="#{dataGrid.singleClickEdit}"></jd:booleanCheckBox>
+		<jd:button label="apply">
+			<f:ajax execute="@form" render=":fs"></f:ajax>
+		</jd:button>
+	</h:form>
+	<jd:experimentalFilteringSelect
+		autoComplete="#{dataGrid.singleClickEdit}" id="fs" store="st"
+		searchAttr="name"></jd:experimentalFilteringSelect>
+
+</h:body>
+</html>

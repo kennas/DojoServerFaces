@@ -1,0 +1,24 @@
+
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"><head> 
+    <title>debug timetextbox</title> 
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="/eclipse-dojotoolkit/dojotoolkit/dijit/themes/tundra/tundra.css" /> 
+<script type="text/javascript"> 
+//<![CDATA[
+var djConfig={locale:"en-us",isDebug:true};
+//]]>
+</script><script type="text/javascript" src="/eclipse-dojotoolkit/dojotoolkit/dojo/dojo.js"></script></head><body class="tundra"> 
+<form id="form1" name="form1" method="post" action="/eclipse-dojoserverfaces-library-test/debug/timetextbox.faces" class="form" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="form1" value="form1" /> 
+<input type="text" id="form1:j_idt8"/><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="3102892464492807706:-4418655671196496240" autocomplete="off" /> 
+</form><div id="dojoserverfaces_script"><script type="text/javascript"> 
+//<![CDATA[
+
+
+dojo.require("dijit.form.TimeTextBox");dojo.addOnLoad(function(){try{var w;w=dijit.byId("form1:j_idt8");if(null!=w){w.destroyRecursive();}new dijit.form.TimeTextBox({constraints:{clickableIncrement:"T00:20:00",timePattern:"HH:mm:ss"},required:false,name:"form1:j_idt8",value:dojo.date.stamp.fromISOString("T01:00:00", new Date())},"form1:j_idt8").startup();}catch(e){console.log(e);}});
+
+ 
+//]]>
+</script></div></body> 
+</html>

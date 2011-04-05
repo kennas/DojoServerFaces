@@ -1,0 +1,82 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInsideRepeatable() -->
+	<div class="testCase">
+		<f:subview id="insideRepeatable">
+		    <span class="testTitle">Used within container that controls and repeats its rendering, rendered=true</span>
+			<h:panelGrid columns="1">
+				<h:dataTable id="dataTable1" value="#{textBoxBean.dataTableValues}" var="item">
+					<h:column>
+						<h:inputText value="#{item.data}"></h:inputText>
+					</h:column>
+				</h:dataTable>
+			</h:panelGrid>
+			<span class="testTitle">Used within container that controls and repeats its rendering, rendered=false</span>
+			<h:panelGrid columns="1">
+				<h:dataTable id="dataTable2" value="#{textBoxBean.dataTableValues}" var="item" rendered="false">
+					<h:column>
+						<h:inputText value="#{item.data}"></h:inputText>
+					</h:column>
+				</h:dataTable>
+			</h:panelGrid>
+			<span class="testTitle">Test case where the component is used inside a container, which controls and repeats its rendering, (test values
+			submission)</span>
+			<h:panelGrid columns="3">
+				<h:dataTable id="dataTableValuesSubmit" value="#{textBoxBean.dataTableValuesSubmit}" var="item">
+					<h:column>
+						<h:inputText value="#{item.data}">
+						</h:inputText>
+					</h:column>
+				</h:dataTable>
+				<h:commandButton value="Submit Values" id="submitTableValuesBtn" action="#{textBoxBean.submitDataTableValues}" />
+				<h:panelGroup id="panelGroupDataTableValuesSubmit">
+					<ui:repeat value="#{textBoxBean.outputDataTableValuesSubmit}" var="item">
+						<h:outputText value="#{item.data}" />
+						<f:verbatim>&amp;nbsp;</f:verbatim>
+					</ui:repeat>
+				</h:panelGroup>
+			</h:panelGrid>
+			<span class="testTitle">Used within container that controls and repeats its rendering, (values submission using f:ajax)</span>
+			<h:panelGrid columns="2">
+				<h:dataTable id="dataTableAjax" value="#{textBoxBean.dataTableAjaxValues}" var="item">
+					<h:column>
+						<h:inputText value="#{item.data}">
+							<f:ajax execute="@this" render=":form:insideRepeatable:panelGroupAjax" event="change" />
+						</h:inputText>
+					</h:column>
+				</h:dataTable>
+				<h:panelGroup id="panelGroupAjax">
+					<ui:repeat id="outputDataTableAjax" value="#{textBoxBean.dataTableAjaxValues}" var="item">
+						<h:outputText value="#{item.data}" />
+						<f:verbatim>&amp;nbsp;</f:verbatim>
+					</ui:repeat>
+				</h:panelGroup>
+			</h:panelGrid>
+			<span class="testTitle">Repeatable with f:ajax and multiple components (test values submission using f:ajax)</span>
+			<h:panelGrid columns="2">
+				<h:dataTable id="dataTableMultiComp" value="#{textBoxBean.dataTableMultiCompValues}" var="item">
+					<h:column>
+						<h:inputText value="#{item.data}">
+							<f:ajax execute="@this" render=":form:insideRepeatable:panelGroupMultiAjax" event="change" />
+						</h:inputText>
+					</h:column>
+					<h:column>
+						<h:outputText value="#{item.data}">
+						</h:outputText>
+					</h:column>
+				</h:dataTable>
+				<h:panelGroup id="panelGroupMultiAjax">
+					<ui:repeat id="outputDataTableMultiComp" value="#{textBoxBean.dataTableMultiCompValues}" var="item">
+						<h:outputText value="#{item.data}" />
+						<f:verbatim>&amp;nbsp;</f:verbatim>
+					</ui:repeat>
+				</h:panelGroup>
+			</h:panelGrid>
+		</f:subview>
+	</div>
+</ui:composition>

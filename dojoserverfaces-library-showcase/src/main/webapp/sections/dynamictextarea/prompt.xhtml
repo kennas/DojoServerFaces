@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<div style="width: 100%">A simple multi-line text input area. Its
+	rows will grow automatically <br />
+	<dojo:button label="Usage">
+		<dojo:behaviorShow event="click" target="dia"></dojo:behaviorShow>
+	</dojo:button> <dojo:dialog id="dia">
+		<table id="usageTable" class="usage">
+			<colgroup>
+				<col width="11%" />
+				<col width="89%" />
+			</colgroup>
+			<tbody valign="top">
+				<tr>
+					<td><strong>required</strong></td>
+					<td>Indicates a value is required to be submitted for this
+					component.</td>
+				</tr>
+				<tr>
+					<td><strong>disabled</strong></td>
+					<td>Whether or not this component is disabled.</td>
+				</tr>
+
+				<tr>
+					<td><strong>maxLength</strong></td>
+					<td>The maximum length of input to be allowed by the client.</td>
+				</tr>
+				<tr>
+					<td><strong>trim</strong></td>
+					<td>Indication of whether or not leading and trailing
+					whitespace are trimmed from the input field on the client.</td>
+				</tr>
+				<tr>
+					<td><strong>cols</strong></td>
+					<td>The width of the text area.</td>
+				</tr>
+				<tr>
+					<td><strong>selectOnClick</strong></td>
+					<td>Indication that all text should be selected when field
+					receives focus with mouse</td>
+				</tr>
+				<tr>
+					<td><strong>readOnly</strong></td>
+					<td>Whether or not this component is read-only.</td>
+				</tr>
+				<!-- 	<tr>
+						<td><strong>onBlur</strong></td>
+						<td>The event handler script to execute when the field loses focus.</td>
+					</tr>
+					<tr>
+						<td><strong>onFocus</strong></td>
+						<td>The event handler script to execute when the field gains focus.</td>
+					</tr>
+					<tr>
+						<td><strong>onChange</strong></td>
+						<td>The event handler script to execute when the field value changes. This
+      may be immediate of when the field loses focus.
+						</td>
+					</tr>
+					<tr>
+						<td><strong>onSelect</strong></td>
+						<td>The event handler script to execute when text in the field is selected.</td>
+					</tr>
+					 -->
+			</tbody>
+		</table>
+	</dojo:dialog></div>
+
+</ui:composition>

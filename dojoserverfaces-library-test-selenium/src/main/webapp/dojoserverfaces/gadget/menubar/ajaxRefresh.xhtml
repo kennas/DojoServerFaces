@@ -1,0 +1,44 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testAjaxRefresh() -->
+	<div class="testCase">
+	<f:subview id="ajaxRefresh">
+		<span class="testTitle">Test case which ajaxically updates ManagedBean's value bound to the component</span>
+		<h:panelGrid columns="1">
+		    <jd:dialog id="dione" title="Prompt"><h3 style="text-align: center;">not actually cutting anything, just a test!</h3></jd:dialog>
+	        <jd:dialog id="ditwo" title="Prompt"><h3 style="text-align: center;">not actually copying anything, just a test!</h3></jd:dialog>
+	        <jd:dialog id="dithree" title="Prompt"><h3 style="text-align: center;">not actually saving anything, just a test!</h3></jd:dialog>
+			<jd:menuBar id="widgetAjaxCall" popupDelay="50" style="width: 400px;">
+				<jd:menuBarItem id="menuitem1" label="save" disabled="false" tabIndex="1">
+				    <f:ajax event="click" render="text1" />
+				</jd:menuBarItem> 
+				<jd:menuBarItem label="paste" disabled="true" tabIndex="1"></jd:menuBarItem>
+				<jd:popupMenuBarItem label="sub-MenuBar" disabled="false" tabIndex="1">
+					<jd:menuBar popupDelay="50">
+						<jd:menuBarItem disabled="true" label="SMB1" tabIndex="1"></jd:menuBarItem>
+						<jd:menuBarItem label="SMB2" disabled="false" tabIndex="1"></jd:menuBarItem>
+					</jd:menuBar>
+				</jd:popupMenuBarItem>
+				<jd:popupMenuBarItem label="sub-Menu" disabled="false" tabIndex="1">
+					<jd:menu popupDelay="50" connectTo="dione ditwo">
+						<jd:menuItem label="cut" id="menuitem2" disabled="false" tabIndex="1" iconClass="dijitEditorIcon dijitEditorIconCut">
+							<f:ajax event="click" render="text2" />
+						</jd:menuItem>
+						<jd:menuItem label="copy" id="menuitem3" disabled="false" tabIndex="1" iconClass="dijitEditorIcon dijitEditorIconCopy">
+							<f:ajax event="click" render="text3" />
+						</jd:menuItem>
+					</jd:menu>
+				</jd:popupMenuBarItem>
+		    </jd:menuBar>
+		    <h:outputText value="Save time is: #{menubarBean.currentTime}" id="text1"/>
+			<h:outputText value="Cut time is: #{menubarBean.currentTime}" id="text2"/>
+			<h:outputText value="Copy time is: #{menubarBean.currentTime}" id="text3"/>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition>

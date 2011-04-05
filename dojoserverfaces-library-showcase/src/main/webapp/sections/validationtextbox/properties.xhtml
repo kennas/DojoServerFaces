@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<dojo:selectItemStore id="showcasePositions">
+		<f:selectItems value="#{ validationTextBox.showcasePositions }" />
+	</dojo:selectItemStore>
+
+	<dojo:tableContainer
+		cols="3" orientation="horiz" spacing="1"
+		style="width: 100%;"
+	>
+		<dojo:textBox title="regExp: " value="#{ validationTextBox.regExp }" />
+		<dojo:textBox title="promptMessage: " value="#{ validationTextBox.promptMessage }" />
+		<dojo:textBox title="validatorMessage: " value="#{ validationTextBox.validatorMessage }" />
+		<dojo:textBox title="requiredMessage: " value="#{ validationTextBox.requiredMessage }" />
+		<dojo:filteringSelect title="tooltipPosition: " 
+			store="showcasePositions" value="#{ validationTextBox.tooltipPosition }" />
+	</dojo:tableContainer>
+	
+	<hr class="separator" />
+	<dojo:tableContainer
+		cols="3" orientation="horiz" spacing="1"
+		style="width: 100%;"
+	>
+		<dojo:booleanCheckBox title="required" value="#{ validationTextBox.required }" />
+	</dojo:tableContainer>
+	
+	<hr class="separator" />
+	<dojo:button label="Apply">
+		<f:ajax execute="@form" render=":form:validationTextBox" />
+	</dojo:button>
+</ui:composition>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>accordionContainer</title>
+	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="tundra" />
+</h:head>
+<h:body>
+	<h:form styleClass="form" id="form1">
+		<h:commandButton value="refresh accordionContainer" type="button">
+			<f:ajax render="accordionContainer" />
+		</h:commandButton>
+		<h:commandButton value="refresh accordionGroup" type="button">
+			<f:ajax render="accordionGroup" />
+		</h:commandButton>
+		<h:panelGroup id="accordionGroup">
+			<dojo:accordionContainer id="accordionContainer" persist="true">
+				<dojo:contentPane title="pane one">
+					<dojo:dateTextBox id="dataTB1" hasDownArrow="true" value="#{store.record.birthDate}">
+						<f:convertDateTime pattern="yyyy-MM-dd"></f:convertDateTime>
+						<f:ajax execute="@this" render="dateOutput" disabled="true"></f:ajax>
+					</dojo:dateTextBox>
+					<h:panelGrid id="dateOutput">
+						<h:outputText value="#{store.record.birthDate}">
+							<f:convertDateTime timeStyle="long" dateStyle="long" type="both"></f:convertDateTime>
+						</h:outputText>
+						<h:outputText value="#{store.record.birthDate}">
+							<f:convertDateTime timeStyle="long" dateStyle="long" type="both"></f:convertDateTime>
+						</h:outputText>
+					</h:panelGrid>
+					<h:messages />
+					<br />
+					<h:commandButton id="buttonDate" label="refresh accordionContainer" >
+						<f:ajax execute="@form" render="dateOutput" />
+					</h:commandButton>
+				</dojo:contentPane>
+				<dojo:contentPane title="page two">
+					<dojo:timeTextBox value="#{store.record.time}" pattern="HH:mm:ss"
+						clickableIncrement="T00:20:00" visiableRange="T00:04:00">
+						<f:ajax execute="@this" render="timeOutput" disabled="true"></f:ajax>
+					</dojo:timeTextBox>
+					<h:panelGrid id="timeOutput">
+						<h:outputText value="#{store.record.time}">
+							<f:convertDateTime timeStyle="long" dateStyle="long" type="both"></f:convertDateTime>
+						</h:outputText>
+						<h:outputText value="#{store.record.time}">
+							<f:convertDateTime timeStyle="long" dateStyle="long" type="both"></f:convertDateTime>
+						</h:outputText>
+					</h:panelGrid>
+					<h:messages />
+					<br />
+					<h:commandButton id="buttonTime" label="refresh accordionContainer" >
+						<f:ajax execute="@form" render="timeOutput" />
+					</h:commandButton>
+
+				</dojo:contentPane>
+			</dojo:accordionContainer>
+		</h:panelGroup>
+		<br />
+
+	</h:form>
+</h:body>
+</html>

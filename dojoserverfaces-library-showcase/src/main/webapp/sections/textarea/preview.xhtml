@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	<h:form id="form">
+		Input your essay in the next area:
+		<br />
+		<dojo:textArea id="tax" value="#{ textArea.value }"
+			disabled="#{textArea.disabled}" readOnly="#{textArea.readOnly}"
+			required="true" cols="#{textArea.cols}" rows="#{textArea.rows}"
+			maxLength="#{textArea.maxLength}"
+			selectOnClick="#{textArea.selectOnClick}" trim="#{textArea.trim}"
+			onBlur="#{textArea.onBlur}" onChange="#{textArea.onChange}"
+			onFocus="#{textArea.onFocus}">
+		</dojo:textArea>
+		<hr class="separator" />
+		<dojo:button label="Submit">
+			<f:ajax execute="@form" render=":result" />
+		</dojo:button>
+	</h:form>
+	<hr class="separator" />
+	<h:panelGroup id="result">
+		<div>
+			Your essay is: 
+			<span style="font-weight: bold;">#{ textArea.value }</span>
+		</div>
+	</h:panelGroup>
+</ui:composition>
