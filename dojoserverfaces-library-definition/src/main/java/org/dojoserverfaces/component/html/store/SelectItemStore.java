@@ -84,7 +84,7 @@ public class SelectItemStore extends StoreBase {
                         }
                         else if (value instanceof Collection) {
                             try {
-                                for (SelectItem item : (Collection<SelectItem>) value) {
+                                for (Object item : (Collection<Object>) value) {
                                     append(component, optionStore, addComma,
                                             item);
                                     addComma = true;
@@ -187,12 +187,19 @@ public class SelectItemStore extends StoreBase {
         }
 
         void append(UIComponent component, StringBuilder optionStore,
-                boolean needComma, SelectItem selectItem) {
-            // TODO: better handling of isNoSelectionOption and disabled
-            if (!selectItem.isNoSelectionOption() && !selectItem.isDisabled()) {
-                append(component, optionStore, needComma,
-                        selectItem.getValue(), selectItem.getLabel(),
-                        selectItem.isEscape());
+                boolean needComma, Object item) {
+            if (item instanceof SelectItem) {
+                // TODO: better handling of isNoSelectionOption and disabled
+                SelectItem selectItem = (SelectItem) item;
+                if (!selectItem.isNoSelectionOption()
+                        && !selectItem.isDisabled()) {
+                    append(component, optionStore, needComma,
+                            selectItem.getValue(), selectItem.getLabel(),
+                            selectItem.isEscape());
+                }
+            }
+            else {
+                append(component, optionStore, needComma, item, null, false);
             }
         }
 
