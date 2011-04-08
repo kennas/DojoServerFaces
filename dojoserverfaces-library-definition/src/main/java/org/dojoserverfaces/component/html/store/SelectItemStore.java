@@ -164,7 +164,7 @@ public class SelectItemStore extends StoreBase {
                     }
                 }
             }
-        }
+        } 
 
         void append(UIComponent component, StringBuilder optionStore,
                 boolean needComma, Object itemValue, String itemLabel,
