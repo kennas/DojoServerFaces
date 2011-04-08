@@ -13,12 +13,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dojo="http://www.dojoserverfaces.org/core"
 >
-	<dojo:comboStore id="showcasePatterns" 
-		options="#{ currencyTextBox.showcasePatterns }" />
-	<dojo:comboStore id="showcaseCurrencyCodes" 
-		options="#{ currencyTextBox.showcaseCurrencyCodes }" />
-	<dojo:comboStore id="showcaseSymbols" 
-		options="#{ currencyTextBox.showcaseSymbols }" />
+	<dojo:selectItemStore id="showcasePatterns">		<f:selectItems value="#{ currencyTextBox.showcasePatterns }" />	</dojo:selectItemStore>	<dojo:selectItemStore id="showcaseCurrencyCodes">		<f:selectItems value="#{ currencyTextBox.showcaseCurrencyCodes }" />	</dojo:selectItemStore>	<dojo:selectItemStore id="showcaseSymbols">		<f:selectItems value="#{ currencyTextBox.showcasePatterns }" />	</dojo:selectItemStore>
 
 	<dojo:tableContainer
 		cols="3" orientation="horiz" spacing="1"

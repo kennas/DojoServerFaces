@@ -13,9 +13,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dojo="http://www.dojoserverfaces.org/core"
 >
-	<dojo:comboStore id="showcaseHrefs" 
-		options="#{ contentPane.showcaseHrefs }" />
-
+	<dojo:selectItemStore id="showcaseHrefs">		<f:selectItems value="#{ contentPane.showcaseHrefs }" />	</dojo:selectItemStore>
 	<dojo:tableContainer
 		cols="1" orientation="horiz" spacing="1"
 		style="width: 100%;"
