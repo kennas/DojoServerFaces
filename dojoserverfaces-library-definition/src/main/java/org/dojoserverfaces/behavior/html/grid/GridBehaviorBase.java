@@ -38,36 +38,6 @@ abstract class GridBehaviorBase extends BehaviorBase {
         this.target = targetvalue;
     }
 
-    /**
-     * 
-     * @param sb
-     * @param methodOwner
-     * @param parameters
-     * @param method
-     * @return
-     */
-    protected StringBuilder appendMethodWithOwner(StringBuilder sb,
-            String parameters, String methodOwner, String method) {
-        appendGetDijit(sb, target);
-        sb.append(".").append(methodOwner).append(".").append(method)
-                .append("(").append(parameters).append(");");
-        return sb;
-    }
-
-    /**
-     * 
-     * @param sb
-     * @param parameters
-     * @param method
-     * @return
-     */
-    protected StringBuilder appendMethod(StringBuilder sb, String parameters,
-            String method) {
-        appendGetDijit(sb, target);
-        sb.append(".").append(method).append("(").append(parameters)
-                .append(");");
-        return sb;
-    }
 /**
  * get the clientId of the component
  * @param id  the input client id
