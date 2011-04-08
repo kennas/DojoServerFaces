@@ -11,7 +11,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dojo="http://www.dojoserverfaces.org/core"
 >
-	<dojo:selectItemStore id="showcaseWeather">		<f:selectItems value="#{ stopEvent.showcaseWeather }" />	</dojo:selectItemStore>
+	<dojo:selectItemStore id="showcaseWeather">        <f:selectItem itemValue="Sunny" />        <f:selectItem itemValue="Cloudy" />        <f:selectItem itemValue="Rainy" />	</dojo:selectItemStore>
 	
 	<h:form id="form">
 		<h:panelGrid id="grid" columns="1">
