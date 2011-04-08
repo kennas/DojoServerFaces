@@ -13,14 +13,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dojo="http://www.dojoserverfaces.org/core"
 >
-	<dojo:comboStore id="showcasePatterns" 
-		options="#{ timeTextBox.showcasePatterns }" />
-	<dojo:comboStore id="showcaseClickableIncrements" 
-		options="#{ timeTextBox.showcaseClickableIncrements }" />
-	<dojo:comboStore id="showcaseVisibleIncrements" 
-		options="#{ timeTextBox.showcaseVisibleIncrements }" />
-	<dojo:comboStore id="showcaseVisibleRanges" 
-		options="#{ timeTextBox.showcaseVisibleRanges }" />
+	<dojo:selectItemStore id="showcasePatterns">		<f:selectItems value="#{ timeTextBox.showcasePatterns }" />	</dojo:selectItemStore>	<dojo:selectItemStore id="showcaseClickableIncrements">		<f:selectItems value="#{ timeTextBox.showcaseClickableIncrements }" />	</dojo:selectItemStore>	<dojo:selectItemStore id="showcaseVisibleIncrements">		<f:selectItems value="#{ timeTextBox.showcaseVisibleIncrements }" />	</dojo:selectItemStore>	<dojo:selectItemStore id="showcaseVisibleRanges">		<f:selectItems value="#{ timeTextBox.showcaseVisibleRanges }" />	</dojo:selectItemStore>
 
 	<dojo:tableContainer
 		cols="3" orientation="horiz" spacing="1"
