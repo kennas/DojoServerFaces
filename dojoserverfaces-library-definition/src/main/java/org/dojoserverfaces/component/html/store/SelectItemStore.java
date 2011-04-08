@@ -84,7 +84,7 @@ public class SelectItemStore extends StoreBase {
                         }
                         else if (value instanceof Collection) {
                             try {
-                                for (Object item : (Collection<Object>) value) {
+                                for (SelectItem item : (Collection<SelectItem>) value) {
                                     append(component, optionStore, addComma,
                                             item);
                                     addComma = true;
@@ -164,7 +164,7 @@ public class SelectItemStore extends StoreBase {
                     }
                 }
             }
-        } 
+        }
 
         void append(UIComponent component, StringBuilder optionStore,
                 boolean needComma, Object itemValue, String itemLabel,
@@ -187,19 +187,12 @@ public class SelectItemStore extends StoreBase {
         }
 
         void append(UIComponent component, StringBuilder optionStore,
-                boolean needComma, Object item) {
-            if (item instanceof SelectItem) {
-                // TODO: better handling of isNoSelectionOption and disabled
-                SelectItem selectItem = (SelectItem) item;
-                if (!selectItem.isNoSelectionOption()
-                        && !selectItem.isDisabled()) {
-                    append(component, optionStore, needComma,
-                            selectItem.getValue(), selectItem.getLabel(),
-                            selectItem.isEscape());
-                }
-            }
-            else {
-                append(component, optionStore, needComma, item, null, false);
+                boolean needComma, SelectItem selectItem) {
+            // TODO: better handling of isNoSelectionOption and disabled
+            if (!selectItem.isNoSelectionOption() && !selectItem.isDisabled()) {
+                append(component, optionStore, needComma,
+                        selectItem.getValue(), selectItem.getLabel(),
+                        selectItem.isEscape());
             }
         }
 
