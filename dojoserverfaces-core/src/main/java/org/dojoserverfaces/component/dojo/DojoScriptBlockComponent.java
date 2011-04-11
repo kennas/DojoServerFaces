@@ -15,6 +15,10 @@ import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.context.PartialViewContext;
 import javax.faces.context.ResponseWriter;
+import javax.faces.event.AbortProcessingException;
+import javax.faces.event.PreRenderViewEvent;
+import javax.faces.event.SystemEvent;
+import javax.faces.event.SystemEventListener;
 
 import org.dojoserverfaces.component.DojoResource;
 import org.dojoserverfaces.widget.DojoWidget;
@@ -26,7 +30,8 @@ import org.dojoserverfaces.widget.DojoWidget;
  * the DojoServerFaces tags should have posted their script.
  * 
  */
-public final class DojoScriptBlockComponent extends DojoResource {
+public final class DojoScriptBlockComponent extends DojoResource implements
+        SystemEventListener {
 
     private static final String INIT_BLOCK_ID = "_dojoserverfaces_initscript";
     private static final String DESTROY_BLOCK_ID = "_dojoserverfaces_destroyscript";
@@ -63,17 +68,23 @@ public final class DojoScriptBlockComponent extends DojoResource {
          * just add a component as a view resource and let the view manage it'r
          * rendering. 2) partial page rendering - In this case we need to add
          * this component to the list of those to be rendered as part of the
-         * partial update. We cannot add the component as a resource as it will
-         * not be found because view resources are are store in a facet on the
-         * view.
+         * partial update.
+         * 
+         * We now handle two separate blocks, one for the initialization of
+         * widgets and another for destroying existing widgets.
+         * 
+         * Some care needs to be taken here. We have run in to odd situations
+         * adding the component as a resource for a partial update. There are
+         * differences between Sun and MyFaces
          */
         FacesContext context = FacesContext.getCurrentInstance();
         PartialViewContext pvContext = context.getPartialViewContext();
         boolean partialUpdate = (null != pvContext)
                 && pvContext.isAjaxRequest();
         DojoScriptBlockComponent sb = null;
-        sb = findInitBlockComponent(partialUpdate ? view.getChildren() : view
-                .getComponentResources(context, BODY_END));
+        // check for an existing init script block
+        sb = findInitBlockComponent(view.getComponentResources(context,
+                partialUpdate ? BODY_BEGIN : BODY_END));
         if (null == sb) {
             // we need a block for destroy code used for partial updates
             sb = new DojoScriptBlockComponent(DESTROY_BLOCK_ID);
@@ -89,16 +100,20 @@ public final class DojoScriptBlockComponent extends DojoResource {
             }
             else {
                 // we need always emit a destroy block element because an
-                // ajax update (above) needs to replace something
+                // ajax update (above) needs to replace something but it
+                // will contain no script code
                 view.addComponentResource(context, sb, BODY_END);
             }
-            // create a block to holde init code and place it
-            // appropriately
+            // create a block to hold init code
             sb = new DojoScriptBlockComponent(INIT_BLOCK_ID);
             if (partialUpdate) {
-                // just add to view's list of children as adding as a resource
-                // will not get it in the render cycle for a partial update
-                view.getChildren().add(sb);
+                // Partial update is tricky, unlike Sun's RI MyFaces does
+                // not render "resources" in the "body" at the end for a partial
+                // update
+                // At this time we will add the component to the head
+                // just to store it somewhere. We will move it prior to
+                // rendering.
+                view.addComponentResource(context, sb, BODY_BEGIN);
                 // add block to list of ids to render
                 pvContext.getRenderIds().add(sb.getId());
             }
@@ -148,12 +163,15 @@ public final class DojoScriptBlockComponent extends DojoResource {
             UIViewRoot view) {
         /*
          * depending on full or partial rendering the block's location will be
-         * different
+         * different. It is expected that this function is first called from a
+         * component rendered which will be after init block has been moved to
+         * its proper location
          */
         return isAjaxUpdate(FacesContext.getCurrentInstance()) ? findInitBlockComponent(view
                 .getChildren())
                 : (DojoScriptBlockComponent) findResourceComponent(view,
                         INIT_BLOCK_ID, BODY_END);
+
     }
 
     /**
@@ -203,6 +221,48 @@ public final class DojoScriptBlockComponent extends DojoResource {
     public DojoScriptBlockComponent(String id) {
         super();
         setId(id);
+        // We need to move the init script block prior to rendering a
+        // partialUpdate.
+        if (id.equals(INIT_BLOCK_ID)) {
+            getFacesContext().getViewRoot().subscribeToViewEvent(
+                    javax.faces.event.PreRenderViewEvent.class, this);
+        }
+    }
+
+    /*
+     * @see
+     * javax.faces.event.SystemEventListener#isListenerForSource(java.lang.Object
+     * )
+     */
+    @Override
+    public boolean isListenerForSource(Object source) {
+        if (source instanceof UIViewRoot) {
+            // only care about the view's pre-render
+            return true;
+        }
+        return false;
+    }
+
+    /*
+     * @see
+     * javax.faces.event.SystemEventListener#processEvent(javax.faces.event.
+     * SystemEvent)
+     */
+    @Override
+    public void processEvent(SystemEvent event) throws AbortProcessingException {
+        // it is expected we only subscribed to this event for the init block
+        // component
+        if (event instanceof PreRenderViewEvent) {
+            if (isAjaxUpdate(getFacesContext())) {
+                // make sure init block is at the end
+                final UIViewRoot viewRoot = getFacesContext().getViewRoot();
+                // remove from temp location
+                viewRoot.removeComponentResource(getFacesContext(), this,
+                        BODY_BEGIN);
+                // move to the end
+                viewRoot.getChildren().add(this);
+            }
+        }
     }
 
     /*
