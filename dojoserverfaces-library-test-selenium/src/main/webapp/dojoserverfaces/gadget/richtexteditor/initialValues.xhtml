@@ -15,14 +15,14 @@
 		<h:panelGrid columns="3">
 			<jd:textArea id="richtext" value="#{richTextEditorBean.beanBoundValue.data}" />
 		    <jd:button id="toEditorButton" label="textarea to editor">
-			    <jd:behaviorSet event="click" target="widgetSimple" value="richtext.value" />
+			    <jd:behaviorCopyValue event="click" destination="widgetSimple" source="richtext" />
 		    </jd:button>
 		    <jd:button id="toTextAreaButton" label="editor to textarea">
-			    <jd:behaviorSet event="click" target="richtext" value="widgetSimple.value" />
+			    <jd:behaviorCopyValue event="click" destination="richtext" source="widgetSimple" />
 		    </jd:button>
-		    <jd:behaviorSet event="submit" target="richtext" value="widgetSimple.value" />
+		    <jd:behaviorSetValue event="submit" target="richtext" value="widgetSimple.value" />
 		    <jd:editor id="widgetSimple" inheritWidth="false" name="description" height="300px" minHeight="100px" isTabIndent="false" disableSpellCheck="false" customUndo="true" editActionInterval="5" style="width: 500px">
-		        <jd:behaviorSet event="loadDeferred" target="@this" value="richtext.value" />
+		        <jd:behaviorCopyValue event="loadDeferred" destination="@this" source="richtext" />
 	        </jd:editor>
 		</h:panelGrid>
 	</f:subview>
