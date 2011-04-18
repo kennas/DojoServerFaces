@@ -24,8 +24,8 @@ import org.dojoserverfaces.widget.DojoWidget;
 public class StoreSave extends BehaviorBase {
 
     private String target;
-    private String failedTopic;
-    private String successTopic;
+    private String broadcastOnComplete;
+    private String broadcastOnError;
 
     /**
      * Id of target DataStore component to act on
@@ -36,27 +36,29 @@ public class StoreSave extends BehaviorBase {
     }
 
     /**
-     * Topic of DataStore when saving data failed
+     * Topic to broadcast when the save has error. This can used in conjunction
+     * with the listener component.
      */
-    @Attribute(required = true)
-    public String getFailedTopic() {
-        return failedTopic;
+    @Attribute
+    public String getBroadcastOnError() {
+        return broadcastOnError;
     }
 
-    public void setFailedTopic(String failedTopic) {
-        this.failedTopic = failedTopic;
+    public void setBroadcastOnError(String broadcastOnError) {
+        this.broadcastOnError = broadcastOnError;
     }
 
     /**
-     * Topic of DataStore when saving data success
+     * Topic to broadcast when the save has completed successfully. This can
+     * used in conjunction with the listener component.
      */
-    @Attribute(required = true)
-    public String getSuccessTopic() {
-        return successTopic;
+    @Attribute
+    public String getBroadcastOnComplete() {
+        return broadcastOnComplete;
     }
 
-    public void setSuccessTopic(String successTopic) {
-        this.successTopic = successTopic;
+    public void setBroadcastOnComplete(String broadcastOnComplete) {
+        this.broadcastOnComplete = broadcastOnComplete;
     }
 
     public void setTarget(String targetvalue) {
@@ -73,17 +75,39 @@ public class StoreSave extends BehaviorBase {
     @Override
     public String getScript(ClientBehaviorContext behaviorContext) {
         StringBuilder script = new StringBuilder();
+        boolean addComa = false;
         if (null != target) {
             UIComponent targetComp = behaviorContext.getComponent()
                     .findComponent(target);
             script.append(DojoScriptBlockComponent
                     .getGlobalReference((DojoWidget) targetComp));
-            script.append(".save({onComplete:function (){")
-                    .append("dojo.publish(").append(Helper.quote(successTopic))
-                    .append(");},onError:function (){").append("dojo.publish(")
-                    .append(Helper.quote(failedTopic)).append(");}});");
+            script.append(".save(");
+            if (broadcastOnComplete != null) {
+                script.append("{onComplete:function (){")
+                        .append("dojo.publish(")
+                        .append(Helper.quote(broadcastOnComplete))
+                        .append(");}");
+                addComa = true;
+            }
+            if (broadcastOnError != null) {
+                if (addComa) {
+                    script.append(",");
+                }
+                else {
+                    script.append("{");
+                }
+                script.append("onError:function (){dojo.publish(")
+                        .append(Helper.quote(broadcastOnError)).append(");}}");
+
+            }
+            else {
+                if (addComa) {
+                    script.append("}");
+                }
+
+            }
+            script.append(");");
         }
         return script.toString();
     }
-
 }
