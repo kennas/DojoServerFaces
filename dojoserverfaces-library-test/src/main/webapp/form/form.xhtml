@@ -33,10 +33,10 @@
 		<jd:button
 			label="submit"
 			type="submit"></jd:button>
-		<jd:set
+		<jd:behaviorCopyValue
 			event="submit"
-			target="search"
-			value="sometext.value" />
+			destination="search"
+			source="somenumber" />
 	</jd:form>
 	<h:outputText value="#{store.record.text}" />
 </h:body>
