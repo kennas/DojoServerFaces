@@ -5,7 +5,10 @@
  *******************************************************************************/
 package org.dojoserverfaces.component.html;
 
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.Collection;
 
 import javax.faces.component.UIComponentBase;
@@ -106,12 +109,11 @@ public class JsfDataModelReadStore extends UIComponentBase implements
         if (this.getProperties() != null) {
             properties = this.getProperties().split("\\s");
         }
-        JavaReflection jr = new JavaReflection();
         Object value = this.getData();
         if (value instanceof Collection) {
             for (Object obj : (Collection<?>) value) {
                 if (properties == null) {
-                    properties = jr.getAllProperties(obj);
+                    properties = this.getAllProperties(obj);
                 }
                 if (addObjComa) {
                     items.append(",");
@@ -124,7 +126,7 @@ public class JsfDataModelReadStore extends UIComponentBase implements
                     }
                     items.append(propertyName)
                             .append(":")
-                            .append(Helper.quote(jr.getPrivateValue(obj,
+                            .append(Helper.quote(this.getPropertyValue(obj,
                                     propertyName).toString()));
                     addComa = true;
                 }
@@ -219,5 +221,57 @@ public class JsfDataModelReadStore extends UIComponentBase implements
     public Object getAttribute(String name) {
         return null;
     }
+    private Object getPropertyValue(Object bean, String property) {
+        Object propertyValue = null;
+        PropertyDescriptor properties[];
+        try {
+            properties = Introspector.getBeanInfo(bean.getClass())
+                    .getPropertyDescriptors();
+        }
+        catch (Throwable e) {
+            e.printStackTrace();
+            return propertyValue;
+        }
+        for (int j = 0; j < properties.length; ++j) {
+            String name = properties[j].getName();
+            if (!name.equals("class")) {
+                try {
+                    if (property.equals(name)) {
+                        propertyValue = properties[j].getReadMethod().invoke(
+                                bean);
+                        return propertyValue;
+                    }
+                }
+                catch (Throwable ex) {
+                    ex.printStackTrace();
+                    return propertyValue;
+                }
+            }
+        }
+        return propertyValue;
+    }
 
+    private String[] getAllProperties(Object obj) {
+        String[] value;
+        boolean addcoma = false;
+        StringBuilder properties = new StringBuilder();
+        try {
+            Class<? extends Object> objClass = obj.getClass();
+            Field[] fields = objClass.getDeclaredFields();
+            for (Field fd : fields) {
+                if (addcoma) {
+                    properties.append(",");
+                }
+                properties.append(fd.getName());
+                addcoma = true;
+            }
+            value = properties.toString().split(",");
+            return value;
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
 }
