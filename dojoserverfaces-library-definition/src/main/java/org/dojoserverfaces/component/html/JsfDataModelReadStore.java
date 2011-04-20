@@ -5,11 +5,14 @@
  *******************************************************************************/
 package org.dojoserverfaces.component.html;
 
+import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
+import javax.faces.application.ProjectStage;
 import javax.faces.component.UIComponentBase;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ListenerFor;
@@ -238,23 +241,36 @@ public class JsfDataModelReadStore extends UIComponentBase implements
 
     private Object getPropertyValue(Object bean, String propertyName) {
 
-        PropertyDescriptor[] properties;
+        PropertyDescriptor[] properties = null;
         try {
             properties = Introspector.getBeanInfo(bean.getClass())
                     .getPropertyDescriptors();
-
-            for (PropertyDescriptor prop : properties) {
-                String name = prop.getName();
-                if (!"class".equals(name)) {
-                    if (propertyName.equals(name)) {
-                        return prop.getReadMethod().invoke(bean);
+        }
+        catch (IntrospectionException ex) {
+            // TODO: handle.
+            log(ex.getMessage());
+            return null;
+        }
+        if (properties != null) {
+            try {
+                for (PropertyDescriptor prop : properties) {
+                    String name = prop.getName();
+                    if (!"class".equals(name)) {
+                        if (propertyName.equals(name)) {
+                            return prop.getReadMethod().invoke(bean);
+                        }
                     }
                 }
             }
-        }
-        catch (Throwable ex) {
-            // TODO: handle.
-            return null;
+            catch (IllegalArgumentException e) {
+                log(e.getMessage());
+            }
+            catch (IllegalAccessException e) {
+                log(e.getMessage());
+            }
+            catch (InvocationTargetException e) {
+                log(e.getMessage());
+            }
         }
         return null;
     }
@@ -280,11 +296,23 @@ public class JsfDataModelReadStore extends UIComponentBase implements
             }
             value = propString.toString().split(",");
         }
-        catch (Throwable ex) {
-            // TODO: handle.
+        catch (IntrospectionException ex) {
+            log(ex.getMessage());
             return null;
         }
         return value;
 
+    }
+    /**
+     * Log a message if the project stage is Development
+     * 
+     * @param msg
+     */
+    protected void log(String msg) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        if (context.isProjectStage(ProjectStage.Development)) {
+            context.getExternalContext()
+                    .log(getClass().getName() + " - " + msg);
+        }
     }
 }
