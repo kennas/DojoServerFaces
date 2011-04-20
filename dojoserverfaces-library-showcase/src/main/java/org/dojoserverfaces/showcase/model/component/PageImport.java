@@ -51,9 +51,5 @@ public class PageImport {
         this.errorMessage = errorMessage;
     }
 
-    public static void main(String[] args) {
-        PageImport a = new PageImport();
-        System.out.println(a.getHref());
-
-    }
+   
 }
