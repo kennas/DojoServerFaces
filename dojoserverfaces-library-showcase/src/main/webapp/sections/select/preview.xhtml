@@ -20,8 +20,7 @@
 		<h:panelGrid id="grid" columns="1">
 			<h:panelGroup>
 				<h:outputLabel for="select" value="What's your favourite frameworks? "/>
-				<dojo:select id="select" value="#{ select.favouriteFwk }"
-					store="jsFrameworks"
+				<dojo:select id="select" value="#{ select.favouriteFwk }"					store="jsFrameworks"
 					disabled="#{ select.disabled }"
 					readOnly="#{ select.readOnly }"
 					required="#{ select.required }"
@@ -29,8 +28,7 @@
 					onChange="#{ select.onChange }"
 					onFocus="#{ select.onFocus }"
 					style="width: 150px;"
-				/>
-			</h:panelGroup>
+				/>			</h:panelGroup>
 			
 			<h:panelGroup>
 				<dojo:button label="Submit">					<f:ajax execute="@form" render=":result" />				</dojo:button>
