@@ -14,7 +14,7 @@ import javax.faces.validator.ValidatorException;
 
 import org.dojoserverfaces.build.annotation.Property;
 import org.dojoserverfaces.build.annotation.SelectValueHolder;
-import org.dojoserverfaces.component.html.store.SelectItemStore;
+import org.dojoserverfaces.component.html.store.SelectItemStoreComponent;
 import org.dojoserverfaces.widget.DojoWidget;
 import org.dojoserverfaces.widget.property.DojoRefProperty;
 import org.dojoserverfaces.widget.property.StringArrayProperty;
@@ -53,16 +53,16 @@ class Select extends InputBase {
 
 			// TODO: Cannot use UIComponent as the type, it will cause
 			// eclipse error prompt, need to improve?
-			Object storeComp = context.getViewRoot().findComponent(storeId);
-			if (storeComp != null && (storeComp instanceof SelectItemStore)) {
-				Validator validator = getDataStroeValidator((SelectItemStore) storeComp);
+			UIComponent storeComp = context.getViewRoot().findComponent(storeId);
+			if (storeComp != null && (storeComp instanceof SelectItemStoreComponent)) {
+				Validator validator = getDataStroeValidator((SelectItemStoreComponent) storeComp);
 				if (validator != null) {
 					validator.validate(context, (UIComponent) storeComp, value);
 				}
 			}
 		}
 
-		private Validator getDataStroeValidator(SelectItemStore selectItemStore) {
+		private Validator getDataStroeValidator(SelectItemStoreComponent selectItemStore) {
 			Collection<org.dojoserverfaces.widget.property.Property> propertyHandlers = ((DojoWidget) selectItemStore)
 					.getPropertyHandlers();
 			for (org.dojoserverfaces.widget.property.Property property : propertyHandlers) {
