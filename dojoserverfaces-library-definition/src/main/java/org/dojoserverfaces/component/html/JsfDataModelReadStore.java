@@ -192,7 +192,7 @@ public class JsfDataModelReadStore extends UIComponentBase implements
     public void setData(Object data) {
         getStateHelper().put("data", data);
     }
-
+ 
     /**
      * Identifier of an object in collection
      */
@@ -303,6 +303,7 @@ public class JsfDataModelReadStore extends UIComponentBase implements
         return value;
 
     }
+
     /**
      * Log a message if the project stage is Development
      * 
