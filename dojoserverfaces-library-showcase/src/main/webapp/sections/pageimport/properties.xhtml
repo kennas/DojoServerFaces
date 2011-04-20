@@ -13,13 +13,13 @@
 	xmlns:dojo="http://www.dojoserverfaces.org/core">
 	<dojo:selectItemStore id="hrefStore">
 		<f:selectItem itemLabel="importpage.jsp"
-			itemValue="/sections/pageimport/importpage.jsp" />
+			itemValue="/#{contextPath}/sections/pageimport/importpage.jsp" />
 		<f:selectItem itemLabel="importFacelet.xhtml"
-			itemValue="/sections/pageimport/importFacelet" />
+			itemValue="/#{contextPath}/sections/pageimport/importFacelet.faces" />
 	</dojo:selectItemStore>
 	<dojo:tableContainer cols="2" orientation="horiz" spacing="1"
 		style="width: 100%;">
-		<dojo:select title="href: " value="#{ pageImport.href }" store="hrefStore"/>
+		<dojo:filteringSelect title="href: " value="#{ pageImport.href }" store="hrefStore"/>
 		<dojo:textBox title="loadingMessage: "
 			value="#{ pageImport.loadingMessage }" />
 		<dojo:textBox title="errorMessage: "

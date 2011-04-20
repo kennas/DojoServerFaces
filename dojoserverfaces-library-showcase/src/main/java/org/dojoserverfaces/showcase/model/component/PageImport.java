@@ -11,19 +11,15 @@ import javax.servlet.ServletContext;
 
 @ManagedBean
 public class PageImport {
-    private String href = null;
+    private String href = new StringBuilder("/")
+            .append(((ServletContext) FacesContext.getCurrentInstance()
+                    .getExternalContext().getContext()).getContextPath())
+            .append("/sections/pageimport/importpage.jsp").toString();
     private Boolean extractContent = true;
     private String loadingMessage = "page is loading..... ";
     private String errorMessage = "error occurs";
 
     public String getHref() {
-        if (null == href) {
-            href = new StringBuilder("/")
-                    .append(((ServletContext) FacesContext.getCurrentInstance()
-                            .getExternalContext().getContext())
-                            .getContextPath())
-                    .append("/sections/pageimport/importpage.jsp").toString();
-        }
         return this.href;
     }
 
