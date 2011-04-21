@@ -17,9 +17,9 @@ xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces
 		    <jd:button id="toTextAreaButton" label="editor to textarea">
 			    <f:ajax event="click" render="richtext"/>
 		    </jd:button>
-		    <jd:behaviorSet event="submit" target="richtext" value="widgetAjaxCall.value" />
+		    <jd:behaviorCopyValue event="submit" destination="richtext" source="widgetAjaxCall" />
 		    <jd:editor id="widgetAjaxCall" inheritWidth="false" name="description" height="300px" minHeight="100px" isTabIndent="false" disableSpellCheck="false" customUndo="true" editActionInterval="5" style="width: 500px">
-		        <jd:behaviorSet event="loadDeferred" target="@this" value="richtext.value" />
+		        <jd:behaviorCopyValue event="loadDeferred" destination="widgetAjaxCall" source="richtext" />
 	        </jd:editor>
 		</h:panelGrid>
 	</f:subview>

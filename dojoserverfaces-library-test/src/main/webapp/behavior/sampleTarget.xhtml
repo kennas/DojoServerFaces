@@ -24,8 +24,8 @@
 				<jd:tableContainer id="loginLayout">
 					<h:inputHidden id="descriptionValue" />
 					<jd:editor id="descriptionEditor">
-						<jd:behaviorSet event="onLoadDeferred" target="."
-							value="..\descriptonValue" />
+						<jd:behaviorCopyValue event="onLoadDeferred" destination="."
+							source="..\descriptonValue" />
 					</jd:editor>
 
 					<jd:textBox id="password" secret="true"></jd:textBox>

@@ -96,6 +96,10 @@ public class Store {
 	public Record getRecord() {
 		return record;
 	}
+	
+	public void doCount() {
+		this.record.setCount(this.record.getCount() + 1);
+	}
 
 	public Record[] getCustomerOrders(){
 	    FacesContext context = FacesContext.getCurrentInstance();
