@@ -13,9 +13,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dojo="http://www.dojoserverfaces.org/core"
 >
-	<dojo:comboStore id="showcasePatterns" 
-		options="#{ dateTextBox.showcasePatterns }" />
-
+	<dojo:selectItemStore id="showcasePatterns">		<f:selectItem itemValue="MM/dd/yyyy" />		<f:selectItem itemValue="yyyy-MM-dd" />		<f:selectItem itemValue="yyyy/MM/dd" />	</dojo:selectItemStore>
 	<dojo:selectItemStore id="showcaseFormatLengths">
 		<f:selectItems value="#{ dateTextBox.showcaseFormatLengths }" />
 	</dojo:selectItemStore>
