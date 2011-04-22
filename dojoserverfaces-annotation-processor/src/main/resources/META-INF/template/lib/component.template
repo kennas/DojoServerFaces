@@ -131,7 +131,7 @@ for(property in context.componentInfo.properties) {
 <%
         }
         
-        if (property.validator) {
+        if (hasValidators && property.validator) {
 %>
         validators.add ((javax.faces.validator.Validator) _currentProperty);
 <%
