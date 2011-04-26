@@ -130,7 +130,8 @@ public class JsfDataModelReadStore extends UIComponentBase implements
         if (value instanceof Collection) {
             for (Object obj : (Collection<?>) value) {
                 if (properties == null) {
-                    properties = this.getAllProperties(obj);
+                    properties = new String[1];
+                    properties[0] = identifier;
                 }
                 if (addObjComa) {
                     items.append(",");
@@ -141,10 +142,18 @@ public class JsfDataModelReadStore extends UIComponentBase implements
                     if (addComa) {
                         items.append(",");
                     }
-                    items.append(propertyName)
-                            .append(":")
-                            .append(Helper.quote(this.getPropertyValue(obj,
-                                    propertyName).toString()));
+
+                    String propertyValue = this.getPropertyValue(obj,
+                            propertyName).toString();
+                    if (propertyName.contains(".")) {
+                        items.append(propertyName.replace(".", "_"))
+                                .append(":")
+                                .append(Helper.quote(propertyValue));
+                    }
+                    else {
+                        items.append(propertyName).append(":")
+                                .append(Helper.quote(propertyValue));
+                    }
                     addComa = true;
                 }
                 items.append("}");
@@ -192,7 +201,7 @@ public class JsfDataModelReadStore extends UIComponentBase implements
     public void setData(Object data) {
         getStateHelper().put("data", data);
     }
- 
+
     /**
      * Identifier of an object in collection
      */
@@ -241,67 +250,39 @@ public class JsfDataModelReadStore extends UIComponentBase implements
 
     private Object getPropertyValue(Object bean, String propertyName) {
 
-        PropertyDescriptor[] properties = null;
-        try {
-            properties = Introspector.getBeanInfo(bean.getClass())
-                    .getPropertyDescriptors();
+        String handlePropertyName = propertyName;
+        Object handleBean = bean;
+        if (propertyName.contains(".")) {
+            String[] subPropertyNames = propertyName.split("\\.");
+            for (int i = 0; i < subPropertyNames.length - 1; i++) {
+                handleBean = getPropertyValue(handleBean, subPropertyNames[i]);
+            }
+            handlePropertyName = subPropertyNames[subPropertyNames.length - 1];
         }
-        catch (IntrospectionException ex) {
-            // TODO: handle.
-            log(ex.getMessage());
-            return null;
-        }
-        if (properties != null) {
-            try {
-                for (PropertyDescriptor prop : properties) {
-                    String name = prop.getName();
-                    if (!"class".equals(name)) {
-                        if (propertyName.equals(name)) {
-                            return prop.getReadMethod().invoke(bean);
-                        }
-                    }
-                }
-            }
-            catch (IllegalArgumentException e) {
-                log(e.getMessage());
-            }
-            catch (IllegalAccessException e) {
-                log(e.getMessage());
-            }
-            catch (InvocationTargetException e) {
-                log(e.getMessage());
-            }
-        }
-        return null;
-    }
-
-    private String[] getAllProperties(Object bean) {
-        String[] value;
-        boolean addcoma = false;
-        StringBuilder propString = new StringBuilder();
         PropertyDescriptor[] properties;
         try {
-            properties = Introspector.getBeanInfo(bean.getClass())
+            properties = Introspector.getBeanInfo(handleBean.getClass())
                     .getPropertyDescriptors();
 
             for (PropertyDescriptor prop : properties) {
                 String name = prop.getName();
-                if (!"class".equals(name)) {
-                    if (addcoma) {
-                        propString.append(",");
+                if (!"class".equals(handlePropertyName)) {
+                    if (handlePropertyName.equals(name)) {
+                        return prop.getReadMethod().invoke(handleBean);
                     }
-                    propString.append(name);
-                    addcoma = true;
                 }
             }
-            value = propString.toString().split(",");
         }
-        catch (IntrospectionException ex) {
-            log(ex.getMessage());
-            return null;
+        catch (IllegalAccessException e) {
+            log(e.getMessage());
         }
-        return value;
-
+        catch (InvocationTargetException e) {
+            log(e.getMessage());
+        }
+        catch (IntrospectionException e) {
+            log(e.getMessage());
+        }
+        return null;
     }
 
     /**
