@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="ASCII"?><!--
-    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
-    	Available via Academic Free License >= 2.1 OR the modified BSD license.
-    	see: http://dojotoolkit.org/license for details
- -->
+<?xml version="1.0" encoding="ASCII"?><!-- Copyright (c) 2011, The Dojo Foundation All Rights Reserved. Available 	via Academic Free License >= 2.1 OR the modified BSD license. see: http://dojotoolkit.org/license 	for details -->
 
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
@@ -36,7 +32,7 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.faces</url-pattern>
 	</servlet-mapping>
-
+	<servlet>		<servlet-name>DataStoreApp</servlet-name>		<!-- This is for WAS -->		<servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>		<init-param>			<param-name>javax.ws.rs.Application</param-name>			<param-value>org.dojoserverfaces.showcase.rest.DataStoreApplication</param-value>		</init-param>		<!-- this is for Glassfish -->		<!-- <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> 			<init-param> <param-name>com.sun.jersey.config.property.packages</param-name> 			<param-value> org.dojoserverfaces.showcase.rest </param-value> </init-param> -->		<load-on-startup>1</load-on-startup>	</servlet>	<servlet-mapping>		<servlet-name>DataStoreApp</servlet-name>		<url-pattern>/rest/*</url-pattern>	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.faces</welcome-file>
 	</welcome-file-list>
