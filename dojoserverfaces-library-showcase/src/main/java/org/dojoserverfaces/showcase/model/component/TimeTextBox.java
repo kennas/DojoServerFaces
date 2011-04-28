@@ -6,8 +6,6 @@
 package org.dojoserverfaces.showcase.model.component;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -15,169 +13,127 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class TimeTextBox extends TextBoxBase {
-    private String am;
-    private String pm;
-    private String locale;
-    private String pattern = "HH:mm:ss";
-    private String placeHolder = "Select a time";
-    private String clickableIncrement = "T00:10:00";
-    private String visibleIncrement = "T00:30:00";
-    private String visibleRange = "T02:00:00";
+	private String am;
+	private String pm;
+	private String locale;
+	private String pattern = "HH:mm:ss";
+	private String placeHolder = "Select a time";
+	private String clickableIncrement = "T00:10:00";
+	private String visibleIncrement = "T00:30:00";
+	private String visibleRange = "T02:00:00";
 
-    private Boolean selectOnClick = true;
-    private Boolean required = true;
+	private Boolean selectOnClick = true;
+	private Boolean required = true;
 
-    private String timeValue = Long.toString((18 * 3600 + 30 * 60 + 30) * 1000);
+	private String timeValue = Long.toString((18 * 3600 + 30 * 60 + 30) * 1000);
 
-    private final Collection<String> showcasePatterns = new ArrayList<String>();
-    {
-        showcasePatterns.add("HH:mm:ss");
-        showcasePatterns.add("hh:mm:ss");
-        showcasePatterns.add("hh:mm");
-    }
+	public String getAm() {
+		return am;
+	}
 
-    private final Collection<String> showcaseClickableIncrements = new ArrayList<String>();
-    {
-        showcaseClickableIncrements.add("T00:10:00");
-        showcaseClickableIncrements.add("T00:20:00");
-    }
+	public void setAm(String am) {
+		this.am = am;
+	}
 
-    private final Collection<String> showcaseVisibleIncrements = new ArrayList<String>();
-    {
-        showcaseVisibleIncrements.add("T00:30:00");
-        showcaseVisibleIncrements.add("T01:00:00");
-    }
+	public String getPm() {
+		return pm;
+	}
 
-    private final Collection<String> showcaseVisibleRanges = new ArrayList<String>();
-    {
-        showcaseVisibleRanges.add("T01:00:00");
-        showcaseVisibleRanges.add("T02:00:00");
-        showcaseVisibleRanges.add("T03:00:00");
-    }
+	public void setPm(String pm) {
+		this.pm = pm;
+	}
 
-    public String getAm() {
-        return am;
-    }
+	public String getLocale() {
+		return locale;
+	}
 
-    public void setAm(String am) {
-        this.am = am;
-    }
+	public void setLocale(String locale) {
+		this.locale = locale;
+	}
 
-    public String getPm() {
-        return pm;
-    }
+	public String getPattern() {
+		return pattern;
+	}
 
-    public void setPm(String pm) {
-        this.pm = pm;
-    }
+	public void setPattern(String pattern) {
+		this.pattern = pattern;
+	}
 
-    public String getLocale() {
-        return locale;
-    }
+	public String getClickableIncrement() {
+		return clickableIncrement;
+	}
 
-    public void setLocale(String locale) {
-        this.locale = locale;
-    }
+	public void setClickableIncrement(String clickableIncrement) {
+		this.clickableIncrement = clickableIncrement;
+	}
 
-    public String getPattern() {
-        return pattern;
-    }
+	public String getVisibleIncrement() {
+		return visibleIncrement;
+	}
 
-    public void setPattern(String pattern) {
-        this.pattern = pattern;
-    }
+	public void setVisibleIncrement(String visibleIncrement) {
+		this.visibleIncrement = visibleIncrement;
+	}
 
-    public String getClickableIncrement() {
-        return clickableIncrement;
-    }
+	public String getVisibleRange() {
+		return visibleRange;
+	}
 
-    public void setClickableIncrement(String clickableIncrement) {
-        this.clickableIncrement = clickableIncrement;
-    }
+	public void setVisibleRange(String visibleRange) {
+		this.visibleRange = visibleRange;
+	}
 
-    public String getVisibleIncrement() {
-        return visibleIncrement;
-    }
+	public String getTimeValue() {
+		return timeValue;
+	}
 
-    public void setVisibleIncrement(String visibleIncrement) {
-        this.visibleIncrement = visibleIncrement;
-    }
+	public void setTimeValue(String timeValue) {
+		this.timeValue = timeValue;
+	}
 
-    public String getVisibleRange() {
-        return visibleRange;
-    }
+	public static final DateFormat DF = DateFormat.getTimeInstance();
 
-    public void setVisibleRange(String visibleRange) {
-        this.visibleRange = visibleRange;
-    }
+	public String getFormattedTime() {
+		long timeInSeconds = Long.valueOf(this.timeValue) / 1000;
+		long s = timeInSeconds % 60;
+		long m = (timeInSeconds / 60) % 60;
+		long h = (timeInSeconds / 3600) % 24;
 
-    public String getTimeValue() {
-        return timeValue;
-    }
+		StringBuilder formattedTime = new StringBuilder();
+		if (h < 10)
+			formattedTime.append("0");
+		formattedTime.append(h).append(":");
+		if (m < 10)
+			formattedTime.append("0");
+		formattedTime.append(m).append(":");
+		if (s < 10)
+			formattedTime.append("0");
+		formattedTime.append(s);
 
-    public void setTimeValue(String timeValue) {
-        this.timeValue = timeValue;
-    }
+		return formattedTime.toString();
+	}
 
-    public static final DateFormat DF = DateFormat.getTimeInstance();
+	public String getPlaceHolder() {
+		return placeHolder;
+	}
 
-    public String getFormattedTime() {
-        long timeInSeconds = Long.valueOf(this.timeValue) / 1000;
-        long s = timeInSeconds % 60;
-        long m = (timeInSeconds / 60) % 60;
-        long h = (timeInSeconds / 3600) % 24;
+	public void setPlaceHolder(String placeHolder) {
+		this.placeHolder = placeHolder;
+	}
 
-        StringBuilder formattedTime = new StringBuilder();
-        if (h < 10)
-            formattedTime.append("0");
-        formattedTime.append(h).append(":");
-        if (m < 10)
-            formattedTime.append("0");
-        formattedTime.append(m).append(":");
-        if (s < 10)
-            formattedTime.append("0");
-        formattedTime.append(s);
+	public Boolean getSelectOnClick() {
+		return selectOnClick;
+	}
 
-        return formattedTime.toString();
-    }
+	public void setSelectOnClick(Boolean selectOnClick) {
+		this.selectOnClick = selectOnClick;
+	}
 
-    public String getPlaceHolder() {
-        return placeHolder;
-    }
+	public Boolean getRequired() {
+		return required;
+	}
 
-    public void setPlaceHolder(String placeHolder) {
-        this.placeHolder = placeHolder;
-    }
-
-    public Boolean getSelectOnClick() {
-        return selectOnClick;
-    }
-
-    public void setSelectOnClick(Boolean selectOnClick) {
-        this.selectOnClick = selectOnClick;
-    }
-
-    public Boolean getRequired() {
-        return required;
-    }
-
-    public void setRequired(Boolean required) {
-        this.required = required;
-    }
-
-    public Collection<String> getShowcasePatterns() {
-        return showcasePatterns;
-    }
-
-    public Collection<String> getShowcaseClickableIncrements() {
-        return showcaseClickableIncrements;
-    }
-
-    public Collection<String> getShowcaseVisibleIncrements() {
-        return showcaseVisibleIncrements;
-    }
-
-    public Collection<String> getShowcaseVisibleRanges() {
-        return showcaseVisibleRanges;
-    }
+	public void setRequired(Boolean required) {
+		this.required = required;
+	}
 }

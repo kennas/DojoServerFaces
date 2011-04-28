@@ -5,16 +5,17 @@
  -->
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core">
-	<dojo:button label="Select All">
-		<dojo:behaviorGridSelectAll target=":grid" />
-	</dojo:button>
-	<dojo:button label="Deselect All">
-		<dojo:behaviorGridDeselectAll target=":grid" />
-	</dojo:button>
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:showcase="http://java.sun.com/jsf/composite/showcase"
+>
+	<h:panelGrid columns="2" styleClass="behavior">
+		<strong>Navigate:</strong>
+		<showcase:usage tagName="behaviorNavigate" />
+	</h:panelGrid>
 </ui:composition>

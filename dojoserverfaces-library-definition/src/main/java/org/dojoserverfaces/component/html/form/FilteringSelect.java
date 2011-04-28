@@ -19,6 +19,12 @@ import org.dojoserverfaces.widget.property.DojoRefProperty;
 @EditableValueHolder(dojoType = "dijit.form.FilteringSelect", displayName = "Select Listbox w/Filtering")
 class FilteringSelect extends InputBase {
 
+    /**
+     * widget property the define the attribute of the data set to use for
+     * searching
+     */
+    @Property(handler = SearchAttrHandler.class)
+    String searchAttr;
  
 
     /**

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?><!--
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
     	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
     	Available via Academic Free License >= 2.1 OR the modified BSD license.
     	see: http://dojotoolkit.org/license for details
@@ -10,7 +11,11 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dojo="http://www.dojoserverfaces.org/core">
-	<dojo:comboStore id="states" options="#{ store.ss }"/>
+	<dojo:selectItemStore id="country">
+		<f:selectItem itemLabel="USA" itemValue="USA" />
+		<f:selectItem itemLabel="China" itemValue="China" />
+		<f:selectItem itemLabel="Canada" itemValue="Canada" />
+	</dojo:selectItemStore>
 	<h:form id="form">
 		<h:panelGroup>
 			<dojo:comboBox id="comboBox" value="#{comboBox.value}"
@@ -24,8 +29,8 @@
 				selectOnClick="#{comboBox.selectOnClick}" trim="#{comboBox.trim}"
 				onBlur="#{comboBox.onBlur}" onChange="#{comboBox.onChange}"
 				onFocus="#{comboBox.onFocus}"
-				highlightMatch="#{comboBox.highlightMatch}" store="states" />
-			
+				highlightMatch="#{comboBox.highlightMatch}" store="country" />
+
 		</h:panelGroup>
 		<hr class="separator" />
 		<dojo:button label="Submit">
@@ -33,9 +38,7 @@
 		</dojo:button>
 	</h:form>
 	<h:panelGrid id="result">
-		<div>
-			Your faviorate state is: 
-			<span style="font-weight: bold;">#{ comboBox.value }</span>
-		</div>
+		<div>Your faviorate country is: <span style="font-weight: bold;">#{
+		comboBox.value }</span></div>
 	</h:panelGrid>
 </ui:composition>

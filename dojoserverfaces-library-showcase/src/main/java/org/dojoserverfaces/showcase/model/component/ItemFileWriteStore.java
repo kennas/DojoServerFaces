@@ -15,6 +15,20 @@ public class ItemFileWriteStore {
             .getExternalContext().getContext()).getContextPath()
             + "/data/countries.json";
     private String data;
+    /*
+     * This property is the same as url just used for showing grid behaviors
+     */
+    private String behaviorUrl = ((ServletContext) FacesContext
+            .getCurrentInstance().getExternalContext().getContext())
+            .getContextPath() + "/data/test.json";;
+
+    public String getBehaviorUrl() {
+        return behaviorUrl;
+    }
+
+    public void setBehaviorUrl(String behaviorUrl) {
+        this.behaviorUrl = behaviorUrl;
+    }
 
     public String getUrl() {
         return url;

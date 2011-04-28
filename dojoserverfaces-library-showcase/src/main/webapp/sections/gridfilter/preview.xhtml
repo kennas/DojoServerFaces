@@ -14,7 +14,7 @@
 	<dojo:dataGrid id="grid" store="#{dataGrid.store}"
 		selectable="#{dataGrid.selectable}"
 		selectionMode="#{dataGrid.selectionMode}">
-		<dojo:view name="first" noscroll="#{dataGridView.noScroll}" />
+		<dojo:view name="first" noscroll="false" />
 		<dojo:defaultCell view="first" styles="#{defaultCell.styles}"
 			width="#{defaultCell.width}" editable="#{defaultCell.editable}"></dojo:defaultCell>
 		<dojo:cell view="first" field="id" name="#{cellOne.name}"
@@ -24,11 +24,6 @@
 		<dojo:cell view="first" field="type" name="#{cellThree.name}"
 			type="#{cellThree.type}" options="#{cellThree.options}"
 			editable="#{cellThree.editable}"></dojo:cell>
-		<dojo:defaultCell view="second" editable="false"></dojo:defaultCell>
-		<dojo:cell view="second.0" field="population" name="#{cellFour.name}"
-			width="auto" />
-		<dojo:cell view="second.1" field="timezone" name="#{cellFive.name}"
-			width="auto" />
 	</dojo:dataGrid>
-	<dojo:itemFileWriteStore id="st" url="#{itemFileWriteStore.url}"/>
+	<dojo:itemFileReadStore id="st" url="#{itemFileWriteStore.url}"/>
 </ui:composition>

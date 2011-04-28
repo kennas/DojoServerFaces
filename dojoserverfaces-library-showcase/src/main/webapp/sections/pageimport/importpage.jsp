@@ -1,13 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     	               "http://www.w3.org/TR/html4/loose.dtd">
-
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>GlassFish JSP Page</title>
 <style type="text/css">
-#hello {
+#bodyHello {
 	width: 1000px;
 	heigh: 500px;
 	font-size: 2em;
@@ -15,14 +19,15 @@
 }
 </style>
 <script type="text/javascript">
-	alert('script from head');
+	document.getElementById('headHello').innerHTML = 'Hello World script from head';
 </script>
 </head>
 <body>
 <script type="text/javascript">
-	alert('script from Body');
+	document.getElementById('bodyHello').innerHTML = 'Hello World script from Body';
 </script>
-<div id="hello">Hello World!</div>
-<input type="hidden" id="ttttt" value="ddddddddddddddd">
+<div id="bodyHello"></div>
+<br />
+<div id="headHello"></div>
 </body>
 </html>

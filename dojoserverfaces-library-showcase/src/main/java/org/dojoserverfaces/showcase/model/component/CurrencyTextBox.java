@@ -5,156 +5,122 @@
  *******************************************************************************/
 package org.dojoserverfaces.showcase.model.component;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
 public class CurrencyTextBox extends NumberInputBase {
-    private String currency = "USD";
-    private String symbol = "$";
-    private String placeHolder = "Input an amount";
-    private String rangeMessage = "Out of range";
-    private String pattern = "¤ #,##0.##";
+	private String currency = "USD";
+	private String symbol = "$";
+	private String placeHolder = "Input an amount";
+	private String rangeMessage = "Out of range";
+	private String pattern = "¤ #,##0.##";
 
-    private String places = "2";
+	private String places = "2";
 
-    private Boolean selectOnClick = true;
-    private Boolean trim = true;
-    private Boolean required = true;
+	private Boolean selectOnClick = true;
+	private Boolean trim = true;
+	private Boolean required = true;
 
-    private Double min = 0D;
-    private Double max = 100000D;
+	private Double min = 0D;
+	private Double max = 100000D;
 
-    private Double amount = 1999.88D;
+	private Double amount = 1999.88D;
 
-    private final Collection<String> showcaseCurrencyCodes = new ArrayList<String>();
-    {
-        showcaseCurrencyCodes.add("USD");
-        showcaseCurrencyCodes.add("EUR");
-    }
+	public String getCurrency() {
+		return currency;
+	}
 
-    private final Collection<String> showcaseSymbols = new ArrayList<String>();
-    {
-        showcaseSymbols.add("");
-        showcaseSymbols.add("$");
-    }
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
 
-    private final Collection<String> showcasePatterns = new ArrayList<String>();
-    {
-        showcasePatterns.add("#,##0.## ¤");
-        showcasePatterns.add("¤ #,##0.##");
-        showcasePatterns.add("###0.#####");
-    }
+	public String getSymbol() {
+		return symbol;
+	}
 
-    public String getCurrency() {
-        return currency;
-    }
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
+	public Double getMin() {
+		return min;
+	}
 
-    public String getSymbol() {
-        return symbol;
-    }
+	public void setMin(Double min) {
+		this.min = min;
+	}
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
+	public Double getMax() {
+		return max;
+	}
 
-    public Double getMin() {
-        return min;
-    }
+	public void setMax(Double max) {
+		this.max = max;
+	}
 
-    public void setMin(Double min) {
-        this.min = min;
-    }
+	public Double getAmount() {
+		return amount;
+	}
 
-    public Double getMax() {
-        return max;
-    }
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
 
-    public void setMax(Double max) {
-        this.max = max;
-    }
+	public String getPlaceHolder() {
+		return placeHolder;
+	}
 
-    public Double getAmount() {
-        return amount;
-    }
+	public void setPlaceHolder(String placeHolder) {
+		this.placeHolder = placeHolder;
+	}
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
+	public String getRangeMessage() {
+		return rangeMessage;
+	}
 
-    public String getPlaceHolder() {
-        return placeHolder;
-    }
+	public void setRangeMessage(String rangeMessage) {
+		this.rangeMessage = rangeMessage;
+	}
 
-    public void setPlaceHolder(String placeHolder) {
-        this.placeHolder = placeHolder;
-    }
+	public String getPlaces() {
+		return places;
+	}
 
-    public String getRangeMessage() {
-        return rangeMessage;
-    }
+	public void setPlaces(String places) {
+		this.places = places;
+	}
 
-    public void setRangeMessage(String rangeMessage) {
-        this.rangeMessage = rangeMessage;
-    }
+	public Boolean getSelectOnClick() {
+		return selectOnClick;
+	}
 
-    public String getPlaces() {
-        return places;
-    }
+	public void setSelectOnClick(Boolean selectOnClick) {
+		this.selectOnClick = selectOnClick;
+	}
 
-    public void setPlaces(String places) {
-        this.places = places;
-    }
+	public Boolean getTrim() {
+		return trim;
+	}
 
-    public Boolean getSelectOnClick() {
-        return selectOnClick;
-    }
+	public void setTrim(Boolean trim) {
+		this.trim = trim;
+	}
 
-    public void setSelectOnClick(Boolean selectOnClick) {
-        this.selectOnClick = selectOnClick;
-    }
+	public Boolean getRequired() {
+		return required;
+	}
 
-    public Boolean getTrim() {
-        return trim;
-    }
+	public void setRequired(Boolean required) {
+		this.required = required;
+	}
 
-    public void setTrim(Boolean trim) {
-        this.trim = trim;
-    }
+	public String getPattern() {
+		return pattern;
+	}
 
-    public Boolean getRequired() {
-        return required;
-    }
-
-    public void setRequired(Boolean required) {
-        this.required = required;
-    }
-
-    public String getPattern() {
-        return pattern;
-    }
-
-    public void setPattern(String pattern) {
-        this.pattern = pattern;
-    }
-
-    public Collection<String> getShowcaseCurrencyCodes() {
-        return showcaseCurrencyCodes;
-    }
-
-    public Collection<String> getShowcaseSymbols() {
-        return showcaseSymbols;
-    }
-
-    public Collection<String> getShowcasePatterns() {
-        return showcasePatterns;
-    }
+	public void setPattern(String pattern) {
+		this.pattern = pattern;
+	}
 }

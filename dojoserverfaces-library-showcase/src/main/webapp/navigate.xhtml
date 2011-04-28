@@ -10,24 +10,29 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core">
-	<ui:param name="title" value="GridAddRemoveRow Behavior" />
-	<ui:param name="formName" value="GridBehaviorForm" />
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<ui:param name="title" value="CopyValue Behavior" />
+	<ui:param name="formName" value="copyValueForm" />
+	
 	<ui:define name="stylesheet">
 		<h:outputStylesheet library="css" name="styles.css" />
 		<style type="text/css">
-#preview {
-	height: 200px;
-}
-</style>
+			#properties {
+				display: none;
+			}
+			
+			table.copy td {
+				padding: 8px;
+			}
+		</style>
 	</ui:define>
+	
 	<ui:define name="prompt">
-		<ui:include src="/sections/gridfilter/prompt.xhtml" />
+		<ui:include src="/sections/navigate/prompt.xhtml" />
 	</ui:define>
-<ui:define name="properties">
-		<ui:include src="/sections/gridfilter/properties.xhtml" />
-	</ui:define>
+	
 	<ui:define name="preview">
-		<ui:include src="/sections/gridfilter/preview.xhtml" />
+		<ui:include src="/sections/navigate/preview.xhtml" />
 	</ui:define>
 </ui:composition>
