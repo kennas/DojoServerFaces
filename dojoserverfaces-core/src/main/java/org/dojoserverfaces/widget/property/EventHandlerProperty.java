@@ -8,6 +8,7 @@ package org.dojoserverfaces.widget.property;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.component.ActionSource2;
 import javax.faces.component.UIComponent;
 import javax.faces.component.behavior.ClientBehavior;
 import javax.faces.component.behavior.ClientBehaviorContext;
@@ -95,10 +96,18 @@ public class EventHandlerProperty extends Property {
                         // this object to be the dom element
                         UIComponent comp = behaviorContext.getComponent();
                         if (comp instanceof DojoWidget) {
-                            String jsfNode = ((DojoWidget) comp).getJsfNode();
-                            if (jsfNode != null && jsfNode.length() > 0) {
-                                script = script.replaceAll("this", "this."
-                                        + jsfNode);
+                            if (comp instanceof ActionSource2) {
+                                script = script.replaceAll("this",
+                                        "dojo.byId(\"" + comp.getClientId()
+                                                + "\")");
+                            }
+                            else {
+                                String jsfNode = ((DojoWidget) comp)
+                                        .getJsfNode();
+                                if (jsfNode != null && jsfNode.length() > 0) {
+                                    script = script.replaceAll("this", "this."
+                                            + jsfNode);
+                                }
                             }
                         }
                     }
