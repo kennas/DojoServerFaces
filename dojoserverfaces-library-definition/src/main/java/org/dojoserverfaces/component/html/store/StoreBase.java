@@ -6,9 +6,8 @@
 package org.dojoserverfaces.component.html.store;
 
 import org.dojoserverfaces.build.annotation.Property;
-import org.dojoserverfaces.component.html.WidgetBase;
 
-public class StoreBase extends WidgetBase {
+public class StoreBase {
     /**
      * URL of data to fetch.
      */

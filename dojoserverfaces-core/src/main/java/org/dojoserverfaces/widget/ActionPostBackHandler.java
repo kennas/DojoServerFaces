@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.context.PartialViewContext;
 import javax.faces.event.ActionEvent;
 
 public class ActionPostBackHandler implements PostBackHandler {
@@ -17,7 +18,18 @@ public class ActionPostBackHandler implements PostBackHandler {
             UIComponent component) {
         Map<String, String> requestParams = context.getExternalContext()
                 .getRequestParameterMap();
-        if (requestParams.containsKey(component.getClientId(context))) {
+
+        PartialViewContext pvContext = context.getPartialViewContext();
+        if (pvContext.isPartialRequest() && pvContext.isAjaxRequest()) {
+            String sourceId = requestParams.get("javax.faces.source");
+            if (!component.getClientId(context).equals(sourceId))
+                return;
+
+            // TODO: need more condition to determine weather need to create an
+            // action event or not for "partial" processing
+            component.queueEvent(new ActionEvent(component));
+        }
+        else if (requestParams.containsKey(component.getClientId(context))) {
             component.queueEvent(new ActionEvent(component));
             // TODO: do we need to do anything for "partial" processing?
         }

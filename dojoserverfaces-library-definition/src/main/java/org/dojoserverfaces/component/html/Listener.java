@@ -137,7 +137,7 @@ public class Listener extends UIComponentBase implements ClientBehaviorHolder,
                 .append(JS_ARG_NAME_VALUE).append(";");
 
         if (numOfBehaviors <= 1) {
-            // Only one behavior attached
+            // Only one behavior attached at most
             if (eventScript != null) {
                 handler.append(eventScript);
             }
