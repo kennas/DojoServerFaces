@@ -6,9 +6,9 @@
 package org.dojoserverfaces.showcase.rest;
 
 
-import org.apache.wink.json4j.JSONArray;
-import org.apache.wink.json4j.JSONException;
-import org.apache.wink.json4j.JSONObject;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONException;
+import net.sf.json.JSONObject;
 
 /**
  * This defines concrete method of the url mapping method
