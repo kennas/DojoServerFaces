@@ -32,7 +32,7 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.faces</url-pattern>
 	</servlet-mapping>
-	<servlet>		<servlet-name>DataStoreApp</servlet-name>		<!-- This is for WAS -->		<servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>		<init-param>			<param-name>javax.ws.rs.Application</param-name>			<param-value>org.dojoserverfaces.showcase.rest.DataStoreApplication</param-value>		</init-param>		<!-- this is for Glassfish -->		<!-- <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> 			<init-param> <param-name>com.sun.jersey.config.property.packages</param-name> 			<param-value> org.dojoserverfaces.showcase.rest </param-value> </init-param> -->		<load-on-startup>1</load-on-startup>	</servlet>	<servlet-mapping>		<servlet-name>DataStoreApp</servlet-name>		<url-pattern>/rest/*</url-pattern>	</servlet-mapping>
+	<servlet>		<servlet-name>javax.ws.rs.core.Application</servlet-name>	</servlet>	<servlet-mapping>		<servlet-name>javax.ws.rs.core.Application</servlet-name>		<url-pattern>/rest/*</url-pattern>	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.faces</welcome-file>
 	</welcome-file-list>
