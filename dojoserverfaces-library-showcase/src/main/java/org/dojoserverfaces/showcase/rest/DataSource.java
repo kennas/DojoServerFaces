@@ -5,23 +5,17 @@
  *******************************************************************************/
 package org.dojoserverfaces.showcase.rest;
 
-
-
-
-
-
-
 /**
- * This defines concret method of the url mapping method
+ * This defines concrete method of the url mapping method
  */
 public class DataSource {
     static final Integer HTTP_SUCCESS = 200;
     static final Integer HTTP_FAILED = 400;
-    private static JSONArray countries= new JSONArray();
+    private static JSONArray countries = new JSONArray();
 
-    public JSONArray getCountries() {
+    JSONArray getCountries() {
 
-        if (countries.size()>0) {
+        if (countries.size() > 0) {
             return countries;
         }
 
@@ -50,8 +44,6 @@ public class DataSource {
         }
         return countries;
     }
-
-  
 
     static String unQuote(String value) {
         return value.substring(1, value.length() - 1);
@@ -97,7 +89,7 @@ public class DataSource {
             }
             for (int i = 0; i < countries.size(); i++) {
                 JSONObject country = (JSONObject) countries.get(i);
-                if (country.get("\"id\"").equals("\""+countryCode+"\"")) {
+                if (country.get("\"id\"").equals("\"" + countryCode + "\"")) {
                     countries.set(i, newCountry);
                     break;
                 }
@@ -115,14 +107,14 @@ public class DataSource {
      * judge whether the country exist
      * 
      */
-    boolean isExist(String countrycode) {
+    boolean isExist(String countryCode) {
         try {
-           for (int i=0;i<countries.size();i++){
-               JSONObject couutry = (JSONObject)countries.get(i);
-               if(couutry.get("\"id\"").equals("\""+countrycode+"\"")){
-                   return true;
-               }
-           }
+            for (int i = 0; i < countries.size(); i++) {
+                JSONObject couutry = (JSONObject) countries.get(i);
+                if (couutry.get("\"id\"").equals("\"" + countryCode + "\"")) {
+                    return true;
+                }
+            }
         }
         catch (Exception ex) {
             return false;
@@ -135,14 +127,14 @@ public class DataSource {
      */
     Integer removeCountry(String countryCode) {
         try {
-            for (int i=0;i<countries.size();i++){
-                JSONObject couutry = (JSONObject)countries.get(i);
-                if(couutry.get("\"id\"").equals("\""+countryCode+"\"")){
+            for (int i = 0; i < countries.size(); i++) {
+                JSONObject couutry = (JSONObject) countries.get(i);
+                if (couutry.get("\"id\"").equals("\"" + countryCode + "\"")) {
                     countries.remove(couutry);
                     return HTTP_SUCCESS;
                 }
             }
-           
+
             return HTTP_FAILED;
         }
         catch (Exception ex) {
