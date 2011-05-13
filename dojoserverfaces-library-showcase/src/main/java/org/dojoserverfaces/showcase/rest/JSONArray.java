@@ -3,14 +3,18 @@ package org.dojoserverfaces.showcase.rest;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Simple JSONArray
+ * 
+ */
 public class JSONArray {
     private ArrayList<JSONObject> list = new ArrayList<JSONObject>();
 
-    public void add(JSONObject obj) {
+    void add(JSONObject obj) {
         list.add(obj);
     }
 
-    public Iterator<JSONObject> iterator() {
+    Iterator<JSONObject> iterator() {
         return list.iterator();
     }
 
@@ -28,19 +32,19 @@ public class JSONArray {
         return sb.toString();
     }
 
-    public Object get(int index) {
+    Object get(int index) {
         return list.get(index);
     }
 
-    public void remove(Object obj) {
+    void remove(Object obj) {
         list.remove(obj);
     }
 
-    public int size() {
+    int size() {
         return list.size();
     }
 
-    public void set(int index, JSONObject obj) {
+    void set(int index, JSONObject obj) {
         list.set(index, obj);
     }
 }
