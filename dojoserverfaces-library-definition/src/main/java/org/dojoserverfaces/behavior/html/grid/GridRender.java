@@ -2,7 +2,7 @@ package org.dojoserverfaces.behavior.html.grid;
 
 import org.dojoserverfaces.build.annotation.Behavior;
 /**
- * Refresh grid
+ *  This behavior will allow for refreshing grid
  *
  */
 @Behavior
