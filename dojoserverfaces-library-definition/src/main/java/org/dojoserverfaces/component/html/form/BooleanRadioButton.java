@@ -23,7 +23,7 @@ import org.dojoserverfaces.widget.property.ValueProperty;
  * components can be identified as to belong to a group which will allow for
  * only one component in the group to be set (true).
  */
-@EditableValueHolder(dojoType = "dijit.form.RadioButton", elementType = HtmlElementType.INPUT_RADIO, jsfNode = "domNode")
+@EditableValueHolder(dojoType = "dijit.form.RadioButton", elementType = HtmlElementType.INPUT_RADIO)
 class BooleanRadioButton extends InputBase {
 
     static final String GROUP_ATTRIBUTE_NAME = "groupId";
