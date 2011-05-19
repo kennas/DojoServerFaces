@@ -38,27 +38,6 @@
 			<type>war</type>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.wink</groupId>
-			<artifactId>wink-common</artifactId>
-			<version>1.1.2-incubating</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.wink</groupId>
-			<artifactId>wink-server</artifactId>
-			<version>1.1.2-incubating</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.wink</groupId>
-			<artifactId>wink-json4j</artifactId>
-			<version>1.1.2-incubating</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
