@@ -20,22 +20,22 @@
 			a managed bean</span>
 			<h:panelGrid cols="1">
 				<jd:button type="button" label="(display(none)) pane/div" id="button1">
-					<jd:behaviorSetDisplay value="false" target="paneOne" />
+					<jd:behaviorSetDisplay value="false" target="form1:paneOne" />
 					<jd:behaviorSetDisplay value="false" target="testDiv" />
 				</jd:button>
 				<jd:button type="button" label="(display(default)) pane/div" id="button2">
-					<jd:behaviorSetDisplay value="true" target="paneOne" />
+					<jd:behaviorSetDisplay value="true" target="form1:paneOne" />
 					<jd:behaviorSetDisplay value="true" target="testDiv" />
 				</jd:button>
 				<jd:button type="button" label="Visible(hidden)) pane/div" id="button3">
-					<jd:behaviorSetVisible value="false" target="paneOne" />
+					<jd:behaviorSetVisible value="false" target="form1:paneOne" />
 					<jd:behaviorSetVisible value="false" target="testDiv" />
 				</jd:button>
 				<jd:button type="button" label="Visible(visible)) pane/div" id="button4">
-					<jd:behaviorSetVisible value="true" target="paneOne" />
+					<jd:behaviorSetVisible value="true" target="form1:paneOne" />
 					<jd:behaviorSetVisible value="true" target="testDiv" />
 				</jd:button>
-				<h:panelGroup>
+				<h:form id="form1"><h:panelGroup>
 					<h:outputText value="pane:" />
 					<jd:contentPane id="paneOne" title="pane title" ariaDescribedBy="">
 						<h:outputText value="pane description" />
@@ -49,7 +49,7 @@
 					<h:outputText value="div:" />
 					<div id="testDiv">div content</div>
 					<h:outputText value="end div" />
-				</h:panelGroup>
+				</h:panelGroup></h:form>
 			</h:panelGrid>
 		</f:subview></div>
 	</ui:define>

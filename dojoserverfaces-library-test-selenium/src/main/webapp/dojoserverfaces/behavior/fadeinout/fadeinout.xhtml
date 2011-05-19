@@ -21,17 +21,17 @@
 			<h:panelGrid columns="1">
 				<h:panelGroup>
 					<jd:button label="Fade In" id="buttonA">
-						<jd:behaviorFadeIn target="portletA" duration="500" />
+						<jd:behaviorFadeIn target="form1:portletA" duration="500" />
 					</jd:button>
 					<jd:button label="Fade Out" id="buttonB">
-						<jd:behaviorFadeOut target="portletA" duration="500" />
+						<jd:behaviorFadeOut target="form1:portletA" duration="500" />
 					</jd:button>
 				</h:panelGroup>
-				<h:panelGroup>
+				<h:form id="form1"><h:panelGroup>
 					<jd:titlePane id="portletA" title="Portlet A" toggleable="false">
 					        Hello <strong><em>DojoServerFaces!</em></strong>
 					</jd:titlePane>
-				</h:panelGroup>
+				</h:panelGroup></h:form>
 			</h:panelGrid>
 		</f:subview></div>
 	</ui:define>
