@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">	<listener>       <listener-class>         org.apache.myfaces.webapp.StartupServletContextListener       </listener-class>     </listener>     
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsf</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<context-param>
+		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.PARTIAL_STATE_SAVING</param-name>
+		<param-value>true</param-value>
+	</context-param>	<context-param>
+		<description>path to the dojo library resources
+		</description>
+		<param-name>dojoserverfaces.dojo.location</param-name>
+		<param-value>//dojo/dojotoolkit/</param-value>
+	</context-param>
+	<context-param>
+		<description>name of the dojo library (dojo.js)
+		</description>
+		<param-name>dojoserverfaces.dojo.library</param-name>
+		<param-value>dojo/dojo.js</param-value>
+	</context-param>		<!--       Needed when running against MyFaces in Jetty since the classpath is laid out       differently than normal.     -->     <context-param>       <param-name>org.apache.myfaces.annotation.SCAN_PACKAGES</param-name>       <param-value>org.dojoserverfaces.renderkit.html,org.dojoserverfaces.test.support.bean.form,org.dojoserverfaces.test.support.converter,org.dojoserverfaces.test.support.validator</param-value>     </context-param>
+</web-app>
