@@ -9,16 +9,17 @@
 	<div class="testCase">
 		<f:subview id="readonlyDisabled">
 		    <span class="testTitle"> Test case to check that readonly component cannot be edited</span>
+			<jd:selectItemStore id="values">
+		       <f:selectItems value="#{ selectBean.values }" />
+	        </jd:selectItemStore>
 			<h:panelGrid columns="1"> 		
-				<jd:select id="widgetReadOnly" value="#{selectBean.widgetReadOnly.data}" readOnly="true">
-					<f:selectItems value="#{selectBean.values}"/>
+				<jd:select id="widgetReadOnly" value="#{selectBean.widgetReadOnly.data}" readOnly="true" store="values">
 				</jd:select>
 				</h:panelGrid>
 			<span class="testTitle">Test case to check that disabled component can not react on user clicks</span>
 			<h:panelGrid columns="1"> 
-				<jd:select id="widgetDisabled" value="#{selectBean.widgetDisabled.data}" disabled="true"
+				<jd:select id="widgetDisabled" value="#{selectBean.widgetDisabled.data}" disabled="true" store="values"
 					onclick="document.getElementById('form:readonlyDisabled:outputDisabled').innerHTML='Oops'">
-					<f:selectItems value="#{selectBean.values}"/>
 				</jd:select>
 				<h:outputText id="outputDisabled" value="Should not change on client event"></h:outputText>
 			</h:panelGrid>

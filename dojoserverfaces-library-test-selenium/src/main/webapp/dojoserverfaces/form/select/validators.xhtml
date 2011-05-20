@@ -9,14 +9,16 @@
 	<div class="testCase">
 		<f:subview id="validators">
 		    <span class="testTitle">Test Required validator (Also test empty submit condition)</span>
+			<jd:selectItemStore id="values">
+		       <f:selectItems value="#{ selectBean.values }" />
+	        </jd:selectItemStore>
 			<h:panelGrid columns="2">
 				<!-- Test case for empty condition and with required validator-->
 				<!-- Test once for setting the following attributes true and then false 
 				javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL
 	  				javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
 	         		 -->
-				<jd:select id="widgetEmptyRequiredValidator" value="#{selectBean.emptyRequiredValidator.data}">
-					<f:selectItems value="#{selectBean.values}"/>
+				<jd:select id="widgetEmptyRequiredValidator" value="#{selectBean.emptyRequiredValidator.data}" store="values">
 					<f:validateRequired />
 				</jd:select>
 				<h:panelGroup>Submitted value is null ? <h:outputText id="outputEmptyRequiredValidator"
@@ -34,8 +36,7 @@
 	  				javax.faces.VALIDATE_EMPTY_FIELDS</param-name>
 	         		 -->
 				<h:panelGroup>Do not enter "b" 
-					<jd:select value="#{selectBean.lengthSingleValidator.data}" id="widgetSingleValidator">
-						<f:selectItems value="#{selectBean.values}"/>
+					<jd:select value="#{selectBean.lengthSingleValidator.data}" id="widgetSingleValidator" store="values">
 						<f:validator validatorId="dojoserverfaces.ExcludeValidator" />
 						<f:attribute name="dojoserverfaces.ExcludeValidator.index" value="1"></f:attribute>
 					</jd:select>
@@ -52,8 +53,7 @@
 			<h:panelGrid columns="1">
 				<!-- Test case after setting the required attribute value to true -->
 				<h:panelGroup>Enter a value: 
-					<jd:select value="#{selectBean.widgetRequiredAttr.data}" id="widgetRequiredAttr" required="true">
-						<f:selectItems value="#{selectBean.values}"/>
+					<jd:select value="#{selectBean.widgetRequiredAttr.data}" id="widgetRequiredAttr" required="true" store="values">
 					</jd:select>
 				</h:panelGroup>
 				<h:panelGroup>ValidationMessage: <h:message for="widgetRequiredAttr" errorClass="errorMessage" id="errMsgTextBoxRequiredAttr" />
@@ -62,8 +62,7 @@
 			<span class="testTitle">With Multiple Validators</span>
 			<h:panelGrid columns="1">
 				<h:panelGroup>Do not leave empty, Do not enter "b"<jd:select value="#{selectBean.widgetMultipleValidators.data}"
-						id="widgetMultipleValidators" required="true">
-						<f:selectItems value="#{selectBean.values}"/>
+						id="widgetMultipleValidators" required="true" store="values">
 						<f:validator validatorId="dojoserverfaces.ExcludeValidator" />
 						<f:attribute name="dojoserverfaces.ExcludeValidator.index" value="1"></f:attribute>
 					</jd:select>
@@ -75,8 +74,7 @@
 			<span class="testTitle">With validator attribute</span>
 			<h:panelGrid columns="1">
 				<h:panelGroup>Only "a" can be set<jd:select value="#{selectBean.widgetValidatorAttr.data}" id="widgetValidatorAttr"
-						validator="#{selectBean.validateWidgetValidatorAttr}">
-						<f:selectItems value="#{selectBean.values}"/>
+						validator="#{selectBean.validateWidgetValidatorAttr}" store="values">
 					</jd:select>
 				</h:panelGroup>
 				<h:panelGroup>ValidationMessage: <h:message for="widgetValidatorAttr" errorClass="errorMessage" id="errMsgTextBoxValidatorAttr" />
@@ -85,8 +83,7 @@
 			<span class="testTitle">With JSR303 Bean Validation</span>
 			<h:panelGrid columns="1">
 				<h:panelGroup>Only "a" can be set <jd:select value="#{selectBean.widgetBeanValidation}"
-						id="widgetBeanValidation">
-						<f:selectItems value="#{selectBean.values}"/>
+						id="widgetBeanValidation" store="values">
 					</jd:select>
 				</h:panelGroup>
 				<h:panelGroup>ValidationMessage: <h:message for="widgetBeanValidation" errorClass="errorMessage" id="errMsgTextBoxBeanValidation" />

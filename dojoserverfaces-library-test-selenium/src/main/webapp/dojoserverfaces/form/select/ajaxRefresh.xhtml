@@ -9,9 +9,11 @@
 	<div class="testCase">
 		<f:subview id="ajaxRefresh">
 		    <span class="testTitle">Test case which ajaxically updates ManagedBean's value bound to the component</span>
+			<jd:selectItemStore id="values">
+		       <f:selectItems value="#{ selectBean.values }" />
+	        </jd:selectItemStore>
 			<h:panelGrid columns="2">
-				<jd:select id="widgetAjaxCall" value="#{selectBean.beanBoundValue.data}">
-					<f:selectItems value="#{selectBean.values}"/>
+				<jd:select id="widgetAjaxCall" value="#{selectBean.beanBoundValue.data}" store="values">
 					<f:ajax execute="widgetAjaxCall" render="outputAjaxCall" event="change" />
 				</jd:select>
 				<h:outputText id="outputAjaxCall" value="#{selectBean.beanBoundValue.data}" />

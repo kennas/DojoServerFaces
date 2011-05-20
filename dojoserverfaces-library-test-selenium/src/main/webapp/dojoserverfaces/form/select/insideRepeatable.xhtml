@@ -9,11 +9,13 @@
 	<div class="testCase">
 		<f:subview id="insideRepeatable">
 		    <span class="testTitle">Used within container that controls and repeats its rendering, rendered=true</span>
+			<jd:selectItemStore id="values">
+		       <f:selectItems value="#{ selectBean.values }" />
+	        </jd:selectItemStore>
 			<h:panelGrid columns="1">
 				<h:dataTable id="dataTable1" value="#{selectBean.dataTableValues}" var="item">
 					<h:column>
-						<jd:select value="#{item.data}">
-							<f:selectItems value="#{selectBean.values}"/>
+						<jd:select value="#{item.data}" store="values">
 						</jd:select>
 					</h:column>
 				</h:dataTable>
@@ -22,8 +24,7 @@
 			<h:panelGrid columns="1">
 				<h:dataTable id="dataTable2" value="#{selectBean.dataTableValues}" var="item" rendered="false">
 					<h:column>
-						<jd:select value="#{item.data}">
-							<f:selectItems value="#{selectBean.values}"/>
+						<jd:select value="#{item.data}" store="values">
 						</jd:select>
 					</h:column>
 				</h:dataTable>
@@ -33,8 +34,7 @@
 			<h:panelGrid columns="3">
 				<h:dataTable id="dataTableValuesSubmit" value="#{selectBean.dataTableValuesSubmit}" var="item">
 					<h:column>
-						<jd:select value="#{item.data}">
-							<f:selectItems value="#{selectBean.values}"/>
+						<jd:select value="#{item.data}" store="values">
 						</jd:select>
 					</h:column>
 				</h:dataTable>
@@ -50,8 +50,7 @@
 			<h:panelGrid columns="2">
 				<h:dataTable id="dataTableAjax" value="#{selectBean.dataTableAjaxValues}" var="item">
 					<h:column>
-						<jd:select value="#{item.data}">
-							<f:selectItems value="#{selectBean.values}"/>
+						<jd:select value="#{item.data}" store="values">
 							<f:ajax execute="@this" render=":form:insideRepeatable:panelGroupAjax" event="change" />
 						</jd:select>
 					</h:column>
@@ -67,8 +66,7 @@
 			<h:panelGrid columns="2">
 				<h:dataTable id="dataTableMultiComp" value="#{selectBean.dataTableMultiCompValues}" var="item">
 					<h:column>
-						<jd:select value="#{item.data}">
-							<f:selectItems value="#{selectBean.values}"/>
+						<jd:select value="#{item.data}" store="values">
 							<f:ajax execute="@this" render=":form:insideRepeatable:panelGroupMultiAjax" event="change" />
 						</jd:select>
 					</h:column>

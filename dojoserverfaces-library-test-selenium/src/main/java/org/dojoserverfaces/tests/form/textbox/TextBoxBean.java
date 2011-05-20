@@ -3,7 +3,7 @@
  * 	Available via Academic Free License >= 2.1 OR the modified BSD license.
  * 	see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.tests.form.textBox;
+package org.dojoserverfaces.tests.form.textbox;
 
 import java.util.ArrayList;
 import java.util.Iterator;

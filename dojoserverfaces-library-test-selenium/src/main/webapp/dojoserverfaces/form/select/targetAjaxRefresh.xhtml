@@ -9,11 +9,13 @@
 	<div class="testCase">
 		<f:subview id="targetAjaxRefresh">
 		    <span class="testTitle">Test case where the component which was not rendered earlier gets rendered as a target of Ajax refresh</span>
+			<jd:selectItemStore id="values">
+		       <f:selectItems value="#{ selectBean.values }" />
+	        </jd:selectItemStore>
 			<h:panelGrid columns="2">
 				<h:panelGroup id="panelGroupTargetAjax">
 					<h:panelGrid rendered="#{selectBean.render}" id="panelGrid">
-						<jd:select id="widgetTargetAjax" value="#{selectBean.targetAjax.data}">
-							<f:selectItems value="#{selectBean.values}"/>
+						<jd:select id="widgetTargetAjax" value="#{selectBean.targetAjax.data}" store="values">
 						</jd:select>
 					</h:panelGrid>
 				</h:panelGroup>
@@ -24,8 +26,7 @@
 			<span class="testTitle">Test case where the component's displayed value is changed as a target of Ajax refresh</span>
 			<h:panelGrid columns="2">
 				<h:panelGroup id="panelGroupTargetAjaxRefresh">
-					<jd:select id="widgetTargetAjaxRefresh" value="#{selectBean.targetAjaxRefresh.data}">
-						<f:selectItems value="#{selectBean.values}"/>
+					<jd:select id="widgetTargetAjaxRefresh" value="#{selectBean.targetAjaxRefresh.data}" store="values">
 					</jd:select>
 				</h:panelGroup>
 				<h:commandButton id="btnChangeTargetAjaxRefreshValue" value="Change Text" action="#{selectBean.changeTargetAjaxRefresh}">
