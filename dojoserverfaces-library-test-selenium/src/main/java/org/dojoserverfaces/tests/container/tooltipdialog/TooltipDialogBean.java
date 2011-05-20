@@ -3,7 +3,7 @@
  * 	Available via Academic Free License >= 2.1 OR the modified BSD license.
  * 	see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.tests.container.pageImport;
+package org.dojoserverfaces.tests.container.tooltipdialog;
 
 import java.util.Date;
 
@@ -13,10 +13,10 @@ import javax.faces.bean.RequestScoped;
 import org.dojoserverfaces.tests.values.StringData;
 import org.dojoserverfaces.tests.widget.values.WidgetValues;
 
-@ManagedBean(name = "pageImportBean")
+@ManagedBean(name = "tooltipDialogBean")
 @RequestScoped
-public class PageImportBean {
-    private WidgetValues widgetValues = new PageImportValues();
+public class TooltipDialogBean {
+    private WidgetValues widgetValues = new TooltipDialogValues();
 
     private StringData beanBoundValue;
 
@@ -24,7 +24,7 @@ public class PageImportBean {
         return (new Date());
     }
 
-    public PageImportBean() {
+    public TooltipDialogBean() {
         this.beanBoundValue = new StringData(widgetValues.getFirst());
     }
 
