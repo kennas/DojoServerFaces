@@ -6,16 +6,11 @@
 package org.dojoserverfaces.tests.gadget.button;
 
 import org.dojoserverfaces.tests.selenium.SeleniumSetupSuite;
-import org.dojoserverfaces.tests.selenium.dojoserverfaces.LayoutComponentSelenium;
+import org.dojoserverfaces.tests.selenium.SeleniumTestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-public class ButtonSelenium extends LayoutComponentSelenium {
-
-    public ButtonSelenium() {
-        this.widgetValues = new ButtonValues();
-        this.widgetInteraction = new ButtonInteraction(widgetValues);
-    }
+public class ButtonSelenium extends SeleniumTestCase {
 
     private static SeleniumSetupSuite seleniumSetupSuite;
 
@@ -28,9 +23,8 @@ public class ButtonSelenium extends LayoutComponentSelenium {
     public void setUp() throws Exception {
         selenium = seleniumSetupSuite.getSelenium();
         if (selenium != null) {
-            this.widgetInteraction.setSelenium(selenium);
             selenium
-                    .open("http://localhost:8080/eclipse-dojoserverfaces-library-test-selenium/dojoserverfaces/gadget/button/index.jsf");
+                    .open("http://localhost:8080/eclipse-jsfdojo-library-test-selenium/dojoserverfaces/gadget/button/index.jsf");
         }
     }
 

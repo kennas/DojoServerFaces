@@ -9,10 +9,12 @@
 	<div class="testCase">
 		<f:subview id="clientEvents">
 		    <span class="testTitle">Test case for component event, where the same event is used for both client side action as well as ajax refresh </span>
+			<jd:selectItemStore id="values">
+		       <f:selectItems value="#{ selectBean.values }" />
+	        </jd:selectItemStore>
 			<h:panelGrid columns="3">
-				<jd:select id="widgetClient" value="#{selectBean.widgetClient.data}"
+				<jd:select id="widgetClient" value="#{selectBean.widgetClient.data}" store="values"
 					onChange="dojo.byId('form:clientEvents:outputClient').innerHTML=dijit.byId('form:clientEvents:widgetClient').attr('value'); return true;">
-					<f:selectItems value="#{selectBean.values}"/>
 					<f:ajax execute="@this" render="outputClient2" event="change" />
 				</jd:select>
 				<h:panelGroup>Value updated on client side: <h:outputText id="outputClient" value="Should change on client event"></h:outputText>
