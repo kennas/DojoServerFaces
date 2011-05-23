@@ -45,7 +45,7 @@
     
     <!-- Test properties.  Replace with custom values if necessary. -->
     
-    <test.browser>*chrome</test.browser>
+    <test.browser>*firefox</test.browser>
     <test.host.selenium.server>localhost</test.host.selenium.server>
     <test.host.server>localhost</test.host.server>
     <test.port.selenium.server>4444</test.port.selenium.server>
@@ -224,6 +224,7 @@
             </goals>
             <configuration>
               <background>true</background>
+	      <forcedBrowserMode>${test.browser}</forcedBrowserMode>
             </configuration>
           </execution>
           <execution>
