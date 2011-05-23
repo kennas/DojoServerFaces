@@ -6,9 +6,9 @@ import org.dojoserverfaces.build.annotation.Behavior;
  *
  */
 @Behavior
-public class GridRender extends SimpleGridOperationBase {
+public class GridRefresh extends SimpleGridOperationBase {
 
-    public GridRender() {
+    public GridRefresh() {
         super("render");
     }
 
