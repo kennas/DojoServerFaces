@@ -22,6 +22,7 @@
 		<module>dojoserverfaces-library-example</module>
 		<module>dojoserverfaces-library-test</module>
 		<module>dojoserverfaces-library-test-selenium</module>
+		<module>dojoserverfaces-test</module>
 	</modules>
 
 	<profiles>

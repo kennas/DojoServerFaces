@@ -1,0 +1,24 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testClientSideEvents() -->
+	<div class="testCase">
+		<f:subview id="clientEvents">
+		    <span class="testTitle">Test case for component event, where the same event is used for both client side action as well as ajax refresh </span>
+			<h:panelGrid columns="3">
+				<jd:booleanCheckBox id="widgetClient" value="#{booleanCheckBoxBean.widgetClient.data}"
+					onChange="dojo.byId('form:clientEvents:outputClient').innerHTML=dijit.byId('form:clientEvents:widgetClient').attr('value'); return true;">
+					<f:ajax execute="@this" render="outputClient2" event="change" />
+				</jd:booleanCheckBox>
+				<h:panelGroup>Value updated on client side: <h:outputText id="outputClient" value="Should change on client event"></h:outputText>
+				</h:panelGroup>
+				<h:panelGroup>Value updated to server: <h:outputText id="outputClient2" value="#{booleanCheckBoxBean.widgetClient.data}"></h:outputText>
+				</h:panelGroup>
+			</h:panelGrid>
+		</f:subview>
+	</div>
+</ui:composition>
