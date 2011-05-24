@@ -5,22 +5,17 @@
  *******************************************************************************/
 package org.dojoserverfaces.showcase.rest;
 
-
-import org.apache.wink.json4j.JSONArray;
-import org.apache.wink.json4j.JSONException;
-import org.apache.wink.json4j.JSONObject;
-
 /**
  * This defines concrete method of the url mapping method
  */
 public class DataSource {
     static final Integer HTTP_SUCCESS = 200;
     static final Integer HTTP_FAILED = 400;
-    private static JSONArray countries= new JSONArray();
+    private static JSONArray countries = new JSONArray();
 
-    public JSONArray getCountries() {
+    JSONArray getCountries() {
 
-        if (countries.size()>0) {
+        if (countries.size() > 0) {
             return countries;
         }
 
@@ -44,13 +39,11 @@ public class DataSource {
             countries.add(country);
 
         }
-        catch (JSONException ex) {
+        catch (Exception ex) {
             return countries;
         }
         return countries;
     }
-
-  
 
     static String unQuote(String value) {
         return value.substring(1, value.length() - 1);
@@ -75,7 +68,7 @@ public class DataSource {
              */
             countries.add(country);
         }
-        catch (JSONException e) {
+        catch (Exception e) {
             return HTTP_FAILED;
         }
         return HTTP_SUCCESS;
@@ -96,7 +89,7 @@ public class DataSource {
             }
             for (int i = 0; i < countries.size(); i++) {
                 JSONObject country = (JSONObject) countries.get(i);
-                if (country.get("id").equals(countryCode)) {
+                if (country.get("\"id\"").equals("\"" + countryCode + "\"")) {
                     countries.set(i, newCountry);
                     break;
                 }
@@ -104,7 +97,7 @@ public class DataSource {
 
             return HTTP_SUCCESS;
         }
-        catch (JSONException ex) {
+        catch (Exception ex) {
             return HTTP_FAILED;
         }
 
@@ -114,15 +107,16 @@ public class DataSource {
      * judge whether the country exist
      * 
      */
-    boolean isExist(String countrycode) {
+    boolean isExist(String countryCode) {
         try {
-            for (Object country : countries) {
-                if (((JSONObject) country).get("id").equals(countrycode)) {
+            for (int i = 0; i < countries.size(); i++) {
+                JSONObject couutry = (JSONObject) countries.get(i);
+                if (couutry.get("\"id\"").equals("\"" + countryCode + "\"")) {
                     return true;
                 }
             }
         }
-        catch (JSONException ex) {
+        catch (Exception ex) {
             return false;
         }
         return false;
@@ -133,15 +127,17 @@ public class DataSource {
      */
     Integer removeCountry(String countryCode) {
         try {
-            for (Object country : countries) {
-                if (((JSONObject) country).get("id").equals(countryCode)) {
-                    countries.remove(country);
+            for (int i = 0; i < countries.size(); i++) {
+                JSONObject couutry = (JSONObject) countries.get(i);
+                if (couutry.get("\"id\"").equals("\"" + countryCode + "\"")) {
+                    countries.remove(couutry);
                     return HTTP_SUCCESS;
                 }
             }
+
             return HTTP_FAILED;
         }
-        catch (JSONException ex) {
+        catch (Exception ex) {
             return HTTP_FAILED;
         }
     }

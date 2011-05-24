@@ -6,13 +6,17 @@
 package org.dojoserverfaces.tests.form.verticalslider;
 
 import org.dojoserverfaces.tests.selenium.SeleniumSetupSuite;
-import org.dojoserverfaces.tests.selenium.dojoserverfaces.LayoutComponentSelenium;
+import org.dojoserverfaces.tests.selenium.SeleniumTestCase;
 import org.dojoserverfaces.tests.widget.values.VariableName;
+import org.dojoserverfaces.tests.widget.values.WidgetValues;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-public class VerticalSliderSelenium extends LayoutComponentSelenium {
+public class VerticalSliderSelenium extends SeleniumTestCase {
 
+    protected WidgetValues widgetValues;
+    
     public VerticalSliderSelenium() {
         this.widgetValues = new VerticalSliderValues();
         this.widgetInteraction = new VerticalSliderInteraction(widgetValues);
@@ -31,7 +35,7 @@ public class VerticalSliderSelenium extends LayoutComponentSelenium {
         if (selenium != null) {
             this.widgetInteraction.setSelenium(selenium);
             selenium
-                    .open("http://localhost:8080/eclipse-dojoserverfaces-library-test-selenium/dojoserverfaces/form/verticalslider/index.jsf");
+                    .open("http://localhost:8080/eclipse-jsfdojo-library-test-selenium/dojoserverfaces/form/verticalslider/index.jsf");
         }
     }
 

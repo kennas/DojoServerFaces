@@ -1,0 +1,58 @@
+@CHARSET "ISO-8859-1";
+
+html {
+	padding: 5px;
+	margin: 5px;
+	position: relative;
+}
+
+body {
+	background-color: #F1F1FF;
+	position: relative;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+	color: #999999;
+}
+
+.header {
+	text-align: center;
+	background: #d1d1FF;
+	font-weight: bold;
+	color: #9999bb;
+	border: 2px solid white;
+	line-height: 2em;
+}
+
+.footer {
+	text-align: center;
+	background-color: #E1E1FF;
+	border: 2px solid white;
+	font-weight: bold;
+}
+
+.box {
+	background-color: #F1FFF1;
+	border: 2px solid white;
+	min-height: 150px;
+	padding: 10px;
+	margin: 5px;
+}
+
+.testCase{
+	background-color: #F1FFF1;
+	border: 2px solid white;
+	min-height: 50px;
+	padding: 10px;
+	margin: 15px;
+}
+
+.testTitle {
+	font-weight:bold;
+	color: #999999;
+}
+
+.errorMessage {
+	color: red;
+}
+
