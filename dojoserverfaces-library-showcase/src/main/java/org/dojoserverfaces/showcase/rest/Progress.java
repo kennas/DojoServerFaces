@@ -19,8 +19,9 @@ public class Progress {
     @GET
     @Path("/value/")
     public String getProgress() {
-        if (progress > 100) {
+        if (progress >= 100) {
             progress = 0;
+            return "0";
         }
         progress = progress + 10;
         if (progress == 100.0) {

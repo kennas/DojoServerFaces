@@ -16,9 +16,6 @@
 		<dojo:booleanCheckBox id="indeter" title="Indeterminate"
 			value="#{progressBar.indeterminate}" />
 		<dojo:textBox id="lbl" title="Label" value="#{progressBar.label}" />
-		<!--	<h:inputText title="Progress" value="#{progressBar.progress}">
-		<f:ajax execute="@form" event="change" render=":progressbar"></f:ajax>
-		</h:inputText>-->
 		<dojo:textBox id="progress" title="Progress"
 			value="#{progressBar.progress}">
 		</dojo:textBox>
@@ -29,31 +26,4 @@
 	<dojo:button label="Apply">
 		<f:ajax execute="@form" event="click" render=":progressbar"></f:ajax>
 	</dojo:button>
-
-	<dojo:button label="Get data from Server">
-		<dojo:behaviorStartTimer time="200" broadcastOnAlarm="progress-begin" />
-	</dojo:button>
-	<dojo:button label="Begin">
-		<dojo:behaviorUpdateProgressBar target=":progressbar" maximun="1"
-			indeterminate="true" />
-
-	</dojo:button>
-	<dojo:button label="End">
-		<dojo:behaviorBroadcast topic="progress-complete" />
-	</dojo:button>
-	<dojo:listener topic="progress-begin">
-		<dojo:behaviorXhrGet target=":progressbar" url="#{progressBar.url}"
-			broadcastOnComplete="progress-complete"
-			broadcastOnRecieve="update-progress" />
-	</dojo:listener>
-	<dojo:listener topic="update-progress">
-		<dojo:behaviorUpdateProgressBar target=":progressbar"
-			progress="@event" maximun="1" indeterminate="false" />
-		<dojo:behaviorStartTimer time="500" broadcastOnAlarm="progress-begin" />
-	</dojo:listener>
-
-	<dojo:listener topic="progress-complete">
-		<dojo:behaviorUpdateProgressBar target=":progressbar" progress="1"
-			indeterminate="false" />
-	</dojo:listener>
 </ui:composition>
