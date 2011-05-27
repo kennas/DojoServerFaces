@@ -23,7 +23,7 @@
 		<dojo:behaviorBroadcast topic="progress-complete" />
 	</dojo:button>
 	<dojo:listener topic="progress-begin">
-		<dojo:behaviorXhrGet target=":progressbar" url="#{progressBar.url}"
+		<dojo:behaviorXhrGet url="#{progressBar.url}"
 			broadcastOnComplete="progress-complete"
 			broadcastOnRecieve="update-progress" />
 	</dojo:listener>
