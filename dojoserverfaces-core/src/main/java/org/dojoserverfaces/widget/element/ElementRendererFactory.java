@@ -37,16 +37,18 @@ public class ElementRendererFactory {
 
         case INPUT_TEXTAREA:
             return inputTextAreaElement;
-            
+
         case SELECT:
             return selectElement;
 
         case SELECT_OPTION:
             return optionSelectElement;
-            
+
         case TABLE:
             return tableElement;
 
+        case MULTI_PART_FORM:
+            return multiPartFormElement;
         }
         return null;
     }
@@ -63,4 +65,5 @@ public class ElementRendererFactory {
     private static final HtmlElement selectElement = new SelectHtmlElement();
     private static final HtmlElement optionSelectElement = new OptionSelectHtmlElement();
     private static final HtmlElement tableElement = new TableHtmlElement();
+    private static final HtmlElement multiPartFormElement = new MultiPartFormHtmlElement();
 }
