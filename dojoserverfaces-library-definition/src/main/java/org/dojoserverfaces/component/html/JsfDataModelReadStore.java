@@ -31,7 +31,6 @@ import org.dojoserverfaces.widget.property.Property;
  * A dataStore used java collection as its source
  * 
  */
-
 @Component
 @ListenerFor(systemEventClass = javax.faces.event.PostAddToViewEvent.class)
 public class JsfDataModelReadStore extends UIComponentBase implements
