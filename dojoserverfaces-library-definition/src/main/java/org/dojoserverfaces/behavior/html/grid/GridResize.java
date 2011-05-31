@@ -28,16 +28,16 @@ public class GridResize extends GridBehaviorBase {
     @Override
     public String getScript(ClientBehaviorContext behaviorContext) {
         StringBuilder script = new StringBuilder();
-        appendSetDijitAttr(script, getFullClientId(getTarget(),behaviorContext), "autoHeight", "false");
+        appendSetDijitAttr(script, getRenderedClientIdById(getTarget(),behaviorContext), "autoHeight", "false");
         script.append(";");
-        appendSetDijitAttr(script, getFullClientId(getTarget(),behaviorContext), "autoWidth", "false");
+        appendSetDijitAttr(script, getRenderedClientIdById(getTarget(),behaviorContext), "autoWidth", "false");
         script.append(";");
         script.append("dojo.contentBox(");
-        appendGetDijit(script, getFullClientId(getTarget(),behaviorContext));
+        appendGetDijit(script, getRenderedClientIdById(getTarget(),behaviorContext));
         script.append(".domNode,{w:");
         script.append(width);
         script.append(",h:").append(height).append("});");
-        appendGetDijit(script, getFullClientId(getTarget(),behaviorContext));
+        appendGetDijit(script, getRenderedClientIdById(getTarget(),behaviorContext));
         script.append(".update();");
         return script.toString();
     }
