@@ -73,7 +73,7 @@ public class GridMergeCells extends GridBehaviorBase {
     @Override
     public String getScript(ClientBehaviorContext behaviorContext) {
         StringBuilder script = new StringBuilder();
-        String target = getRenderedClientIdById(getTarget(), behaviorContext);
+        String target = getClientId(getTarget(), behaviorContext);
         String row = this.getIntValue(this.inputRow, behaviorContext);
         String startcol = this.getIntValue(this.inputStartCol, behaviorContext);
         String endcol = this.getIntValue(this.inputEndCol, behaviorContext);
@@ -94,7 +94,7 @@ public class GridMergeCells extends GridBehaviorBase {
     }
 
     private String getIntValue(String id, ClientBehaviorContext behaviorContext) {
-        String clientId = getRenderedClientIdById(id, behaviorContext);
+        String clientId = getClientId(id, behaviorContext);
         StringBuilder sb = new StringBuilder();
         if (clientId == null || "".equals(clientId)) {
             return sb.toString();

@@ -21,9 +21,9 @@ public abstract class GridExportBase extends GridBehaviorBase {
     protected String getRenderedAllScript(String type,
             ClientBehaviorContext behaviorContext) {
         StringBuilder script = new StringBuilder();
-        String destinationId = getRenderedClientIdById(this.getDestination(),
+        String destinationId = getClientId(this.getDestination(),
                 behaviorContext);
-        String sourceId = getRenderedClientIdById(getTarget(), behaviorContext);
+        String sourceId = getClientId(getTarget(), behaviorContext);
         if (null == destinationId || null == sourceId
                 || "".equals(destinationId) || "".equals(sourceId)) {
             return script.toString();
@@ -49,9 +49,9 @@ public abstract class GridExportBase extends GridBehaviorBase {
             ClientBehaviorContext behaviorContext) {
         StringBuilder script = new StringBuilder();
         StringBuilder result = new StringBuilder();
-        String destinationId = getRenderedClientIdById(this.getDestination(),
+        String destinationId = getClientId(this.getDestination(),
                 behaviorContext);
-        String sourceId = getRenderedClientIdById(getTarget(), behaviorContext);
+        String sourceId = getClientId(getTarget(), behaviorContext);
         if (null == destinationId || null == sourceId
                 || "".equals(destinationId) || "".equals(sourceId)) {
             return script.toString();
