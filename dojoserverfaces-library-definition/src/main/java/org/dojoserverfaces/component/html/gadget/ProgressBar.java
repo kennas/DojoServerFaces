@@ -46,7 +46,7 @@ class ProgressBar extends WidgetBase {
     @Property
     String label;
     /**
-     * Number of places to show in values; 0 by default
+     * Number of places to show in values; 0 by default. it should not be larger than 20
      */
     @Property
     Integer places;
