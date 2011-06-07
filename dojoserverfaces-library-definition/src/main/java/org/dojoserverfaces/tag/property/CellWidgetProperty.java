@@ -33,7 +33,7 @@ public class CellWidgetProperty extends Property implements DojoClass {
     }
 
     @Override
-    public String getDojoType() {
+    public String getDojoType(UIComponent component) {
         return dojoType;
     }
 }
