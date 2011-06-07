@@ -1,6 +1,7 @@
 package org.dojoserverfaces.showcase.rest;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,14 +11,22 @@ import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
 
 import org.apache.wink.common.model.multipart.BufferedInMultiPart;
 import org.apache.wink.common.model.multipart.InPart;
+import org.dojoserverfaces.showcase.data.model.UploadRecord;
+import org.dojoserverfaces.showcase.data.model.UploadRecord.UploadFile;
 
 /**
  * UploadService is written to provide upload service for the
@@ -25,6 +34,9 @@ import org.apache.wink.common.model.multipart.InPart;
  */
 @Path("upload")
 public class UploadService {
+
+    @Context
+    private ServletConfig servletConfig;
 
     /**
      * upload method receives a JAX-RS Wink BufferedInMultiPart payload. Iterate
@@ -40,24 +52,53 @@ public class UploadService {
      * @throws IOException
      * @throws Exception
      */
+    @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.TEXT_HTML)
-    public void upload(@Context ServletConfig servletConfig,
-            BufferedInMultiPart multiPart) throws IOException {
+    public void upload(BufferedInMultiPart multiPart) throws IOException {
         List<InPart> parts = multiPart.getParts();
         for (InPart part : parts) {
             MultivaluedMap<String, String> headers = part.getHeaders();
             if (headers.containsKey("Content-Disposition")) {
-                Map<String, String> cdHeaderMap = parseContentDispositionHeader(headers
-                        .get("Content-Disposition").get(0));
+                Map<String, String> cdHeaderMap = parseCDHeader(headers.get(
+                        "Content-Disposition").get(0));
                 String filename = getFilename(cdHeaderMap);
                 if (filename != null) {
-                    File uploadFile = new File(getUploadPath(servletConfig,
-                            null), filename);
+                    Long id = System.currentTimeMillis();
+                    File uploadFile = new File(getUploadPath(), filename + "."
+                            + id);
                     saveFile(part.getInputStream(), uploadFile);
+                    UploadRecord.add(new UploadFile(id, uploadFile));
                 }
             }
         }
+    }
+
+    @Path("file/{id}")
+    @GET
+    public Response download(@PathParam("id") Long id)
+            throws FileNotFoundException {
+        UploadFile uploadFile = UploadRecord.findById(id);
+        if (uploadFile == null || !uploadFile.exists()) {
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }
+        return Response
+                .ok()
+                .type(MediaType.APPLICATION_OCTET_STREAM_TYPE)
+                .header("Content-Disposition",
+                        "attachment;filename=" + uploadFile.getDisplayName())
+                .entity(uploadFile.getInputStream()).build();
+    }
+
+    @Path("{id}")
+    @DELETE
+    public Response remove(@PathParam("id") Long id) {
+        UploadFile uploadFile = UploadRecord.findById(id);
+        if (uploadFile == null) {
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }
+        UploadRecord.removeById(id);
+        return Response.ok().build();
     }
 
     private void saveFile(InputStream is, File file) throws IOException {
@@ -77,23 +118,14 @@ public class UploadService {
         }
     }
 
-    private File getUploadPath(ServletConfig sc, String userId) {
-        String uploadPath = sc.getServletContext().getRealPath("/upload");
+    private File getUploadPath() {
+        String uploadPath = servletConfig.getServletContext().getRealPath(
+                "/upload");
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
             uploadDir.mkdirs();
         }
-
-        if (userId != null && userId.length() > 0) {
-            File uploadDirForUser = new File(uploadDir, "users/" + userId);
-            if (!uploadDirForUser.exists()) {
-                uploadDirForUser.mkdirs();
-            }
-            return uploadDirForUser;
-        }
-        else {
-            return uploadDir;
-        }
+        return uploadDir;
     }
 
     private String getFilename(Map<String, String> cdHeaderMap) {
@@ -107,20 +139,19 @@ public class UploadService {
                     filename = filename.substring(0, filename.length() - 2);
                 }
             }
-            return filename + "." + System.currentTimeMillis();
+            return filename;
         }
         return null;
     }
 
-    private Map<String, String> parseContentDispositionHeader(String value) {
+    private Map<String, String> parseCDHeader(String value) {
         Map<String, String> result = new HashMap<String, String>();
-
         String[] entries = value.split(";");
-
         for (String entry : entries) {
+            entry = entry.trim();
             int eqIdx = entry.indexOf('=');
             if (eqIdx < 0) {
-                result.put("Content-Disposition", entry.trim());
+                result.put("Content-Disposition", entry);
             }
             else {
                 // TODO: to use the regex way?
@@ -129,7 +160,6 @@ public class UploadService {
                 result.put(k, v.substring(1, v.length() - 1));
             }
         }
-
         return result;
     }
 }
