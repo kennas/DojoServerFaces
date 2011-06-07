@@ -37,7 +37,7 @@ public class CellTypeProperty extends Property implements DojoClass {
      * @see org.dojoserverfaces.widget.property.DojoClass#getDojoType()
      */
     @Override
-    public String getDojoType() {
+    public String getDojoType(UIComponent component) {
         return DOJO_PACKAGE + "dijit";
     }
 
