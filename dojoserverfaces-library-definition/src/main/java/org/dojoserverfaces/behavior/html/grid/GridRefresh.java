@@ -6,9 +6,10 @@
 package org.dojoserverfaces.behavior.html.grid;
 
 import org.dojoserverfaces.build.annotation.Behavior;
+
 /**
- *  This behavior will allow you to refresh grid
- *
+ * This behavior will allow you to refresh grid
+ * 
  */
 @Behavior
 public class GridRefresh extends SimpleGridOperationBase {

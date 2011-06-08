@@ -20,5 +20,6 @@ public enum HtmlElementType {
     SELECT,
     SELECT_OPTION,
     TABLE,
-    ACTION
+    ACTION,
+    MULTI_PART_FORM
 }

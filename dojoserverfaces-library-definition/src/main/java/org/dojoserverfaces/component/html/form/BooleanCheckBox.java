@@ -19,7 +19,7 @@ import org.dojoserverfaces.widget.property.ValueProperty;
 /**
  * An input component for setting boolean values using a checkbox.
  */
-@EditableValueHolder(dojoType = "dijit.form.CheckBox", elementType = HtmlElementType.INPUT_CHECKBOX, displayName = "Checkbox", jsfNode = "domNode")
+@EditableValueHolder(dojoType = "dijit.form.CheckBox", elementType = HtmlElementType.INPUT_CHECKBOX, displayName = "Checkbox")
 final class BooleanCheckBox extends InputBase {
 
     public static class CheckedValue extends ValueProperty {

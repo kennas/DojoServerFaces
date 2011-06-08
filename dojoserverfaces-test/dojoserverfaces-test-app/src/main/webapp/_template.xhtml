@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+<ui:insert name="topContent"></ui:insert>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title><ui:insert name="title">DojoServerFaces Widgets</ui:insert></title>
+	<link rel="stylesheet" type="text/css" href="../../style.css" />
+	<script type="text/javascript" src="../../page.js"></script>
+    <jd:theme name="claro" />
+	<ui:insert name="headContent"></ui:insert>
+</h:head>
+<h:body styleClass="claro">
+	<ui:insert name="header"></ui:insert>
+	<a href="../../../index.html">Home</a>
+	<h:form id="form">
+		<ui:insert name="buttons"></ui:insert>
+		<div><ui:insert name="tableContent"></ui:insert></div>
+	</h:form>
+	<ui:insert name="datasource"></ui:insert>
+	<div class="footer">IBM</div>
+</h:body>
+</html>

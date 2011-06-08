@@ -5,10 +5,12 @@
  *******************************************************************************/
 package org.dojoserverfaces.widget.property;
 
+import javax.faces.component.UIComponent;
+
 public interface DojoClass {
 
     /**
      * @return the dojoType for which this property represents.
      */
-    public String getDojoType();
+    public String getDojoType(UIComponent component);
 }

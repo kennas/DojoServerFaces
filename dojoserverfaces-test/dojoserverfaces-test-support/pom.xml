@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.dojoserverfaces</groupId>
+  <artifactId>dojoserverfaces-test-support</artifactId>
+  <packaging>jar</packaging>
+  <name>DojoServerFaces - Tests (Support Code)</name>
+
+  <parent>
+    <groupId>org.dojoserverfaces</groupId>
+    <artifactId>dojoserverfaces-test</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  
+  <dependencies>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>${version.javaee}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${version.junit}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium.client-drivers</groupId>
+      <artifactId>selenium-java-client-driver</artifactId>
+      <version>${version.selenium.client}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>

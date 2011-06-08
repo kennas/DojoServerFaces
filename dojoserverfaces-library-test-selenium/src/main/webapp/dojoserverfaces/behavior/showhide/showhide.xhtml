@@ -17,7 +17,7 @@
 	<ui:define name="tableContent">
 		<div class="testCase"><f:subview id="initialValues">
 			<span class="testTitle">Test case to display a value bound to
-			a managed bean</span>
+			a managed bean</span>			<h:form id="form1">
 			<jd:dialog id="dialog" title="A Dialog" duration="300"
 				refocus="true" autofocus="true" draggable="true">
 				<jd:borderContainer
@@ -32,10 +32,10 @@
 						</jd:button>
 					</jd:contentPane>
 				</jd:borderContainer>
-			</jd:dialog>
+			</jd:dialog></h:form>
 			<h:panelGrid columns="1">
 				<jd:button label="Show Dialog" id="buttonA">
-					<jd:behaviorShow target="dialog" />
+					<jd:behaviorShow target="form1:dialog" />
 				</jd:button>
 			</h:panelGrid>
 		</f:subview></div>

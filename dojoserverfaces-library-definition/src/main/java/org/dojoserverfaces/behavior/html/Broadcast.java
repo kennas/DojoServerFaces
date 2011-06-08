@@ -27,13 +27,24 @@ public class Broadcast extends BehaviorBase {
         StringBuilder script = new StringBuilder();
         if (null != topic) {
             // TODO: support additional params?
-            script.append("dojo.publish(").append(Helper.quote(topic))
-                    .append(");");
+            script.append("dojo.publish(").append(Helper.quote(topic));
         }
+
+        // TODO: just a test, consider to implement this.
+        if (null != data) {
+            if (PARAM_EVENT.equals(data)) {
+                data = "event";
+            }
+            script.append(",[").append(data).append("]");
+        }
+
+        script.append(");");
         return script.toString();
     }
 
     private String topic;
+
+    private String data;
 
     /**
      * this is the published event name
@@ -45,6 +56,18 @@ public class Broadcast extends BehaviorBase {
 
     public void setTopic(String topic) {
         this.topic = topic;
+    }
+
+    /**
+     * this is additional data published with the event
+     */
+    @Attribute
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
 }

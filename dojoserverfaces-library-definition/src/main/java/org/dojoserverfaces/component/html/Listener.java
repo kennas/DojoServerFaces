@@ -19,13 +19,16 @@ import javax.faces.component.behavior.ClientBehavior;
 import javax.faces.component.behavior.ClientBehaviorContext;
 import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
+import javax.faces.context.ResponseWriter;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ComponentSystemEvent;
 import javax.faces.event.ComponentSystemEventListener;
 import javax.faces.event.PostAddToViewEvent;
+import javax.faces.event.PostRestoreStateEvent;
 
 import org.dojoserverfaces.build.annotation.Attribute;
 import org.dojoserverfaces.build.annotation.Component;
+import org.dojoserverfaces.component.behavior.BehaviorBase;
 import org.dojoserverfaces.component.dojo.DojoScriptBlockComponent;
 import org.dojoserverfaces.util.Helper;
 
@@ -35,7 +38,7 @@ import org.dojoserverfaces.util.Helper;
 @Component
 public class Listener extends UIComponentBase implements ClientBehaviorHolder,
         ComponentSystemEventListener {
-    private static final String DEFAULT_EVENT_NAME = "onRecieved";
+    private static final String DEFAULT_EVENT_NAME = "onReceived";
     private static final String JS_ARG_NAME_VALUE = "value";
     private static final String JSF_DOJO_COMPONENT_FAMILY = "jsfdojo.component";
     private static final String HEAD = "head";
@@ -64,11 +67,21 @@ public class Listener extends UIComponentBase implements ClientBehaviorHolder,
          * assume the dojo lib and init script block are added by other
          * components that my broadcast.
          */
+
+        // TODO: sometimes this will cause an "duplicate id..." error when works
+        // with f:ajax (I cannot simply reproduce it), should we add some
+        // condition like (event instanceof PostRestoreStateEvent &
+        // isAjaxRequest)?
         viewRoot.addComponentResource(getFacesContext(), this, HEAD);
     }
 
     @Override
     public void encodeBegin(FacesContext context) throws IOException {
+        ResponseWriter writer = context.getResponseWriter();
+        writer.startElement("div", this);
+        writer.writeAttribute("id", getClientId(context), null);
+        writer.writeAttribute("style", "display: none;", null);
+        writer.endElement("div");
     }
 
     @Override
@@ -110,8 +123,13 @@ public class Listener extends UIComponentBase implements ClientBehaviorHolder,
             behaviorScripts = new ArrayList<String>();
             for (ClientBehavior behavior : behaviors) {
                 String script = behavior.getScript(context);
+
                 // if the behavior was "disabled" no script will be returned
                 if (script != null) {
+                    if (!(behavior instanceof BehaviorBase)) {
+                        script = script.replaceAll("this",
+                                Helper.getElement(getClientId()));
+                    }
                     behaviorScripts.add(script);
                 }
             }
@@ -137,7 +155,7 @@ public class Listener extends UIComponentBase implements ClientBehaviorHolder,
                 .append(JS_ARG_NAME_VALUE).append(";");
 
         if (numOfBehaviors <= 1) {
-            // Only one behavior attached
+            // Only one behavior attached at most
             if (eventScript != null) {
                 handler.append(eventScript);
             }
@@ -160,7 +178,6 @@ public class Listener extends UIComponentBase implements ClientBehaviorHolder,
                         .append("}");
                 needComma = true;
             }
-
             for (String script : behaviorScripts) {
                 if (needComma) {
                     handler.append(',');
@@ -170,7 +187,7 @@ public class Listener extends UIComponentBase implements ClientBehaviorHolder,
                 }
                 handler.append("function(event){").append(script).append("}");
             }
-            handler.append("],function(f,i){return (f.call(o, event) !== false);});");
+            handler.append("],function(f,i){return (f.call(o,event)!==false);});");
         }
 
         handler.append("}");

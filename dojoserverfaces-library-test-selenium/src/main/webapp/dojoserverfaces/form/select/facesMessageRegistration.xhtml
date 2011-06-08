@@ -9,10 +9,12 @@
 	<div class="testCase">
 		<f:subview id="facesMessageRegistration">
 		    <span class="testTitle">Test case to see if the custom message is registered properly with the faces validator</span>
+			<jd:selectItemStore id="values">
+		       <f:selectItems value="#{ selectBean.values }" />
+	        </jd:selectItemStore>
 			<h:panelGrid columns="2">
 				<h:panelGroup>Enter a value (but not second)
-					<jd:select id="widgetFacesMessage" value="#{selectBean.widgetFacesMessage.data}" validatorMessage="This value should not be entered!">
-						<f:selectItems value="#{selectBean.values}"/>
+					<jd:select id="widgetFacesMessage" value="#{selectBean.widgetFacesMessage.data}" validatorMessage="This value should not be entered!" store="values">
 						<f:validator validatorId="dojoserverfaces.ExcludeValidator" />
 						<f:attribute name="dojoserverfaces.ExcludeValidator.index" value="1"></f:attribute>
 					</jd:select>

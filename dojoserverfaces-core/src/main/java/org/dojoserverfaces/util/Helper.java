@@ -96,7 +96,7 @@ public class Helper {
     public static Object getAttributeValue(UIComponent component, String name) {
         // TODO: use an efficient method on a DojoWidget component as opposed
         // the the generic UIComponent method.
-        // ** However,there appears to be a problem for props like dataGrid 
+        // ** However,there appears to be a problem for props like dataGrid
         // structure where attrs are added to the attribute map.
         return component.getAttributes().get(name);
     }
@@ -113,6 +113,11 @@ public class Helper {
      */
     public static boolean isEmpty(String s) {
         return (s == null || s.length() == 0);
+    }
+
+    public static String getElement(String id) {
+        return new StringBuilder("dojo.byId(\"").append(id).append("\")")
+                .toString();
     }
 
 }

@@ -9,9 +9,11 @@
 	<div class="testCase"> 
 		<f:subview id="converter">
 		    <span class="testTitle">Test case to display a component value using converter </span>
+			<jd:selectItemStore id="values">
+		       <f:selectItems value="#{ selectBean.values }" />
+	        </jd:selectItemStore>
 			<h:panelGrid columns="2">
-				<jd:select id="widgetConverter" value="#{selectBean.widgetConverter}">
-					<f:selectItems value="#{selectBean.values}"/>
+				<jd:select id="widgetConverter" value="#{selectBean.widgetConverter}" store="values">
 					<f:converter converterId="dojoserverfaces.ValueConverter" />
 				</jd:select>
 				<h:panelGroup>

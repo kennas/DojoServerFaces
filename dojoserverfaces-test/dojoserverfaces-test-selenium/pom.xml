@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.dojoserverfaces</groupId>
+  <artifactId>dojoserverfaces-test-selenium</artifactId>
+  <packaging>war</packaging>
+  <name>DojoServerFaces - Tests (Selenium)</name>
+
+  <parent>
+    <groupId>org.dojoserverfaces</groupId>
+    <artifactId>dojoserverfaces-test</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  
+  <profiles>
+    <profile>
+      <id>integrationTest</id>
+      <properties>
+        <tests.skip>false</tests.skip>
+      </properties>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+    </profile>
+  </profiles>
+  
+  <properties>
+    <version.hibernate.validator>4.1.0.Final</version.hibernate.validator>
+    <version.myfaces>2.0.5</version.myfaces>
+    <version.plugin.dependency>2.2</version.plugin.dependency>
+    <version.plugin.jetty>8.0.0.M2</version.plugin.jetty>
+    <version.plugin.selenium>1.1</version.plugin.selenium>
+    <version.plugin.surefire>2.8.1</version.plugin.surefire>
+    <version.validation>1.0.0.GA</version.validation>
+    
+    <war.directory>${project.build.directory}/wars</war.directory>
+    <war.name.dojo>dojo.war</war.name.dojo>
+    
+    <!-- Test properties.  Replace with custom values if necessary. -->
+    
+    <test.browser>*firefox</test.browser>
+    <test.host.selenium.server>localhost</test.host.selenium.server>
+    <test.host.server>localhost</test.host.server>
+    <test.port.selenium.server>4444</test.port.selenium.server>
+    <test.port.server>8080</test.port.server>
+    <tests.skip>true</tests.skip>
+    
+    <!-- Properties for each deployed test application. -->
+    
+    <test.main.contextRoot>/dojoserverfaces-test</test.main.contextRoot>
+    <test.main.war>dojoserverfaces-test.war</test.main.war>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>	    
+      <artifactId>dojoserverfaces-test-app</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>dojoserverfaces-test-support</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${version.junit}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium.client-drivers</groupId>
+      <artifactId>selenium-java-client-driver</artifactId>
+      <version>${version.selenium.client}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <pluginManagement>
+      <plugins>
+        <!-- Global config for Jetty plugin. -->
+        <plugin>
+          <groupId>org.mortbay.jetty</groupId>
+          <artifactId>jetty-maven-plugin</artifactId>
+          <version>${version.plugin.jetty}</version>
+          <dependencies>
+            <dependency>
+              <groupId>javax.validation</groupId>
+              <artifactId>validation-api</artifactId>
+              <version>${version.validation}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.dojoserverfaces</groupId>
+              <artifactId>dojoserverfaces-library-assembly</artifactId>
+              <version>${project.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.myfaces.core</groupId>
+              <artifactId>myfaces-api</artifactId>
+              <version>${version.myfaces}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.myfaces.core</groupId>
+              <artifactId>myfaces-impl</artifactId>
+              <version>${version.myfaces}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.hibernate</groupId>
+              <artifactId>hibernate-validator</artifactId>
+              <version>${version.hibernate.validator}</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <contextHandlers>
+              <!-- Add additional contextHandler entries for each webapp. -->
+              <contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
+                <war>${war.directory}/${war.name.dojo}</war>
+                <contextPath>/dojo</contextPath>
+              </contextHandler>
+              <contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
+                <war>${war.directory}/${test.main.war}</war>
+                <contextPath>${test.main.contextRoot}</contextPath>
+              </contextHandler>
+            </contextHandlers>
+            <skip>${tests.skip}</skip>
+            <stopKey>DojoServerFaces</stopKey>
+            <stopPort>9999</stopPort>
+            <systemProperties implementation="org.mortbay.jetty.plugin.SystemProperties"> 
+              <systemProperty implementation="org.mortbay.jetty.plugin.SystemProperty"> 
+                <name>jetty.port</name> 
+                <value>${test.port.server}</value> 
+              </systemProperty> 
+            </systemProperties> 
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>${version.plugin.dependency}</version>
+        <executions>
+          <execution>
+            <id>copy-apps</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <!-- Add additional artifactItem entries to copy additional 
+                     WAR outputs. -->
+                <artifactItem>
+                  <groupId>org.dojoserverfaces</groupId>
+                  <artifactId>dojoserverfaces-dojo</artifactId>
+                  <version>${project.version}</version>
+                  <type>war</type>
+                  <destFileName>${war.name.dojo}</destFileName>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>${project.groupId}</groupId>
+                  <artifactId>dojoserverfaces-test-app</artifactId>
+                  <version>${project.version}</version>
+                  <type>war</type>
+                  <destFileName>${test.main.war}</destFileName>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${war.directory}</outputDirectory>
+              <skip>${tests.skip}</skip>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>${version.plugin.jetty}</version>
+        <executions>
+          <execution>
+            <id>start-jetty</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <daemon>true</daemon>
+            </configuration>
+          </execution>
+          <execution>
+            <id>stop-jetty</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>stop</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>selenium-maven-plugin</artifactId>
+        <version>${version.plugin.selenium}</version>
+        <configuration>
+          <port>${test.port.selenium.server}</port>
+          <skip>${tests.skip}</skip>
+        </configuration>
+        <executions>
+          <execution>
+            <id>start-selenium</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>start-server</goal>
+            </goals>
+            <configuration>
+              <background>true</background>
+	      <forcedBrowserMode>${test.browser}</forcedBrowserMode>
+            </configuration>
+          </execution>
+          <execution>
+            <id>stop-selenium</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>stop-server</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${version.plugin.surefire}</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+        <executions>
+          <execution>
+            <id>test-dojoserverfaces</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <configuration>
+              <skip>${tests.skip}</skip>
+              <systemPropertyVariables>
+                <test.host.selenium.server>
+                  ${test.host.selenium.server}
+                </test.host.selenium.server>
+                <test.host.server>
+                  ${test.host.server}
+                </test.host.server>
+                <test.port.selenium.server>
+                  ${test.port.selenium.server}
+                </test.port.selenium.server>
+                <test.port.server>
+                  ${test.port.server}
+                </test.port.server>
+                
+                <!-- Remember to add a context root property for each
+                     application. -->
+                
+                <test.main.contextRoot>
+                  ${test.main.contextRoot}
+                </test.main.contextRoot>
+              </systemPropertyVariables>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -5,8 +5,17 @@
  *******************************************************************************/
 package org.dojoserverfaces.tests.behavior.setvalue;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.validator.ValidatorException;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPathFactory;
+
 import org.dojoserverfaces.tests.selenium.SeleniumSetupSuite;
 import org.dojoserverfaces.tests.selenium.SeleniumTestCase;
+import org.w3c.dom.Document;
+
+import javax.xml.xpath.XPath;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -24,19 +33,43 @@ public class SetValueSelenium extends SeleniumTestCase {
         selenium = seleniumSetupSuite.getSelenium();
         if (selenium != null) {
             selenium
-                    .open("http://localhost:8080/eclipse-dojoserverfaces-library-test-selenium/dojoserverfaces/behavior/setvalue/setvalue.jsf");
+                    .open("http://localhost:8080/eclipse-jsfdojo-library-test-selenium/dojoserverfaces/behavior/setvalue/setvalue.jsf");
         }
     }
 
     public void testSetValue() throws Exception {
         waitForDojoReady();
-        verifyEquals("", selenium.getValue("form:initialValues:holder"));
-        verifyEquals("", selenium.getValue("form:initialValues:hholder"));
-        selenium.click("form:initialValues:buttonA");
-        verifyEquals("Hello DojoServerFaces!", selenium.getValue("form:initialValues:holder"));
-        verifyEquals("Hello DojoServerFaces!", selenium.getValue("form:initialValues:hholder"));
-        selenium.click("form:initialValues:buttonB");
-        verifyEquals("", selenium.getValue("form:initialValues:holder"));
-        verifyEquals("", selenium.getValue("form:initialValues:hholder"));
+        XPath xpath = XPathFactory.newInstance().newXPath();
+        Document doc = DocumentBuilderFactory
+                .newInstance()
+                .newDocumentBuilder()
+                .parse(
+                        "http://localhost:8080/eclipse-jsfdojo-library-test-selenium/dojoserverfaces/behavior/setvalue/setvalue.xhtml");
+        String id = selenium
+                .getEval("window.dijit.byId('form:initialValues:form1:holder').get('id')");
+        String id1 = id.substring(19);
+        String target = xpath.evaluate("//behaviorSetValue/@target", doc);
+        if (!(target.equals(id1))) {
+            FacesMessage message = new FacesMessage(
+                    "valid component not found with id " + target);
+            message.setSeverity(FacesMessage.SEVERITY_ERROR);
+            throw new ValidatorException(message);
+        }
+        else {
+            verifyEquals("", selenium
+                    .getValue("form:initialValues:form1:holder"));
+            verifyEquals("", selenium
+                    .getValue("form:initialValues:form1:hholder"));
+            selenium.click("form:initialValues:buttonA");
+            verifyEquals("Hello DojoServerFaces!", selenium
+                    .getValue("form:initialValues:form1:holder"));
+            verifyEquals("Hello DojoServerFaces!", selenium
+                    .getValue("form:initialValues:form1:hholder"));
+            selenium.click("form:initialValues:buttonB");
+            verifyEquals("", selenium
+                    .getValue("form:initialValues:form1:holder"));
+            verifyEquals("", selenium
+                    .getValue("form:initialValues:form1:hholder"));
+        }
     }
 }
