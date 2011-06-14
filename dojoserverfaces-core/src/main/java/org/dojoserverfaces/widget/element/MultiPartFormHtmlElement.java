@@ -20,8 +20,8 @@ public class MultiPartFormHtmlElement extends HtmlElement {
     @Override
     public String getElement(FacesContext context, UIComponent component) {
         StringBuilder elementMarkup = new StringBuilder(
-                "<form enctype=\"multipart/form-data\"><input id=\"").append(
-                component.getClientId(context)).append("\"/>");
+                "<form method=\"post\" enctype=\"multipart/form-data\"><input type=\"file\" id=\"")
+                .append(component.getClientId(context)).append("\"/>");
         return elementMarkup.toString();
     }
 

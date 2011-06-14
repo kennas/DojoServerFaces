@@ -83,7 +83,7 @@ abstract class GridDataBehaviorBase extends SimpleGridOperationBase {
 			}
 			
 			sb.append(splitedFields[i]).append(":");
-			appendGetDijitAttr(sb,getFullClientId(widgetIds[i],behaviorContext), "value");
+			appendGetDijitAttr(sb,getRenderedClientIdById(widgetIds[i],behaviorContext), "value");
 		}
 		sb.append("}");
 		return sb;

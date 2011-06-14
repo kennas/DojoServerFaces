@@ -21,7 +21,7 @@ public class GridSelectAll extends SimpleGridOperationBase {
     @Override
     protected void appendParameterString(ClientBehaviorContext behaviorContext,StringBuilder sb) {
         sb.append("0,");
-        appendGetDijit(sb, getFullClientId(getTarget(),behaviorContext));
+        appendGetDijit(sb, getRenderedClientIdById(getTarget(),behaviorContext));
         sb.append(".rowCount");
     }
 }

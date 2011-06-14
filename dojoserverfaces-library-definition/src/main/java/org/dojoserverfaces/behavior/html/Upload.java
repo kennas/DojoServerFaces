@@ -3,14 +3,18 @@
  * 	Available via Academic Free License >= 2.1 OR the modified BSD license.
  * 	see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.widget.property;
+package org.dojoserverfaces.behavior.html;
 
-import javax.faces.component.UIComponent;
+import org.dojoserverfaces.build.annotation.Behavior;
 
-public interface DojoClass {
+/**
+ * This behavior will allow you the invoke upload method of dojox.form.Uploader.
+ */
+@Behavior
+public class Upload extends SimpleMethodBase {
 
-    /**
-     * @return the dojoType for which this property represents.
-     */
-    public String getDojoType(UIComponent component);
+    public Upload() {
+        super("upload");
+    }
+
 }
