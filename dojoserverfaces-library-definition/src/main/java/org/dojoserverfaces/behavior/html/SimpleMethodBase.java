@@ -66,9 +66,19 @@ public class SimpleMethodBase extends BehaviorBase {
                 logComponentNotFound(target);
                 return null;
             }
-            script.append('"').append(target).append("\").").append(methodName).append("();");
+            script.append('"').append(target).append("\").").append(methodName)
+                    .append("(");
+            appendParameterString(behaviorContext, script);
+            script.append(");");
         }
         return script.toString();
+    }
+
+    /**
+     * Append the parameters for the method. Default is to append no parameters.
+     */
+    protected void appendParameterString(ClientBehaviorContext behaviorContext,
+            StringBuilder script) {
     }
 
     private String target = null;
