@@ -78,6 +78,15 @@ public abstract class Property {
         return Helper.getAttributeValue(component, name);
     }
 
+    public boolean isSet(UIComponent component) {
+        // we have avoided actually evaluating the expression
+        if (null != component.getValueExpression(name)) {
+            return true;
+        }
+        // value could be a literal
+        return (null != Helper.getAttributeValue(component, name));
+    }
+
     /**
      * @param name
      * @param value
