@@ -130,7 +130,7 @@ public class ComponentRenderer extends Renderer {
         Property property;
         while (propertyIterator.hasNext()) {
             property = propertyIterator.next();
-            if (property.getAsPropertyValue(component) != null) {
+            if (property.isSet(component)) {
                 if (property instanceof DojoClass
                         && ((DojoClass) property).getDojoType(component) != null) {
                     initScriptBlock.addRequires(((DojoClass) property)
