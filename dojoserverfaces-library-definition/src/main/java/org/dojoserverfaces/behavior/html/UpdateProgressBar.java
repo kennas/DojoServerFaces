@@ -139,7 +139,6 @@ public class UpdateProgressBar extends BehaviorBase {
         if (null != id) {
             UIComponent targetComp = behaviorContext.getComponent()
                     .findComponent(id);
-
             if (null != targetComp && targetComp instanceof DojoWidget) {
                 return targetComp.getClientId();
             }

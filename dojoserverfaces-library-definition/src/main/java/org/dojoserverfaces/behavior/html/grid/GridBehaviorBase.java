@@ -5,7 +5,6 @@
  *******************************************************************************/
 package org.dojoserverfaces.behavior.html.grid;
 
-
 import javax.faces.component.UIComponent;
 import javax.faces.component.behavior.ClientBehaviorContext;
 
@@ -43,6 +42,7 @@ abstract class GridBehaviorBase extends BehaviorBase {
     public void setTarget(String targetvalue) {
         this.target = targetvalue;
     }
+
     /**
      * Get rendered client id through component id
      * 
@@ -55,7 +55,6 @@ abstract class GridBehaviorBase extends BehaviorBase {
         if (null != id) {
             UIComponent targetComp = behaviorContext.getComponent()
                     .findComponent(id);
-
             if (null != targetComp && targetComp instanceof DojoWidget) {
                 return targetComp.getClientId();
             }
@@ -71,5 +70,5 @@ abstract class GridBehaviorBase extends BehaviorBase {
         }
 
     }
-  
+
 }
