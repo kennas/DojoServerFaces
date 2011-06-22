@@ -39,4 +39,9 @@ public class SimpleObjectType extends DojoType {
     public boolean isDijit() {
         return false;
     }
+
+    @Override
+    public boolean isMobileWidget() {
+        return false;
+    }
 }
