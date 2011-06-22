@@ -19,12 +19,9 @@ import javax.faces.component.behavior.ClientBehavior;
 import javax.faces.component.behavior.ClientBehaviorContext;
 import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
 import javax.faces.event.AbortProcessingException;
-import javax.faces.event.ComponentSystemEvent;
-import javax.faces.event.ComponentSystemEventListener;
-import javax.faces.event.PostAddToViewEvent;
-import javax.faces.event.PostRestoreStateEvent;
+import javax.faces.event.SystemEvent;
+import javax.faces.event.SystemEventListener;
 
 import org.dojoserverfaces.build.annotation.Attribute;
 import org.dojoserverfaces.build.annotation.Component;
@@ -37,7 +34,7 @@ import org.dojoserverfaces.util.Helper;
  */
 @Component
 public class Listener extends UIComponentBase implements ClientBehaviorHolder,
-        ComponentSystemEventListener {
+        SystemEventListener {
     private static final String DEFAULT_EVENT_NAME = "onReceived";
     private static final String JS_ARG_NAME_VALUE = "value";
     private static final String JSF_DOJO_COMPONENT_FAMILY = "jsfdojo.component";
@@ -53,35 +50,37 @@ public class Listener extends UIComponentBase implements ClientBehaviorHolder,
      */
     public Listener() {
         setTransient(true);
-        getFacesContext().getViewRoot().subscribeToEvent(
-                PostAddToViewEvent.class, this);
+        getFacesContext().getViewRoot().subscribeToViewEvent(
+                javax.faces.event.PostAddToViewEvent.class, this);
+    }
+
+    /*
+     * @see
+     * javax.faces.event.SystemEventListener#isListenerForSource(java.lang.Object
+     * )
+     */
+    @Override
+    public boolean isListenerForSource(Object source) {
+        // we are only interested in ourself
+        if ((source instanceof Listener) || (source instanceof UIViewRoot)) {
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public void processEvent(ComponentSystemEvent event)
-            throws AbortProcessingException {
+    public void processEvent(SystemEvent event) throws AbortProcessingException {
         UIViewRoot viewRoot = getFacesContext().getViewRoot();
-        /*
-         * Move the listener to the head. This takes it out of any parent
-         * rendering sequence as it does not render any html markup. We'll also
-         * assume the dojo lib and init script block are added by other
-         * components that my broadcast.
-         */
-
-        // TODO: sometimes this will cause an "duplicate id..." error when works
-        // with f:ajax (I cannot simply reproduce it), should we add some
-        // condition like (event instanceof PostRestoreStateEvent &
-        // isAjaxRequest)?
+        // unsubscribe from the PostAddToViewEvent as moving the component
+        // may cause a re-firing of the same event
+        viewRoot.unsubscribeFromViewEvent(
+                javax.faces.event.PostAddToViewEvent.class, this);
+        // move myself to the correct resource block
         viewRoot.addComponentResource(getFacesContext(), this, HEAD);
     }
 
     @Override
     public void encodeBegin(FacesContext context) throws IOException {
-        ResponseWriter writer = context.getResponseWriter();
-        writer.startElement("div", this);
-        writer.writeAttribute("id", getClientId(context), null);
-        writer.writeAttribute("style", "display: none;", null);
-        writer.endElement("div");
     }
 
     @Override

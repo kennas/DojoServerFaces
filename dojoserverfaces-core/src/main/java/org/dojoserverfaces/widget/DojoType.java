@@ -21,4 +21,6 @@ public abstract class DojoType {
      * @return flag indicating if this dojo type is a Dijit.
      */
     public abstract boolean isDijit();
+    
+    public abstract boolean isMobileWidget();
 }
