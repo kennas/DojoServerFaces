@@ -81,11 +81,6 @@ public class Listener extends UIComponentBase implements ClientBehaviorHolder,
 
     @Override
     public void encodeBegin(FacesContext context) throws IOException {
-        // ResponseWriter writer = context.getResponseWriter();
-        // writer.startElement("div", this);
-        // writer.writeAttribute("id", getClientId(context), null);
-        // writer.writeAttribute("style", "display: none;", null);
-        // writer.endElement("div");
     }
 
     @Override
