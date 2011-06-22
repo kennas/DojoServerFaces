@@ -360,6 +360,7 @@ public final class DojoScriptBlockComponent extends DojoResource implements
     public void addRequiredThemeFiles(String requiredThemeFile) {
         if (!requiredThemeFilesAdded.contains(requiredThemeFile)) {
             if (requiredThemeFilesScriptBlock.length() == 0) {
+                // 'base' theme file will be auto added
                 requiredThemeFilesScriptBlock
                         .append("dojox.mobile.themeFiles=['base'");
             }
@@ -370,6 +371,8 @@ public final class DojoScriptBlockComponent extends DojoResource implements
 
     private String getRequiredThemeFiles() {
         if (requiredThemeFilesScriptBlock.length() > 0) {
+            // we need to ensure dojox.mobile.deviceTheme is after
+            // dojox.mobile.themeFiles
             requiredThemeFilesScriptBlock
                     .append("];dojo.require(dojox.mobile.deviceTheme);");
         }
