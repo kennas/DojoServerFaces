@@ -374,7 +374,7 @@ public final class DojoScriptBlockComponent extends DojoResource implements
             // we need to ensure dojox.mobile.deviceTheme is after
             // dojox.mobile.themeFiles
             requiredThemeFilesScriptBlock
-                    .append("];dojo.require(dojox.mobile.deviceTheme);");
+                    .append("];dojo.require(\"dojox.mobile.deviceTheme\");");
         }
         return requiredThemeFilesScriptBlock.toString();
     }
