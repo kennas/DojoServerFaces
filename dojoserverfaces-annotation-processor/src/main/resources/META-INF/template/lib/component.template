@@ -38,7 +38,7 @@ public final class ${context.unqualifiedClassName}<% if(context.superclass != nu
     private static final org.dojoserverfaces.widget.DojoType widgetType =
 <%
 if (context.componentInfo.isWidget){ 
-%>        new org.dojoserverfaces.widget.SimpleWidgetType("${componentInfo.dojoType}");
+%>        new org.dojoserverfaces.widget.SimpleWidgetType("${componentInfo.dojoType}", false);  // TODO: FIX ME!!!
 <%
 } else { 
 %>        new org.dojoserverfaces.widget.SimpleObjectType("${componentInfo.dojoType}");

@@ -37,9 +37,6 @@ public class UploadService {
     @Context
     private ServletConfig servletConfig;
 
-    @Context
-    private ServletConfig servletConfig;
-
     /**
      * upload method receives a JAX-RS Wink BufferedInMultiPart payload. Iterate
      * over the "parts" of this inbound multipart/form-data payload to retrieve
