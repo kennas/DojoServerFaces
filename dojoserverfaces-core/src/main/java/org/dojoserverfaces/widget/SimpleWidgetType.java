@@ -14,14 +14,16 @@ package org.dojoserverfaces.widget;
  */
 public class SimpleWidgetType extends DojoType {
     private String widgetType;
+    private boolean isMobileWidget;
 
     /**
      * Construct a widget object with the dojo widget name.
      * 
      * @param widgetType
      */
-    public SimpleWidgetType(String widgetType) {
+    public SimpleWidgetType(String widgetType, boolean isMobileWidget) {
         this.widgetType = widgetType;
+        this.isMobileWidget = isMobileWidget;
     }
 
     /*
@@ -42,6 +44,6 @@ public class SimpleWidgetType extends DojoType {
 
     @Override
     public boolean isMobileWidget() {
-        return false;
+        return isMobileWidget;
     }
 }
