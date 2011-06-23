@@ -212,6 +212,8 @@ public final class DojoScriptBlockComponent extends DojoResource implements
      */
     private HashSet<String> requiredModulesAdded = new HashSet<String>();
     private StringBuilder requiresScriptBlock = new StringBuilder();
+    private HashSet<String> requiredThemeFilesAdded = new HashSet<String>();
+    private StringBuilder requiredThemeFilesScriptBlock = new StringBuilder();
     private StringBuilder createGlobalSpaceScriptBlock = new StringBuilder();
     private StringBuilder preWidgetCreateScriptBlock = new StringBuilder();
     private StringBuilder destroyWidgetsScriptBlock = new StringBuilder();
@@ -288,7 +290,8 @@ public final class DojoScriptBlockComponent extends DojoResource implements
                 || (preWidgetCreateScriptBlock.length() > 0)
                 || (destroyWidgetsScriptBlock.length() > 0)
                 || (createWidgetsScriptBlock.length() > 0)
-                || (postWidgetCreateScriptBlock.length() > 0)) {
+                || (postWidgetCreateScriptBlock.length() > 0)
+                || (requiredThemeFilesScriptBlock.length() > 0)) {
             writer.startElement("script", null);
             writer.writeAttribute("type", "text/javascript", null);
             boolean ajaxUpdate = isAjaxUpdate(context);
@@ -300,6 +303,7 @@ public final class DojoScriptBlockComponent extends DojoResource implements
 
             StringBuilder initScript = new StringBuilder(
                     requiresScriptBlock.toString());
+            initScript.append(getRequiredThemeFiles());
             if (!ajaxUpdate) {
                 initScript.append("dojo.addOnLoad(function(){");
             }
@@ -351,6 +355,28 @@ public final class DojoScriptBlockComponent extends DojoResource implements
                     .append(requiredModule).append("\");");
             requiredModulesAdded.add(requiredModule);
         }
+    }
+
+    public void addRequiredThemeFiles(String requiredThemeFile) {
+        if (!requiredThemeFilesAdded.contains(requiredThemeFile)) {
+            if (requiredThemeFilesScriptBlock.length() == 0) {
+                // 'base' theme file will be auto added
+                requiredThemeFilesScriptBlock
+                        .append("dojox.mobile.themeFiles=['base'");
+            }
+            requiredThemeFilesScriptBlock.append(",'")
+                    .append(requiredThemeFile).append("'");
+        }
+    }
+
+    private String getRequiredThemeFiles() {
+        if (requiredThemeFilesScriptBlock.length() > 0) {
+            // we need to ensure dojox.mobile.deviceTheme is after
+            // dojox.mobile.themeFiles
+            requiredThemeFilesScriptBlock
+                    .append("];dojo.require(\"dojox.mobile.deviceTheme\");");
+        }
+        return requiredThemeFilesScriptBlock.toString();
     }
 
     /**

@@ -248,7 +248,34 @@ public abstract class BehaviorBase extends ClientBehaviorBase {
         }
     }
 
-   
+   /**
+     * Get rendered clientid through component id
+     * 
+     * @param id
+     * @param behaviorContext
+     * @return
+     */
+    protected String getRenderedClientIdById(String id,
+            ClientBehaviorContext behaviorContext) {
+        if (null != id) {
+            UIComponent targetComp = behaviorContext.getComponent()
+                    .findComponent(id);
+
+            if (null != targetComp && targetComp instanceof DojoWidget) {
+                return targetComp.getClientId();
+            }
+            else {
+                log("It is not a widget or valid component not found with id"
+                        + id);
+                return "";
+            }
+        }
+        else {
+            log("The input id is null");
+            return null;
+        }
+
+    }
 
     /**
      * Log a component not found message

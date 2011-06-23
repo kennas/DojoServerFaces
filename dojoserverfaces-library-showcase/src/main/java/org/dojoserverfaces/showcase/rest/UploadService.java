@@ -34,7 +34,6 @@ import org.dojoserverfaces.showcase.data.model.UploadRecord.UploadFile;
  */
 @Path("upload")
 public class UploadService {
-
     @Context
     private ServletConfig servletConfig;
 
