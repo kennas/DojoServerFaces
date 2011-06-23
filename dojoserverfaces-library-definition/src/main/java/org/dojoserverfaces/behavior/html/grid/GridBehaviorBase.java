@@ -44,10 +44,9 @@ abstract class GridBehaviorBase extends BehaviorBase {
     }
 
     /**
-     * get the clientId of the component
+     * Get rendered client id through component id
      * 
      * @param id
-     *            the input client id
      * @param behaviorContext
      * @return
      */
