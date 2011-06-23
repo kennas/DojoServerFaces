@@ -11,8 +11,8 @@ import org.dojoserverfaces.build.annotation.Attribute;
 
 /**
  * 
- * This behavior will allow you to resize a datagrid, changing
- * its height and width.
+ * This behavior will allow you to resize a datagrid, changing its height and
+ * width.
  * 
  */
 
@@ -28,16 +28,18 @@ public class GridResize extends GridBehaviorBase {
     @Override
     public String getScript(ClientBehaviorContext behaviorContext) {
         StringBuilder script = new StringBuilder();
-        appendSetDijitAttr(script, getRenderedClientIdById(getTarget(),behaviorContext), "autoHeight", "false");
+        appendSetDijitAttr(script, getClientId(getTarget(), behaviorContext),
+                "autoHeight", "false");
         script.append(";");
-        appendSetDijitAttr(script, getRenderedClientIdById(getTarget(),behaviorContext), "autoWidth", "false");
+        appendSetDijitAttr(script, getClientId(getTarget(), behaviorContext),
+                "autoWidth", "false");
         script.append(";");
         script.append("dojo.contentBox(");
-        appendGetDijit(script, getRenderedClientIdById(getTarget(),behaviorContext));
+        appendGetDijit(script, getClientId(getTarget(), behaviorContext));
         script.append(".domNode,{w:");
         script.append(width);
         script.append(",h:").append(height).append("});");
-        appendGetDijit(script, getRenderedClientIdById(getTarget(),behaviorContext));
+        appendGetDijit(script, getClientId(getTarget(), behaviorContext));
         script.append(".update();");
         return script.toString();
     }
