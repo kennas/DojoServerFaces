@@ -14,266 +14,266 @@ import javax.el.ELResolver;
 import javax.faces.context.FacesContext;
 
 public class Record {
-    private String htmlText = "<input />";
-    private Integer hitMe = 0;
-    private String text = null;
-    private String name = null;
-    private String descripiton = null;
-    private List<String> savedTextValues = new ArrayList<String>();
-    private String[] textArray = null;
-    private Boolean bool = Boolean.FALSE;
-    private Boolean boolOne = Boolean.TRUE;
-    private Boolean boolTwo = Boolean.FALSE;
-    private Integer count = new Integer("0");
-    private Integer index = new Integer("0");
-    private Float amount = null;
-    private Float[] savedAmountValues = new Float[] { new Float(1),
-            new Float(10), new Float(100), new Float(1000) };
-    private Date birthDate = new Date();
-    private Date birthTime = new Date();
-    private Long time = new Long(3600000);
-    private java.sql.Time sqlTime = new Time(time);
-    private java.sql.Date sqlDate = new java.sql.Date(birthDate.getTime());
-    private java.sql.Timestamp sqlTimestamp = new java.sql.Timestamp(
-            birthDate.getTime());
-    private List<Options> options;
-    private String[] optionKeys = { "option1", "option2", "option3", "option4",
-            "option5", "option6" };
+	private String htmlText = "<input />";
+	private Integer hitMe = 0;
+	private String text = null;
+	private String name = null;
+	private String descripiton = null;
+	private List<String> savedTextValues = new ArrayList<String>();
+	private String[] textArray = null;
+	private Boolean bool = Boolean.FALSE;
+	private Boolean boolOne = Boolean.TRUE;
+	private Boolean boolTwo = Boolean.FALSE;
+	private Integer count = new Integer("0");
+	private Integer index = new Integer("0");
+	private Float amount = null;
+	private Float[] savedAmountValues = new Float[] { new Float(1),
+			new Float(10), new Float(100), new Float(1000) };
+	private Date birthDate = new Date();
+	private Date birthTime = new Date();
+	private Long time = new Long(3600000);
+	private java.sql.Time sqlTime = new Time(time);
+	private java.sql.Date sqlDate = new java.sql.Date(birthDate.getTime());
+	private java.sql.Timestamp sqlTimestamp = new java.sql.Timestamp(
+			birthDate.getTime());
+	private List<Options> options;
+	private String[] optionKeys = { "option1", "option2", "option3", "option4",
+			"option5", "option6" };
 
-    public class Options {
-        public Options(String name, Boolean selected) {
-            super();
-            this.name = name;
-            this.selected = selected;
-        }
+	public class Options {
+		public Options(String name, Boolean selected) {
+			super();
+			this.name = name;
+			this.selected = selected;
+		}
 
-        private String name;
-        private Boolean selected;
+		private String name;
+		private Boolean selected;
 
-        public void setName(String name) {
-            this.name = name;
-        }
+		public void setName(String name) {
+			this.name = name;
+		}
 
-        public String getName() {
-            return name;
-        }
+		public String getName() {
+			return name;
+		}
 
-        public void setSelected(Boolean selected) {
-            this.selected = selected;
-        }
+		public void setSelected(Boolean selected) {
+			this.selected = selected;
+		}
 
-        public Boolean getSelected() {
-            return selected;
-        }
-    }
+		public Boolean getSelected() {
+			return selected;
+		}
+	}
 
-    public String doAction() {
-        System.out.println("doAction - wahooo!");
-        FacesContext context = FacesContext.getCurrentInstance();
-        System.out.println("phaseId: " + context.getCurrentPhaseId());
-        ELResolver resolver = context.getApplication().getELResolver();
-        System.out.println("doAction - record.count: "
-                + resolver.getValue(context.getELContext(), null,
-                        "store.record.count"));
-        return "global";
-    }
+	public String doAction() {
+		System.out.println("doAction - wahooo!");
+		FacesContext context = FacesContext.getCurrentInstance();
+		System.out.println("phaseId: " + context.getCurrentPhaseId());
+		ELResolver resolver = context.getApplication().getELResolver();
+		System.out.println("doAction - record.count: "
+				+ resolver.getValue(context.getELContext(), null,
+						"store.record.count"));
+		return "global";
+	}
 
-    public String doActionAndStayHere() {
-        System.out.println("doAction - wahooo!");
-        FacesContext context = FacesContext.getCurrentInstance();
-        System.out.println("phaseId: " + context.getCurrentPhaseId());
-        ELResolver resolver = context.getApplication().getELResolver();
-        System.out.println("doAction - record.count: "
-                + resolver.getValue(context.getELContext(), null,
-                        "store.record.count"));
-        return null;
-    }
+	public String doActionAndStayHere() {
+		System.out.println("doAction - wahooo!");
+		FacesContext context = FacesContext.getCurrentInstance();
+		System.out.println("phaseId: " + context.getCurrentPhaseId());
+		ELResolver resolver = context.getApplication().getELResolver();
+		System.out.println("doAction - record.count: "
+				+ resolver.getValue(context.getELContext(), null,
+						"store.record.count"));
+		return null;
+	}
 
-    public Long getTime() {
-        return time;
-    }
+	public Long getTime() {
+		return time;
+	}
 
-    public void setTime(Long time) {
-        this.time = time;
-    }
+	public void setTime(Long time) {
+		this.time = time;
+	}
 
-    public Boolean getBool() {
-        return bool;
-    }
+	public Boolean getBool() {
+		return bool;
+	}
 
-    public void setBool(Boolean bool) {
-        this.bool = bool;
-    }
+	public void setBool(Boolean bool) {
+		this.bool = bool;
+	}
 
-    public String getText() {
-        return text;
-    }
+	public String getText() {
+		return text;
+	}
 
-    public void setText(String text) {
-        this.text = text;
-        if (!savedTextValues.contains(text)) {
-            savedTextValues.add(text);
-        }
-    }
+	public void setText(String text) {
+		this.text = text;
+		if (!savedTextValues.contains(text)) {
+			savedTextValues.add(text);
+		}
+	}
 
-    public void setIndex(Integer index) {
-        this.index = index;
-    }
+	public void setIndex(Integer index) {
+		this.index = index;
+	}
 
-    public Integer getIndex() {
-        return index;
-    }
+	public Integer getIndex() {
+		return index;
+	}
 
-    public void setCount(Integer count) {
-        this.count = count;
-    }
+	public void setCount(Integer count) {
+		this.count = count;
+	}
 
-    public Integer getCount() {
-        return count;
-    }
+	public Integer getCount() {
+		return count;
+	}
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
 
-    public Date getBirthDate() {
-        return birthDate;
-    }
+	public Date getBirthDate() {
+		return birthDate;
+	}
 
-    public void setSqlTime(java.sql.Time sqlTime) {
-        this.sqlTime = sqlTime;
-    }
+	public void setSqlTime(java.sql.Time sqlTime) {
+		this.sqlTime = sqlTime;
+	}
 
-    public java.sql.Time getSqlTime() {
-        return sqlTime;
-    }
+	public java.sql.Time getSqlTime() {
+		return sqlTime;
+	}
 
-    public void setSqlDate(java.sql.Date sqlDate) {
-        this.sqlDate = sqlDate;
-    }
+	public void setSqlDate(java.sql.Date sqlDate) {
+		this.sqlDate = sqlDate;
+	}
 
-    public java.sql.Date getSqlDate() {
-        return sqlDate;
-    }
+	public java.sql.Date getSqlDate() {
+		return sqlDate;
+	}
 
-    public void setSqlTimestamp(java.sql.Timestamp sqlTimestamp) {
-        this.sqlTimestamp = sqlTimestamp;
-    }
+	public void setSqlTimestamp(java.sql.Timestamp sqlTimestamp) {
+		this.sqlTimestamp = sqlTimestamp;
+	}
 
-    public java.sql.Timestamp getSqlTimestamp() {
-        return sqlTimestamp;
-    }
+	public java.sql.Timestamp getSqlTimestamp() {
+		return sqlTimestamp;
+	}
 
-    public void setBirthTime(Date birthTime) {
-        this.birthTime = birthTime;
-    }
+	public void setBirthTime(Date birthTime) {
+		this.birthTime = birthTime;
+	}
 
-    public Date getBirthTime() {
-        return birthTime;
-    }
+	public Date getBirthTime() {
+		return birthTime;
+	}
 
-    public void setAmount(Float amount) {
-        this.amount = amount;
-    }
+	public void setAmount(Float amount) {
+		this.amount = amount;
+	}
 
-    public Float getAmount() {
-        return amount;
-    }
+	public Float getAmount() {
+		return amount;
+	}
 
-    public void setTextArray(String[] textArray) {
-        this.textArray = textArray;
-    }
+	public void setTextArray(String[] textArray) {
+		this.textArray = textArray;
+	}
 
-    public String[] getTextArray() {
-        return textArray;
-    }
+	public String[] getTextArray() {
+		return textArray;
+	}
 
-    public void setBoolOne(Boolean boolOne) {
-        this.boolOne = boolOne;
-    }
+	public void setBoolOne(Boolean boolOne) {
+		this.boolOne = boolOne;
+	}
 
-    public Boolean getBoolOne() {
-        return boolOne;
-    }
+	public Boolean getBoolOne() {
+		return boolOne;
+	}
 
-    public void setBoolTwo(Boolean boolTwo) {
-        this.boolTwo = boolTwo;
-    }
+	public void setBoolTwo(Boolean boolTwo) {
+		this.boolTwo = boolTwo;
+	}
 
-    public Boolean getBoolTwo() {
-        return boolTwo;
-    }
+	public Boolean getBoolTwo() {
+		return boolTwo;
+	}
 
-    public void setOptions(List<Options> options) {
-        this.options = options;
-    }
+	public void setOptions(List<Options> options) {
+		this.options = options;
+	}
 
-    public List<Options> getOptions() {
-        if (null == options) {
-            options = new ArrayList<Options>();
-            for (String s : getOptionKeys()) {
-                options.add(new Options(s, Boolean.FALSE));
-            }
-        }
-        return options;
-    }
+	public List<Options> getOptions() {
+		if (null == options) {
+			options = new ArrayList<Options>();
+			for (String s : getOptionKeys()) {
+				options.add(new Options(s, Boolean.FALSE));
+			}
+		}
+		return options;
+	}
 
-    public List<String> getSelectedOptions() {
-        ArrayList<String> selected = new ArrayList<String>();
-        for (Options o : getOptions()) {
-            if (o.getSelected().booleanValue()) {
-                selected.add(o.getName());
-            }
-        }
-        return selected;
-    }
+	public List<String> getSelectedOptions() {
+		ArrayList<String> selected = new ArrayList<String>();
+		for (Options o : getOptions()) {
+			if (o.getSelected().booleanValue()) {
+				selected.add(o.getName());
+			}
+		}
+		return selected;
+	}
 
-    public void setOptionKeys(String[] optionKeys) {
-        this.optionKeys = optionKeys;
-    }
+	public void setOptionKeys(String[] optionKeys) {
+		this.optionKeys = optionKeys;
+	}
 
-    public String[] getOptionKeys() {
-        return optionKeys;
-    }
+	public String[] getOptionKeys() {
+		return optionKeys;
+	}
 
-    public void setHitMe(Integer hitMe) {
-        this.hitMe = hitMe;
-    }
+	public void setHitMe(Integer hitMe) {
+		this.hitMe = hitMe;
+	}
 
-    public Integer getHitMe() {
-        hitMe = new Integer(hitMe.intValue() + 1);
-        return hitMe;
-    }
+	public Integer getHitMe() {
+		hitMe = new Integer(hitMe.intValue() + 1);
+		return hitMe;
+	}
 
-    public List<String> getSavedTextValues() {
-        return savedTextValues;
-    }
+	public List<String> getSavedTextValues() {
+		return savedTextValues;
+	}
 
-    public Float[] getSavedAmountValues() {
-        return savedAmountValues;
-    }
+	public Float[] getSavedAmountValues() {
+		return savedAmountValues;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setDescripiton(String descripiton) {
-        this.descripiton = descripiton;
-    }
+	public void setDescripiton(String descripiton) {
+		this.descripiton = descripiton;
+	}
 
-    public String getDescripiton() {
-        return descripiton;
-    }
+	public String getDescripiton() {
+		return descripiton;
+	}
 
-    public void setHtmlText(String htmlText) {
-        this.htmlText = htmlText;
-    }
+	public void setHtmlText(String htmlText) {
+		this.htmlText = htmlText;
+	}
 
-    public String getHtmlText() {
-        return htmlText;
-    }
+	public String getHtmlText() {
+		return htmlText;
+	}
 }

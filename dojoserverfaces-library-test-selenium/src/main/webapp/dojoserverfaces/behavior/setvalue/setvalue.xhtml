@@ -21,22 +21,22 @@
 				<h:panelGrid cols="1">
 					<h:panelGroup>
 						<jd:button label="Set value (Hello DojoServerFaces!)" type="button" id="buttonA">
-							<jd:behaviorSetValue target="holder" value="Hello DojoServerFaces!" />
-							<jd:behaviorSetValue target="hholder" value="Hello DojoServerFaces!" />
+							<jd:behaviorSetValue target="form1:holder" value="Hello DojoServerFaces!" />
+							<jd:behaviorSetValue target="form1:hholder" value="Hello DojoServerFaces!" />
 						</jd:button>
 						<jd:button label="Clean" type="button" id="buttonB">
-							<jd:behaviorSetValue target="holder" value="" />
-							<jd:behaviorSetValue target="hholder" value="" />
+							<jd:behaviorSetValue target="form1:holder" value="" />
+							<jd:behaviorSetValue target="form1:hholder" value="" />
 						</jd:button>
-					</h:panelGroup>
+					</h:panelGroup>					<h:form id="form1">
 					<h:panelGrid columns="2">
 						<span>jd:textBox</span>
 						<jd:textBox id="holder" />
 						<span>h:inputText</span>
 						<h:inputText id="hholder" />
-					</h:panelGrid>
+					</h:panelGrid></h:form>
 				</h:panelGrid>
 		</f:subview></div>
 	</ui:define>
-</ui:composition>
+</ui:composition><ui:debug />
 </html>

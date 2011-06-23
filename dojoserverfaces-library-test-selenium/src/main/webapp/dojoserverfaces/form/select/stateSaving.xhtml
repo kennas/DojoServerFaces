@@ -9,11 +9,13 @@
 	<div class="testCase">
 		<f:subview id="stateSaving">
 		    <span class="testTitle">State Saving - Transient</span>
+			<jd:selectItemStore id="values">
+		       <f:selectItems value="#{ selectBean.values }" />
+	        </jd:selectItemStore>
 			<h:panelGrid columns="3">
 				<!-- Test case to check that the state of transient component is not saved -->
 				<!-- Test the same again after setting javax.faces.PARTIAL_STATE_SAVING to false -->
-				<jd:select id="widgetTransient" binding="#{selectBean.widgetTransient}" transient="true" value="#{selectBean.widgetTransientValue.data}">
-					<f:selectItems value="#{selectBean.values}"/>
+				<jd:select id="widgetTransient" binding="#{selectBean.widgetTransient}" transient="true" value="#{selectBean.widgetTransientValue.data}" store="values">
 				</jd:select>
 				<h:commandButton id="testTransientStateBtn" value="testTransientState" action="#{selectBean.testTransientState}" />
 				<h:panelGroup>isTransient <h:outputText id="outputTransientState" value="#{selectBean.transientState}"></h:outputText>
@@ -23,8 +25,7 @@
 			<h:panelGrid columns="3">
 				<!-- Test case to check that the state of a non-transient component is saved -->
 				<!-- Test the same again after setting javax.faces.PARTIAL_STATE_SAVING to false -->
-				<jd:select id="widgetFull" binding="#{selectBean.widgetFull}" value="#{selectBean.widgetFullValue.data}">
-					<f:selectItems value="#{selectBean.values}"/>
+				<jd:select id="widgetFull" binding="#{selectBean.widgetFull}" value="#{selectBean.widgetFullValue.data}" store="values">
 				</jd:select>
 				<h:commandButton id="testFullStateBtn" value="testFullState" action="#{selectBean.testFullState}" />
 				<h:panelGroup>State Saved ? <h:outputText id="outputFullState" value="#{selectBean.fullState}"></h:outputText>

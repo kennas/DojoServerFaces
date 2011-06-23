@@ -6,16 +6,11 @@
 package org.dojoserverfaces.tests.gadget.richtexteditor;
 
 import org.dojoserverfaces.tests.selenium.SeleniumSetupSuite;
-import org.dojoserverfaces.tests.selenium.dojoserverfaces.LayoutComponentSelenium;
+import org.dojoserverfaces.tests.selenium.SeleniumTestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-public class RichTextEditorSelenium extends LayoutComponentSelenium {
-
-    public RichTextEditorSelenium() {
-        this.widgetValues = new RichTextEditorValues();
-        this.widgetInteraction = new RichTextEditorInteraction(widgetValues);
-    }
+public class RichTextEditorSelenium extends SeleniumTestCase {
 
     private static SeleniumSetupSuite seleniumSetupSuite;
 
@@ -28,9 +23,8 @@ public class RichTextEditorSelenium extends LayoutComponentSelenium {
     public void setUp() throws Exception {
         selenium = seleniumSetupSuite.getSelenium();
         if (selenium != null) {
-            this.widgetInteraction.setSelenium(selenium);
             selenium
-                    .open("http://localhost:8080/eclipse-dojoserverfaces-library-test-selenium/dojoserverfaces/gadget/richtexteditor/index.jsf");
+                    .open("http://localhost:8080/eclipse-jsfdojo-library-test-selenium/dojoserverfaces/gadget/richtexteditor/index.jsf");
         }
     }
 

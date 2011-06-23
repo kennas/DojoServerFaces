@@ -6,16 +6,11 @@
 package org.dojoserverfaces.tests.gadget.menubar;
 
 import org.dojoserverfaces.tests.selenium.SeleniumSetupSuite;
-import org.dojoserverfaces.tests.selenium.dojoserverfaces.LayoutComponentSelenium;
+import org.dojoserverfaces.tests.selenium.SeleniumTestCase;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-public class MenuBarSelenium extends LayoutComponentSelenium {
-
-    public MenuBarSelenium() {
-        this.widgetValues = new MenuBarValues();
-        this.widgetInteraction = new MenuBarInteraction(widgetValues);
-    }
+public class MenuBarSelenium extends SeleniumTestCase {
 
     private static SeleniumSetupSuite seleniumSetupSuite;
 
@@ -28,9 +23,8 @@ public class MenuBarSelenium extends LayoutComponentSelenium {
     public void setUp() throws Exception {
         selenium = seleniumSetupSuite.getSelenium();
         if (selenium != null) {
-            this.widgetInteraction.setSelenium(selenium);
             selenium
-                    .open("http://localhost:8080/eclipse-dojoserverfaces-library-test-selenium/dojoserverfaces/gadget/menubar/index.jsf");
+                    .open("http://localhost:8080/eclipse-jsfdojo-library-test-selenium/dojoserverfaces/gadget/menubar/index.jsf");
         }
     }
 

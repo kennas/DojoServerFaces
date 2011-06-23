@@ -43,5 +43,5 @@ public @interface MultiSelectValueHolder {
     /**
      * @return the node to use with non-DojoServerFaces behaviors
      */
-    public String jsfNode() default "valueNode";
+    public String jsfNode() default "domNode";
 }

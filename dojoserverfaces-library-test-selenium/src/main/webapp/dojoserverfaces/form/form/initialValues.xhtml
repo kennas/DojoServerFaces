@@ -14,7 +14,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces
 		        <jd:numberTextBox id="somenumber" /><br></br>
 		        <jd:validationTextBox required="true" id="search" value="#{validationTextBoxBean.beanBoundValue.data}" />
 	            <jd:button id="button" label="Submit">
-			        <jd:behaviorSet event="click" target="search" value="somenumber.value" />
+			        <jd:behaviorCopyValue event="click" source="somenumber" destination="search" />
 		        </jd:button>
 	        </jd:form>
 		</h:panelGrid>

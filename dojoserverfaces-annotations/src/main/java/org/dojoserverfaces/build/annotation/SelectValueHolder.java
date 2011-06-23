@@ -17,7 +17,7 @@ import org.dojoserverfaces.constants.HtmlElementType;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.SOURCE)
-@GeneratedComponent(baseClassName = "javax.faces.component.UISelectOne", elementType = HtmlElementType.SELECT)
+@GeneratedComponent(baseClassName = "javax.faces.component.UIInput", elementType = HtmlElementType.SELECT)
 public @interface SelectValueHolder {
     /**
      * @return display name for component
@@ -43,5 +43,5 @@ public @interface SelectValueHolder {
     /**
      * @return the node to use with non-DojoServerFaces behaviors
      */
-    public String jsfNode() default "valueNode";
+    public String jsfNode() default "domNode";
 }
