@@ -4,6 +4,16 @@
 	color: #131313;
 }
 
+/* Correct font-size problem in IE8 */
+form, table {
+	font-size: 1em;
+}
+
+/* Correct postion of Horizontal Rule Labels in IE8 */
+.dijitRuleContainer {
+	text-align: left;
+}
+
 table.usage {
 	border-collapse: separate;
 }
