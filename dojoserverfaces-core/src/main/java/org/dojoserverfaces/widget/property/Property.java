@@ -93,7 +93,8 @@ public abstract class Property {
      * @return json property setting
      */
     protected String buildJsonPropertySetting(String name, String value) {
-        StringBuffer jp = new StringBuffer(name);
+        // quote property name
+        StringBuffer jp = new StringBuffer("\"").append(name).append("\"");
         jp.append(':').append(value);
         return jp.toString();
     }

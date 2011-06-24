@@ -10,17 +10,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dojo="http://www.dojoserverfaces.org/core"
->	<h:form>
-	<table>
+>	<h:form id="form">		<dojo:listener topic="change-text-color">			<dojo:behaviorClick target="form:refresh-text-color" />		</dojo:listener>		<dojo:listener topic="change-background-color">			<dojo:behaviorClick target="form:refresh-background-color" />		</dojo:listener>				<dojo:button id="refresh-text-color" style="display: none;">			<f:ajax render=":buttonA :textA" />		</dojo:button>		<dojo:button id="refresh-background-color" style="display: none;">			<f:ajax render=":textB" />		</dojo:button>	</h:form>					<table>
 		<tr>
 			<td style="width: 400px;">
 				<dojo:button label="Broadcast topic: change-text-color">
 					<dojo:behaviorBroadcast topic="change-text-color" />
 				</dojo:button>
-				<dojo:listener topic="change-text-color">
-					<f:ajax render="buttonA textA" />
-				</dojo:listener>
-				
 				<div class="separator" style="margin-top: 5px; margin-bottom: 5px; width: 365px;" />
 			</td>
 			
@@ -28,9 +23,6 @@
 				<dojo:button label="Broadcast topic: change-background-color">
 					<dojo:behaviorBroadcast topic="change-background-color" />
 				</dojo:button>
-				<dojo:listener topic="change-background-color">
-					<f:ajax render="textB" />
-				</dojo:listener>
 				<div class="separator" style="margin-top: 5px; margin-bottom: 5px; width: 365px;" />
 			</td>
 		</tr>
@@ -51,5 +43,4 @@
 					value="I'm listening topic: change-background-color." />
 			</td>
 		</tr>
-	</table>	</h:form>
-</ui:composition>
+	</table></ui:composition>
