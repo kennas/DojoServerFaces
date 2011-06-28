@@ -54,6 +54,6 @@ class Dialog extends ContentPaneBase {
      * This usually will be the first component in the dialog.
      */
     // TODO - does this work?
-    @Property(name = "\\\"aria-describedby\\\"", handler = ElementIdProperty.class)
+    @Property(name = "aria-describedby", handler = ElementIdProperty.class)
     String ariaDescribedBy;
 }

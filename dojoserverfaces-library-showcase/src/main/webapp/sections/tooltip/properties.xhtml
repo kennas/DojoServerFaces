@@ -12,23 +12,15 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dojo="http://www.dojoserverfaces.org/core"
->
+>	<dojo:selectItemStore id="connectTo">		<f:selectItem itemValue="cut" itemLabel="cut" />		<f:selectItem itemValue="copy" itemLabel="copy" />		<f:selectItem itemValue="paste" itemLabel="paste" />		<f:selectItem itemValue="cut copy paste" itemLabel="cut copy paste" />	</dojo:selectItemStore>	<dojo:selectItemStore id="position">		<f:selectItem itemValue="before" itemLabel="before" />		<f:selectItem itemValue="after" itemLabel="after" />		<f:selectItem itemValue="above" itemLabel="above" />		<f:selectItem itemValue="below" itemLabel="below" />	</dojo:selectItemStore>
 	<dojo:tableContainer
 		cols="3" orientation="horiz" spacing="1"
 		style="width: 100%;"
 	>
-		<dojo:filteringSelect title="connectTo: " value="#{ tooltip.connectTo }">
-			<f:selectItem itemValue="cut" itemLabel="cut" />
-			<f:selectItem itemValue="copy" itemLabel="copy" />
-			<f:selectItem itemValue="paste" itemLabel="paste" />
-			<f:selectItem itemValue="cut copy paste" itemLabel="cut copy paste" />
+		<dojo:filteringSelect title="connectTo: " 			value="#{ tooltip.connectTo }" store="connectTo">
 		</dojo:filteringSelect>
 		
-		<dojo:filteringSelect title="position: " value="#{ tooltip.position }">
-			<f:selectItem itemValue="before" itemLabel="before" />
-			<f:selectItem itemValue="after" itemLabel="after" />
-			<f:selectItem itemValue="above" itemLabel="above" />
-			<f:selectItem itemValue="below" itemLabel="below" />
+		<dojo:filteringSelect title="position: " 			value="#{ tooltip.position }" store="position">
 		</dojo:filteringSelect>
 		
 		<dojo:textBox title="showDelay: " value="#{ tooltip.showDelay }" />
