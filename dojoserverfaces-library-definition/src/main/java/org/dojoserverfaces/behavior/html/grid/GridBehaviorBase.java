@@ -6,8 +6,12 @@
 package org.dojoserverfaces.behavior.html.grid;
 
 
+import javax.faces.component.UIComponent;
+import javax.faces.component.behavior.ClientBehaviorContext;
+
 import org.dojoserverfaces.build.annotation.Attribute;
 import org.dojoserverfaces.component.behavior.BehaviorBase;
+import org.dojoserverfaces.widget.DojoWidget;
 
 /**
  * Grid related class base class it provides target attribute which points to a
@@ -40,5 +44,32 @@ abstract class GridBehaviorBase extends BehaviorBase {
         this.target = targetvalue;
     }
 
-  
+    /**
+     * Get rendered client id through component id
+     * 
+     * @param id
+     * @param behaviorContext
+     * @return
+     */
+    protected String getClientId(String id,
+            ClientBehaviorContext behaviorContext) {
+        if (null != id) {
+            UIComponent targetComp = behaviorContext.getComponent()
+                    .findComponent(id);
+            if (null != targetComp && targetComp instanceof DojoWidget) {
+                return targetComp.getClientId();
+            }
+            else {
+                log("It is not a widget or valid component not found with id"
+                        + id);
+                return id;
+            }
+        }
+        else {
+            log("The input id is null");
+            return null;
+        }
+
+    }
+
 }
