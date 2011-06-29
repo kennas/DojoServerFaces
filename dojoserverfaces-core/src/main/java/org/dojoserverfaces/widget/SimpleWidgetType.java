@@ -14,24 +14,22 @@ package org.dojoserverfaces.widget;
  */
 public class SimpleWidgetType extends DojoType {
     private String widgetType;
-    private boolean isMobileWidget;
 
     /**
      * Construct a widget object with the dojo widget name.
      * 
      * @param widgetType
      */
-    public SimpleWidgetType(String widgetType, boolean isMobileWidget) {
+    public SimpleWidgetType(String widgetType) {
         this.widgetType = widgetType;
-        this.isMobileWidget = isMobileWidget;
     }
 
     /*
      * (non-Javadoc)
      * 
      * @see
-     * org.dojoserverfaces.widget.element.WidgetType#geTypeName(javax.faces.component
-     * .UIComponent)
+     * org.dojoserverfaces.widget.element.WidgetType#geTypeName(javax.faces.
+     * component .UIComponent)
      */
     public String geTypeName() {
         return widgetType;
@@ -40,10 +38,5 @@ public class SimpleWidgetType extends DojoType {
     @Override
     public boolean isDijit() {
         return true;
-    }
-
-    @Override
-    public boolean isMobileWidget() {
-        return isMobileWidget;
     }
 }
