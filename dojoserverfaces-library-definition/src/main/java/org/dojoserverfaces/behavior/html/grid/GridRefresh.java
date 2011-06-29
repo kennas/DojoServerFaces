@@ -6,6 +6,7 @@
 package org.dojoserverfaces.behavior.html.grid;
 
 import org.dojoserverfaces.build.annotation.Behavior;
+
 /**
  *  This behavior will allow you to refresh grid
  *

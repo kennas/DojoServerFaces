@@ -248,7 +248,7 @@ public abstract class BehaviorBase extends ClientBehaviorBase {
         }
     }
 
-   /**
+    /**
      * Get rendered clientid through component id
      * 
      * @param id
