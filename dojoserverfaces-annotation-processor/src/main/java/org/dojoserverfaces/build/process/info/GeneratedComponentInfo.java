@@ -27,7 +27,6 @@ public class GeneratedComponentInfo extends ComponentInfo {
     private String baseClassName;
     private String dojoType;
     private Boolean isWidget = true;
-    private Boolean isMobileWidget = false;
     private String[] requiredCss = null;
     private HtmlElementType elementType;
     private String interfaceNames[];
@@ -159,10 +158,6 @@ public class GeneratedComponentInfo extends ComponentInfo {
         return isWidget;
     }
 
-    public Boolean getIsMobileWidget() {
-        return isMobileWidget;
-    }
-
     public String[] getRequiredCss() {
         return requiredCss;
     }
@@ -170,14 +165,6 @@ public class GeneratedComponentInfo extends ComponentInfo {
     protected void setWidgetType(String dojoType) {
         this.dojoType = dojoType;
         this.isWidget = Boolean.TRUE;
-
-        // TODO: is this enough?
-        if (this.dojoType != null && this.dojoType.startsWith("dojox.mobile.")) {
-            this.isMobileWidget = Boolean.TRUE;
-        }
-        else {
-            this.isMobileWidget = Boolean.FALSE;
-        }
     }
 
     protected void setJsfNode(String jsfNode) {
@@ -187,7 +174,6 @@ public class GeneratedComponentInfo extends ComponentInfo {
     protected void setObjectType(String dojoType) {
         this.dojoType = dojoType;
         this.isWidget = Boolean.FALSE;
-        this.isMobileWidget = Boolean.FALSE;
     }
 
     protected void setRequiredCss(String[] requiredCss) {
