@@ -9,9 +9,18 @@ form, table {
 	font-size: 1em;
 }
 
-/* Correct postion of Horizontal Rule Labels in IE8 */
+/* Correct position of Horizontal Rule Labels in IE8 */
 .dijitRuleContainer {
 	text-align: left;
+}
+
+/* Correct progress bar background in IE8 */
+.dijitProgressBarTile {
+	width: 100%;
+}
+
+.dijitProgressBarFull span {
+	display: inline-block;
 }
 
 table.usage {

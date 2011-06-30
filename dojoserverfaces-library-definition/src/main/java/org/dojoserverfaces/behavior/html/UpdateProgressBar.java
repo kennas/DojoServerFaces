@@ -5,14 +5,12 @@
  *******************************************************************************/
 package org.dojoserverfaces.behavior.html;
 
-import javax.faces.component.UIComponent;
 import javax.faces.component.behavior.ClientBehaviorContext;
 
 import org.dojoserverfaces.build.annotation.Attribute;
 import org.dojoserverfaces.build.annotation.Behavior;
 import org.dojoserverfaces.component.behavior.BehaviorBase;
 import org.dojoserverfaces.util.Helper;
-import org.dojoserverfaces.widget.DojoWidget;
 
 /**
  * This behavior will allow you to set the progressBar's indeterminate,progress
@@ -29,7 +27,7 @@ public class UpdateProgressBar extends BehaviorBase {
     @Override
     public String getScript(ClientBehaviorContext behaviorContext) {
         StringBuilder script = new StringBuilder();
-        String clientId = getClientId(this.getTarget(),
+        String clientId = getRenderedClientIdById(this.getTarget(),
                 behaviorContext);
         if (clientId == null || "".equals(clientId)) {
             return script.toString();
@@ -127,31 +125,5 @@ public class UpdateProgressBar extends BehaviorBase {
     public void setTarget(String target) {
         this.target = target;
     }
-    /**
-     * Get rendered client id through component id
-     * 
-     * @param id
-     * @param behaviorContext
-     * @return
-     */
-    private String getClientId(String id,
-            ClientBehaviorContext behaviorContext) {
-        if (null != id) {
-            UIComponent targetComp = behaviorContext.getComponent()
-                    .findComponent(id);
-            if (null != targetComp && targetComp instanceof DojoWidget) {
-                return targetComp.getClientId();
-            }
-            else {
-                log("It is not a widget or valid component not found with id"
-                        + id);
-                return id;
-            }
-        }
-        else {
-            log("The input id is null");
-            return null;
-        }
 
-    }
 }
