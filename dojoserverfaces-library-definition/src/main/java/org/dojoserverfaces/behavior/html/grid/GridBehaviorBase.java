@@ -8,6 +8,9 @@ package org.dojoserverfaces.behavior.html.grid;
 import javax.faces.component.UIComponent;
 import javax.faces.component.behavior.ClientBehaviorContext;
 
+import javax.faces.component.UIComponent;
+import javax.faces.component.behavior.ClientBehaviorContext;
+
 import org.dojoserverfaces.build.annotation.Attribute;
 import org.dojoserverfaces.component.behavior.BehaviorBase;
 import org.dojoserverfaces.widget.DojoWidget;

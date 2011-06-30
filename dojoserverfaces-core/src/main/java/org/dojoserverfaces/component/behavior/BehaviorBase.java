@@ -248,7 +248,6 @@ public abstract class BehaviorBase extends ClientBehaviorBase {
         }
     }
 
-
     /**
      * Log a component not found message
      * 
