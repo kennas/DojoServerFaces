@@ -22,4 +22,10 @@ public interface PostCreateScript {
      */
     String getPostCreateInitialization(UIComponent component, String widgetVar);
 
+    /**
+     * true if we postponed the startup() in the end of the script block
+     * 
+     * @return
+     */
+    Boolean isStartupPostponed();
 }
