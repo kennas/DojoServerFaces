@@ -50,6 +50,11 @@ class Editor extends WidgetBase {
                     .toString();
         }
 
+        @Override
+        public Boolean isStartupPostponed() {
+            return Boolean.TRUE;
+        }
+
     }
 
     /**
@@ -105,7 +110,7 @@ class Editor extends WidgetBase {
      */
     @Property
     Boolean disableSpellCheck;
-    
+
     /**
      * A list of plugin names (as strings) or instances (as objects) for this
      * widget. When declared in markup, it might look like: plugins=
@@ -113,7 +118,7 @@ class Editor extends WidgetBase {
      */
     @Property(handler = StringArrayProperty.class)
     Object plugins;
-    
+
     /**
      * Fired when the editor finishes initializing.
      */
@@ -121,7 +126,7 @@ class Editor extends WidgetBase {
     String onLoadDeferred;
     // see - http://bugs.dojotoolkit.org/ticket/12067
     // TODO think about renaming this to onLoad
-    
+
     /**
      * Whether we shall use custom undo/redo support instead of the native
      * browser support. By default, we only enable customUndo for IE, as it has

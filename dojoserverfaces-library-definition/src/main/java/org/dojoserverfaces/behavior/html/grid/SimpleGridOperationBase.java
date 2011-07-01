@@ -7,7 +7,6 @@ package org.dojoserverfaces.behavior.html.grid;
 
 import javax.faces.component.behavior.ClientBehaviorContext;
 
-
 abstract class SimpleGridOperationBase extends GridBehaviorBase {
     private String operationTarget;
     private String methodName;
@@ -32,20 +31,22 @@ abstract class SimpleGridOperationBase extends GridBehaviorBase {
     @Override
     public String getScript(ClientBehaviorContext behaviorContext) {
         StringBuilder sb = new StringBuilder();
-        appendGetDijit(sb, getRenderedClientIdById(getTarget(),behaviorContext));
+
+        appendGetDijit(sb, getClientId(getTarget(), behaviorContext));
         if (operationTarget != null) {
             sb.append(".").append(operationTarget);
         }
         sb.append(".").append(methodName).append("(");
-        appendParameterString(behaviorContext,sb);
+        appendParameterString(behaviorContext, sb);
         sb.append(");");
-       
+
         return sb.toString();
     }
 
     /**
      * Append the parameters for the method. Default is to append no parameters.
      */
-    protected void appendParameterString(ClientBehaviorContext behaviorContext,StringBuilder script) {
+    protected void appendParameterString(ClientBehaviorContext behaviorContext,
+            StringBuilder script) {
     }
 }

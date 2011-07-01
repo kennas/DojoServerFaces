@@ -84,23 +84,44 @@ public class ComponentRenderer extends Renderer {
         if (dojoType.isDijit()) {
             if (null == postCreateProperties) {
                 widgetInitialization.append(".startup();");
+                initScriptBlock.addWidgetCreateScript(widgetInitialization
+                        .toString());
             }
             else {
                 // note the scoping of the var by enclosing in {}
                 StringBuilder widgetCreation = new StringBuilder("var ")
                         .append(component.getId()).append("=")
                         .append(widgetInitialization.toString()).append(';');
-                widgetInitialization = widgetCreation;
+                initScriptBlock
+                        .addWidgetCreateScript(widgetCreation.toString());
+                widgetCreation = new StringBuilder();
+                
+                Boolean isStartupPostponed = false;
                 for (Property property : postCreateProperties) {
-                    widgetInitialization.append(((PostCreateScript) property)
+                    if (null != ((PostCreateScript) property)
                             .getPostCreateInitialization(component,
-                                    component.getId()));
+                                    component.getId())) {
+                        if (((PostCreateScript) property).isStartupPostponed()) {
+                            isStartupPostponed = true;
+                        }
+                        widgetCreation.append(((PostCreateScript) property)
+                                .getPostCreateInitialization(component,
+                                        component.getId()));
+                    }
                 }
-                widgetInitialization.append(component.getId()).append(
-                        ".startup();");
+                if (isStartupPostponed) {
+                    widgetCreation.append(component.getId()).append(
+                            ".startup();");
+                }
+                else {
+                    StringBuilder startup = new StringBuilder(component.getId());
+                    startup.append(".startup();");
+                    initScriptBlock.addWidgetCreateScript(startup.toString());
+                }
+
+                initScriptBlock.addPostWidgetCreateScript(widgetCreation
+                        .toString());
             }
-            initScriptBlock.addWidgetCreateScript(widgetInitialization
-                    .toString());
         }
         else {
             // then it must be an object that will be a widget property

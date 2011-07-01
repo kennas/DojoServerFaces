@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:dojo="http://www.dojoserverfaces.org/core">
+<h:head>
+	<title>processBar</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<dojo:theme name="claro" />
+</h:head>
+<h:body>
+ <h:form>
+		<dojo:listener topic="upload-progress">
+			<dojo:behaviorUpdateProgressBar target="progressBar" progress="0.5" />
+		</dojo:listener>
+		<dojo:progressBar id="progressBar" />
+	</h:form>
+
+
+
+<dojo:button label="Click Me">
+	<dojo:behaviorBroadcast topic="upload-progress" />
+</dojo:button>
+</h:body>
+</html>
