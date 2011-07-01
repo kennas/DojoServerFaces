@@ -82,7 +82,6 @@ public class ComponentRenderer extends Renderer {
             widgetInitialization.append("})");
         }
         if (dojoType.isDijit()) {
-            Boolean isStartupPostponed = false;
             if (null == postCreateProperties) {
                 widgetInitialization.append(".startup();");
                 initScriptBlock.addWidgetCreateScript(widgetInitialization
@@ -96,6 +95,8 @@ public class ComponentRenderer extends Renderer {
                 initScriptBlock
                         .addWidgetCreateScript(widgetCreation.toString());
                 widgetCreation = new StringBuilder();
+                
+                Boolean isStartupPostponed = false;
                 for (Property property : postCreateProperties) {
                     if (null != ((PostCreateScript) property)
                             .getPostCreateInitialization(component,
