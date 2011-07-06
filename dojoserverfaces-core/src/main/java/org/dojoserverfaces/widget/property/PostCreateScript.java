@@ -16,10 +16,15 @@ public interface PostCreateScript {
     /**
      * @param component
      *            the component being rendered
-     * @param widgetVar
-     *            the name of the
      * @return initialization script (keep compressed)
      */
-    String getPostCreateInitialization(UIComponent component, String widgetVar);
+    String getPostCreateInitialization(UIComponent component);
+
+    /**
+     * true if we postponed the startup() in the end of the script block
+     * 
+     * @return
+     */
+    Boolean isStartupPostponed();
 
 }

@@ -82,31 +82,50 @@ public class ComponentRenderer extends Renderer {
             widgetInitialization.append("})");
         }
         if (dojoType.isDijit()) {
+
             if (null == postCreateProperties) {
                 widgetInitialization.append(".startup();");
+                initScriptBlock.addWidgetCreateScript(widgetInitialization
+                        .toString());
             }
             else {
-                // note the scoping of the var by enclosing in {}
-                StringBuilder widgetCreation = new StringBuilder("var ")
-                        .append(component.getId()).append("=")
-                        .append(widgetInitialization.toString()).append(';');
-                widgetInitialization = widgetCreation;
+                initScriptBlock.addWidgetCreateScript(widgetInitialization
+                        .toString());
+                StringBuilder postWidgetCreation = new StringBuilder();
+                Boolean isStartupPostponed = false;
                 for (Property property : postCreateProperties) {
-                    widgetInitialization.append(((PostCreateScript) property)
-                            .getPostCreateInitialization(component,
-                                    component.getId()));
+                    String postCreate = ((PostCreateScript) property)
+                            .getPostCreateInitialization(component);
+                    if (null != postCreate) {
+                        if (((PostCreateScript) property).isStartupPostponed()) {
+                            isStartupPostponed = true;
+                        }
+                        postWidgetCreation.append(postCreate);
+                    }
                 }
-                widgetInitialization.append(component.getId()).append(
-                        ".startup();");
+                if (isStartupPostponed) {
+                    initScriptBlock.addWidgetCreateScript(";");
+                    StringBuilder startup = new StringBuilder("dijit.byId(\"");
+                    startup.append(component.getClientId()).append("\")")
+                            .append(".startup();");
+                    postWidgetCreation.append(startup.toString());
+                }
+                else {
+                    initScriptBlock.addWidgetCreateScript(".startup();");
+                }
+                if (postWidgetCreation.length() > 0) {
+                    initScriptBlock
+                            .addPostWidgetCreateScript(postWidgetCreation
+                                    .toString());
+
+                }
             }
-            initScriptBlock.addWidgetCreateScript(widgetInitialization
-                    .toString());
+
         }
         else {
             // then it must be an object that will be a widget property
             // so make it a field of the giant addOnLoad function being
             // generated
-            String field = component.getId();
             StringBuilder widgetCreation = new StringBuilder(
                     DojoScriptBlockComponent
                             .getGlobalReference((DojoWidget) component))
@@ -116,7 +135,7 @@ public class ComponentRenderer extends Renderer {
             if (null != postCreateProperties) {
                 for (Property property : postCreateProperties) {
                     widgetInitialization.append(((PostCreateScript) property)
-                            .getPostCreateInitialization(component, field));
+                            .getPostCreateInitialization(component));
                 }
             }
             initScriptBlock.addCreateGlobalSpaceScript();
