@@ -421,4 +421,13 @@ public final class DojoScriptBlockComponent extends DojoResource implements
     public void addWidgetCreateScript(String script) {
         createWidgetsScriptBlock.append(script);
     }
+    /**
+     * Add the script to initialize a widget.
+     * 
+     * @param script
+     *            to add as part of the "onload" event handler.
+     */
+    public void addPostWidgetCreateScript(String script) {
+        postWidgetCreateScriptBlock.append(script);
+    }
 }
