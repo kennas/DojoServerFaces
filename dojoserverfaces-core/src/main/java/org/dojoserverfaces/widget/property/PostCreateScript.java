@@ -20,6 +20,6 @@ public interface PostCreateScript {
      *            the name of the
      * @return initialization script (keep compressed)
      */
-    String getPostCreateInitialization(UIComponent component, String widgetVar);
+    String getPostCreateInitialization(UIComponent component);
 
 }
