@@ -34,9 +34,15 @@ public @interface Container {
      *         substitute selected theme name at runtime
      */
     public String[] requiredCss() default {};
-    
+
     /**
      * @return the node to use with non-DojoServerFaces behaviors
      */
     public String jsfNode() default "domNode";
+
+    /**
+     * 
+     * @return whether the container render its children
+     */
+    public boolean rendersChildren() default false;
 }

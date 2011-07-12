@@ -36,51 +36,14 @@ public class ComponentRenderer extends Renderer {
     protected void addInitScriptToScriptBlock(FacesContext facesContext,
             UIComponent component) {
         DojoWidget dojoWidget = (DojoWidget) component;
-        Collection<Property> properties = dojoWidget.getPropertyHandlers();
-        Collection<Property> postCreateProperties = null;
-
+        Collection<Property> postCreateProperties = new ArrayList<Property>();
         DojoType dojoType = dojoWidget.getWidgetType();
-
+        StringBuilder widgetInitialization = new StringBuilder();
         DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
                 .findInitBlockComponent(facesContext.getViewRoot());
-        initScriptBlock.addRequires(dojoWidget.getWidgetType().geTypeName());
-
-        // let's first see if any property actually requires a dojo class
-        addPropertyRequires(initScriptBlock, component, properties.iterator());
-
-        StringBuilder widgetInitialization = new StringBuilder("");
-        widgetInitialization.append("new ").append(dojoType.geTypeName())
-                .append("({");
-
-        String jsonPropertySetting;
-        boolean addComma = false;
-        for (Property property : properties) {
-            if (null != (jsonPropertySetting = property
-                    .getAsJsonPropertySetting(component))) {
-                if (addComma) {
-                    widgetInitialization.append(',');
-                }
-                widgetInitialization.append(jsonPropertySetting);
-                addComma = true;
-            }
-            // let's save any properties that also have init code
-            // to run after the widget is created
-            if (property instanceof PostCreateScript) {
-                if (null == postCreateProperties) {
-                    postCreateProperties = new ArrayList<Property>();
-                }
-                postCreateProperties.add(property);
-            }
-        }
-
-        if (dojoType.isDijit()) {
-            // constructor takes element id as second arg
-            widgetInitialization.append("},\"")
-                    .append(component.getClientId(facesContext)).append("\")");
-        }
-        else {
-            widgetInitialization.append("})");
-        }
+        addComponentRequires(initScriptBlock, component);
+        widgetInitialization.append(getWidgetCreationScript(initScriptBlock,
+                component, postCreateProperties));
         if (dojoType.isDijit()) {
             widgetInitialization.append(".startup();");
             initScriptBlock.addWidgetCreateScript(widgetInitialization
@@ -90,7 +53,6 @@ public class ComponentRenderer extends Renderer {
                 for (Property property : postCreateProperties) {
                     String postCreate = ((PostCreateScript) property)
                             .getPostCreateInitialization(component);
-
                     postWidgetCreation.append(postCreate);
                 }
                 if (postWidgetCreation.length() > 0) {
@@ -120,6 +82,71 @@ public class ComponentRenderer extends Renderer {
             initScriptBlock.addPreWidgetCreateScript(widgetInitialization
                     .toString());
         }
+        // handle component's children if needed
+        if (component.getRendersChildren()) {
+            for (UIComponent child : component.getChildren()) {
+                addComponentRequires(initScriptBlock, child);
+                initScriptBlock.addChildToChildrenMap(
+                        getWidgetCreationScript(initScriptBlock, child,
+                                new ArrayList<Property>()), component);
+            }
+        }
+        initScriptBlock.addChildrenToWidgetCreateScriptBlock(component);
+    }
+
+    /**
+     * 
+     * @param initScriptBlock
+     * @param component
+     * @param postCreateProperties
+     * @return
+     */
+    private String getWidgetCreationScript(
+            DojoScriptBlockComponent initScriptBlock, UIComponent component,
+            Collection<Property> postCreateProperties) {
+        DojoWidget dojoWidget = (DojoWidget) component;
+        DojoType dojoType = dojoWidget.getWidgetType();
+        Collection<Property> properties = dojoWidget.getPropertyHandlers();
+        StringBuilder widgetInitialization = new StringBuilder("");
+        widgetInitialization.append("new ").append(dojoType.geTypeName())
+                .append("({");
+        String jsonPropertySetting;
+        boolean addComma = false;
+        for (Property property : properties) {
+            if (null != (jsonPropertySetting = property
+                    .getAsJsonPropertySetting(component))) {
+                if (addComma) {
+                    widgetInitialization.append(',');
+                }
+                widgetInitialization.append(jsonPropertySetting);
+                addComma = true;
+            }
+            // let's save any properties that also have init code
+            // to run after the widget is created
+            if (property instanceof PostCreateScript) {
+                postCreateProperties.add(property);
+            }
+        }
+
+        if (dojoType.isDijit()) {
+            // constructor takes element id as second arg
+            widgetInitialization.append("},\"").append(component.getClientId())
+                    .append("\")");
+        }
+        else {
+            widgetInitialization.append("})");
+        }
+        return widgetInitialization.toString();
+    }
+
+    private void addComponentRequires(DojoScriptBlockComponent initScriptBlock,
+            UIComponent component) {
+        DojoWidget dojoWidget = (DojoWidget) component;
+        Collection<Property> properties = dojoWidget.getPropertyHandlers();
+        initScriptBlock.addRequires(dojoWidget.getWidgetType().geTypeName());
+        // let's first see if any property actually requires a dojo class
+        addPropertyRequires(initScriptBlock, component, properties.iterator());
+
     }
 
     private void addPropertyRequires(DojoScriptBlockComponent initScriptBlock,
@@ -156,6 +183,10 @@ public class ComponentRenderer extends Renderer {
         // of a child tag (e.g. "#{cc.clientId)"), we need to make it available
         // ...
         component.pushComponentToEL(context, component);
+    }
+
+    @Override
+    public void encodeChildren(FacesContext context, UIComponent component) {
     }
 
     @Override

@@ -246,7 +246,18 @@ if (!context.componentInfo.isWidget){ %>
     public org.dojoserverfaces.widget.element.HtmlElement getElement() {
         return element;
     }
-    
+      <%if (context.componentInfo.isContainer){
+    %>
+    /*
+ 	 * (non-Javadoc)
+ 	 * @see javax.faces.render.Renderer#getRendersChildren()
+ 	 */
+    @Override
+    public final boolean getRendersChildren() {
+   
+        return ${context.componentInfo.rendersChildren};
+    }
+    <%}%>
     /* (non-Javadoc)
     * @see org.dojoserverfaces.component.dojo.DojoWidget#getPropertyHandlers()
     */

@@ -6,6 +6,8 @@
 package org.dojoserverfaces.component.dojo;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -219,6 +221,7 @@ public final class DojoScriptBlockComponent extends DojoResource implements
     private StringBuilder destroyWidgetsScriptBlock = new StringBuilder();
     private StringBuilder createWidgetsScriptBlock = new StringBuilder();
     private StringBuilder postWidgetCreateScriptBlock = new StringBuilder();
+    private HashMap<String, StringBuilder> childrenMap = new HashMap<String, StringBuilder>();
 
     public DojoScriptBlockComponent(String id) {
         super();
@@ -421,6 +424,7 @@ public final class DojoScriptBlockComponent extends DojoResource implements
     public void addWidgetCreateScript(String script) {
         createWidgetsScriptBlock.append(script);
     }
+
     /**
      * Add the script to initialize a widget.
      * 
@@ -430,4 +434,40 @@ public final class DojoScriptBlockComponent extends DojoResource implements
     public void addPostWidgetCreateScript(String script) {
         postWidgetCreateScriptBlock.append(script);
     }
+
+    /**
+     * Add every child's creation script to the list in the childrenBlock map
+     * <parentid,children>
+     * 
+     * @param script
+     * @param parentId
+     */
+    public void addChildToChildrenMap(String script, UIComponent parent) {
+        String parentId = parent.getId();
+        StringBuilder addChildScript = new StringBuilder();
+        addChildScript = new StringBuilder("dijit.byId('");
+        addChildScript.append(parent.getClientId()).append("').addChild(");
+        addChildScript.append(script).append(");");
+        if (null == childrenMap.get(parentId)) {
+            StringBuilder children = new StringBuilder();
+            childrenMap.put(parentId, children);
+        }
+        childrenMap.get(parentId).append(addChildScript);
+    }
+
+    /**
+     * Add the script to initialize a widget.
+     * 
+     * @param parent
+     */
+    public void addChildrenToWidgetCreateScriptBlock(UIComponent parent) {
+        String parentId = parent.getId();
+        if (null != childrenMap.get(parentId)) {
+            createWidgetsScriptBlock.append(childrenMap.get(parentId)
+                    .toString());
+
+        }
+
+    }
+
 }
