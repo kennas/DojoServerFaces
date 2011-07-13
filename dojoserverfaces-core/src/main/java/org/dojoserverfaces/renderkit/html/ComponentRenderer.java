@@ -83,17 +83,6 @@ public class ComponentRenderer extends Renderer {
             initScriptBlock.addPreWidgetCreateScript(widgetInitialization
                     .toString());
         }
-        // handle component's children if needed
-        if (component.getRendersChildren()) {
-            for (UIComponent child : component.getChildren()) {
-                addComponentRequires(initScriptBlock, child);
-                this.addChildToWidgetCreateScriptBlock(
-                        initScriptBlock,
-                        component,
-                        getWidgetCreationScript(child,
-                                new ArrayList<Property>()));
-            }
-        }
 
     }
 
@@ -139,6 +128,19 @@ public class ComponentRenderer extends Renderer {
             widgetInitialization.append("})");
         }
         return widgetInitialization.toString();
+    }
+
+    // handle component's children
+    private void addComponentChildren(FacesContext facesContext,
+            UIComponent component) {
+        DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
+                .findInitBlockComponent(facesContext.getViewRoot());
+        for (UIComponent child : component.getChildren()) {
+            addComponentRequires(initScriptBlock, child);
+            this.addChildToWidgetCreateScriptBlock(initScriptBlock, component,
+                    getWidgetCreationScript(child, new ArrayList<Property>()));
+        }
+
     }
 
     private void addComponentRequires(DojoScriptBlockComponent initScriptBlock,
@@ -206,6 +208,7 @@ public class ComponentRenderer extends Renderer {
 
     @Override
     public void encodeChildren(FacesContext context, UIComponent component) {
+
     }
 
     @Override
@@ -223,6 +226,9 @@ public class ComponentRenderer extends Renderer {
             }
         }
         addInitScriptToScriptBlock(context, component);
+        if (component.getRendersChildren()) {
+            addComponentChildren(context, component);
+        }
     }
 
     @Override
