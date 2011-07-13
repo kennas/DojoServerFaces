@@ -28,6 +28,7 @@ import org.dojoserverfaces.widget.property.PropertyCollection;
 
 @FacesRenderer(rendererType = "dojoserverfaces.renderer.default", componentFamily = "dojoserverfaces.component.default")
 public class ComponentRenderer extends Renderer {
+
     /**
      * Add init script to configure the dojo widget.
      * 
@@ -42,8 +43,8 @@ public class ComponentRenderer extends Renderer {
         DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
                 .findInitBlockComponent(facesContext.getViewRoot());
         addComponentRequires(initScriptBlock, component);
-        widgetInitialization.append(getWidgetCreationScript(initScriptBlock,
-                component, postCreateProperties));
+        widgetInitialization.append(getWidgetCreationScript(component,
+                postCreateProperties));
         if (dojoType.isDijit()) {
             widgetInitialization.append(".startup();");
             initScriptBlock.addWidgetCreateScript(widgetInitialization
@@ -86,12 +87,14 @@ public class ComponentRenderer extends Renderer {
         if (component.getRendersChildren()) {
             for (UIComponent child : component.getChildren()) {
                 addComponentRequires(initScriptBlock, child);
-                initScriptBlock.addChildToChildrenMap(
-                        getWidgetCreationScript(initScriptBlock, child,
-                                new ArrayList<Property>()), component);
+                this.addChildToWidgetCreateScriptBlock(
+                        initScriptBlock,
+                        component,
+                        getWidgetCreationScript(child,
+                                new ArrayList<Property>()));
             }
         }
-        initScriptBlock.addChildrenToWidgetCreateScriptBlock(component);
+
     }
 
     /**
@@ -101,8 +104,7 @@ public class ComponentRenderer extends Renderer {
      * @param postCreateProperties
      * @return
      */
-    private String getWidgetCreationScript(
-            DojoScriptBlockComponent initScriptBlock, UIComponent component,
+    private String getWidgetCreationScript(UIComponent component,
             Collection<Property> postCreateProperties) {
         DojoWidget dojoWidget = (DojoWidget) component;
         DojoType dojoType = dojoWidget.getWidgetType();
@@ -166,6 +168,23 @@ public class ComponentRenderer extends Renderer {
                 }
             }
         }
+    }
+
+    /**
+     * 
+     * @param initScriptBlock
+     * @param parent
+     * @param childScript
+     */
+    private void addChildToWidgetCreateScriptBlock(
+            DojoScriptBlockComponent initScriptBlock, UIComponent parent,
+            String childScript) {
+        StringBuilder addChildScript = new StringBuilder();
+        addChildScript = new StringBuilder("dijit.byId('");
+        addChildScript.append(parent.getClientId()).append("').addChild(");
+        addChildScript.append(childScript).append(");");
+        initScriptBlock.addWidgetCreateScript(addChildScript.toString());
+
     }
 
     @Override

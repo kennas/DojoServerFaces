@@ -220,8 +220,7 @@ public final class DojoScriptBlockComponent extends DojoResource implements
     private StringBuilder destroyWidgetsScriptBlock = new StringBuilder();
     private StringBuilder createWidgetsScriptBlock = new StringBuilder();
     private StringBuilder postWidgetCreateScriptBlock = new StringBuilder();
-    private HashMap<String, StringBuilder> componentChildren = new HashMap<String, StringBuilder>();
-
+  
     public DojoScriptBlockComponent(String id) {
         super();
         setId(id);
@@ -434,39 +433,5 @@ public final class DojoScriptBlockComponent extends DojoResource implements
         postWidgetCreateScriptBlock.append(script);
     }
 
-    /**
-     * Add every child's creation script in the childrenBlock map
-     * <parentid,children>
-     * 
-     * @param script
-     * @param parentId
-     */
-    public void addChildToChildrenMap(String script, UIComponent parent) {
-        String parentId = parent.getId();
-        StringBuilder addChildScript = new StringBuilder();
-        addChildScript = new StringBuilder("dijit.byId('");
-        addChildScript.append(parent.getClientId()).append("').addChild(");
-        addChildScript.append(script).append(");");
-        if (null == componentChildren.get(parentId)) {
-            StringBuilder children = new StringBuilder();
-            componentChildren.put(parentId, children);
-        }
-        componentChildren.get(parentId).append(addChildScript);
-    }
-
-    /**
-     * Add the script to initialize a widget.
-     * 
-     * @param parent
-     */
-    public void addChildrenToWidgetCreateScriptBlock(UIComponent parent) {
-        String parentId = parent.getId();
-        if (null != componentChildren.get(parentId)) {
-            createWidgetsScriptBlock.append(componentChildren.get(parentId)
-                    .toString());
-
-        }
-
-    }
 
 }
