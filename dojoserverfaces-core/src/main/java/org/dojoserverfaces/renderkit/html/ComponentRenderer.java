@@ -45,7 +45,16 @@ public class ComponentRenderer extends Renderer {
                 .findInitBlockComponent(facesContext.getViewRoot());
         widgetInitialization.append(getWidgetCreationScript(component,
                 postCreateProperties));
+        
         if (dojoType.isDijit()) {
+            //since all the widget who has children isDijit=true
+            //I write here.
+            if (dojoWidget.getRenderChildrenType().equals(
+                    ChildrenRenderType.USE_ADD_CHILD)) {
+                widgetInitialization.append(";");
+                addComponentChildren(facesContext, component, widgetInitialization);
+                widgetInitialization.append(component.getId());
+            }
             widgetInitialization.append(".startup();");
             initScriptBlock.addWidgetCreateScript(widgetInitialization
                     .toString());
@@ -104,6 +113,11 @@ public class ComponentRenderer extends Renderer {
         DojoType dojoType = dojoWidget.getWidgetType();
         Collection<Property> properties = dojoWidget.getPropertyHandlers();
         StringBuilder widgetInitialization = new StringBuilder("");
+        if (dojoWidget.getRenderChildrenType().equals(
+                ChildrenRenderType.USE_ADD_CHILD)) {
+            widgetInitialization.append("var ").append(component.getId())
+                    .append(" = ");
+        }
         widgetInitialization.append("new ").append(dojoType.geTypeName())
                 .append("({");
         String jsonPropertySetting;
@@ -137,17 +151,13 @@ public class ComponentRenderer extends Renderer {
 
     // handle component's children
     private void addComponentChildren(FacesContext facesContext,
-            UIComponent component) {
+            UIComponent component, StringBuilder widgetInitialization) {
         DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
                 .findInitBlockComponent(facesContext.getViewRoot());
         String componentId = component.getId();
-        StringBuilder parentScript = new StringBuilder("var ");
-        parentScript.append(componentId).append(" = dijit.byId('")
-                .append(component.getClientId()).append("');");
-        initScriptBlock.addWidgetCreateScript(parentScript.toString());
         for (UIComponent child : component.getChildren()) {
             addComponentRequires(initScriptBlock, child);
-            this.addChildToWidgetCreateScriptBlock(initScriptBlock,
+            this.addChildToWidgetCreation(widgetInitialization,
                     componentId,
                     getWidgetCreationScript(child, new ArrayList<Property>()));
         }
@@ -182,21 +192,20 @@ public class ComponentRenderer extends Renderer {
             }
         }
     }
-
-    /**
-     * 
-     * @param initScriptBlock
-     * @param parentId
-     * @param childScript
-     */
-    private void addChildToWidgetCreateScriptBlock(
-            DojoScriptBlockComponent initScriptBlock, String parentId,
+/**
+ * 
+ * @param widgetInitialization
+ * @param parentId
+ * @param childScript
+ */
+    private void addChildToWidgetCreation(
+            StringBuilder widgetInitialization, String parentId,
             String childScript) {
         StringBuilder addChildScript = new StringBuilder();
         addChildScript = new StringBuilder(parentId);
         addChildScript.append(".addChild(");
         addChildScript.append(childScript).append(");");
-        initScriptBlock.addWidgetCreateScript(addChildScript.toString());
+        widgetInitialization.append(addChildScript.toString());
 
     }
 
@@ -237,10 +246,7 @@ public class ComponentRenderer extends Renderer {
             }
         }
         addInitScriptToScriptBlock(context, component);
-        if (dojoWidget.getRenderChildrenType().equals(
-                ChildrenRenderType.USE_ADD_CHILD)) {
-            addComponentChildren(context, component);
-        }
+
     }
 
     @Override
