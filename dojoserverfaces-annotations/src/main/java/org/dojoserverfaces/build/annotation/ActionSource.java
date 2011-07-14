@@ -10,6 +10,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.dojoserverfaces.constants.ChildrenRenderType;
 import org.dojoserverfaces.constants.HtmlElementType;
 
 /**
@@ -39,4 +40,10 @@ public @interface ActionSource {
      * @return the node to use with non-DojoServerFaces behaviors
      */
     public String jsfNode() default "domNode";
+
+    /**
+     * 
+     * @return renderChildren type
+     */
+    public ChildrenRenderType rendersChildren() default ChildrenRenderType.NO_RENDER;
 }

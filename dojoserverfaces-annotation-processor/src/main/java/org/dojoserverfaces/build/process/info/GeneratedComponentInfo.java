@@ -15,6 +15,7 @@ import javax.lang.model.type.MirroredTypeException;
 import org.dojoserverfaces.build.annotation.GeneratedComponent;
 import org.dojoserverfaces.build.process.AnnotationProcessor;
 import org.dojoserverfaces.build.process.generator.GeneratorUtil;
+import org.dojoserverfaces.constants.ChildrenRenderType;
 import org.dojoserverfaces.constants.HtmlElementType;
 
 /**
@@ -33,6 +34,7 @@ public class GeneratedComponentInfo extends ComponentInfo {
     private Boolean valueEditor = Boolean.FALSE;
     private Boolean isActionSource = Boolean.FALSE;
     private String jsfNode;
+    private ChildrenRenderType rendersChildren = ChildrenRenderType.NO_RENDER;
 
     /**
      * indication that the component will handle postbacks
@@ -152,6 +154,14 @@ public class GeneratedComponentInfo extends ComponentInfo {
 
     public String getJsfNode() {
         return this.jsfNode;
+    }
+
+    public ChildrenRenderType getRendersChildren() {
+        return rendersChildren;
+    }
+
+    public void setRendersChildren(ChildrenRenderType rendersChildren) {
+        this.rendersChildren = rendersChildren;
     }
 
     public Boolean getIsWidget() {
