@@ -10,6 +10,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.dojoserverfaces.constants.ChildrenRenderType;
 import org.dojoserverfaces.constants.HtmlElementType;
 
 /**
@@ -42,4 +43,9 @@ public @interface GeneratedComponent {
     public Class<?> postBackHandler() default Object.class;
 
     public String jsfNode() default "";
+    /**
+     * 
+     * @return renderChildren type
+     */
+    public ChildrenRenderType rendersChildren() default ChildrenRenderType.NO_RENDER;
 }

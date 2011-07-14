@@ -10,6 +10,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.dojoserverfaces.constants.ChildrenRenderType;
 import org.dojoserverfaces.constants.HtmlElementType;
 
 /**
@@ -42,7 +43,7 @@ public @interface Container {
 
     /**
      * 
-     * @return whether the container render its children
+     * @return renderChildren type
      */
-    public boolean rendersChildren() default false;
+    public ChildrenRenderType rendersChildren() default ChildrenRenderType.NO_RENDER;
 }

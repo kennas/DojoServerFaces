@@ -18,6 +18,7 @@ import javax.faces.render.FacesRenderer;
 import javax.faces.render.Renderer;
 
 import org.dojoserverfaces.component.dojo.DojoScriptBlockComponent;
+import org.dojoserverfaces.constants.ChildrenRenderType;
 import org.dojoserverfaces.widget.DojoType;
 import org.dojoserverfaces.widget.DojoWidget;
 import org.dojoserverfaces.widget.PostBackHandler;
@@ -135,9 +136,15 @@ public class ComponentRenderer extends Renderer {
             UIComponent component) {
         DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
                 .findInitBlockComponent(facesContext.getViewRoot());
+        String componentId = component.getId();
+        StringBuilder parentScript = new StringBuilder("var ");
+        parentScript.append(componentId).append(" = dijit.byId('")
+                .append(component.getClientId()).append("');");
+        initScriptBlock.addWidgetCreateScript(parentScript.toString());
         for (UIComponent child : component.getChildren()) {
             addComponentRequires(initScriptBlock, child);
-            this.addChildToWidgetCreateScriptBlock(initScriptBlock, component,
+            this.addChildToWidgetCreateScriptBlock(initScriptBlock,
+                    componentId,
                     getWidgetCreationScript(child, new ArrayList<Property>()));
         }
 
@@ -175,15 +182,15 @@ public class ComponentRenderer extends Renderer {
     /**
      * 
      * @param initScriptBlock
-     * @param parent
+     * @param parentId
      * @param childScript
      */
     private void addChildToWidgetCreateScriptBlock(
-            DojoScriptBlockComponent initScriptBlock, UIComponent parent,
+            DojoScriptBlockComponent initScriptBlock, String parentId,
             String childScript) {
         StringBuilder addChildScript = new StringBuilder();
-        addChildScript = new StringBuilder("dijit.byId('");
-        addChildScript.append(parent.getClientId()).append("').addChild(");
+        addChildScript = new StringBuilder(parentId);
+        addChildScript.append(".addChild(");
         addChildScript.append(childScript).append(");");
         initScriptBlock.addWidgetCreateScript(addChildScript.toString());
 
@@ -226,7 +233,8 @@ public class ComponentRenderer extends Renderer {
             }
         }
         addInitScriptToScriptBlock(context, component);
-        if (component.getRendersChildren()) {
+        if (dojoWidget.getRenderChildrenType().equals(
+                ChildrenRenderType.USE_ADD_CHILD)) {
             addComponentChildren(context, component);
         }
     }

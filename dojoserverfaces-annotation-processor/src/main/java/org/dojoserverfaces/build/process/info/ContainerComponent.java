@@ -30,6 +30,5 @@ public class ContainerComponent extends GeneratedComponentInfo {
         setDisplayName(annotation.displayName());
         setJsfNode(annotation.jsfNode());
         setRendersChildren(annotation.rendersChildren());
-        setIsContainer(true);
     }
 }
