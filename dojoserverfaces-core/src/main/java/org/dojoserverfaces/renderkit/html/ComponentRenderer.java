@@ -43,7 +43,6 @@ public class ComponentRenderer extends Renderer {
         StringBuilder widgetInitialization = new StringBuilder();
         DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
                 .findInitBlockComponent(facesContext.getViewRoot());
-        addComponentRequires(initScriptBlock, component);
         widgetInitialization.append(getWidgetCreationScript(component,
                 postCreateProperties));
         if (dojoType.isDijit()) {
@@ -84,7 +83,12 @@ public class ComponentRenderer extends Renderer {
             initScriptBlock.addPreWidgetCreateScript(widgetInitialization
                     .toString());
         }
-
+        // move add requires to the end because require modules depend on
+        // widgets we used
+        // some widgets's property (like inlineEditBox's editor property) is set
+        // in the getWidgetCreationScript method
+        // so move it to the end it does not have bad influence on other widgets
+        addComponentRequires(initScriptBlock, component);
     }
 
     /**
