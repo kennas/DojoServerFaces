@@ -34,7 +34,7 @@ public class ValueSelectComponent extends ValueEditorComponent {
         setWidgetType(annotation.dojoType());
         setRequiredCss(annotation.requiredCss());
         setDisplayName(annotation.displayName());
-
+        setRendersChildren(annotation.rendersChildren());
         this.store = annotation.store();
         if (!this.store) {
             // use element type that uses option child tags

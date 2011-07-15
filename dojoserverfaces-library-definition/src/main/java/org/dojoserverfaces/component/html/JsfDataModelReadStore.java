@@ -20,6 +20,7 @@ import javax.faces.event.ListenerFor;
 import org.dojoserverfaces.build.annotation.Attribute;
 import org.dojoserverfaces.build.annotation.Component;
 import org.dojoserverfaces.component.dojo.DojoScriptBlockComponent;
+import org.dojoserverfaces.constants.RendersChildren;
 import org.dojoserverfaces.util.Helper;
 import org.dojoserverfaces.widget.DojoType;
 import org.dojoserverfaces.widget.DojoWidget;
@@ -221,7 +222,10 @@ public class JsfDataModelReadStore extends UIComponentBase implements
     public HtmlElement getElement() {
         return element;
     }
-
+    @Override
+    public RendersChildren getRenderChildrenType(){
+        return RendersChildren.NO_NOT_RESPONSIBLE;
+    }
     @Override
     public String getJsfNode() {
         return null;

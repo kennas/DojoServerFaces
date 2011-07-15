@@ -16,6 +16,7 @@ import org.dojoserverfaces.build.annotation.GeneratedComponent;
 import org.dojoserverfaces.build.process.AnnotationProcessor;
 import org.dojoserverfaces.build.process.generator.GeneratorUtil;
 import org.dojoserverfaces.constants.HtmlElementType;
+import org.dojoserverfaces.constants.RendersChildren;
 
 /**
  * The GeneratedComponentInfo class defines a class used to encapsulate
@@ -33,6 +34,7 @@ public class GeneratedComponentInfo extends ComponentInfo {
     private Boolean valueEditor = Boolean.FALSE;
     private Boolean isActionSource = Boolean.FALSE;
     private String jsfNode;
+    private RendersChildren rendersChildren = RendersChildren.NO_NOT_RESPONSIBLE;
 
     /**
      * indication that the component will handle postbacks
@@ -152,6 +154,14 @@ public class GeneratedComponentInfo extends ComponentInfo {
 
     public String getJsfNode() {
         return this.jsfNode;
+    }
+
+    public RendersChildren getRendersChildren() {
+        return rendersChildren;
+    }
+
+    public void setRendersChildren(RendersChildren rendersChildren) {
+        this.rendersChildren = rendersChildren;
     }
 
     public Boolean getIsWidget() {
