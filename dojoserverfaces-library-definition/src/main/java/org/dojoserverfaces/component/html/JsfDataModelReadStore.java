@@ -20,7 +20,7 @@ import javax.faces.event.ListenerFor;
 import org.dojoserverfaces.build.annotation.Attribute;
 import org.dojoserverfaces.build.annotation.Component;
 import org.dojoserverfaces.component.dojo.DojoScriptBlockComponent;
-import org.dojoserverfaces.constants.ChildrenRenderType;
+import org.dojoserverfaces.constants.RendersChildren;
 import org.dojoserverfaces.util.Helper;
 import org.dojoserverfaces.widget.DojoType;
 import org.dojoserverfaces.widget.DojoWidget;
@@ -223,8 +223,8 @@ public class JsfDataModelReadStore extends UIComponentBase implements
         return element;
     }
     @Override
-    public ChildrenRenderType getRenderChildrenType(){
-        return ChildrenRenderType.NO_RENDER;
+    public RendersChildren getRenderChildrenType(){
+        return RendersChildren.NO_NOT_RESPONSIBLE;
     }
     @Override
     public String getJsfNode() {

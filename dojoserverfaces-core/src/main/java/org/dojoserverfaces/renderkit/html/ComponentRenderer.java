@@ -18,7 +18,7 @@ import javax.faces.render.FacesRenderer;
 import javax.faces.render.Renderer;
 
 import org.dojoserverfaces.component.dojo.DojoScriptBlockComponent;
-import org.dojoserverfaces.constants.ChildrenRenderType;
+import org.dojoserverfaces.constants.RendersChildren;
 import org.dojoserverfaces.widget.DojoType;
 import org.dojoserverfaces.widget.DojoWidget;
 import org.dojoserverfaces.widget.PostBackHandler;
@@ -44,7 +44,7 @@ public class ComponentRenderer extends Renderer {
         DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
                 .findInitBlockComponent(facesContext.getViewRoot());
         if (dojoWidget.getRenderChildrenType().equals(
-                ChildrenRenderType.USE_ADD_CHILD)) {
+                RendersChildren.YES_USE_ADD_CHILD)) {
             widgetInitialization.append("var ").append(component.getId())
                     .append(" = ");
         }
@@ -54,7 +54,7 @@ public class ComponentRenderer extends Renderer {
             // since all the widget who has children isDijit=true
             // I write here.
             if (dojoWidget.getRenderChildrenType().equals(
-                    ChildrenRenderType.USE_ADD_CHILD)) {
+                    RendersChildren.YES_USE_ADD_CHILD)) {
                 widgetInitialization.append(";");
                 addComponentChildren(facesContext, component,
                         widgetInitialization,

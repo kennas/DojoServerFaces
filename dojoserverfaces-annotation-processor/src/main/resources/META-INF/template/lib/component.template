@@ -34,7 +34,7 @@ public final class ${context.unqualifiedClassName}<% if(context.superclass != nu
         
     private static final String jsfNode = "${context.componentInfo.jsfNode}";
 
-   private static final org.dojoserverfaces.constants.ChildrenRenderType renderChildren = org.dojoserverfaces.constants.ChildrenRenderType.${context.componentInfo.rendersChildren};
+   private static final org.dojoserverfaces.constants.RendersChildren renderChildren = org.dojoserverfaces.constants.RendersChildren.${context.componentInfo.rendersChildren};
   
     // dojo type for this component.
     private static final org.dojoserverfaces.widget.DojoType widgetType =
@@ -254,7 +254,7 @@ if (!context.componentInfo.isWidget){ %>
  	 */
     @Override
     public final boolean getRendersChildren() {
-   <%if ("${context.componentInfo.rendersChildren}"=="NO_RENDER") {%>
+   <%if ("${context.componentInfo.rendersChildren}"=="NO_NOT_RESPONSIBLE") {%>
    		return false;
    <%}else{%>
    		return true;
@@ -297,7 +297,7 @@ if (!context.componentInfo.isWidget){ %>
     *  (non-Javadoc)
     * @see org.dojoserverfaces.component.dojo.DojoWidget#getRenderChildrenType()
     */
-    public org.dojoserverfaces.constants.ChildrenRenderType getRenderChildrenType() {
+    public org.dojoserverfaces.constants.RendersChildren getRenderChildrenType() {
         return renderChildren;
     }
     /* (non-Javadoc)

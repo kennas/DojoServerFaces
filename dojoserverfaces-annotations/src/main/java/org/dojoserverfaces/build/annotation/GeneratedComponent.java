@@ -10,8 +10,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.dojoserverfaces.constants.ChildrenRenderType;
 import org.dojoserverfaces.constants.HtmlElementType;
+import org.dojoserverfaces.constants.RendersChildren;
 
 /**
  * Annotation used to specify a generic DojoServerFaces component.
@@ -47,5 +47,5 @@ public @interface GeneratedComponent {
      * 
      * @return renderChildren type
      */
-    public ChildrenRenderType rendersChildren() default ChildrenRenderType.NO_RENDER;
+    public RendersChildren rendersChildren() default RendersChildren.NO_NOT_RESPONSIBLE;
 }

@@ -9,7 +9,7 @@ import java.util.Collection;
 
 import javax.faces.component.behavior.ClientBehaviorHolder;
 
-import org.dojoserverfaces.constants.ChildrenRenderType;
+import org.dojoserverfaces.constants.RendersChildren;
 import org.dojoserverfaces.widget.element.HtmlElement;
 import org.dojoserverfaces.widget.property.Property;
 
@@ -51,5 +51,5 @@ public interface DojoWidget extends ClientBehaviorHolder {
      * 
      * @return render children type
      */
-    public ChildrenRenderType getRenderChildrenType();
+    public RendersChildren getRenderChildrenType();
 }
