@@ -41,12 +41,13 @@ public class ComponentRenderer extends Renderer {
         StringBuilder widgetPostCreateInitializationScript = new StringBuilder();
         DojoType dojoType = dojoWidget.getWidgetType();
         StringBuilder widgetInitialization = new StringBuilder();
+        String varName = null;
         DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
                 .findInitBlockComponent(facesContext.getViewRoot());
         if (dojoWidget.getRenderChildrenType().equals(
                 RendersChildren.YES_USE_ADD_CHILD)) {
-            widgetInitialization.append("var ").append(component.getId())
-                    .append(" = ");
+            varName = component.getId();
+            widgetInitialization.append("var ").append(varName).append("=");
         }
         getWidgetInitializationScript(component, widgetInitialization,
                 widgetPostCreateInitializationScript);
@@ -56,10 +57,10 @@ public class ComponentRenderer extends Renderer {
             if (dojoWidget.getRenderChildrenType().equals(
                     RendersChildren.YES_USE_ADD_CHILD)) {
                 widgetInitialization.append(";");
-                addComponentChildren(facesContext, component,
+                addComponentChildren(initScriptBlock, component,
                         widgetInitialization,
-                        widgetPostCreateInitializationScript);
-                widgetInitialization.append(component.getId());
+                        widgetPostCreateInitializationScript, varName);
+                widgetInitialization.append(varName);
             }
             widgetInitialization.append(".startup();");
             initScriptBlock.addWidgetCreateScript(widgetInitialization
@@ -136,12 +137,9 @@ public class ComponentRenderer extends Renderer {
     }
 
     // handle component's children
-    private void addComponentChildren(FacesContext facesContext,
+    private void addComponentChildren(DojoScriptBlockComponent initScriptBlock,
             UIComponent component, StringBuilder widgetInitialization,
-            StringBuilder postWidgetInitialization) {
-        DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
-                .findInitBlockComponent(facesContext.getViewRoot());
-        String componentId = component.getId();
+            StringBuilder postWidgetInitialization, String varName) {
         for (UIComponent child : component.getChildren()) {
             StringBuilder childCreation = new StringBuilder();
             StringBuilder postChildCreation = new StringBuilder();
@@ -149,8 +147,8 @@ public class ComponentRenderer extends Renderer {
                     postChildCreation);
             // do we need this?
             postWidgetInitialization.append(postChildCreation);
-            this.addChildToWidgetCreation(widgetInitialization, componentId,
-                    childCreation.toString());
+            widgetInitialization.append(varName).append(".addChild(")
+                    .append(childCreation.toString()).append(");");
             addComponentRequires(initScriptBlock, child);
         }
 
@@ -185,22 +183,6 @@ public class ComponentRenderer extends Renderer {
         }
     }
 
-    /**
-     * 
-     * @param widgetInitialization
-     * @param parentId
-     * @param childScript
-     */
-    private void addChildToWidgetCreation(StringBuilder widgetInitialization,
-            String parentId, String childScript) {
-        StringBuilder addChildScript = new StringBuilder();
-        addChildScript = new StringBuilder(parentId);
-        addChildScript.append(".addChild(");
-        addChildScript.append(childScript).append(");");
-        widgetInitialization.append(addChildScript.toString());
-
-    }
-
     @Override
     public void encodeBegin(FacesContext context, UIComponent component)
             throws IOException {
@@ -218,6 +200,15 @@ public class ComponentRenderer extends Renderer {
         component.pushComponentToEL(context, component);
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * javax.faces.render.Renderer#encodeChildren(javax.faces.context.FacesContext
+     * , javax.faces.component.UIComponent) It only called if
+     * component.getRendersChildren() is true and we do nothing here .It will be
+     * called after encodeBegin and before encodeEnd
+     */
     @Override
     public void encodeChildren(FacesContext context, UIComponent component) {
 
