@@ -34,6 +34,8 @@ public final class ${context.unqualifiedClassName}<% if(context.superclass != nu
         
     private static final String jsfNode = "${context.componentInfo.jsfNode}";
 
+   private static final org.dojoserverfaces.constants.RendersChildren renderChildren = org.dojoserverfaces.constants.RendersChildren.${context.componentInfo.rendersChildren};
+  
     // dojo type for this component.
     private static final org.dojoserverfaces.widget.DojoType widgetType =
 <%
@@ -246,6 +248,19 @@ if (!context.componentInfo.isWidget){ %>
     public org.dojoserverfaces.widget.element.HtmlElement getElement() {
         return element;
     }
+    /*
+ 	 * (non-Javadoc)
+ 	 * @see javax.faces.render.Renderer#getRendersChildren()
+ 	 */
+    @Override
+    public final boolean getRendersChildren() {
+   <%if ("${context.componentInfo.rendersChildren}"=="NO_NOT_RESPONSIBLE") {%>
+   		return false;
+   <%}else{%>
+   		return true;
+   <%}%>
+       
+    }
     
     /* (non-Javadoc)
     * @see org.dojoserverfaces.component.dojo.DojoWidget#getPropertyHandlers()
@@ -278,7 +293,13 @@ if (!context.componentInfo.isWidget){ %>
     public String getJsfNode() {
         return jsfNode;
     }
-    
+    /* 
+    *  (non-Javadoc)
+    * @see org.dojoserverfaces.component.dojo.DojoWidget#getRenderChildrenType()
+    */
+    public org.dojoserverfaces.constants.RendersChildren getRenderChildrenType() {
+        return renderChildren;
+    }
     /* (non-Javadoc)
      * @see org.dojoserverfaces.component.dojo.DojoWidget#getAttribute(java.lang.String)
      */

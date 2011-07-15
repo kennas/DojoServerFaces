@@ -11,6 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.dojoserverfaces.constants.HtmlElementType;
+import org.dojoserverfaces.constants.RendersChildren;
 
 /**
  * Annotation used to specify a generic DojoServerFaces component.
@@ -42,4 +43,9 @@ public @interface GeneratedComponent {
     public Class<?> postBackHandler() default Object.class;
 
     public String jsfNode() default "";
+    /**
+     * 
+     * @return renderChildren type
+     */
+    public RendersChildren rendersChildren() default RendersChildren.NO_NOT_RESPONSIBLE;
 }

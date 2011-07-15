@@ -11,6 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.dojoserverfaces.constants.HtmlElementType;
+import org.dojoserverfaces.constants.RendersChildren;
 
 /**
  * Annotation for widgets that perform as multi-select components.
@@ -44,4 +45,9 @@ public @interface MultiSelectValueHolder {
      * @return the node to use with non-DojoServerFaces behaviors
      */
     public String jsfNode() default "domNode";
+    /**
+     * 
+     * @return renderChildren type
+     */
+    public RendersChildren rendersChildren() default RendersChildren.NO_NOT_RESPONSIBLE;
 }
