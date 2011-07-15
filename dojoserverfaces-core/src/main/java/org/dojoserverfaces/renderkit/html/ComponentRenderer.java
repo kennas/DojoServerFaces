@@ -98,7 +98,6 @@ public class ComponentRenderer extends Renderer {
         DojoWidget dojoWidget = (DojoWidget) component;
         DojoType dojoType = dojoWidget.getWidgetType();
         Collection<Property> properties = dojoWidget.getPropertyHandlers();
-        // StringBuilder widgetCreateScript = new StringBuilder("");
         Collection<Property> postCreateProperties = new ArrayList<Property>();
         widgetCreateScript.append("new ").append(dojoType.geTypeName())
                 .append("({");
