@@ -38,7 +38,6 @@ public class ComponentRenderer extends Renderer {
     protected void addInitScriptToScriptBlock(FacesContext facesContext,
             UIComponent component) {
         DojoWidget dojoWidget = (DojoWidget) component;
-        // StringBuilder widgetCreateScript,
         StringBuilder widgetPostCreateInitializationScript = new StringBuilder();
         DojoType dojoType = dojoWidget.getWidgetType();
         StringBuilder widgetInitialization = new StringBuilder();
@@ -51,8 +50,6 @@ public class ComponentRenderer extends Renderer {
         }
         getWidgetInitializationScript(component, widgetInitialization,
                 widgetPostCreateInitializationScript);
-        // widgetInitialization.append(getWidgetCreationScript(component,
-        // postCreateProperties));
         if (dojoType.isDijit()) {
             // since all the widget who has children isDijit=true
             // I write here.
@@ -60,7 +57,8 @@ public class ComponentRenderer extends Renderer {
                     ChildrenRenderType.USE_ADD_CHILD)) {
                 widgetInitialization.append(";");
                 addComponentChildren(facesContext, component,
-                        widgetInitialization,widgetPostCreateInitializationScript);
+                        widgetInitialization,
+                        widgetPostCreateInitializationScript);
                 widgetInitialization.append(component.getId());
             }
             widgetInitialization.append(".startup();");
@@ -79,11 +77,6 @@ public class ComponentRenderer extends Renderer {
             initScriptBlock.addCreateGlobalSpaceScript();
             initScriptBlock.addPreWidgetCreateScript(widgetCreation.toString());
         }
-        // move add requires to the end because require modules depend on
-        // widgets we used
-        // some widgets's property (like inlineEditBox's editor property) is set
-        // in the getWidgetCreationScript method
-        // so move it to the end it does not have bad influence on other widgets
         addComponentRequires(initScriptBlock, component);
         if (widgetPostCreateInitializationScript.length() > 0) {
             initScriptBlock
@@ -141,7 +134,6 @@ public class ComponentRenderer extends Renderer {
         else {
             widgetCreateScript.append("})");
         }
-        // return widgetInitialization.toString();
     }
 
     // handle component's children
@@ -156,7 +148,7 @@ public class ComponentRenderer extends Renderer {
             StringBuilder postChildCreation = new StringBuilder();
             getWidgetInitializationScript(child, childCreation,
                     postChildCreation);
-            //do we need this?
+            // do we need this?
             postWidgetInitialization.append(postChildCreation);
             this.addChildToWidgetCreation(widgetInitialization, componentId,
                     childCreation.toString());
