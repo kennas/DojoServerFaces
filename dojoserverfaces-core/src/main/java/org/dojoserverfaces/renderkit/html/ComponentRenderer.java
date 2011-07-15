@@ -38,14 +38,21 @@ public class ComponentRenderer extends Renderer {
     protected void addInitScriptToScriptBlock(FacesContext facesContext,
             UIComponent component) {
         DojoWidget dojoWidget = (DojoWidget) component;
-        Collection<Property> postCreateProperties = new ArrayList<Property>();
+        // StringBuilder widgetCreateScript,
+        StringBuilder widgetPostCreateInitializationScript = new StringBuilder();
         DojoType dojoType = dojoWidget.getWidgetType();
         StringBuilder widgetInitialization = new StringBuilder();
         DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
                 .findInitBlockComponent(facesContext.getViewRoot());
-        widgetInitialization.append(getWidgetCreationScript(component,
-                postCreateProperties));
-
+        if (dojoWidget.getRenderChildrenType().equals(
+                ChildrenRenderType.USE_ADD_CHILD)) {
+            widgetInitialization.append("var ").append(component.getId())
+                    .append(" = ");
+        }
+        getWidgetInitializationScript(component, widgetInitialization,
+                widgetPostCreateInitializationScript);
+        // widgetInitialization.append(getWidgetCreationScript(component,
+        // postCreateProperties));
         if (dojoType.isDijit()) {
             // since all the widget who has children isDijit=true
             // I write here.
@@ -53,25 +60,12 @@ public class ComponentRenderer extends Renderer {
                     ChildrenRenderType.USE_ADD_CHILD)) {
                 widgetInitialization.append(";");
                 addComponentChildren(facesContext, component,
-                        widgetInitialization);
+                        widgetInitialization,widgetPostCreateInitializationScript);
                 widgetInitialization.append(component.getId());
             }
             widgetInitialization.append(".startup();");
             initScriptBlock.addWidgetCreateScript(widgetInitialization
                     .toString());
-            if (null != postCreateProperties) {
-                StringBuilder postWidgetCreation = new StringBuilder();
-                for (Property property : postCreateProperties) {
-                    String postCreate = ((PostCreateScript) property)
-                            .getPostCreateInitialization(component);
-                    postWidgetCreation.append(postCreate);
-                }
-                if (postWidgetCreation.length() > 0) {
-                    initScriptBlock
-                            .addPostWidgetCreateScript(postWidgetCreation
-                                    .toString());
-                }
-            }
         }
         else {
             // then it must be an object that will be a widget property
@@ -82,16 +76,8 @@ public class ComponentRenderer extends Renderer {
                             .getGlobalReference((DojoWidget) component))
                     .append("=").append(widgetInitialization.toString())
                     .append(';');
-            widgetInitialization = widgetCreation;
-            if (null != postCreateProperties) {
-                for (Property property : postCreateProperties) {
-                    widgetInitialization.append(((PostCreateScript) property)
-                            .getPostCreateInitialization(component));
-                }
-            }
             initScriptBlock.addCreateGlobalSpaceScript();
-            initScriptBlock.addPreWidgetCreateScript(widgetInitialization
-                    .toString());
+            initScriptBlock.addPreWidgetCreateScript(widgetCreation.toString());
         }
         // move add requires to the end because require modules depend on
         // widgets we used
@@ -99,6 +85,11 @@ public class ComponentRenderer extends Renderer {
         // in the getWidgetCreationScript method
         // so move it to the end it does not have bad influence on other widgets
         addComponentRequires(initScriptBlock, component);
+        if (widgetPostCreateInitializationScript.length() > 0) {
+            initScriptBlock
+                    .addPostWidgetCreateScript(widgetPostCreateInitializationScript
+                            .toString());
+        }
     }
 
     /**
@@ -108,18 +99,15 @@ public class ComponentRenderer extends Renderer {
      * @param postCreateProperties
      * @return
      */
-    private String getWidgetCreationScript(UIComponent component,
-            Collection<Property> postCreateProperties) {
+    private void getWidgetInitializationScript(UIComponent component,
+            StringBuilder widgetCreateScript,
+            StringBuilder widgetPostCreateInitializationScript) {
         DojoWidget dojoWidget = (DojoWidget) component;
         DojoType dojoType = dojoWidget.getWidgetType();
         Collection<Property> properties = dojoWidget.getPropertyHandlers();
-        StringBuilder widgetInitialization = new StringBuilder("");
-        if (dojoWidget.getRenderChildrenType().equals(
-                ChildrenRenderType.USE_ADD_CHILD)) {
-            widgetInitialization.append("var ").append(component.getId())
-                    .append(" = ");
-        }
-        widgetInitialization.append("new ").append(dojoType.geTypeName())
+        // StringBuilder widgetCreateScript = new StringBuilder("");
+        Collection<Property> postCreateProperties = new ArrayList<Property>();
+        widgetCreateScript.append("new ").append(dojoType.geTypeName())
                 .append("({");
         String jsonPropertySetting;
         boolean addComma = false;
@@ -127,9 +115,9 @@ public class ComponentRenderer extends Renderer {
             if (null != (jsonPropertySetting = property
                     .getAsJsonPropertySetting(component))) {
                 if (addComma) {
-                    widgetInitialization.append(',');
+                    widgetCreateScript.append(',');
                 }
-                widgetInitialization.append(jsonPropertySetting);
+                widgetCreateScript.append(jsonPropertySetting);
                 addComma = true;
             }
             // let's save any properties that also have init code
@@ -138,27 +126,40 @@ public class ComponentRenderer extends Renderer {
                 postCreateProperties.add(property);
             }
         }
-
+        if (null != postCreateProperties) {
+            for (Property property : postCreateProperties) {
+                String postCreate = ((PostCreateScript) property)
+                        .getPostCreateInitialization(component);
+                widgetPostCreateInitializationScript.append(postCreate);
+            }
+        }
         if (dojoType.isDijit()) {
             // constructor takes element id as second arg
-            widgetInitialization.append("},\"").append(component.getClientId())
+            widgetCreateScript.append("},\"").append(component.getClientId())
                     .append("\")");
         }
         else {
-            widgetInitialization.append("})");
+            widgetCreateScript.append("})");
         }
-        return widgetInitialization.toString();
+        // return widgetInitialization.toString();
     }
 
     // handle component's children
     private void addComponentChildren(FacesContext facesContext,
-            UIComponent component, StringBuilder widgetInitialization) {
+            UIComponent component, StringBuilder widgetInitialization,
+            StringBuilder postWidgetInitialization) {
         DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
                 .findInitBlockComponent(facesContext.getViewRoot());
         String componentId = component.getId();
         for (UIComponent child : component.getChildren()) {
+            StringBuilder childCreation = new StringBuilder();
+            StringBuilder postChildCreation = new StringBuilder();
+            getWidgetInitializationScript(child, childCreation,
+                    postChildCreation);
+            //do we need this?
+            postWidgetInitialization.append(postChildCreation);
             this.addChildToWidgetCreation(widgetInitialization, componentId,
-                    getWidgetCreationScript(child, new ArrayList<Property>()));
+                    childCreation.toString());
             addComponentRequires(initScriptBlock, child);
         }
 

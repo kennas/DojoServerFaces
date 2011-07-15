@@ -12,7 +12,6 @@ import org.dojoserverfaces.build.annotation.Property;
 import org.dojoserverfaces.component.html.WidgetBase;
 import org.dojoserverfaces.util.Helper;
 import org.dojoserverfaces.widget.DojoWidget;
-import org.dojoserverfaces.widget.property.DijitProperty;
 import org.dojoserverfaces.widget.property.DojoRefProperty;
 import org.dojoserverfaces.widget.property.PostCreateScript;
 import org.dojoserverfaces.widget.property.PropertyCollectionProperty;
