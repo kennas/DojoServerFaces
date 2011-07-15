@@ -45,14 +45,15 @@ public class ComponentRenderer extends Renderer {
                 .findInitBlockComponent(facesContext.getViewRoot());
         widgetInitialization.append(getWidgetCreationScript(component,
                 postCreateProperties));
-        
+
         if (dojoType.isDijit()) {
-            //since all the widget who has children isDijit=true
-            //I write here.
+            // since all the widget who has children isDijit=true
+            // I write here.
             if (dojoWidget.getRenderChildrenType().equals(
                     ChildrenRenderType.USE_ADD_CHILD)) {
                 widgetInitialization.append(";");
-                addComponentChildren(facesContext, component, widgetInitialization);
+                addComponentChildren(facesContext, component,
+                        widgetInitialization);
                 widgetInitialization.append(component.getId());
             }
             widgetInitialization.append(".startup();");
@@ -156,10 +157,9 @@ public class ComponentRenderer extends Renderer {
                 .findInitBlockComponent(facesContext.getViewRoot());
         String componentId = component.getId();
         for (UIComponent child : component.getChildren()) {
-            addComponentRequires(initScriptBlock, child);
-            this.addChildToWidgetCreation(widgetInitialization,
-                    componentId,
+            this.addChildToWidgetCreation(widgetInitialization, componentId,
                     getWidgetCreationScript(child, new ArrayList<Property>()));
+            addComponentRequires(initScriptBlock, child);
         }
 
     }
@@ -192,15 +192,15 @@ public class ComponentRenderer extends Renderer {
             }
         }
     }
-/**
- * 
- * @param widgetInitialization
- * @param parentId
- * @param childScript
- */
-    private void addChildToWidgetCreation(
-            StringBuilder widgetInitialization, String parentId,
-            String childScript) {
+
+    /**
+     * 
+     * @param widgetInitialization
+     * @param parentId
+     * @param childScript
+     */
+    private void addChildToWidgetCreation(StringBuilder widgetInitialization,
+            String parentId, String childScript) {
         StringBuilder addChildScript = new StringBuilder();
         addChildScript = new StringBuilder(parentId);
         addChildScript.append(".addChild(");
