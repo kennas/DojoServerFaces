@@ -20,6 +20,7 @@
   </parent>
   
   <modules>
+    <module>dojoserverfaces-library-mobile</module>
     <module>dojoserverfaces-library-standard</module>
   </modules>
 </project>
