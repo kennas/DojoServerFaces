@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<cc:interface>
+		<cc:attribute name="loadingMessage" required="false" />
+	</cc:interface>
+	
+	<cc:implementation>
+		<div id="loader"
+			style="padding:0; margin:0; position:absolute; top:0; left:0; width:100%; height:100%; background:#ededed; z-index:999;"
+		>
+			<span id="loaderInner"
+				style="display:inline-block; padding:5px; position:relative; left:0; top:0; background:#3c3; color:#fff;"
+			>
+				#{ empty cc.attrs.loadingMessage ? 'Loading ...' : cc.attrs.loadingMessage }
+			</span>
+		</div>
+		<dojo:listener topic="dojoserverfaces-init-complete">
+			<dojo:behaviorFadeOut target="loader" duration="300" broadcastOnEnd="loader-fade-out" />
+		</dojo:listener>
+		<dojo:listener topic="loader-fade-out">
+			<dojo:behaviorSetDisplay target="loader" value="false" />
+		</dojo:listener>
+	</cc:implementation>
+</html>

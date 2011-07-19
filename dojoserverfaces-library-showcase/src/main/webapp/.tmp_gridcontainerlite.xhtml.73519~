@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<ui:composition template="/template/containerTestLayout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/core"
+>
+	<ui:param name="title" value="Grid Container Lite" />
+	<ui:param name="formName" value="gridContainerLiteForm" />
+	
+	<ui:define name="stylesheet">
+		<h:outputStylesheet library="css" name="styles.css" />
+		<style type="text/css">
+			.dropIndicator {
+				border: 2px dashed #99BBE8;
+				cursor: default;
+				margin-bottom: 5px;
+			}
+		</style>
+	</ui:define>
+	
+	<ui:define name="prompt">
+		<ui:include src="/sections/gridcontainerlite/prompt.xhtml" />
+	</ui:define>
+	
+	<ui:define name="properties">
+		<ui:include src="/sections/gridcontainerlite/properties.xhtml" />
+	</ui:define>
+	
+	<ui:define name="preview">
+		<ui:include src="/sections/gridcontainerlite/preview.xhtml" />
+	</ui:define>
+</ui:composition>
