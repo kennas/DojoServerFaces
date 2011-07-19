@@ -47,6 +47,26 @@
   </profiles>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.3.1</version>
+          <configuration>
+            <archive>
+              <manifestEntries>
+                <Created-By>Dojo Foundation</Created-By>
+                <Specification-Title>DojoServerFaces</Specification-Title>
+                <Specification-Vendor>dojotoolkit Foundation</Specification-Vendor>
+                <Specification-Version>1.7</Specification-Version>
+              </manifestEntries>
+            </archive>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
