@@ -9,22 +9,23 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<h:panelGrid id="grid" columns="3">
 		<dojo:button label="Copy from Text A">
-			<dojo:behaviorCopyValue source="textA" destination="valueHolder" />
+			<dojoBehaviors:behaviorCopyValue source="textA" destination="valueHolder" />
 		</dojo:button>
 		
 		<dojo:button label="Copy from Text Area B">
-			<dojo:behaviorCopyValue source="textAreaB" destination="valueHolder" />
+			<dojoBehaviors:behaviorCopyValue source="textAreaB" destination="valueHolder" />
 		</dojo:button>
 		
 		<dojo:button label="Copy from prompt input">
-			<dojo:behaviorPrompt message="Input anything you like." broadcastOk="text-entered" />
+			<dojoBehaviors:behaviorPrompt message="Input anything you like." broadcastOk="text-entered" />
 		</dojo:button>
 		
 		<dojo:listener topic="text-entered">
-			<dojo:behaviorCopyValue source="@event" destination="valueHolder" />
+			<dojoBehaviors:behaviorCopyValue source="@event" destination="valueHolder" />
 		</dojo:listener>
 	</h:panelGrid>
 	

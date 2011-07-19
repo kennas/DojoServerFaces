@@ -61,7 +61,7 @@
             <configuration>
               <widgetLibs>
                 <widgetLib>
-                  <namespace>http://www.dojoserverfaces.org/core</namespace>
+                  <namespace>http://www.dojoserverfaces.org/library/standard</namespace>
                   <componentPackage>
                     <!-- Specify the package for the generated components. Default 
                       is same as source. -->

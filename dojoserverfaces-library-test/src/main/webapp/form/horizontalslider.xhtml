@@ -11,7 +11,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 
 <h:head>
 	<title>horizontal slider</title>
@@ -55,7 +56,7 @@
 		</dojo:horizontalSlider>
 		<hr class="seperator" />
 		<dojo:button label="Submit">
-			<dojo:behaviorSubmit event="click" />
+			<dojoBehaviors:behaviorSubmit event="click" />
 		</dojo:button>
 		<div>You value is: <span style="font-weight: bold;">#{store.record.amount}</span></div>
 	</h:form>

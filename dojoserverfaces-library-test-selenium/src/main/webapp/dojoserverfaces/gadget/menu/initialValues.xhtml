@@ -4,7 +4,8 @@
     	see: http://dojotoolkit.org/license for details
  -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
 	<div class="testCase">
 	<f:subview id="initialValues">
@@ -14,10 +15,10 @@ xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces
 	        <jd:dialog id="ditwo" title="Prompt"><h3 style="text-align: center;">not actually copying anything, just a test!</h3></jd:dialog>
 			<jd:menu id="widgetSimple" style="width: 50px; height: 100px;" connectTo="dione ditwo" contextMenuForWindow="true" leftClickToOpen="false" refocus="true" popupDelay="50">
 			    <jd:menuItem label="cut" showLabel="true" iconClass="dijitEditorIcon dijitEditorIconCut">
-			          <jd:behaviorShow event="click" target="dione"></jd:behaviorShow>
+			          <dojoBehaviors:behaviorShow event="click" target="dione"></jd:behaviorShow>
 		        </jd:menuItem> 
 		        <jd:menuItem label="copy" showLabel="true" disabled="false" tabIndex="1" iconClass="dijitEditorIcon dijitEditorIconCopy">
-			          <jd:behaviorShow event="click" target="ditwo"></jd:behaviorShow>
+			          <dojoBehaviors:behaviorShow event="click" target="ditwo"></jd:behaviorShow>
 		        </jd:menuItem>
 		        <jd:menuSeparator></jd:menuSeparator>
 				<jd:popupMenuItem label="333" disabled="false" tabIndex="1">

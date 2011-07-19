@@ -9,7 +9,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 	xmlns:jdt="http://www.dojoserverfaces.org/coretest">
 <h:head>
 	<title>Focus</title>
@@ -21,19 +22,19 @@
 	<dojo:form method="post" styleClass="form" id="form2">
 		<h:panelGrid columns="2">
 			<dojo:button label="Focus to Dijit Button" type="button">
-				<dojo:behaviorFocus target="form2:buttonA" />
+				<dojoBehaviors:behaviorFocus target="form2:buttonA" />
 			</dojo:button>
 			<dojo:button id="buttonA" label="Dijit Button">
-				<dojo:behaviorAlert message="Hello, I'm a Dijit Button!" />
+				<dojoBehaviors:behaviorAlert message="Hello, I'm a Dijit Button!" />
 			</dojo:button>
 
 			<dojo:button label="Focus to Dijit Text Box" type="button">
-				<dojo:behaviorFocus target="form2:textA" />
+				<dojoBehaviors:behaviorFocus target="form2:textA" />
 			</dojo:button>
 			<dojo:textBox id="textA" placeHolder="I'm a Dijit Text Box!" />
 
 			<dojo:button label="Focus to plain text box" type="button">
-				<dojo:behaviorFocus target="form2:textB" />
+				<dojoBehaviors:behaviorFocus target="form2:textB" />
 			</dojo:button>
 			<h:inputText id="textB" value="I'm a plain text box." />
 		</h:panelGrid>

@@ -8,7 +8,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
 <ui:composition template="../../_template.xhtml">
 	<ui:define name="title">DojoServerFaces Show Hide</ui:define>
 	<ui:define name="header">
@@ -28,14 +29,14 @@
 					<jd:contentPane title="Bottom Pane" region="bottom"
 						style="text-align: center; border: none;">
 						<jd:button label="Hide Me!" id="buttonB">
-							<jd:behaviorHide target="dialog" />
+							<dojoBehaviors:behaviorHide target="dialog" />
 						</jd:button>
 					</jd:contentPane>
 				</jd:borderContainer>
 			</jd:dialog></h:form>
 			<h:panelGrid columns="1">
 				<jd:button label="Show Dialog" id="buttonA">
-					<jd:behaviorShow target="form1:dialog" />
+					<dojoBehaviors:behaviorShow target="form1:dialog" />
 				</jd:button>
 			</h:panelGrid>
 		</f:subview></div>

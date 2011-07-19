@@ -10,31 +10,32 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 <dojo:button label="Get data from Server">
-		<dojo:behaviorStartTimer time="200" broadcastOnAlarm="progress-begin" />
+		<dojoBehaviors:behaviorStartTimer time="200" broadcastOnAlarm="progress-begin" />
 	</dojo:button>
 	<dojo:button label="Begin">
-		<dojo:behaviorUpdateProgressBar target=":progressbar" maximun="1"
+		<dojoBehaviors:behaviorUpdateProgressBar target=":progressbar" maximun="1"
 			indeterminate="true" />
 
 	</dojo:button>
 	<dojo:button label="End">
-		<dojo:behaviorBroadcast topic="progress-complete" />
+		<dojoBehaviors:behaviorBroadcast topic="progress-complete" />
 	</dojo:button>
 	<dojo:listener topic="progress-begin">
-		<dojo:behaviorXhrGet url="#{progressBar.url}"
+		<dojoBehaviors:behaviorXhrGet url="#{progressBar.url}"
 			broadcastOnComplete="progress-complete"
 			broadcastOnRecieve="update-progress" />
 	</dojo:listener>
 	<dojo:listener topic="update-progress">
-		<dojo:behaviorUpdateProgressBar target=":progressbar"
+		<dojoBehaviors:behaviorUpdateProgressBar target=":progressbar"
 			progress="@event" maximun="1" indeterminate="false" />
-		<dojo:behaviorStartTimer time="500" broadcastOnAlarm="progress-begin" />
+		<dojoBehaviors:behaviorStartTimer time="500" broadcastOnAlarm="progress-begin" />
 	</dojo:listener>
 
 	<dojo:listener topic="progress-complete">
-		<dojo:behaviorUpdateProgressBar target=":progressbar" progress="1"
+		<dojoBehaviors:behaviorUpdateProgressBar target=":progressbar" progress="1"
 			indeterminate="false" />
 	</dojo:listener>
 </ui:composition>

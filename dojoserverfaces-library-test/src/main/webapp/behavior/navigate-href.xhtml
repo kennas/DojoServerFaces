@@ -10,7 +10,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:jd="http://www.dojoserverfaces.org/core">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 
 <h:head>
 	<title>navigate-href</title>
@@ -18,24 +19,24 @@
 <h:body>
 	<h:form styleClass="form" id="form1">
 		<jd:calendar id="calendar">
-			<jd:behaviorNavigate outcome="./dialogcontent1.xhtml" target="dialog"
+			<dojoBehaviors:behaviorNavigate outcome="./dialogcontent1.xhtml" target="dialog"
 				params="@this" />
-			<jd:behaviorShow target="dialog" />
+			<dojoBehaviors:behaviorShow target="dialog" />
 		</jd:calendar>
 		<jd:button label="set href 2 and show dialog">
-			<jd:behaviorNavigate outcome="./dialogcontent2.xhtml" target="dialog" />
-			<jd:behaviorShow target="dialog" />
+			<dojoBehaviors:behaviorNavigate outcome="./dialogcontent2.xhtml" target="dialog" />
+			<dojoBehaviors:behaviorShow target="dialog" />
 		</jd:button>
 		<jd:dialog id="dialog" href="./dialogcontent1.faces" title="pane one"
 			tooltip="tooltip" refreshOnShow="true">
 		</jd:dialog>
 
 		<jd:button label="set href 1 and show dialog">
-			<jd:behaviorNavigate outcome="./dialogcontent1.xhtml"
+			<dojoBehaviors:behaviorNavigate outcome="./dialogcontent1.xhtml"
 				target="contentPane" />
 		</jd:button>
 		<jd:button label="set href 2 and show dialog">
-			<jd:behaviorNavigate outcome="./dialogcontent2.xhtml"
+			<dojoBehaviors:behaviorNavigate outcome="./dialogcontent2.xhtml"
 				target="contentPane" />
 		</jd:button>
 		<jd:contentPane id="contentPane" href="./dialogcontent1.faces"
