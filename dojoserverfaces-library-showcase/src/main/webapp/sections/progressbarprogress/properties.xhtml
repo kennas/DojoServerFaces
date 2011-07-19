@@ -11,17 +11,14 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dojo="http://www.dojoserverfaces.org/core">
-<dojo:button label="Get data from Server">
-		<dojo:behaviorStartTimer time="200" broadcastOnAlarm="progress-begin" />
-	</dojo:button>
 	<dojo:button label="Begin">
-		<dojo:behaviorUpdateProgressBar target=":progressbar" maximun="1"
+		<dojo:behaviorUpdateProgressBar target="clientBar" maximun="1"
 			indeterminate="true" />
-
 	</dojo:button>
 	<dojo:button label="End">
-		<dojo:behaviorBroadcast topic="progress-complete" />
+		<dojo:behaviorBroadcast topic="progress-complete-client" />
 	</dojo:button>
+	<dojo:progressBar id="clientBar" style="width:300px;height:14px" indeterminate="true"/>
 	<dojo:listener topic="progress-begin">
 		<dojo:behaviorXhrGet url="#{progressBar.url}"
 			broadcastOnComplete="progress-complete"
@@ -35,6 +32,11 @@
 
 	<dojo:listener topic="progress-complete">
 		<dojo:behaviorUpdateProgressBar target=":progressbar" progress="1"
+			indeterminate="false" />
+	</dojo:listener>
+	
+	<dojo:listener topic="progress-complete-client">
+		<dojo:behaviorUpdateProgressBar target="form:clientBar" progress="1"
 			indeterminate="false" />
 	</dojo:listener>
 </ui:composition>
