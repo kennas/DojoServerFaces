@@ -4,7 +4,8 @@
     	see: http://dojotoolkit.org/license for details
  -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testAjaxRefresh() -->
 	<div class="testCase">
 	<f:subview id="ajaxRefresh">
@@ -17,9 +18,9 @@ xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces
 		    <jd:button id="toTextAreaButton" label="editor to textarea">
 			    <f:ajax event="click" render="richtext"/>
 		    </jd:button>
-		    <jd:behaviorCopyValue event="submit" destination="richtext" source="widgetAjaxCall" />
+		    <dojoBehaviors:behaviorCopyValue event="submit" destination="richtext" source="widgetAjaxCall" />
 		    <jd:editor id="widgetAjaxCall" inheritWidth="false" name="description" height="300px" minHeight="100px" isTabIndent="false" disableSpellCheck="false" customUndo="true" editActionInterval="5" style="width: 500px">
-		        <jd:behaviorCopyValue event="loadDeferred" destination="widgetAjaxCall" source="richtext" />
+		        <dojoBehaviors:behaviorCopyValue event="loadDeferred" destination="widgetAjaxCall" source="richtext" />
 	        </jd:editor>
 		</h:panelGrid>
 	</f:subview>

@@ -8,7 +8,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
 <ui:composition template="../../_template.xhtml">
 	<ui:define name="title">DojoServerFaces Broadcast</ui:define>
 	<ui:define name="header">
@@ -21,10 +22,10 @@
 			<h:panelGrid cols="1">
 				<h:panelGroup>
 					<jd:button label="Broadcast (hello)" type="button" id="buttonA">
-						<jd:behaviorBroadcast topic="hello" />
+						<dojoBehaviors:behaviorBroadcast topic="hello" />
 					</jd:button>
 					<jd:listener topic="hello">
-						<jd:behaviorAlert message="Hello DojoServerFaces!" />
+						<dojoBehaviors:behaviorAlert message="Hello DojoServerFaces!" />
 					</jd:listener>
 				</h:panelGroup>
 			</h:panelGrid>

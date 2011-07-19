@@ -10,25 +10,26 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
 	<h:panelGrid columns="2">
 		<dojo:button label="Give me $10000!">
-			<dojo:behaviorAlert message="Sorry, I don't have $10000." />
+			<dojoBehaviors:behaviorAlert message="Sorry, I don't have $10000." />
 		</dojo:button>
 		
 		<dojo:button label="Shut down?">
-			<dojo:behaviorConfirm message="Are you sure to shut down?" 
+			<dojoBehaviors:behaviorConfirm message="Are you sure to shut down?" 
 				broadcastOk="shut-down" broadcastCancel="shut-down-canceled"
 			/>
 		</dojo:button>
 		
 		<dojo:listener topic="shut-down">
-			<dojo:behaviorAlert message="Shuting down, please wait..." />
+			<dojoBehaviors:behaviorAlert message="Shuting down, please wait..." />
 		</dojo:listener>
 		
 		<dojo:listener topic="shut-down-canceled">
-			<dojo:behaviorAlert message="Shut down canceled." />
+			<dojoBehaviors:behaviorAlert message="Shut down canceled." />
 		</dojo:listener>
 	</h:panelGrid>
 </ui:composition>
