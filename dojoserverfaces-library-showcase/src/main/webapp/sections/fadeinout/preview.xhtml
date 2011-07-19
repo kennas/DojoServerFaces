@@ -10,17 +10,18 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
 	<h:panelGrid columns="1">
 		<h:panelGroup>
 			<dojo:button id="fadeInBtn" label="Fade In" disabled="true">
-				<dojo:behaviorFadeIn target="portletA" 
+				<dojoBehaviors:behaviorFadeIn target="portletA" 
 					duration="500" broadcastOnEnd="faded-in" />
 			</dojo:button>
 			
 			<dojo:button id="fadeOutBtn" label="Fade Out">
-				<dojo:behaviorFadeOut target="portletA" 
+				<dojoBehaviors:behaviorFadeOut target="portletA" 
 					duration="500" broadcastOnEnd="faded-out" />
 			</dojo:button>
 		</h:panelGroup>
@@ -34,15 +35,15 @@
 		</h:panelGroup>
 		
 		<dojo:listener topic="faded-in">
-			<dojo:behaviorAlert message="I'm back." />
-			<dojo:behaviorSetDisabled value="true" target="fadeInBtn" />
-			<dojo:behaviorSetDisabled value="false" target="fadeOutBtn" />
+			<dojoBehaviors:behaviorAlert message="I'm back." />
+			<dojoBehaviors:behaviorSetDisabled value="true" target="fadeInBtn" />
+			<dojoBehaviors:behaviorSetDisabled value="false" target="fadeOutBtn" />
 		</dojo:listener>
 		
 		<dojo:listener topic="faded-out">
-			<dojo:behaviorAlert message="I'm disappered." />
-			<dojo:behaviorSetDisabled value="true" target="fadeOutBtn" />
-			<dojo:behaviorSetDisabled value="false" target="fadeInBtn" />
+			<dojoBehaviors:behaviorAlert message="I'm disappered." />
+			<dojoBehaviors:behaviorSetDisabled value="true" target="fadeOutBtn" />
+			<dojoBehaviors:behaviorSetDisabled value="false" target="fadeInBtn" />
 		</dojo:listener>
 	</h:panelGrid>
 </ui:composition>

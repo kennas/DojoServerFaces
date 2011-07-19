@@ -8,7 +8,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
 <ui:composition template="../../_template.xhtml">
 	<ui:define name="title">DojoServerFaces FadeIn FadeOut</ui:define>
 	<ui:define name="header">
@@ -21,10 +22,10 @@
 			<h:panelGrid columns="1">
 				<h:panelGroup>
 					<jd:button label="Fade In" id="buttonA">
-						<jd:behaviorFadeIn target="form1:portletA" duration="500" />
+						<dojoBehaviors:behaviorFadeIn target="form1:portletA" duration="500" />
 					</jd:button>
 					<jd:button label="Fade Out" id="buttonB">
-						<jd:behaviorFadeOut target="form1:portletA" duration="500" />
+						<dojoBehaviors:behaviorFadeOut target="form1:portletA" duration="500" />
 					</jd:button>
 				</h:panelGroup>
 				<h:form id="form1"><h:panelGroup>

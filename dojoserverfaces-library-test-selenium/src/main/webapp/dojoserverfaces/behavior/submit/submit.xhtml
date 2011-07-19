@@ -8,7 +8,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
 <ui:composition template="../../_template.xhtml">
 	<ui:define name="title">JSF-DOJO Submit</ui:define>
 	<ui:define name="header">
@@ -24,7 +25,7 @@
 				</jd:textBox>
 				<br></br>
 				<jd:button label="submit" id="button">
-				    <jd:behaviorSubmit event="click" />
+				    <dojoBehaviors:behaviorSubmit event="click" />
 				</jd:button>
 			</h:panelGrid>
 			<div>Hello <h:outputText id="output" value="#{ submitBean.name}" /></div>

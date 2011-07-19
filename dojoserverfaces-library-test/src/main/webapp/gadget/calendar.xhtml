@@ -10,7 +10,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:jd="http://www.dojoserverfaces.org/core">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 
 <h:head>
 	<title>calendar</title>
@@ -19,8 +20,8 @@
 	<h:form styleClass="form" id="form1">
 		<h:panelGrid colums="1">
 			<jd:calendar id="colorpalette" palette="7x10">
-				<jd:behaviorCopyValue source="@this" destination="dateTextbox" />
-				<jd:behaviorCopyValue source="@this" destination="textbox" />
+				<dojoBehaviors:behaviorCopyValue source="@this" destination="dateTextbox" />
+				<dojoBehaviors:behaviorCopyValue source="@this" destination="textbox" />
 				<f:ajax execute="@form" render="updateBlock" />
 			</jd:calendar>
 			<jd:dateTextBox id="dateTextbox" value="#{store.record.birthDate}"

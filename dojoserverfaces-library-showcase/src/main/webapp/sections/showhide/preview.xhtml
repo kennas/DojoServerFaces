@@ -10,7 +10,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
 	<dojo:dialog id="dialog" title="A Dialog"
 		duration="300" refocus="true" 
@@ -25,7 +26,7 @@
 				region="bottom" style="text-align: center; border: none;"
 			>
 				<dojo:button label="Hide Me!">
-					<dojo:behaviorHide target="dialog" />
+					<dojoBehaviors:behaviorHide target="dialog" />
 				</dojo:button>
 			</dojo:contentPane>
 		</dojo:borderContainer>
@@ -33,7 +34,7 @@
 
 	<h:panelGrid columns="1">
 		<dojo:button label="Show Dialog">
-			<dojo:behaviorShow target="dialog" />
+			<dojoBehaviors:behaviorShow target="dialog" />
 		</dojo:button>
 	</h:panelGrid>
 </ui:composition>

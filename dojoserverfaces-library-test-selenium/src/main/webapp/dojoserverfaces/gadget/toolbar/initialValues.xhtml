@@ -4,7 +4,8 @@
     	see: http://dojotoolkit.org/license for details
  -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
 	<div class="testCase">
 	<f:subview id="initialValues">
@@ -30,23 +31,23 @@ xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces
 					<h3 style="text-align: center;">Underline!</h3>
 				</jd:dialog>
 			    <jd:button label="Cut" id="cut" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconCut">
-			        <jd:behaviorShow event="click" target="cutDialog" />
+			        <dojoBehaviors:behaviorShow event="click" target="cutDialog" />
 			    </jd:button>
 			    <jd:button label="Copy" id="copy" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconCopy">
-			        <jd:behaviorShow event="click" target="copyDialog" />
+			        <dojoBehaviors:behaviorShow event="click" target="copyDialog" />
 			    </jd:button>
 			    <jd:button label="Paste" id="paste" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconPaste">
-			        <jd:behaviorShow event="click" target="pasteDialog" />
+			        <dojoBehaviors:behaviorShow event="click" target="pasteDialog" />
 			    </jd:button>
 			    <jd:toolbarSeparator></jd:toolbarSeparator>
 			    <jd:button label="Bold" id="bold" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconBold">
-			        <jd:behaviorShow event="click" target="boldDialog" />
+			        <dojoBehaviors:behaviorShow event="click" target="boldDialog" />
 			    </jd:button>
 			    <jd:button label="Italic" id="italic" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconItalic">
-			        <jd:behaviorShow event="click" target="italicDialog" />
+			        <dojoBehaviors:behaviorShow event="click" target="italicDialog" />
 			    </jd:button>
 			    <jd:button label="Underline" id="underline" showLabel="false" iconClass="dijitEditorIcon dijitEditorIconUnderline">
-			        <jd:behaviorShow event="click" target="underlineDialog" />
+			        <dojoBehaviors:behaviorShow event="click" target="underlineDialog" />
 			    </jd:button>
 			</jd:toolbar>
 		</h:panelGrid>

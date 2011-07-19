@@ -12,7 +12,8 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:cc="http://java.sun.com/jsf/composite"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
 	<cc:interface>
 		<cc:attribute name="loadingMessage" required="false" />
@@ -29,10 +30,10 @@
 			</span>
 		</div>
 		<dojo:listener topic="dojoserverfaces-init-complete">
-			<dojo:behaviorFadeOut target="loader" duration="300" broadcastOnEnd="loader-fade-out" />
+			<dojoBehaviors:behaviorFadeOut target="loader" duration="300" broadcastOnEnd="loader-fade-out" />
 		</dojo:listener>
 		<dojo:listener topic="loader-fade-out">
-			<dojo:behaviorSetDisplay target="loader" value="false" />
+			<dojoBehaviors:behaviorSetDisplay target="loader" value="false" />
 		</dojo:listener>
 	</cc:implementation>
 </html>

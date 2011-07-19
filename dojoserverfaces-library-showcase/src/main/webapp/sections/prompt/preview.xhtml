@@ -9,7 +9,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
 	<h:panelGrid columns="2">
 		<h:inputHidden id="yourAnswer" />
@@ -17,11 +18,11 @@
 		
 		<h:panelGroup id="answerQuestion">
 			<dojo:button id="questionBtn" label="Click me to answer a question.">
-				<dojo:behaviorSetVisible value="false" target="result" />
-				<dojo:behaviorPrompt message="#{ prompt.message }"
+				<dojoBehaviors:behaviorSetVisible value="false" target="result" />
+				<dojoBehaviors:behaviorPrompt message="#{ prompt.message }"
 					broadcastOk="question-answered"
 					broadcastCancel="question-not-answered" />
-				<dojo:behaviorSetValue event="mouseDown" 
+				<dojoBehaviors:behaviorSetValue event="mouseDown" 
 					value="#{ prompt.result }" target="correctAnswer" />
 			</dojo:button>
 		</h:panelGroup>
@@ -33,14 +34,14 @@
 		</dojo:contentPane>
 
 		<dojo:listener topic="question-answered">
-			<dojo:behaviorCopyValue source="@event" destination="yourAnswer" />
-			<dojo:behaviorCopyValue source="correctAnswer" destination="displayAnswer" />
-			<dojo:behaviorSetVisible value="true" target="result" />
+			<dojoBehaviors:behaviorCopyValue source="@event" destination="yourAnswer" />
+			<dojoBehaviors:behaviorCopyValue source="correctAnswer" destination="displayAnswer" />
+			<dojoBehaviors:behaviorSetVisible value="true" target="result" />
 			<f:ajax render="answerQuestion" />
 		</dojo:listener>
 
 		<dojo:listener topic="question-not-answered">
-			<dojo:behaviorAlert message="Please input your answer." />
+			<dojoBehaviors:behaviorAlert message="Please input your answer." />
 		</dojo:listener>
 	</h:panelGrid>
 </ui:composition>
