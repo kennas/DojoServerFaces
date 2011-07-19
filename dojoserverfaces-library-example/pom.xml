@@ -17,7 +17,7 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>dojoserverfaces-library-assembly</artifactId>
+      <artifactId>dojoserverfaces-library-standard</artifactId>
       <version>${project.version}</version>
       <scope>runtime</scope>
     </dependency>
@@ -36,7 +36,7 @@
         <artifactId>maven-war-plugin</artifactId>
         <version>2.1.1</version>
         <configuration>
-          <packagingExcludes>WEB-INF/lib/dojoserverfaces-annotations-1.0.0.jar,WEB-INF/lib/dojoserverfaces-dojo-1.0.0.jar,WEB-INF/lib/dojoserverfaces-core-1.0.0.jar,WEB-INF/lib/dojoserverfaces-library-definition-1.0.0.jar</packagingExcludes>
+          <packagingExcludes>WEB-INF/lib/dojoserverfaces-annotations-${project.version}.jar,WEB-INF/lib/dojoserverfaces-constants-${project.version}.jar</packagingExcludes>
         </configuration>
       </plugin>
     </plugins>

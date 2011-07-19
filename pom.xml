@@ -16,9 +16,8 @@
     <module>dojoserverfaces-annotation-processor</module>
     <module>dojoserverfaces-annotations</module>
     <module>dojoserverfaces-core</module>
-    <module>dojoserverfaces-library-assembly</module>
+    <module>dojoserverfaces-libraries</module>
     <module>dojoserverfaces-library-showcase</module>
-    <module>dojoserverfaces-library-definition</module>
     <module>dojoserverfaces-library-example</module>
     <module>dojoserverfaces-library-test</module>
     <module>dojoserverfaces-library-test-selenium</module>
@@ -38,10 +37,9 @@
         <module>dojoserverfaces-annotations</module>
         <module>dojoserverfaces-core</module>
         <module>dojoserverfaces-dojo</module>
-        <module>dojoserverfaces-library-assembly</module>
+        <module>dojoserverfaces-libraries</module>
         <module>dojoserverfaces-library-example</module>
         <module>dojoserverfaces-library-showcase</module>
-        <module>dojoserverfaces-library-definition</module>
         <module>dojoserverfaces-library-test</module>
         <module>dojoserverfaces-library-test-selenium</module>
       </modules>

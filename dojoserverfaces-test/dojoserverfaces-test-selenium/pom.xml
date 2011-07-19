@@ -101,7 +101,12 @@
             </dependency>
             <dependency>
               <groupId>org.dojoserverfaces</groupId>
-              <artifactId>dojoserverfaces-library-assembly</artifactId>
+              <artifactId>dojoserverfaces-core</artifactId>
+              <version>${project.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.dojoserverfaces</groupId>
+              <artifactId>dojoserverfaces-library-standard</artifactId>
               <version>${project.version}</version>
             </dependency>
             <dependency>

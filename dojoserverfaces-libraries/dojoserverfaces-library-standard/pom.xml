@@ -9,13 +9,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.dojoserverfaces</groupId>
-  <artifactId>dojoserverfaces-library-definition</artifactId>
+  <artifactId>dojoserverfaces-library-standard</artifactId>
   <packaging>jar</packaging>
-  <name>DojoServerFaces - Library Definition</name>
+  <name>DojoServerFaces - Library (Standard)</name>
 
   <parent>
     <groupId>org.dojoserverfaces</groupId>
-    <artifactId>dojoserverfaces</artifactId>
+    <artifactId>dojoserverfaces-libraries</artifactId>
     <version>1.0.0</version>
   </parent>
 
