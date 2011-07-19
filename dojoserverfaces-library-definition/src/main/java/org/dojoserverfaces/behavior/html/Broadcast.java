@@ -13,7 +13,9 @@ import org.dojoserverfaces.component.behavior.BehaviorBase;
 import org.dojoserverfaces.util.Helper;
 
 /**
- * This behavior will allow you to publish a dojo event.
+ * This behavior will allow you to broadcast a message (topic). This can be used
+ * in conjunction with the Listener component to take some action when the
+ * broadcast happens.
  */
 @Behavior
 public class Broadcast extends BehaviorBase {
