@@ -37,4 +37,37 @@
     	<version>${project.version}</version>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>dojoserverfaces-maven-plugin</artifactId>
+        <version>${project.version}</version>
+        <executions>
+          <execution>
+            <id>generate-components</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <widgetLibs>
+                <widgetLib>
+                  <namespace>http://www.dojoserverfaces.org/core</namespace>
+                  <componentPackage>
+                    <!-- Specify the package for the generated components. Default 
+                      is same as source. -->
+                  </componentPackage>
+                  <path>
+                    ${project.build.sourceDirectory}/org/dojoserverfaces
+                  </path>
+                </widgetLib>
+              </widgetLibs>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
