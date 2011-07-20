@@ -6,7 +6,7 @@
 package org.dojoserverfaces.showcase.bundle;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -17,15 +17,13 @@ import java.util.ResourceBundle;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 public class ShowCaseResourceBundle extends ResourceBundle {
-    private String taglibXmlFilePath;
+    private String[] taglibXmlFilePaths = { "META-INF/dojoserverfaces.taglib.xml" };
     private Map<String, String> descMap = new HashMap<String, String>();
 
     private static final String TAG_NODE = "tag";
@@ -33,38 +31,29 @@ public class ShowCaseResourceBundle extends ResourceBundle {
     private static final String TAG_NAME_NODE = "tag-name";
     private static final String ATTRIBUTE_NODE = "attribute";
     private static final String NAME_NODE = "name";
-    
-    // TODO: I moved this here because doing this via the servlet wasn't working
-    // correctly (just getting nulls and such).  Why would you even use a servlet to
-    // initialize this when a constructor works just fine?
-    
-    public ShowCaseResourceBundle () {
-    	setTaglibXmlFilePath ("/META-INF/dojoserverfaces.taglib.xml");
-    	
-    	try {
-    		init();
-    	}
-    	
-    	catch (Throwable e) {
-    		e.printStackTrace();
-    	}
-    }
-    
-    public void init() throws ParserConfigurationException, SAXException,
-            IOException {
-        InputStream taglibFileInStream = getClass().getResourceAsStream(
-                taglibXmlFilePath);
-        if (taglibFileInStream == null) {
-            System.err
-                    .println("[JDShowCaseResourceBundle.init]: taglibXmlFile not found! taglibXmlFilePath="
-                            + taglibXmlFilePath);
-            return;
+
+    public ShowCaseResourceBundle() throws IOException {
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = dbf.newDocumentBuilder();
+            for (String taglibXmlFilePath : taglibXmlFilePaths) {
+                Enumeration<URL> enumer = Thread.currentThread()
+                        .getContextClassLoader()
+                        .getResources(taglibXmlFilePath);
+                while (enumer.hasMoreElements()) {
+                    Document doc = builder.parse(enumer.nextElement()
+                            .openStream());
+                    parse(doc);
+                }
+            }
         }
 
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = dbf.newDocumentBuilder();
-        Document doc = builder.parse(taglibFileInStream);
+        catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void parse(Document doc) {
         NodeList tagNL = doc.getElementsByTagName(TAG_NODE);
         for (int i = 0; i < tagNL.getLength(); i++) {
             Node tagNode = tagNL.item(i);
@@ -150,11 +139,11 @@ public class ShowCaseResourceBundle extends ResourceBundle {
         return descMap.get(key);
     }
 
-    public String getTaglibXmlFilePath() {
-        return taglibXmlFilePath;
+    public String[] getTaglibXmlFilePaths() {
+        return taglibXmlFilePaths;
     }
 
-    public void setTaglibXmlFilePath(String taglibXmlFilePath) {
-        this.taglibXmlFilePath = taglibXmlFilePath;
+    public void setTaglibXmlFilePaths(String[] taglibXmlFilePaths) {
+        this.taglibXmlFilePaths = taglibXmlFilePaths;
     }
 }
