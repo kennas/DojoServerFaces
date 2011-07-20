@@ -35,7 +35,7 @@ public class MultiValueSelectComponent extends ValueEditorComponent {
         setRequiredCss(annotation.requiredCss());
         setDisplayName(annotation.displayName());
         setJsfNode(annotation.jsfNode());
-
+        setRendersChildren(annotation.rendersChildren());
         this.store = annotation.store();
         if (!this.store) {
             // use element type that uses option child tags

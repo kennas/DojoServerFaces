@@ -9,31 +9,32 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
 	<h:panelGrid columns="2">
 		<dojo:button label="Focus Button A">
-			<dojo:behaviorFocus target="buttonA" />
+			<dojoBehaviors:behaviorFocus target="buttonA" />
 		</dojo:button>
 		<dojo:button label="Focus TextBox C">
-			<dojo:behaviorFocus target="textC" />
+			<dojoBehaviors:behaviorFocus target="textC" />
 		</dojo:button>
 		<dojo:button label="Focus Button B">
-			<dojo:behaviorFocus target="buttonB" />
+			<dojoBehaviors:behaviorFocus target="buttonB" />
 		</dojo:button>
 		<dojo:button label="Focus TextBox D">
-			<dojo:behaviorFocus target="textD" />
+			<dojoBehaviors:behaviorFocus target="textD" />
 		</dojo:button>
 	</h:panelGrid>
 
 	<hr class="separator" />
 	<h:panelGrid columns="2">
 		<dojo:button id="buttonA" label="Button A">
-			<dojo:behaviorAlert message="I'm Button A." />
+			<dojoBehaviors:behaviorAlert message="I'm Button A." />
 		</dojo:button>
 		<dojo:textBox id="textC" placeHolder="TextBox C" />
 		<dojo:button id="buttonB" label="Button B">
-			<dojo:behaviorAlert message="I'm Button B." />
+			<dojoBehaviors:behaviorAlert message="I'm Button B." />
 		</dojo:button>
 		<dojo:textBox id="textD" placeHolder="TextBox D" />
 	</h:panelGrid>

@@ -8,7 +8,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
 <ui:composition template="../../_template.xhtml">
 	<ui:define name="title">DojoServerFaces CopyValue</ui:define>
 	<ui:define name="header">
@@ -22,13 +23,13 @@
 				cols="1">
 				<h:panelGroup>
 					<jd:button label="Copy from plain text box" type="button" id="buttonA">
-						<jd:behaviorCopyValue source="text1" destination="holder" />
+						<dojoBehaviors:behaviorCopyValue source="text1" destination="holder" />
 					</jd:button>
 					<h:inputText id="text1" value="I'm simple TextBox."/>
 				</h:panelGroup>
 				<h:panelGroup>
 					<jd:button label="Copy from dojo text box" type="button" id="buttonB">
-						<jd:behaviorCopyValue source="text2" destination="holder" />
+						<dojoBehaviors:behaviorCopyValue source="text2" destination="holder" />
 					</jd:button>
 					<jd:textBox id="text2" value="I'm DojoServerFaces TextBox." />
 				</h:panelGroup>

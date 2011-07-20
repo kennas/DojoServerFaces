@@ -29,5 +29,6 @@ public class ContainerComponent extends GeneratedComponentInfo {
         setRequiredCss(annotation.requiredCss());
         setDisplayName(annotation.displayName());
         setJsfNode(annotation.jsfNode());
+        setRendersChildren(annotation.rendersChildren());
     }
 }

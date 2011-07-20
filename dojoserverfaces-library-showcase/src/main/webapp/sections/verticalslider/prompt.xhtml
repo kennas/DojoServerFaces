@@ -10,11 +10,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<div style="width: 100%">An component that allows one to select a
 	value with a horizontally draggable handle. <br />
 	<dojo:button label="Usage">
-		<dojo:behaviorShow event="click" target="dia"></dojo:behaviorShow>
+		<dojoBehaviors:behaviorShow event="click" target="dia"></dojo:behaviorShow>
 	</dojo:button> <dojo:dialog id="dia" style="width:60%">
 		<table id="usageTable" class="usage">
 			<colgroup>

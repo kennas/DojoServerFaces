@@ -8,7 +8,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
 <ui:composition template="../../_template.xhtml">
 	<ui:define name="title">DojoServerFaces Display Visible</ui:define>
 	<ui:define name="header">
@@ -20,20 +21,20 @@
 			a managed bean</span>
 			<h:panelGrid cols="1">
 				<jd:button type="button" label="(display(none)) pane/div" id="button1">
-					<jd:behaviorSetDisplay value="false" target="form1:paneOne" />
-					<jd:behaviorSetDisplay value="false" target="testDiv" />
+					<dojoBehaviors:behaviorSetDisplay value="false" target="form1:paneOne" />
+					<dojoBehaviors:behaviorSetDisplay value="false" target="testDiv" />
 				</jd:button>
 				<jd:button type="button" label="(display(default)) pane/div" id="button2">
-					<jd:behaviorSetDisplay value="true" target="form1:paneOne" />
-					<jd:behaviorSetDisplay value="true" target="testDiv" />
+					<dojoBehaviors:behaviorSetDisplay value="true" target="form1:paneOne" />
+					<dojoBehaviors:behaviorSetDisplay value="true" target="testDiv" />
 				</jd:button>
 				<jd:button type="button" label="Visible(hidden)) pane/div" id="button3">
-					<jd:behaviorSetVisible value="false" target="form1:paneOne" />
-					<jd:behaviorSetVisible value="false" target="testDiv" />
+					<dojoBehaviors:behaviorSetVisible value="false" target="form1:paneOne" />
+					<dojoBehaviors:behaviorSetVisible value="false" target="testDiv" />
 				</jd:button>
 				<jd:button type="button" label="Visible(visible)) pane/div" id="button4">
-					<jd:behaviorSetVisible value="true" target="form1:paneOne" />
-					<jd:behaviorSetVisible value="true" target="testDiv" />
+					<dojoBehaviors:behaviorSetVisible value="true" target="form1:paneOne" />
+					<dojoBehaviors:behaviorSetVisible value="true" target="testDiv" />
 				</jd:button>
 				<h:form id="form1"><h:panelGroup>
 					<h:outputText value="pane:" />

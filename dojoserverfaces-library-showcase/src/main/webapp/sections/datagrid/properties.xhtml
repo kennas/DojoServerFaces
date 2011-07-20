@@ -10,7 +10,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<dojo:selectItemStore id="selectionMode">
 		<f:selectItem itemValue="single" itemLabel="single" />
 		<f:selectItem itemValue="multiple" itemLabel="multiple" />
@@ -34,8 +35,6 @@
 		<dojo:textBox title="autoHeight: " value="#{ dataGrid.autoHeight }" />
 		<dojo:booleanCheckBox title="selectable"
 			value="#{dataGrid.selectable}"></dojo:booleanCheckBox>
-		<dojo:booleanCheckBox title="singleClickEdit"
-			value="#{dataGrid.singleClickEdit}"></dojo:booleanCheckBox>
 	</dojo:tableContainer>
 	<hr class="separator"/>
 	<ui:remove>
