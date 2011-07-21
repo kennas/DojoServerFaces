@@ -32,7 +32,7 @@ abstract class SimpleGridOperationBase extends GridBehaviorBase {
     @Override
     public String getScript(ClientBehaviorContext behaviorContext) {
         StringBuilder sb = new StringBuilder();
-        appendGetDijit(sb, getRenderedClientIdById(getTarget(),behaviorContext));
+        appendGetDijit(sb, getClientId(getTarget(),behaviorContext));
         if (operationTarget != null) {
             sb.append(".").append(operationTarget);
         }

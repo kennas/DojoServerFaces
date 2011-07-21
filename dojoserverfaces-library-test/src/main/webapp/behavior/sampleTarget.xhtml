@@ -9,7 +9,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:jd="http://www.dojoserverfaces.org/core">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 <h:head>
 	<title>dialog</title>
 	<meta http-equiv="Content-Type"
@@ -24,19 +25,19 @@
 				<jd:tableContainer id="loginLayout">
 					<h:inputHidden id="descriptionValue" />
 					<jd:editor id="descriptionEditor">
-						<jd:behaviorCopyValue event="onLoadDeferred" destination="."
+						<dojoBehaviors:behaviorCopyValue event="onLoadDeferred" destination="."
 							source="..\descriptonValue" />
 					</jd:editor>
 
 					<jd:textBox id="password" secret="true"></jd:textBox>
 					<jd:button label="login">
-						<jd:behaviorSubmit event="click" target="???" />
+						<dojoBehaviors:behaviorSubmit event="click" target="???" />
 					</jd:button>
 					<jd:button label="two">
-						<jd:behaviorShow event="click" target="group:dialogTwo" />
+						<dojoBehaviors:behaviorShow event="click" target="group:dialogTwo" />
 					</jd:button>
 					<jd:button label="three">
-						<jd:behaviorShow event="click" target="dialogThree" />
+						<dojoBehaviors:behaviorShow event="click" target="dialogThree" />
 					</jd:button>
 				</jd:tableContainer>
 
@@ -66,23 +67,23 @@
 		<p>Outside form</p>
 		<h:panelGroup id="group2">
 			<jd:button label="one">
-				<jd:behaviorShow event="click" target="form1:dialogOne" />
+				<dojoBehaviors:behaviorShow event="click" target="form1:dialogOne" />
 			</jd:button>
 			<jd:button label="two">
-				<jd:behaviorShow event="click" target=":form1:dialogTwo" />
+				<dojoBehaviors:behaviorShow event="click" target=":form1:dialogTwo" />
 			</jd:button>
 			<jd:button label="three">
-				<jd:behaviorShow event="click" target=":form1:subview:dialogThree" />
+				<dojoBehaviors:behaviorShow event="click" target=":form1:subview:dialogThree" />
 			</jd:button>
 		</h:panelGroup>
 		<jd:button label="one">
-			<jd:behaviorShow event="click" target="form1:dialogOne" />
+			<dojoBehaviors:behaviorShow event="click" target="form1:dialogOne" />
 		</jd:button>
 		<jd:button label="two">
-			<jd:behaviorShow event="click" target=":form1:dialogTwo" />
+			<dojoBehaviors:behaviorShow event="click" target=":form1:dialogTwo" />
 		</jd:button>
 		<jd:button label="three">
-			<jd:behaviorShow event="click" target=":form1:subview:dialogThree" />
+			<dojoBehaviors:behaviorShow event="click" target=":form1:subview:dialogThree" />
 		</jd:button>
 	</jd:borderContainer>
 	<ui:debug />

@@ -7,7 +7,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:jd="http://www.dojoserverfaces.org/core">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
 	<div class="testCase">
 	<f:subview id="initialValues">
@@ -15,14 +16,14 @@
 		<h:panelGrid columns="3">
 			<jd:textArea id="richtext" value="#{richTextEditorBean.beanBoundValue.data}" />
 		    <jd:button id="toEditorButton" label="textarea to editor">
-			    <jd:behaviorCopyValue event="click" destination="widgetSimple" source="richtext" />
+			    <dojoBehaviors:behaviorCopyValue event="click" destination="widgetSimple" source="richtext" />
 		    </jd:button>
 		    <jd:button id="toTextAreaButton" label="editor to textarea">
-			    <jd:behaviorCopyValue event="click" destination="richtext" source="widgetSimple" />
+			    <dojoBehaviors:behaviorCopyValue event="click" destination="richtext" source="widgetSimple" />
 		    </jd:button>
-		    <jd:behaviorSetValue event="submit" target="richtext" value="widgetSimple.value" />
+		    <dojoBehaviors:behaviorSetValue event="submit" target="richtext" value="widgetSimple.value" />
 		    <jd:editor id="widgetSimple" inheritWidth="false" name="description" height="300px" minHeight="100px" isTabIndent="false" disableSpellCheck="false" customUndo="true" editActionInterval="5" style="width: 500px">
-		        <jd:behaviorCopyValue event="loadDeferred" destination="@this" source="richtext" />
+		        <dojoBehaviors:behaviorCopyValue event="loadDeferred" destination="@this" source="richtext" />
 	        </jd:editor>
 		</h:panelGrid>
 	</f:subview>

@@ -10,7 +10,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
 	<dojo:dialog id="copyDialog" title="Prompt"
 		style="width: 200px; height: 100px;"
@@ -34,17 +35,17 @@
 		<dojo:button label="Cut" showLabel="false"
 			iconClass="dijitEditorIcon dijitEditorIconCut"
 		>
-			<dojo:behaviorShow event="click" target="cutDialog" />
+			<dojoBehaviors:behaviorShow event="click" target="cutDialog" />
 		</dojo:button>
 		<dojo:button label="Copy" showLabel="false"
 			iconClass="dijitEditorIcon dijitEditorIconCopy"
 		>
-			<dojo:behaviorShow event="click" target="copyDialog" />
+			<dojoBehaviors:behaviorShow event="click" target="copyDialog" />
 		</dojo:button>
 		<dojo:button label="Paste" showLabel="false"
 			iconClass="dijitEditorIcon dijitEditorIconPaste"
 		>
-			<dojo:behaviorShow event="click" target="pasteDialog" />
+			<dojoBehaviors:behaviorShow event="click" target="pasteDialog" />
 		</dojo:button>
 		
 		<dojo:toolbarSeparator />

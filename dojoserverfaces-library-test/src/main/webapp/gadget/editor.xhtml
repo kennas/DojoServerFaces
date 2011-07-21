@@ -9,7 +9,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:jd="http://www.dojoserverfaces.org/core">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 <h:head>
 	<title>editor</title>
 	<meta http-equiv="Content-Type"
@@ -18,15 +19,15 @@
 </h:head>
 <h:body>
 	<jd:form id="form1" method="POST">
-		<jd:behaviorCopyValue event="submit" destination="richtext"
+		<dojoBehaviors:behaviorCopyValue event="submit" destination="richtext"
 			source=":editor" />
 		<jd:textArea id="richtext" value="#{store.record.text}" />
 		<jd:button id="toEditorButton" label="textbox to editor">
-			<jd:behaviorCopyValue event="click" destination=":editor"
+			<dojoBehaviors:behaviorCopyValue event="click" destination=":editor"
 				source="richtext" />
 		</jd:button>
 		<jd:button id="toTextBoxButton" label="editor to textbox">
-			<jd:behaviorCopyValue event="click" destination="richtext"
+			<dojoBehaviors:behaviorCopyValue event="click" destination="richtext"
 				source=":editor" />
 		</jd:button>
 		<h:panelGrid colums="1">
@@ -42,7 +43,7 @@
 		<br />
 	</jd:form>
 	<jd:editor id="editor" placeHolder="description" style="width: 500px">
-		<jd:behaviorCopyValue event="loadDeferred" destination="@this"
+		<dojoBehaviors:behaviorCopyValue event="loadDeferred" destination="@this"
 			source=":form1:richtext" />
 	</jd:editor>
 </h:body>

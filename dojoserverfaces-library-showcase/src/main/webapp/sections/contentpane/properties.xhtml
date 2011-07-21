@@ -11,8 +11,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
->	<dojo:selectItemStore id="showcaseHrefs">		<f:selectItem itemValue="#{ contentPane.defaultHref }" />		<f:selectItem itemValue="http://www.baidu.com" />	</dojo:selectItemStore>
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
+>	<dojo:selectItemStore id="showcaseHrefs">		<f:selectItem itemValue="#{contentPane.defaultHref}" />		<f:selectItem itemValue="/#{contextPath}/not-exist-page.html" />	</dojo:selectItemStore>
 	<dojo:tableContainer
 		cols="1" orientation="horiz" spacing="1"
 		style="width: 100%;"

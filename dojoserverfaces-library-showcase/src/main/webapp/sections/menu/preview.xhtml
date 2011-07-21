@@ -9,7 +9,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<dojo:dialog id="dione">
 	not actually cutting anything, just a test!
 	</dojo:dialog>
@@ -28,11 +29,11 @@
 			leftClickToOpen="#{ menu.leftClickToOpen}" refocus="#{menu.refocus}">
 			<dojo:menuItem label="cut"
 				iconClass="dijitEditorIcon dijitEditorIconCut">
-				<dojo:behaviorShow event="click" target="dione"></dojo:behaviorShow>
+				<dojoBehaviors:behaviorShow event="click" target="dione"></dojo:behaviorShow>
 			</dojo:menuItem>
 			<dojo:menuItem label="copy"
 				iconClass="dijitEditorIcon dijitEditorIconCopy">
-				<dojo:behaviorShow event="click" target="ditwo"></dojo:behaviorShow>
+				<dojoBehaviors:behaviorShow event="click" target="ditwo"></dojo:behaviorShow>
 			</dojo:menuItem>
 
 			<dojo:menuSeparator></dojo:menuSeparator>

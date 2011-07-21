@@ -9,7 +9,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 	xmlns:jdt="http://www.dojoserverfaces.org/coretest">
 <h:head>
 	<title>Copy Value</title>
@@ -22,22 +23,22 @@
 		<fieldset><legend>Copy from:</legend> <h:panelGrid cols="1">
 			<h:panelGroup>
 				<dojo:button label="Copy from plain text box" type="button">
-					<dojo:behaviorCopyValue source="text1" destination="holder" />
+					<dojoBehaviors:behaviorCopyValue source="text1" destination="holder" />
 				</dojo:button>
 				<h:inputText id="text1" />
 			</h:panelGroup>
 			<h:panelGroup>
 				<dojo:button label="Copy from dojo text box" type="button">
-					<dojo:behaviorCopyValue source="text2" destination="holder" />
+					<dojoBehaviors:behaviorCopyValue source="text2" destination="holder" />
 				</dojo:button>
 				<dojo:textBox id="text2" />
 			</h:panelGroup>
 			<h:panelGroup>
 				<dojo:button label="Copy from a prompt input" type="button">
-					<dojo:behaviorPrompt message="How old are you?" broadcastOk="USER-AGE" />
+					<dojoBehaviors:behaviorPrompt message="How old are you?" broadcastOk="USER-AGE" />
 				</dojo:button>
 				<dojo:listener topic="USER-AGE">
-					<dojo:behaviorCopyValue source="@event" destination="form2:holder" />
+					<dojoBehaviors:behaviorCopyValue source="@event" destination="form2:holder" />
 				</dojo:listener>
 			</h:panelGroup>
 		</h:panelGrid></fieldset>

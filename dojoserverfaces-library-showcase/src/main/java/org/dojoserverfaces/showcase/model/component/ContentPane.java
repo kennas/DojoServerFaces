@@ -21,8 +21,8 @@ public class ContentPane extends WigdetBase {
 	private String href = defaultHref;
 	private String tooltip = "A Content Pane";
 
-	private String loadingMessage = "<span class='dijitContentPaneLoading'>Loading, please wait...</span>";
-	private String errorMessage = "<span class='dijitContentPaneError'>Sorry, an error occurred</span>";
+	private String loadingMessage = "<span class='dijitContentPaneLoading'><span class='dijitInline dijitIconLoading'></span>Loading, please wait...</span>";
+	private String errorMessage = "<span class='dijitContentPaneError'><span class='dijitInline dijitIconError'></span>Sorry, an error occurred</span>";
 
 	private Boolean extractContent = false;
 	private Boolean refreshOnShow = true;

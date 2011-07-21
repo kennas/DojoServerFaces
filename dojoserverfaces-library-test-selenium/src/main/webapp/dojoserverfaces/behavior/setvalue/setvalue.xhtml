@@ -8,7 +8,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
 <ui:composition template="../../_template.xhtml">
 	<ui:define name="title">DojoServerFaces SetValue</ui:define>
 	<ui:define name="header">
@@ -21,12 +22,12 @@
 				<h:panelGrid cols="1">
 					<h:panelGroup>
 						<jd:button label="Set value (Hello DojoServerFaces!)" type="button" id="buttonA">
-							<jd:behaviorSetValue target="form1:holder" value="Hello DojoServerFaces!" />
-							<jd:behaviorSetValue target="form1:hholder" value="Hello DojoServerFaces!" />
+							<dojoBehaviors:behaviorSetValue target="form1:holder" value="Hello DojoServerFaces!" />
+							<dojoBehaviors:behaviorSetValue target="form1:hholder" value="Hello DojoServerFaces!" />
 						</jd:button>
 						<jd:button label="Clean" type="button" id="buttonB">
-							<jd:behaviorSetValue target="form1:holder" value="" />
-							<jd:behaviorSetValue target="form1:hholder" value="" />
+							<dojoBehaviors:behaviorSetValue target="form1:holder" value="" />
+							<dojoBehaviors:behaviorSetValue target="form1:hholder" value="" />
 						</jd:button>
 					</h:panelGroup>					<h:form id="form1">
 					<h:panelGrid columns="2">

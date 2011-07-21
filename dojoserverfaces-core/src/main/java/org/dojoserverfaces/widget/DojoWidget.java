@@ -9,6 +9,7 @@ import java.util.Collection;
 
 import javax.faces.component.behavior.ClientBehaviorHolder;
 
+import org.dojoserverfaces.constants.RendersChildren;
 import org.dojoserverfaces.widget.element.HtmlElement;
 import org.dojoserverfaces.widget.property.Property;
 
@@ -18,7 +19,7 @@ public interface DojoWidget extends ClientBehaviorHolder {
      *         the dojo widget will be attached.
      */
     public HtmlElement getElement();
-    
+
     /**
      * @return the node to use with non-DojoServerFaces behaviors
      */
@@ -45,4 +46,10 @@ public interface DojoWidget extends ClientBehaviorHolder {
      * @return the value of the named attribute for this component
      */
     public Object getAttribute(String name);
+
+    /**
+     * 
+     * @return render children type
+     */
+    public RendersChildren getRenderChildrenType();
 }

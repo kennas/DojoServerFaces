@@ -4,7 +4,8 @@
     	see: http://dojotoolkit.org/license for details
  -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
 	<div class="testCase">
 	<f:subview id="initialValues"> 
@@ -18,14 +19,14 @@ xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces
 					<jd:numberSpinner title="NumberSpinner" value="#{ numberSpinnerBean.beanBoundValue.data }" min="1" max="100" />
 				</jd:tableContainer>
 				<jd:button label="OK"> 
-					<jd:behaviorHide event="click" target="widgetSimple" />
+					<dojoBehaviors:behaviorHide event="click" target="widgetSimple" />
 				</jd:button>
 				<jd:button label="Close">
-					<jd:behaviorHide event="click" target="widgetSimple" />
+					<dojoBehaviors:behaviorHide event="click" target="widgetSimple" />
 				</jd:button>
 			</jd:dialog>
 			<jd:button label="Show Dialog">
-		          <jd:behaviorShow event="click" target="widgetSimple" />
+		          <dojoBehaviors:behaviorShow event="click" target="widgetSimple" />
 	        </jd:button>
 		</h:panelGrid>
 	</f:subview>

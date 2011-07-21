@@ -10,13 +10,14 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
 	<h:panelGrid columns="3" style="width: 100%;">
 	<h:panelGroup>
 		<dojo:colorPalette id="colorPalette"
 			palette="#{ colorPalette.palette }">
-			<dojo:behaviorCopyValue source="colorPalette" destination="textbox" />
+			<dojoBehaviors:behaviorCopyValue source="colorPalette" destination="textbox" />
 		</dojo:colorPalette>
 		<dojo:textBox id="textbox" />
 	</h:panelGroup>
