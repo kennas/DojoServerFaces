@@ -22,7 +22,7 @@
   <properties>
     <version.javaee>6.0</version.javaee>
     <version.junit>4.8.2</version.junit>
-    <version.selenium.client>1.0.2</version.selenium.client>
+    <version.selenium.java>2.1.0</version.selenium.java>
   </properties>
   
   <modules>
