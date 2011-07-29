@@ -4,7 +4,8 @@
     	see: http://dojotoolkit.org/license for details
  -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/core">
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testInitialValues() -->
 	<div class="testCase">
 	<f:subview id="initialValues">
@@ -15,7 +16,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces
 	        <jd:dialog id="dithree" title="Prompt"><h3 style="text-align: center;">not actually saving anything, just a test!</h3></jd:dialog>
 			<jd:menuBar id="widgetSimple" popupDelay="50" style="width: 400px;">
 				<jd:menuBarItem label="save" disabled="false" tabIndex="1">
-				    <jd:behaviorShow event="click" target="dithree"></jd:behaviorShow>
+				    <dojoBehaviors:behaviorShow event="click" target="dithree"></jd:behaviorShow>
 				</jd:menuBarItem> 
 				<jd:menuBarItem label="paste" disabled="true" tabIndex="1"></jd:menuBarItem>
 				<jd:popupMenuBarItem label="sub-MenuBar" disabled="false" tabIndex="1">
@@ -27,10 +28,10 @@ xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces
 				<jd:popupMenuBarItem label="sub-Menu" disabled="false" tabIndex="1">
 					<jd:menu popupDelay="50" connectTo="dione ditwo">
 						<jd:menuItem label="cut" disabled="false" tabIndex="1" iconClass="dijitEditorIcon dijitEditorIconCut">
-							<jd:behaviorShow event="click" target="dione"></jd:behaviorShow>
+							<dojoBehaviors:behaviorShow event="click" target="dione"></jd:behaviorShow>
 						</jd:menuItem>
 						<jd:menuItem label="copy" disabled="false" tabIndex="1" iconClass="dijitEditorIcon dijitEditorIconCopy">
-							<jd:behaviorShow event="click" target="ditwo"></jd:behaviorShow>
+							<dojoBehaviors:behaviorShow event="click" target="ditwo"></jd:behaviorShow>
 						</jd:menuItem>
 					</jd:menu>
 				</jd:popupMenuBarItem>

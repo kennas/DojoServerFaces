@@ -10,19 +10,20 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
 	<h:panelGrid columns="2">
 		<h:panelGroup layout="block" style="margin-right: 20px;">
 			<dojo:button id="disappearMessageA" label="Disappear the message">
-				<dojo:behaviorSetDisplay value="false" target="messageA" />
-				<dojo:behaviorSetDisabled value="true" target="disappearMessageA" />
-				<dojo:behaviorSetDisabled value="false" target="displayMessageA" />
+				<dojoBehaviors:behaviorSetDisplay value="false" target="messageA" />
+				<dojoBehaviors:behaviorSetDisabled value="true" target="disappearMessageA" />
+				<dojoBehaviors:behaviorSetDisabled value="false" target="displayMessageA" />
 			</dojo:button>
 			<dojo:button id="displayMessageA" label="Display the message" disabled="true">
-				<dojo:behaviorSetDisplay value="true" target="messageA" />
-				<dojo:behaviorSetDisabled value="true" target="displayMessageA" />
-				<dojo:behaviorSetDisabled value="false" target="disappearMessageA" />
+				<dojoBehaviors:behaviorSetDisplay value="true" target="messageA" />
+				<dojoBehaviors:behaviorSetDisabled value="true" target="displayMessageA" />
+				<dojoBehaviors:behaviorSetDisabled value="false" target="disappearMessageA" />
 			</dojo:button>
 			
 			<hr class="separator" />
@@ -33,14 +34,14 @@
 		
 		<h:panelGroup layout="block">
 			<dojo:button id="invisibleMessageB" label="Make the message invisible">
-				<dojo:behaviorSetVisible value="false" target="messageB" />
-				<dojo:behaviorSetDisabled value="true" target="invisibleMessageB" />
-				<dojo:behaviorSetDisabled value="false" target="visibleMessageB" />
+				<dojoBehaviors:behaviorSetVisible value="false" target="messageB" />
+				<dojoBehaviors:behaviorSetDisabled value="true" target="invisibleMessageB" />
+				<dojoBehaviors:behaviorSetDisabled value="false" target="visibleMessageB" />
 			</dojo:button>
 			<dojo:button id="visibleMessageB" label="Make the message visible" disabled="true">
-				<dojo:behaviorSetVisible value="true" target="messageB" />
-				<dojo:behaviorSetDisabled value="true" target="visibleMessageB" />
-				<dojo:behaviorSetDisabled value="false" target="invisibleMessageB" />
+				<dojoBehaviors:behaviorSetVisible value="true" target="messageB" />
+				<dojoBehaviors:behaviorSetDisabled value="true" target="visibleMessageB" />
+				<dojoBehaviors:behaviorSetDisabled value="false" target="invisibleMessageB" />
 			</dojo:button>
 			
 			<hr class="separator" />

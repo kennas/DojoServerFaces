@@ -33,9 +33,9 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.seleniumhq.selenium.client-drivers</groupId>
-      <artifactId>selenium-java-client-driver</artifactId>
-      <version>${version.selenium.client}</version>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${version.selenium.java}</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>

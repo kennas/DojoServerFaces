@@ -8,7 +8,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:jd="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core" xml:lang="en" lang="en">
 <ui:composition template="../../_template.xhtml">
 	<ui:define name="title">DojoServerFaces Prompt</ui:define>
 	<ui:define name="header">
@@ -21,14 +22,14 @@
 				<h:panelGrid cols="1">
 					<h:panelGroup>
 						<jd:button label="Click Me" type="button" id="promptbutton">
-							<jd:behaviorPrompt message="How old are you?" broadcastOk="user-age"
+							<dojoBehaviors:behaviorPrompt message="How old are you?" broadcastOk="user-age"
 								broadcastCancel="user-age-cancel" />
 						</jd:button>
 						<jd:listener topic="user-age">
-							<jd:behaviorCopyValue source="@event" destination="form:initialValues:holder" />
+							<dojoBehaviors:behaviorCopyValue source="@event" destination="form:initialValues:holder" />
 						</jd:listener>
 						<jd:listener topic="user-age-cancel">
-							<jd:behaviorAlert message="Please input your age." />
+							<dojoBehaviors:behaviorAlert message="Please input your age." />
 						</jd:listener>
 					</h:panelGroup>
 					<h:panelGroup>

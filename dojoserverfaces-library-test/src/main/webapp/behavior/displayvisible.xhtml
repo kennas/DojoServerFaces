@@ -9,7 +9,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:dojo="http://www.dojoserverfaces.org/core">
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 <h:head>
 	<title>dialog</title>
 	<meta http-equiv="Content-Type"
@@ -21,7 +22,7 @@
 		<h:outputText value="dialog demo description"></h:outputText>
 
 		<dojo:button type="button" label="show dialog">
-			<dojo:behaviorShow event="click" target="dialogOne" />
+			<dojoBehaviors:behaviorShow event="click" target="dialogOne" />
 		</dojo:button>
 		<dojo:dialog id="dialogOne" title="dialog title" ariaDescribedBy=""
 			tooltip="dialog tooltip">
@@ -30,7 +31,7 @@
 		</dojo:dialog>
 		<br />
 		<dojo:button type="button" label="show div">
-			<dojo:behaviorShow target="testDiv" />
+			<dojoBehaviors:behaviorShow target="testDiv" />
 		</dojo:button>
 		<div id="testDiv" style="display: none">div content</div>
 		<br />

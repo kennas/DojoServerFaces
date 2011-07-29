@@ -9,7 +9,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 	xmlns:jdt="http://www.dojoserverfaces.org/coretest">
 <h:head>
 	<title>Set value</title>
@@ -23,14 +24,14 @@
 			<h:panelGroup>
 				<dojo:button label="Set value (Hello DojoServerFaces!)"
 					type="button">
-					<dojo:behaviorSetValue target="holder"
+					<dojoBehaviors:behaviorSetValue target="holder"
 						value="Hello DojoServerFaces!" />
-					<dojo:behaviorSetValue target="hholder"
+					<dojoBehaviors:behaviorSetValue target="hholder"
 						value="Hello DojoServerFaces!" />
 				</dojo:button>
 				<dojo:button label="Clean" type="button">
-					<dojo:behaviorSetValue target="holder" value="" />
-					<dojo:behaviorSetValue target="hholder" value="" />
+					<dojoBehaviors:behaviorSetValue target="holder" value="" />
+					<dojoBehaviors:behaviorSetValue target="hholder" value="" />
 				</dojo:button>
 			</h:panelGroup>
 

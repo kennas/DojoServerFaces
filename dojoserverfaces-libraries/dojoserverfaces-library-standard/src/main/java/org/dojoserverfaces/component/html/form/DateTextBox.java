@@ -66,12 +66,15 @@ class DateTextBox extends ValidationTextBoxBase {
         }
 
         String getAsJavascriptDate(String valueAsString) {
-            // will handle any legal javascript date formatted string
-            // however the submitted value will be in the from yyyy-MM-dd
-            StringBuffer newDate = new StringBuffer("new Date(").append(
-                    Helper.makeStringVar(valueAsString.replaceAll("-", "/")))
-                    .append(')');
-            return newDate.toString();
+            if (valueAsString != null) {
+                // will handle any legal javascript date formatted string
+                // however the submitted value will be in the from yyyy-MM-dd
+                StringBuffer newDate = new StringBuffer("new Date(")
+                        .append(Helper.makeStringVar(valueAsString.replaceAll(
+                                "-", "/"))).append(')');
+                return newDate.toString();
+            }
+            return valueAsString;
         }
 
         @Override

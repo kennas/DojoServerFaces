@@ -10,7 +10,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
 	<dojo:dialog id="plainDialog"
 		duration="#{ dialog.duration }"
@@ -27,10 +28,10 @@
 			<dojo:contentPane title="Bottom Pane" region="bottom" 
 				style="text-align: center; border: none;">
 				<dojo:button label="OK">
-					<dojo:behaviorHide event="click" target="plainDialog" />
+					<dojoBehaviors:behaviorHide event="click" target="plainDialog" />
 				</dojo:button>
 				<dojo:button label="Close">
-					<dojo:behaviorHide event="click" target="plainDialog" />
+					<dojoBehaviors:behaviorHide event="click" target="plainDialog" />
 				</dojo:button>
 			</dojo:contentPane>
 		</dojo:borderContainer>
@@ -63,20 +64,20 @@
 			<dojo:contentPane region="bottom" 
 				style="text-align: center; border: none;">
 				<dojo:button label="OK">
-					<dojo:behaviorHide event="click" target="formDialog" />
+					<dojoBehaviors:behaviorHide event="click" target="formDialog" />
 				</dojo:button>
 				<dojo:button label="Close">
-					<dojo:behaviorHide event="click" target="formDialog" />
+					<dojoBehaviors:behaviorHide event="click" target="formDialog" />
 				</dojo:button>
 			</dojo:contentPane>
 		</dojo:borderContainer>
 	</dojo:dialog>
 	
 	<dojo:button label="Plain Dialog">
-		<dojo:behaviorShow event="click" target="plainDialog" />
+		<dojoBehaviors:behaviorShow event="click" target="plainDialog" />
 	</dojo:button>
 	
 	<dojo:button label="Form Dialog">
-		<dojo:behaviorShow event="click" target="formDialog" />
+		<dojoBehaviors:behaviorShow event="click" target="formDialog" />
 	</dojo:button>
 </ui:composition>

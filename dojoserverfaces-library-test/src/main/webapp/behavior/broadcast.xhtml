@@ -9,7 +9,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:dojo="http://www.dojoserverfaces.org/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 	xmlns:jdt="http://www.dojoserverfaces.org/coretest">
 <h:head>
 	<title>Broadcast</title>
@@ -22,11 +23,11 @@
 		<h:panelGrid cols="1">
 			<h:panelGroup>
 				<dojo:button label="Broadcast (hello)" type="button">
-					<dojo:behaviorBroadcast topic="hello" />
+					<dojoBehaviors:behaviorBroadcast topic="hello" />
 				</dojo:button>
 
 				<dojo:listener topic="hello">
-					<dojo:behaviorAlert message="Hello DojoServerFaces!" />
+					<dojoBehaviors:behaviorAlert message="Hello DojoServerFaces!" />
 				</dojo:listener>
 			</h:panelGroup>
 		</h:panelGrid>
