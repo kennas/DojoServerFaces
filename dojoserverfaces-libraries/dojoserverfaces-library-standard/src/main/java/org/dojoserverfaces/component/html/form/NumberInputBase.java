@@ -134,7 +134,7 @@ class NumberInputBase extends ValidationTextBoxBase {
      * number of decimal places to accept.
      */
     @Property(group = "constraints")
-    String places;
+    Integer places;
 
     /**
      * strict parsing, false by default. When strict mode is false, certain
