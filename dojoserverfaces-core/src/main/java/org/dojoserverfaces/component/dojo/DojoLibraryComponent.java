@@ -22,6 +22,8 @@ public final class DojoLibraryComponent extends DojoResource {
     private static final String RESOURCE_TARGET = "head";
     private static final String CONTEXT_PARAM_DOJO_LIBRARY = CONTEXT_PARAM_PREFIX
             + ".library";
+    private static final String CONTEXT_PARAM_DOJO_CONFIG_ASYNC = CONTEXT_PARAM_PREFIX
+            + ".async_module_loading";
     private static final String DOJO_LIBRARY = "dojo/dojo.js";
 
     /**
@@ -128,6 +130,14 @@ public final class DojoLibraryComponent extends DojoResource {
             }
             djConfig.append("isDebug:true");
             addComma = true;
+        }
+        String async = context.getExternalContext().getInitParameter(
+                CONTEXT_PARAM_DOJO_CONFIG_ASYNC);
+        if (null != async) {
+            if (addComma) {
+                djConfig.append(",");
+            }
+            djConfig.append("async:").append(async);
         }
         if (djConfig.length() > 0) {
             // lets avoid "validation" errors on emitted markup
