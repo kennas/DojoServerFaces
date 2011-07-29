@@ -49,7 +49,7 @@ if (context.componentInfo.isWidget){
 
 boolean hasValidators = false;
 String postBackHandler = "null";
-if (context.componentInfo.isValueEditor){
+if (context.componentInfo.isValueHolder){
     valuePropertyHandler = "org.dojoserverfaces.widget.property.ValueProperty";
     
     // Find the correct value property handler if a handler is defined.
@@ -104,7 +104,7 @@ String propertyGroups = "";
 boolean namePropertyFound = false;
 for(property in context.componentInfo.properties) {
     // We need to treat the value property handler special
-    if(!property.value) {
+ if(!property.value){
         
         if(property.propertyName.equals("name")){
             // found a name property so do not add the default
@@ -147,7 +147,7 @@ if (context.componentInfo.handlesPostBack && !namePropertyFound) {
         propertyHandlers.add(new org.dojoserverfaces.widget.property.ClientIdProperty("name"));
 <%
 }
-if (context.componentInfo.isValueEditor){
+if (context.componentInfo.isValueHolder){
 %>        
         // add the value property handler
         propertyHandlers.add(valueProperty);

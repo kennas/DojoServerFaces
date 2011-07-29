@@ -31,7 +31,7 @@ public class GeneratedComponentInfo extends ComponentInfo {
     private String[] requiredCss = null;
     private HtmlElementType elementType;
     private String interfaceNames[];
-    private Boolean valueEditor = Boolean.FALSE;
+    private Boolean valueHolder = Boolean.FALSE;
     private Boolean isActionSource = Boolean.FALSE;
     private String jsfNode;
     private RendersChildren rendersChildren = RendersChildren.NO_NOT_RESPONSIBLE;
@@ -76,7 +76,8 @@ public class GeneratedComponentInfo extends ComponentInfo {
             this.elementType = generatedComponent.elementType();
             this.jsfNode = generatedComponent.jsfNode().trim();
             this.interfaceNames = generatedComponent.interfaceNames();
-
+            this.rendersChildren = generatedComponent.rendersChildren();
+            
             if (this.baseClassName.equals("")
                     || this.baseClassName.equals("java.lang.Object")) {
                 this.baseClassName = null;
@@ -260,8 +261,8 @@ public class GeneratedComponentInfo extends ComponentInfo {
     /**
      * @return indication that the component is a value editor
      */
-    public Boolean getIsValueEditor() {
-        return valueEditor;
+    public Boolean getIsValueHolder() {
+        return valueHolder;
     }
 
     /**
@@ -269,9 +270,9 @@ public class GeneratedComponentInfo extends ComponentInfo {
      *            indication that the component is a value editor and it also
      *            handles post back
      */
-    public void setIsValueEditor(Boolean isValueEditor) {
-        this.valueEditor = isValueEditor;
-        this.handlesPostBack = isValueEditor;
+    public void setIsValueHolder(Boolean isValueHolder) {
+        this.valueHolder = isValueHolder;
+       
     }
 
     public Boolean getIsActionSource() {
