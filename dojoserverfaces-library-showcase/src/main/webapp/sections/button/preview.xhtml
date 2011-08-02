@@ -90,6 +90,6 @@ xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 				</dojo:menuItem>
 			</dojo:menu>
 		</dojo:dropDownButton>
-	</h:panelGroup>
+	</h:panelGroup>		<h:panelGroup>		<h:outputText value="Toggle button: " style="display: block; margin-bottom: 3px;" />		<dojo:toggleButton id="toggleButton"			label="#{ button.label }"			iconClass="dijitCheckBoxIcon"			showLabel="#{ button.showLabel }"			checked="true"		>			<dojoBehaviors:behaviorToggleProperty target="@this" 				name="iconClass" initialValue="dijitCheckBoxIcon" compareValue="dijitRadioIcon" />			<dojoBehaviors:behaviorToggleProperty target="@this" 				name="label" initialValue="Toggle me off" compareValue="Toggle me on" />		</dojo:toggleButton>	</h:panelGroup>		<h:panelGroup>		<h:outputText value="Toggle button: " style="display: block; margin-bottom: 3px;" />		<dojo:toggleButton id="toggleButton"			label="Click Me" checked="checked"			iconClass="dijitCheckBoxIcon"			showLabel="#{ button.showLabel }"		>			<dojoBehaviors:behaviorToggleProperty target="@this" 				name="label" initialValue="Toggle me off" compareValue="Toggle me on" />		</dojo:toggleButton>	</h:panelGroup>
 	</h:panelGrid>
 </ui:composition>

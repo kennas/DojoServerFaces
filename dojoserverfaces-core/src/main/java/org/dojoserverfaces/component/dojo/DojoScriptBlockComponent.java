@@ -219,7 +219,7 @@ public final class DojoScriptBlockComponent extends DojoResource implements
     private StringBuilder destroyWidgetsScriptBlock = new StringBuilder();
     private StringBuilder createWidgetsScriptBlock = new StringBuilder();
     private StringBuilder postWidgetCreateScriptBlock = new StringBuilder();
-  
+
     public DojoScriptBlockComponent(String id) {
         super();
         setId(id);
@@ -301,8 +301,13 @@ public final class DojoScriptBlockComponent extends DojoResource implements
                 writer.write(newline);
             }
 
-            StringBuilder initScript = new StringBuilder(
-                    requiresScriptBlock.toString());
+            StringBuilder initScript = new StringBuilder();
+            if (requiresScriptBlock.length() > 0) {
+                initScript.append("require([")
+                        .append(requiresScriptBlock.toString())
+                        .append("], function(){");
+            }
+            // TODO: needs to consider how to add theme files
             initScript.append(getRequiredThemeFiles());
             if (!ajaxUpdate) {
                 initScript.append("dojo.addOnLoad(function(){");
@@ -333,6 +338,9 @@ public final class DojoScriptBlockComponent extends DojoResource implements
             if (!ajaxUpdate) {
                 initScript.append("});");
             }
+            if (requiresScriptBlock.length() > 0) {
+                initScript.append("});");
+            }
             writer.write(initScript.toString());
             if (!ajaxUpdate) {
                 writer.write(newline);
@@ -351,8 +359,13 @@ public final class DojoScriptBlockComponent extends DojoResource implements
      */
     public void addRequires(String requiredModule) {
         if (!requiredModulesAdded.contains(requiredModule)) {
-            requiresScriptBlock.append("dojo.require(\"")
-                    .append(requiredModule).append("\");");
+            if (requiresScriptBlock.length() > 0) {
+                requiresScriptBlock.append(",");
+            }
+            // Applying AMD module loading scheme
+            // e.g. dijit.form.Button -> dijit/form/Button
+            requiresScriptBlock.append("\"")
+                    .append(requiredModule.replaceAll("[.]", "/")).append("\"");
             requiredModulesAdded.add(requiredModule);
         }
     }
@@ -431,6 +444,5 @@ public final class DojoScriptBlockComponent extends DojoResource implements
     public void addPostWidgetCreateScript(String script) {
         postWidgetCreateScriptBlock.append(script);
     }
-
 
 }

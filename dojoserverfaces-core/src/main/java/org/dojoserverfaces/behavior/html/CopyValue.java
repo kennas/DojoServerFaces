@@ -43,10 +43,13 @@ public class CopyValue extends BehaviorBase {
 
             StringBuilder value = null;
             if (PARAM_EVENT.equals(source)) {
-                value = new StringBuilder("event.value");
+                // value = new StringBuilder("event.value");
+                // TODO: more consideration...
+                value = new StringBuilder("event");
             } else {
                 UIComponent sourceComp = behaviorContext.getComponent();
                 if (!PARAM_THIS.equals(source)) {
+                    // TODO: seems not correct, need more consideration...
                     sourceComp = sourceComp.findComponent(source);
                 }
                if (sourceComp != null) {
