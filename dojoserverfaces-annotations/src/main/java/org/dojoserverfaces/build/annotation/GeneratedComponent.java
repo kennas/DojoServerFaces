@@ -41,6 +41,8 @@ public @interface GeneratedComponent {
     public String[] interfaceNames() default {};
 
     public Class<?> postBackHandler() default Object.class;
+    
+ 
 
     public String jsfNode() default "";
     /**
