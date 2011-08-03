@@ -49,7 +49,14 @@ if (context.componentInfo.isWidget){
 
 boolean hasValidators = false;
 String postBackHandler = "null";
-if (context.componentInfo.isValueHolder){
+if(context.componentInfo.isValueHolder){
+	  %>
+	  // The value property handler for this output component.
+    private static final org.dojoserverfaces.widget.property.ValueProperty valueProperty = 
+        new org.dojoserverfaces.widget.property.ValueProperty("value", "value");
+<%	  
+}//end if (context.componentInfo.isValueHolder)
+if (context.componentInfo.isValueEditor){
     valuePropertyHandler = "org.dojoserverfaces.widget.property.ValueProperty";
     
     // Find the correct value property handler if a handler is defined.
@@ -147,7 +154,7 @@ if (context.componentInfo.handlesPostBack && !namePropertyFound) {
         propertyHandlers.add(new org.dojoserverfaces.widget.property.ClientIdProperty("name"));
 <%
 }
-if (context.componentInfo.isValueHolder){
+if (context.componentInfo.isValueEditor||context.componentInfo.isValueHolder){
 %>        
         // add the value property handler
         propertyHandlers.add(valueProperty);

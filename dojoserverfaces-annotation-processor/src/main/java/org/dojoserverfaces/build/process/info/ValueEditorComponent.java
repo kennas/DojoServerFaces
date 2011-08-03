@@ -42,8 +42,7 @@ public class ValueEditorComponent extends GeneratedComponentInfo {
     protected ValueEditorComponent(java.lang.annotation.Annotation annotation,
             Element element) {
         super(annotation, element);
-        setIsValueHolder(true);
-        setHandlesPostBack(true);
+        setIsValueEditor(true);
         // add in definitions of attributes coming from the base class
         // from EditableValueHolder
         addAttribute(value);
