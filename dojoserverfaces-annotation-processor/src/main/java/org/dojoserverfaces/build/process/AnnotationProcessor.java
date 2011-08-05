@@ -36,6 +36,7 @@ import org.dojoserverfaces.build.annotation.GeneratedComponent;
 import org.dojoserverfaces.build.annotation.MultiSelectValueHolder;
 import org.dojoserverfaces.build.annotation.Property;
 import org.dojoserverfaces.build.annotation.SelectValueHolder;
+import org.dojoserverfaces.build.annotation.ValueHolder;
 import org.dojoserverfaces.build.process.generator.GeneratorUtil;
 import org.dojoserverfaces.build.process.generator.SourceGeneratorManager;
 import org.dojoserverfaces.build.process.generator.doc.DocCompositeSourceGenerator;
@@ -58,6 +59,7 @@ import org.dojoserverfaces.build.process.info.InformationCollector;
 import org.dojoserverfaces.build.process.info.MultiValueSelectComponent;
 import org.dojoserverfaces.build.process.info.PropertyInfo;
 import org.dojoserverfaces.build.process.info.ValueEditorComponent;
+import org.dojoserverfaces.build.process.info.ValueHolderComponent;
 import org.dojoserverfaces.build.process.info.ValueSelectComponent;
 
 /**
@@ -131,6 +133,11 @@ public class AnnotationProcessor extends AbstractProcessor {
                 MultiSelectValueHolder.class.getName())) {
             return new MultiValueSelectComponent(element,
                     element.getAnnotation(MultiSelectValueHolder.class));
+        }
+        else if (GeneratorUtil.elementNameEquals(annotation,
+                ValueHolder.class.getName())) {
+            return new ValueHolderComponent(element,
+                    element.getAnnotation(ValueHolder.class));
         }
         else if (GeneratorUtil.elementNameEquals(annotation,
                 SelectValueHolder.class.getName())) {
@@ -275,7 +282,7 @@ public class AnnotationProcessor extends AbstractProcessor {
                 }
             }
             // We earlier collected all the elements annotated with the
-            // annotation being processed and grouped them with their 
+            // annotation being processed and grouped them with their
             // associated class element.
             // Now for each group, process the annotation and apply
             // it to the annotation collector associated with the class.
