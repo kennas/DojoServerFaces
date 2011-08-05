@@ -50,10 +50,23 @@ if (context.componentInfo.isWidget){
 boolean hasValidators = false;
 String postBackHandler = "null";
 if(context.componentInfo.isValueHolder){
+ valuePropertyHandler = "org.dojoserverfaces.widget.property.ValueProperty";
+// Find the correct value property handler if a handler is defined.
+ for(property in context.componentInfo.properties) {
+        if(property.value) {
+            if(property.handler != null) {
+                valuePropertyHandler = property.handler;
+            }
+            property.getterName = "getNoValue";
+            property.setterName = "setNoValue";
+            break;
+        }
+       
+    }
 	  %>
 	  // The value property handler for this output component.
-    private static final org.dojoserverfaces.widget.property.ValueProperty valueProperty = 
-        new org.dojoserverfaces.widget.property.ValueProperty("value", "value");
+	   private static final ${valuePropertyHandler} valueProperty = 
+        new ${valuePropertyHandler}("value", "value");
 <%	  
 }//end if (context.componentInfo.isValueHolder)
 if (context.componentInfo.isValueEditor){
