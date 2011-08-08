@@ -21,10 +21,10 @@ class NumberSpinner extends NumberInputBase {
      * keys/buttons
      */
     @Property
-    Number smallDelta;
+    Double smallDelta;
     /**
      * Adjust the value by this amount when spinning using the PgUp/Dn keys
      */
     @Property
-    Number largeDelta;
+    Double largeDelta;
 }
