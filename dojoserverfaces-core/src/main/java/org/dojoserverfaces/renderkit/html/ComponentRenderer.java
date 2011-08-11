@@ -9,8 +9,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIPanel;
+import javax.faces.component.behavior.ClientBehavior;
+import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.convert.ConverterException;
@@ -29,6 +34,8 @@ import org.dojoserverfaces.widget.property.PropertyCollection;
 
 @FacesRenderer(rendererType = "dojoserverfaces.renderer.default", componentFamily = "dojoserverfaces.component.default")
 public class ComponentRenderer extends Renderer {
+
+    private static final Object START_UP_CONTAINER_ID = "org.dojoserverfaces.START_UP_CONTAINER_ID";
 
     /**
      * Add init script to configure the dojo widget.
@@ -62,7 +69,16 @@ public class ComponentRenderer extends Renderer {
                         widgetPostCreateInitializationScript, varName);
                 widgetInitialization.append(varName);
             }
-            widgetInitialization.append(".startup();");
+
+            String startUpContainerId = (String) facesContext.getAttributes()
+                    .get(START_UP_CONTAINER_ID);
+            if (startUpContainerId == null
+                    || component.getId().equals(startUpContainerId)) {
+                widgetInitialization.append(".startup();");
+            }
+            else {
+                widgetInitialization.append(";");
+            }
             initScriptBlock.addWidgetCreateScript(widgetInitialization
                     .toString());
         }
@@ -198,6 +214,12 @@ public class ComponentRenderer extends Renderer {
         // of a child tag (e.g. "#{cc.clientId)"), we need to make it available
         // ...
         component.pushComponentToEL(context, component);
+
+        if (component instanceof UIPanel
+                && !context.getAttributes().containsKey(START_UP_CONTAINER_ID)) {
+            context.getAttributes().put(START_UP_CONTAINER_ID,
+                    component.getId());
+        }
     }
 
     /*
@@ -230,6 +252,10 @@ public class ComponentRenderer extends Renderer {
         }
         addInitScriptToScriptBlock(context, component);
 
+        if (component.getId().equals(
+                context.getAttributes().get(START_UP_CONTAINER_ID))) {
+            context.getAttributes().remove(START_UP_CONTAINER_ID);
+        }
     }
 
     @Override
