@@ -7,8 +7,9 @@ package org.dojoserverfaces.component.html.store.tree;
 
 import org.dojoserverfaces.build.annotation.Event;
 import org.dojoserverfaces.build.annotation.Property;
+import org.dojoserverfaces.widget.property.AsStringProperty;
 import org.dojoserverfaces.widget.property.DataStoreRefProperty;
-import org.dojoserverfaces.widget.property.PropertyCollectionProperty;
+import org.dojoserverfaces.widget.property.StringArrayProperty;
 
 /**
  * Defines base properties for tree models.
@@ -20,7 +21,7 @@ public abstract class TreeModelBase {
       * specify that item's children.
       */
      
-     @Property(handler=PropertyCollectionProperty.class)
+     @Property(handler=StringArrayProperty.class)
      Object childrenAttrs;
      
      /**
@@ -106,7 +107,7 @@ public abstract class TreeModelBase {
       * item.
       */
      
-     @Property
+     @Property(handler = AsStringProperty.class)
      String query;
      
      /**
