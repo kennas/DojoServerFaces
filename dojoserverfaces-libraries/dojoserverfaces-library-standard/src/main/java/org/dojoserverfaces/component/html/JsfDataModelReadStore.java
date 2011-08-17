@@ -250,6 +250,11 @@ public class JsfDataModelReadStore extends UIComponentBase implements
     public Object getAttribute(String name) {
         return null;
     }
+    
+    @Override
+    public boolean isContainer() {
+        return false;
+    }
 
     private Object getPropertyValue(Object bean, String propertyName) {
 
