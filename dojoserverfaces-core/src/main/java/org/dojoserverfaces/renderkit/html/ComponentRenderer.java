@@ -215,7 +215,7 @@ public class ComponentRenderer extends Renderer {
         // ...
         component.pushComponentToEL(context, component);
 
-        if (component instanceof UIPanel
+        if (dojoWidget.isContainer()
                 && !context.getAttributes().containsKey(START_UP_CONTAINER_ID)) {
             context.getAttributes().put(START_UP_CONTAINER_ID,
                     component.getId());

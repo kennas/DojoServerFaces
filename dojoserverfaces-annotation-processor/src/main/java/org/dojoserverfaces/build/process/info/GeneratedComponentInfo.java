@@ -36,6 +36,7 @@ public class GeneratedComponentInfo extends ComponentInfo {
     private Boolean isActionSource = Boolean.FALSE;
     private String jsfNode;
     private RendersChildren rendersChildren = RendersChildren.NO_NOT_RESPONSIBLE;
+    private Boolean isContainer = Boolean.FALSE;
 
     /**
      * indication that the component will handle postbacks
@@ -334,6 +335,14 @@ public class GeneratedComponentInfo extends ComponentInfo {
      */
     public String getPostBackHandler() {
         return postBackHandler;
+    }
+
+    public Boolean getIsContainer() {
+        return isContainer;
+    }
+
+    public void setIsContainer(Boolean isContainer) {
+        this.isContainer = isContainer;
     }
 
 }

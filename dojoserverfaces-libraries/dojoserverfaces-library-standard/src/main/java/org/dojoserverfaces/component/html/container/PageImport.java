@@ -17,7 +17,7 @@ import org.dojoserverfaces.build.annotation.Property;
  * NOTE: dojo based content in the fetched file may not initialize properly.
  * Many widgets need to be initialized at page load to work properly.
  */
-@Container(dojoType = "dojox.layout.ContentPane")
+@Container(dojoType = "dojox.layout.ContentPane", isContainer = false)
 class PageImport extends ContentPane {
 
     /**
@@ -31,11 +31,8 @@ class PageImport extends ContentPane {
     /**
      * cleans content to make it less likely to generate DOM/JS errors.
      * description: useful if you send ContentPane a complete page, instead of a
-     * html fragment scans for and removes:
-     *    title Node
-     *    DOCTYPE tag 
-     * Default is to not clean content
-     * (false).
+     * html fragment scans for and removes: title Node DOCTYPE tag Default is to
+     * not clean content (false).
      */
     @Property
     Boolean cleanContent;
