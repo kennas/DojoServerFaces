@@ -17,7 +17,7 @@ import org.dojoserverfaces.build.annotation.Property;
  * that those classes can contain any component as a child.
  * 
  */
-@Container(dojoType = "dijit.layout.ContentPane", isContainer = false)
+@Container(dojoType = "dijit.layout.ContentPane")
 class ContentPane extends ContentPaneBase {
 
     /**
