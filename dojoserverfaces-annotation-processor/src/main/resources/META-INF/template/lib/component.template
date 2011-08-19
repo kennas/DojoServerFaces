@@ -282,6 +282,10 @@ if (!context.componentInfo.isWidget){ %>
        
     }
     
+    public boolean isContainer() {
+        return ${context.componentInfo.isContainer};
+    }
+    
     /* (non-Javadoc)
     * @see org.dojoserverfaces.component.dojo.DojoWidget#getPropertyHandlers()
     */
