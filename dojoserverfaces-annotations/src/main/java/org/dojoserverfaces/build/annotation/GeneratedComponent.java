@@ -51,7 +51,8 @@ public @interface GeneratedComponent {
     public RendersChildren rendersChildren() default RendersChildren.NO_NOT_RESPONSIBLE;
 
     /**
-     * @return true if the widget is a Dojo Container, false otherwise
+     * @return true if the widget is a Dojo Container, false otherwise. Defaults
+     *         to false.
      */
     public boolean isContainer() default false;
 }
