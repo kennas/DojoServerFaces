@@ -41,13 +41,18 @@ public @interface GeneratedComponent {
     public String[] interfaceNames() default {};
 
     public Class<?> postBackHandler() default Object.class;
-    
- 
 
     public String jsfNode() default "";
+
     /**
      * 
      * @return renderChildren type
      */
     public RendersChildren rendersChildren() default RendersChildren.NO_NOT_RESPONSIBLE;
+
+    /**
+     * @return true if the widget is a Dojo Container, false otherwise. Defaults
+     *         to false.
+     */
+    public boolean isContainer() default false;
 }
