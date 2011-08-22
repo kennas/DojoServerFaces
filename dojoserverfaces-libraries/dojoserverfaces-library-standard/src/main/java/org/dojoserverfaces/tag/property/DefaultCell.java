@@ -13,7 +13,8 @@ import org.dojoserverfaces.build.annotation.FaceletTag;
 import org.dojoserverfaces.widget.property.ComplexProperty;
 
 /**
- * Class for handling defaultCell Structure property
+ * Used as the grid cell definition when there is no cell defined for a
+ * particular field.
  * 
  */
 @FaceletTag("DataGrid DefaultCell")
