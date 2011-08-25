@@ -17,7 +17,8 @@ import org.dojoserverfaces.component.dojo.DojoTheme;
 
 /**
  * This component defines the theme to be used by this library's components in
- * this page.
+ * this page. There is also a context-param (dojoserverfaces.dojo.theme) which
+ * can be used to set the default theme for all pages.
  */
 @Component
 public class Theme extends DojoTheme {
