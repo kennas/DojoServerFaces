@@ -13,13 +13,11 @@ import javax.faces.view.facelets.TagAttribute;
 import javax.faces.view.facelets.TagConfig;
 import javax.faces.view.facelets.TagHandler;
 
-import org.dojoserverfaces.build.annotation.FaceletTag;
 import org.dojoserverfaces.widget.property.ComplexProperty;
 
 /**
  * Base class for tags setting "view" properties for a structure.
  */
-@FaceletTag("DataGrid View")
 public abstract class StructureBase extends TagHandler implements
         javax.faces.view.facelets.AttributeHandler {
 
