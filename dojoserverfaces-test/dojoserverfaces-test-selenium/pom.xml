@@ -241,6 +241,9 @@
                 <test.main.contextRoot>
                   ${test.main.contextRoot}
                 </test.main.contextRoot>
+                <webdriver.chrome.driver>
+                C:\Users\kennas\AppData\Local\Google\Chrome\Application\chrome.exe
+                </webdriver.chrome.driver>
               </systemPropertyVariables>
             </configuration>
           </execution>

@@ -6,7 +6,6 @@
 package org.dojoserverfaces.test.support.selenium;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverBackedSelenium;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
@@ -23,8 +22,9 @@ public class DojoServerFacesSeleniumTestCase extends SeleneseTestBase {
      private static final String PARAM_HOST_SERVER = "test.host.server";
      private static final String PARAM_PORT_SERVER = "test.port.server";
      
+     protected StringBuffer verificationErrors = new StringBuffer();
      private String contextRoot;
-     private WebDriver driver;
+     protected WebDriver driver;
      
      /**
       * Creates a DojoServerFacesSeleniumTestCase object.
@@ -56,7 +56,7 @@ public class DojoServerFacesSeleniumTestCase extends SeleneseTestBase {
                (DojoServerFacesSeleniumTestCase.PARAM_HOST_SERVER);
           
           if (browser == null) {
-               browser = "chrome";
+               browser = "firefox";
           }
           
           browser = browser.toLowerCase().trim();
@@ -82,35 +82,34 @@ public class DojoServerFacesSeleniumTestCase extends SeleneseTestBase {
                this.contextRoot = "";
           }
           
+          WebDriver tmpDriver;
           if (browser.equals ("chrome")) {
-               this.driver = new ChromeDriver();
+        	  tmpDriver = new ChromeDriver();
           }
           
           else if (browser.equals ("firefox")) {
-               this.driver = new FirefoxDriver();
+        	  tmpDriver = new FirefoxDriver();
           }
           
           else if (browser.equals ("htmlunit")) {
-               this.driver = new HtmlUnitDriver();
+        	  tmpDriver = new HtmlUnitDriver();
                
-               ((HtmlUnitDriver) this.driver).setJavascriptEnabled (true);
+               ((HtmlUnitDriver) tmpDriver).setJavascriptEnabled (true);
                
+          } else {
+        	  //defaulting to htmlunit if none of the above were set - this may need a better default.
+        	  tmpDriver = new HtmlUnitDriver();
+              
+              ((HtmlUnitDriver) tmpDriver).setJavascriptEnabled (true);
+             
           }
           
-          // Create the Selenium object.
+          this.driver = new WebDriverWrapper(tmpDriver, serverHost, serverPort, contextRoot);
           
-          this.selenium = new WebDriverBackedSelenium (this.driver,
-               "http://" + serverHost + ":" + serverPort + "/");
+          // Set timeout 
+          //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+          
+
      }
      
-     /**
-      * Opens a URL via Selenium using the context root associated with this
-      * test case.
-      * 
-      * @param url a String containing the URL to use.
-      */
-     
-     protected void seleniumOpen (String url) {
-          this.selenium.open (this.contextRoot + "/" + url);
-     }
 }

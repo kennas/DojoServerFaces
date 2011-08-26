@@ -3,26 +3,23 @@
  *   Available via Academic Free License >= 2.1 OR the modified BSD license.
  *   see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.test.integration.widget.form.booleancheckbox;
+package org.dojoserverfaces.test.integration.widget.form.booleanradiobutton;
 
 import org.dojoserverfaces.test.support.selenium.DojoServerFacesSeleniumTestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
-public class BooleanCheckboxTestCase extends DojoServerFacesSeleniumTestCase {
-     
-	
-	@Before
+public class BooleanRadioButtonTestCase extends DojoServerFacesSeleniumTestCase {
+     @Before
      public void setUp() throws Exception {
           setUpTestCase ("test.main.contextRoot");
      }
 
      @Test
      public void testUntitled() throws Exception {
-          driver.get("form/booleanCheckBox/index.jsf");
-          //driver.findElement(By.name("form:ajaxRefresh:widgetAjaxCall")).click();
+          driver.get("form/booleanRadioButton/index.jsf");
+          //selenium.click("form:ajaxRefresh:widgetAjaxCall");
           //verifyEquals("false", selenium.getText("form:ajaxRefresh:outputAjaxCall"));
      }
 
