@@ -12,7 +12,7 @@ package ${context.packageName};
 @javax.faces.event.ListenerFor(systemEventClass=javax.faces.event.PostAddToViewEvent.class)
 public final class ${context.unqualifiedClassName}<% if(context.superclass != null) { 
 %> extends ${context.superclass}<% } %>
-    implements org.dojoserverfaces.widget.DojoWidget
+    implements org.dojoserverfaces.widget.DojoWidget, javax.faces.component.behavior.ClientBehaviorHolder
 <%if(context.interfaces.size() > 0) { %>,
      <% context.interfaces.eachWithIndex() { interfaceName, i -> %>${interfaceName} ${i <(context.interfaces.size() - 1) ? "," : ""}<% }
 }
