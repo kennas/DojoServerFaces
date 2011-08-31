@@ -21,6 +21,7 @@ import javax.faces.event.SystemEvent;
 import javax.faces.event.SystemEventListener;
 
 import org.dojoserverfaces.component.DojoResource;
+import org.dojoserverfaces.service.LibraryService;
 import org.dojoserverfaces.widget.DojoWidget;
 
 /**
@@ -104,8 +105,12 @@ public final class DojoScriptBlockComponent extends DojoResource implements
                 // will contain no script code
                 view.addComponentResource(context, sb, BODY_END);
             }
+
+            LibraryService libraryService = LibraryService.getInstance();
+            // TODO: throw exception if libraryService is null?
             // create a block to hold init code
-            sb = new DojoScriptBlockComponent(INIT_BLOCK_ID);
+            sb = new DojoScriptBlockComponent(INIT_BLOCK_ID,
+                    libraryService.getRequiredDojoModules());
             if (partialUpdate) {
                 // Partial update is tricky, unlike Sun's RI MyFaces does
                 // not render "resources" in the "body" at the end for a partial
@@ -221,6 +226,10 @@ public final class DojoScriptBlockComponent extends DojoResource implements
     private StringBuilder postWidgetCreateScriptBlock = new StringBuilder();
 
     public DojoScriptBlockComponent(String id) {
+        this(id, null);
+    }
+
+    public DojoScriptBlockComponent(String id, String[] requires) {
         super();
         setId(id);
         // We need to move the init script block prior to rendering a
@@ -228,6 +237,11 @@ public final class DojoScriptBlockComponent extends DojoResource implements
         if (id.equals(INIT_BLOCK_ID)) {
             getFacesContext().getViewRoot().subscribeToViewEvent(
                     javax.faces.event.PreRenderViewEvent.class, this);
+        }
+        if (requires != null && requires.length > 0) {
+            for (String requiredModule : requires) {
+                addRequires(requiredModule);
+            }
         }
     }
 

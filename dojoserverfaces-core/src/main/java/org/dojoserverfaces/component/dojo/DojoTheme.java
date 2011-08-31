@@ -16,10 +16,12 @@ import javax.faces.event.SystemEvent;
 import javax.faces.event.SystemEventListener;
 
 import org.dojoserverfaces.component.DojoResource;
+import org.dojoserverfaces.service.DojoThemeHandler;
+import org.dojoserverfaces.service.LibraryService;
 
 /**
- * The ThemeComponent class defines a JSF component used to theme DojoServerFaces
- * applications.
+ * The ThemeComponent class defines a JSF component used to theme
+ * DojoServerFaces applications.
  */
 
 public class DojoTheme extends DojoResource implements SystemEventListener {
@@ -34,21 +36,36 @@ public class DojoTheme extends DojoResource implements SystemEventListener {
 
     private String themeName = null;
 
+    private DojoThemeHandler themeHandler = null;
+
     public DojoTheme() {
         this(true);
     }
 
     DojoTheme(boolean moveIfNecessary) {
         super();
+        UIViewRoot viewRoot = getFacesContext().getViewRoot();
         if (moveIfNecessary) {
             // Register a system event listener so we can move the component
-            getFacesContext().getViewRoot().subscribeToViewEvent(
+            viewRoot.subscribeToViewEvent(
                     javax.faces.event.PostAddToViewEvent.class, this);
         }
         // Register a system event listener so we can modify the body tag
-        getFacesContext().getViewRoot().subscribeToViewEvent(
+        viewRoot.subscribeToViewEvent(
                 javax.faces.event.PreRenderViewEvent.class, this);
         super.setId(DojoTheme.RESOURCE_ID);
+
+        LibraryService libraryService = LibraryService.getInstance();
+        // TODO: throw exception if libraryService is null?
+        themeHandler = libraryService.getThemeHandler();
+        String[] requiredCss = themeHandler.getRequiredCss(getFacesContext());
+        if (requiredCss != null && requiredCss.length > 0) {
+            DojoStyleComponent styleComponent = DojoStyleComponent
+                    .findStyleBlockComponent(viewRoot);
+            for (String css : requiredCss) {
+                styleComponent.addRequiredCss(css);
+            }
+        }
     }
 
     /*
@@ -132,9 +149,7 @@ public class DojoTheme extends DojoResource implements SystemEventListener {
             String themeName = getName();
             StringBuilder themeCssLink = new StringBuilder(
                     "<link rel=\"stylesheet\"  type=\"text/css\" href=\"");
-            themeCssLink.append(getLibraryUrlPrefix(context))
-                    .append("dijit/themes/").append(themeName).append('/')
-                    .append(themeName).append(".css");
+            themeCssLink.append(themeHandler.getThemeUrl(context, themeName));
             themeCssLink.append("\" />");
             linkTag = themeCssLink.toString();
             context.getAttributes().put(THEME_LINK, linkTag);
@@ -153,8 +168,8 @@ public class DojoTheme extends DojoResource implements SystemEventListener {
      * @return the Style block component, if it exists, from the view
      */
     public static DojoTheme findThemeComponent(UIViewRoot view) {
-        DojoTheme theme = (DojoTheme) findResourceComponent(
-                view, RESOURCE_ID, RESOURCE_TARGET);
+        DojoTheme theme = (DojoTheme) findResourceComponent(view, RESOURCE_ID,
+                RESOURCE_TARGET);
         return theme;
     }
 
