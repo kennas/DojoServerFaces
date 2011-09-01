@@ -15,13 +15,13 @@ public class ActionHtmlElement extends HtmlElement {
     @Override
     public String getElement(FacesContext context, UIComponent component) {
         StringBuilder elementMarkup = null;
-            elementMarkup = new StringBuilder("<input type=\"button\"").append(" id=\"")
-                    .append(component.getClientId(context)).append("\"/>");
+            elementMarkup = new StringBuilder("<button").append(" id=\"")
+                    .append(component.getClientId(context)).append("\">");
         return elementMarkup.toString();
     }
 
     @Override
     public String getElementClose(FacesContext context, UIComponent component) {
-        return null;
+        return "</button>";
     }
 }
