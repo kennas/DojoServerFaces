@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.faces.component.ActionSource2;
 import javax.faces.component.UIComponent;
+import javax.faces.component.behavior.AjaxBehavior;
 import javax.faces.component.behavior.ClientBehavior;
 import javax.faces.component.behavior.ClientBehaviorContext;
 import javax.faces.component.behavior.ClientBehaviorHolder;
@@ -84,6 +85,7 @@ public class EventHandlerProperty extends Property {
         }
         // Iterate over all the client behaviors to build a list of scripts
         ArrayList<String> behaviorScripts = null;
+        boolean containsAjaxBehavior = false;
         if (null != eventBehaviors && !eventBehaviors.isEmpty()) {
             behaviorScripts = new ArrayList<String>(eventBehaviors.size());
             for (ClientBehavior behavior : eventBehaviors) {
@@ -111,6 +113,9 @@ public class EventHandlerProperty extends Property {
                             }
                         }
                     }
+                    if (behavior instanceof AjaxBehavior) {
+                        containsAjaxBehavior = true;
+                    }
                     behaviorScripts.add(script);
                 }
             }
@@ -128,7 +133,12 @@ public class EventHandlerProperty extends Property {
              * to pass along the "this" object to the scripts. Any script
              * returning false will stop the execution of the remaining scripts.
              */
-            functionDeclaration.append("var o=this;dojo.every([");
+            functionDeclaration.append("var o=this;");
+            if (!containsAjaxBehavior) {
+                // if no ajax behavior attached, return the result of dojo.every
+                functionDeclaration.append("return ");
+            }
+            functionDeclaration.append("dojo.every([");
             boolean needComma = false;
             if (null != eventScript) {
                 functionDeclaration.append("function(event){")
@@ -159,6 +169,11 @@ public class EventHandlerProperty extends Property {
         else {
             // turns out there are no scripts to be added
             return null;
+        }
+        if (containsAjaxBehavior) {
+            // if there are ajax behaviors attached, we need to return false to
+            // prevent some default submit
+            functionDeclaration.append(";return false;");
         }
         functionDeclaration.append('}');
         return functionDeclaration.toString();
