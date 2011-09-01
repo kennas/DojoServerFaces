@@ -14,7 +14,7 @@ import javax.faces.component.UIComponent;
 /**
  * Property handler for a property that consists of sub properties
  */
-public class ComplexProperty extends Property implements PropertyCollection{
+public class ComplexProperty extends Property implements PropertyCollection {
     private List<Property> properties = null;
 
     public ComplexProperty(String name) {
@@ -30,6 +30,13 @@ public class ComplexProperty extends Property implements PropertyCollection{
     public ComplexProperty(String name, List<Property> properties) {
         super(name, name);
         this.properties = properties;
+    }
+
+    @Override
+    public boolean isSet(UIComponent component) {
+        // Once this property is used it must have some "value" in it so
+        // hardcode it
+        return true;
     }
 
     @Override
@@ -65,8 +72,12 @@ public class ComplexProperty extends Property implements PropertyCollection{
         properties.add(property);
     }
 
-    /* (non-Javadoc)
-     * @see org.dojoserverfaces.widget.property.PropertyCollection#iterator(javax.faces.component.UIComponent)
+    /*
+     * (non-Javadoc)
+     * 
+     * @see
+     * org.dojoserverfaces.widget.property.PropertyCollection#iterator(javax
+     * .faces.component.UIComponent)
      */
     @Override
     public Iterator<Property> iterator(UIComponent component) {
