@@ -9,11 +9,12 @@ import javax.faces.component.UIComponent;
 
 import org.dojoserverfaces.build.annotation.EditableValueHolder;
 import org.dojoserverfaces.build.annotation.Property;
+
 /**
- *  A simple text input area.
+ * A simple text input area. 
  * 
  */
-@EditableValueHolder(dojoType = "dojox.mobile.TextBox",requiredCss = { "dojox/mobile/themes/{theme}/TextBox.css" })
+@EditableValueHolder(dojoType = "dojox.mobile.TextBox", requiredCss = { "dojox/mobile/themes/{theme}/TextBox.css" })
 class TextBox extends TextBoxBase {
     public static class ForceCaseProperty extends
             org.dojoserverfaces.widget.property.Property {
@@ -51,38 +52,38 @@ class TextBox extends TextBoxBase {
      */
     @Property(handler = ForceCaseProperty.class)
     String forceCase;
-    
-    public static class SecretHandler extends org.dojoserverfaces.widget.property.Property {
-		public SecretHandler() {
-			super("Secret");
-		}
 
-		public SecretHandler(String name) {
-			super(name);
-		}
+    public static class SecretHandler extends
+            org.dojoserverfaces.widget.property.Property {
+        public SecretHandler() {
+            super("Secret");
+        }
 
-		public SecretHandler(String name, String propertyName) {
-			super(name, propertyName);
-		}
+        public SecretHandler(String name) {
+            super(name);
+        }
 
-		@Override
-		public String getAsPropertyValue(UIComponent component) {
-			Object value = getAttributeValue(component);
-			if (null != value) {
-				if (value.toString().equals("true"))
-					return "\"password\"";
-			}
-			return null;
-		}
+        public SecretHandler(String name, String propertyName) {
+            super(name, propertyName);
+        }
 
-		
-	}
-    
+        @Override
+        public String getAsPropertyValue(UIComponent component) {
+            Object value = getAttributeValue(component);
+            if (null != value) {
+                if (value.toString().equals("true"))
+                    return "\"password\"";
+            }
+            return null;
+        }
+
+    }
+
     /**
-     * if true it will mask the content you input in the textbox 
+     * if true it will mask the content you input in the textbox
      * 
      */
-	@Property(name = "type", handler = SecretHandler.class)
-	Boolean secret;
-    
+    @Property(name = "type", handler = SecretHandler.class)
+    Boolean secret;
+
 }
