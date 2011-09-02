@@ -1,8 +1,18 @@
+/*******************************************************************************
+ *      Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+ *      Available via Academic Free License >= 2.1 OR the modified BSD license.
+ *      see: http://dojotoolkit.org/license for details
+ *******************************************************************************/
 package org.dojoserverfaces.component.mobile;
 
 import org.dojoserverfaces.build.annotation.Property;
 
-public abstract class AbstractItem extends WidgetBase {
+/**
+ * It is mapping to the _ItemBase in dojo.A base class for item classes (e.g.
+ * ListItem, IconItem, ToolbarButton,etc.)
+ * 
+ */
+public abstract class ItemBase extends WidgetBase {
     /**
      * A callback function that is called when the transition has been finished.
      * A function reference, or name of a function in context.
