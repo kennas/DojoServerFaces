@@ -11,7 +11,7 @@ import org.dojoserverfaces.build.annotation.EditableValueHolder;
 import org.dojoserverfaces.build.annotation.Property;
 
 /**
- * A simple text input area. A non-templated base class for textbox form inputs
+ * A simple text input area. 
  * 
  */
 @EditableValueHolder(dojoType = "dojox.mobile.TextBox", requiredCss = { "dojox/mobile/themes/{theme}/TextBox.css" })
