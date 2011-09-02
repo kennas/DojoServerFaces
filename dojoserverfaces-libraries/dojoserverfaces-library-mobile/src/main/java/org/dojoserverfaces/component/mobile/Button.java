@@ -19,37 +19,36 @@ import org.dojoserverfaces.widget.property.EnumPropertyBase;
  */
 @ActionSource(dojoType = "dojox.mobile.Button", requiredCss = { "dojox/mobile/themes/{theme}/Button.css" })
 class Button extends ButtonBase {
-    static class TypeProperty extends EnumPropertyBase{
-        private static String[] validValues = {"submit","reset","button"};
+    static class TypeProperty extends EnumPropertyBase {
+        private static String[] validValues = { "submit", "reset", "button" };
+
         protected TypeProperty(String name, String propertyName) {
             super(name, propertyName, validValues);
         }
+
         @Override
         public String getAsPropertyValue(UIComponent component) {
             Object value = getAttributeValue(component);
             if (null == value) {
                 // if no type set then assume submit it action set
-                if (null != component.getAttributes().get("action")){
+                if (null != component.getAttributes().get("action")) {
                     return Helper.quote("submit");
                 }
             }
             return super.getAsPropertyValue(component);
         }
-        
+
     }
+
     /**
      * Button type; submit, reset and button.
      */
     @Property(handler = TypeProperty.class)
     String type;
     /**
-     * 
+     * duration of selection, milliseconds or -1 for no post-click CSS styling
      */
     @Property
     Integer duration;
-    /**
-     * 
-     */
-    @Property
-    String btnClass;
+
 }

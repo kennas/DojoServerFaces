@@ -7,7 +7,10 @@ package org.dojoserverfaces.component.mobile;
 
 import org.dojoserverfaces.build.annotation.Event;
 import org.dojoserverfaces.build.annotation.Property;
-
+/**
+ * InputBase 
+ *
+ */
 abstract class InputBase extends WidgetBase {
 
     /**
