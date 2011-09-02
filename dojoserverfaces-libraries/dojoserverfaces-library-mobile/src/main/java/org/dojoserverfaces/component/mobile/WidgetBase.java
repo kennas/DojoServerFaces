@@ -6,14 +6,14 @@
 package org.dojoserverfaces.component.mobile;
 
 import org.dojoserverfaces.build.annotation.Property;
+
 /**
  * 
  * it is base class of all mobile widgets
- *
+ * 
  */
 public abstract class WidgetBase {
 
-    
     /**
      * The CSS style to associate with the rendered HTML element.
      */
@@ -25,7 +25,6 @@ public abstract class WidgetBase {
      */
     @Property(name = "class")
     String styleClass;
-
     /**
      * The label to display for a given component. This is interchangeable with
      * the 'label' parameter, as some components already have a use for the
@@ -33,6 +32,7 @@ public abstract class WidgetBase {
      */
     @Property
     String title;
+
     /**
      * When this widget's title attribute is used to for a tab label, accordion
      * pane title, etc., this specifies the tooltip to appear when the mouse is

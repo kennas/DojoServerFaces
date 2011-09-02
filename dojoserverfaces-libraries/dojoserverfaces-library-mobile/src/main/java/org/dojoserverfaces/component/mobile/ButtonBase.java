@@ -7,7 +7,10 @@ package org.dojoserverfaces.component.mobile;
 
 import org.dojoserverfaces.build.annotation.Event;
 import org.dojoserverfaces.build.annotation.Property;
-
+/**
+ * Base Class of buttons
+ *
+ */
 public class ButtonBase extends WidgetBase {
 
     /**
@@ -17,8 +20,8 @@ public class ButtonBase extends WidgetBase {
     Boolean disabled;
 
     /**
-     * Text to display in the button. If the label is hidden (showLabel=false) then
-     * and no title has been specified, then label is also set as title
+     * Text to display in the button. If the label is hidden (showLabel=false)
+     * then and no title has been specified, then label is also set as title
      * attribute of icon.
      */
     @Property
@@ -42,12 +45,11 @@ public class ButtonBase extends WidgetBase {
      */
     @Property
     String iconClass;
-    
+
     /**
      * The event handler script to execute when the button is clicked.
      */
     @Event(isDefault = true)
     String onClick;
-
 
 }

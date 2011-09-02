@@ -7,37 +7,41 @@ package org.dojoserverfaces.component.mobile;
 
 import org.dojoserverfaces.build.annotation.Event;
 import org.dojoserverfaces.build.annotation.Property;
-
+/**
+ * Base Class of TextBox
+ *
+ */
 abstract class TextBoxBase extends InputBase {
-	/**
-	 * The maximum length of input to be allowed by the client.
-	 */
-	@Property
-	Integer maxLength;
+    /**
+     * The maximum length of input to be allowed by the client.
+     */
+    @Property
+    Integer maxLength;
 
-	/**
-	 * Indication of whether or not leading and trailing whitespace are trimmed
-	 * from the input field on the client.
-	 */
-	@Property
-	Boolean trim;
+    /**
+     * Indication of whether or not leading and trailing whitespace are trimmed
+     * from the input field on the client.
+     */
+    @Property
+    Boolean trim;
 
-	/**
-	 * Help text displayed inside the input field.
-	 */
-	@Property
-	String placeHolder;
-	
-	/**
-	 * Indication that all text should be selected when field receives focus with mouse
-	 */
-	@Property
-	Boolean selectOnClick;
+    /**
+     * Help text displayed inside the input field.
+     */
+    @Property
+    String placeHolder;
 
-	/**
-	 * The event handler script to execute when text in the field is selected.
-	 */
-	@Event
-	String onSelect;
+    /**
+     * Indication that all text should be selected when field receives focus
+     * with mouse
+     */
+    @Property
+    Boolean selectOnClick;
+
+    /**
+     * The event handler script to execute when text in the field is selected.
+     */
+    @Event
+    String onSelect;
 
 }
