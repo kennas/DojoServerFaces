@@ -8,6 +8,7 @@ package org.dojoserverfaces.component.mobile.container;
 import org.dojoserverfaces.build.annotation.Container;
 import org.dojoserverfaces.build.annotation.Property;
 import org.dojoserverfaces.component.mobile.WidgetBase;
+import org.dojoserverfaces.widget.property.EnumPropertyBase;
 
 /**
  * ScrollableView is a container widget that represents entire mobile device
@@ -22,6 +23,14 @@ import org.dojoserverfaces.component.mobile.WidgetBase;
  */
 @Container(dojoType = "dojox.mobile.ScrollableView", requiredCss = "dojox/mobile/themes/{theme}/ScrollableView.css")
 class ScrollableView extends WidgetBase {
+    static class ScrollDirProperty extends EnumPropertyBase {
+        private static String[] validValues = { "v", "h", "vh" };
+
+        protected ScrollDirProperty(String name, String propertyName) {
+            super(name, propertyName, validValues);
+        }
+    }
+
     /**
      * If true, the view is displayed at startup time. Defaults to false.
      */
@@ -38,7 +47,7 @@ class ScrollableView extends WidgetBase {
     /**
      * If true, scroll bar is displayed. Defaults to true.
      */
-    @Property
+    @Property(handler = ScrollDirProperty.class)
     Boolean scrollBar;
 
     /**
