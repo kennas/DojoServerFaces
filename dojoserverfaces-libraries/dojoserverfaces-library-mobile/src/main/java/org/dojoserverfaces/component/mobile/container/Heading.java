@@ -7,6 +7,7 @@ package org.dojoserverfaces.component.mobile.container;
 
 import org.dojoserverfaces.build.annotation.Container;
 import org.dojoserverfaces.build.annotation.Property;
+import org.dojoserverfaces.component.mobile.TransitionProperty;
 import org.dojoserverfaces.component.mobile.WidgetBase;
 
 /**
@@ -46,7 +47,7 @@ class Heading extends WidgetBase {
      * "revealv", "scaleIn", "scaleOut", "slidev", "swirl", "zoomIn", "zoomOut".
      * If "none" is specified, transition occurs immediately without animation.
      */
-    @Property
+    @Property(handler = TransitionProperty.class)
     String transition;
 
     /**
