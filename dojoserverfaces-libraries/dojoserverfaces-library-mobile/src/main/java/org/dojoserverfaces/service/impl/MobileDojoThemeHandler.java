@@ -39,7 +39,7 @@ public class MobileDojoThemeHandler extends DojoResource implements
         // We do not use the themeName param in mobileCase
         return new StringBuilder(getLibraryUrlPrefix(context))
                 .append("dojox/mobile/themes/").append(getThemeName())
-                .append("/").append("/common.css").toString();
+                .append("/").append("common.css").toString();
     }
 
     /*
