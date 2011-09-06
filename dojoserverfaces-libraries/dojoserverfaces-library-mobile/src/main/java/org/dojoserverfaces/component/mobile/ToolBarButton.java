@@ -15,7 +15,9 @@ import org.dojoserverfaces.build.annotation.Property;
  * icon support, transition, etc.
  * 
  */
-@ActionSource(dojoType = "dojox.mobile.ToolBarButton", requiredCss = { "dojox/mobile/themes/{theme}/ToolBarButton.css","dojox/mobile/themes/common/domButtons.css" })
+@ActionSource(dojoType = "dojox.mobile.ToolBarButton", requiredCss = {
+        "dojox/mobile/themes/{theme}/ToolBarButton.css",
+        "dojox/mobile/themes/common/domButtons.css" })
 public class ToolBarButton extends ItemBase {
 
     /**
@@ -29,8 +31,8 @@ public class ToolBarButton extends ItemBase {
     @Event(isDefault = true)
     String onClick;
     /**
-     * It is used the css class defined in the domButton.css
-     * TO-DO: do we need this property it is described as Deprecated in dojo source.
+     * It is used the css class defined in the domButton.css TO-DO: do we need
+     * this property it is described as Deprecated in dojo source.
      * 
      */
     @Property
