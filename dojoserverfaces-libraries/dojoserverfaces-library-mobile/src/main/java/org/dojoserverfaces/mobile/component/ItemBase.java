@@ -3,7 +3,7 @@
  *      Available via Academic Free License >= 2.1 OR the modified BSD license.
  *      see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.component.mobile;
+package org.dojoserverfaces.mobile.component;
 
 import org.dojoserverfaces.build.annotation.Property;
 

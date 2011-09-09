@@ -3,13 +3,15 @@
  * 	Available via Academic Free License >= 2.1 OR the modified BSD license.
  * 	see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.component.mobile;
+package org.dojoserverfaces.mobile.component.gadget;
 
 import org.dojoserverfaces.build.annotation.Event;
 import org.dojoserverfaces.build.annotation.Property;
+import org.dojoserverfaces.mobile.component.WidgetBase;
+
 /**
  * Base Class of buttons
- *
+ * 
  */
 public class ButtonBase extends WidgetBase {
 

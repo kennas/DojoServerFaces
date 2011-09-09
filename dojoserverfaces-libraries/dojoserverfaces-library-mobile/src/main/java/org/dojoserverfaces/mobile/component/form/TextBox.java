@@ -3,7 +3,7 @@
  * 	Available via Academic Free License >= 2.1 OR the modified BSD license.
  * 	see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.component.mobile;
+package org.dojoserverfaces.mobile.component.form;
 
 import javax.faces.component.UIComponent;
 
@@ -11,7 +11,7 @@ import org.dojoserverfaces.build.annotation.EditableValueHolder;
 import org.dojoserverfaces.build.annotation.Property;
 
 /**
- * A simple text input area. 
+ * A simple text input area.
  * 
  */
 @EditableValueHolder(dojoType = "dojox.mobile.TextBox", requiredCss = { "dojox/mobile/themes/{theme}/TextBox.css" })
