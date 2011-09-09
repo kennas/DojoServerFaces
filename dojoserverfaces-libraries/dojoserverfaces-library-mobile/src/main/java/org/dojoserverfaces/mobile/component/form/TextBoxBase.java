@@ -3,13 +3,14 @@
  * 	Available via Academic Free License >= 2.1 OR the modified BSD license.
  * 	see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.component.mobile;
+package org.dojoserverfaces.mobile.component.form;
 
 import org.dojoserverfaces.build.annotation.Event;
 import org.dojoserverfaces.build.annotation.Property;
+
 /**
  * Base Class of TextBox
- *
+ * 
  */
 abstract class TextBoxBase extends InputBase {
     /**

@@ -3,7 +3,7 @@
  *      Available via Academic Free License >= 2.1 OR the modified BSD license.
  *      see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.service.impl;
+package org.dojoserverfaces.mobile.service;
 
 import org.dojoserverfaces.service.DojoThemeHandler;
 import org.dojoserverfaces.service.LibraryService;
