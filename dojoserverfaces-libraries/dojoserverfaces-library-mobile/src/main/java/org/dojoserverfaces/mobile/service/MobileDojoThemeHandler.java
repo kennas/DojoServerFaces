@@ -3,7 +3,7 @@
  *      Available via Academic Free License >= 2.1 OR the modified BSD license.
  *      see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.service.impl;
+package org.dojoserverfaces.mobile.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class MobileDojoThemeHandler extends DojoResource implements
         // We do not use the themeName param in mobileCase
         return new StringBuilder(getLibraryUrlPrefix(context))
                 .append("dojox/mobile/themes/").append(getThemeName())
-                .append("/").append("/common.css").toString();
+                .append("/common.css").toString();
     }
 
     /*
