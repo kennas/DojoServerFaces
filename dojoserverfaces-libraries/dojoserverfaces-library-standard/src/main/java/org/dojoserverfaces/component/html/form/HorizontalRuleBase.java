@@ -27,7 +27,7 @@ class HorizontalRuleBase extends WidgetBase {
      * Legal values are either "topDecoration" or "bottomDecoration". Default is
      * bottomDecoration.
      */
-    @Property
+    @Property(handler = ContainerProperty.class)
     String container;
 
 }
