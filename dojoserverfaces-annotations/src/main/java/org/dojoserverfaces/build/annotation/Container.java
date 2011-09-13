@@ -48,8 +48,8 @@ public @interface Container {
     public RendersChildren rendersChildren() default RendersChildren.NO_NOT_RESPONSIBLE;
 
     /**
-     * @return true if the widget is a Dojo Container, false otherwise. Defaults
+     * @return true if the widget is a Dijit Container, false otherwise. Defaults
      *         to true.
      */
-    public boolean isContainer() default true;
+    public boolean isDijitContainer() default true;
 }
