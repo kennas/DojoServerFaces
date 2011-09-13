@@ -15,7 +15,7 @@ public class TransitionProperty extends EnumPropertyBase {
             "coverv", "dissolve", "flip2", "reveal", "revealv", "scaleIn",
             "scaleOut", "slidev", "swirl", "zoomIn", "zoomOut" };
 
-    protected TransitionProperty(String name, String propertyName) {
+    public TransitionProperty(String name, String propertyName) {
         super(name, propertyName, validValues);
     }
 }
