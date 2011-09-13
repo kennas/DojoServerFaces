@@ -282,8 +282,11 @@ if (!context.componentInfo.isWidget){ %>
        
     }
     
-    public boolean isContainer() {
-        return ${context.componentInfo.isContainer};
+    /* (non-Javadoc)
+    * @see org.dojoserverfaces.component.dojo.DojoWidget#isDijitContainer()
+    */
+    public boolean isDijitContainer() {
+        return ${context.componentInfo.isDijitContainer};
     }
     
     /* (non-Javadoc)
