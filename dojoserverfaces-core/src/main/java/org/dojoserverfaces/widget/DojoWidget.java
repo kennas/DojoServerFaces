@@ -54,8 +54,8 @@ public interface DojoWidget extends ClientBehaviorHolder {
     public RendersChildren getRenderChildrenType();
 
     /**
-     * @return return true if this widget is a Dojo Container, return false
+     * @return return true if this widget is a Dijit Container, return false
      *         otherwise
      */
-    public boolean isContainer();
+    public boolean isDijitContainer();
 }

@@ -210,7 +210,7 @@ public class ComponentRenderer extends Renderer {
         // ...
         component.pushComponentToEL(context, component);
 
-        if (dojoWidget.isContainer()
+        if (dojoWidget.isDijitContainer()
                 && !context.getAttributes().containsKey(START_UP_CONTAINER_ID)) {
             context.getAttributes().put(START_UP_CONTAINER_ID,
                     component.getId());

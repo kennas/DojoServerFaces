@@ -36,7 +36,7 @@ public class GeneratedComponentInfo extends ComponentInfo {
     private Boolean isActionSource = Boolean.FALSE;
     private String jsfNode;
     private RendersChildren rendersChildren = RendersChildren.NO_NOT_RESPONSIBLE;
-    private Boolean isContainer = Boolean.FALSE;
+    private Boolean isDijitContainer = Boolean.FALSE;
 
     /**
      * indication that the component will handle postbacks
@@ -337,12 +337,12 @@ public class GeneratedComponentInfo extends ComponentInfo {
         return postBackHandler;
     }
 
-    public Boolean getIsContainer() {
-        return isContainer;
+    public Boolean getIsDijitContainer() {
+        return isDijitContainer;
     }
 
-    public void setIsContainer(Boolean isContainer) {
-        this.isContainer = isContainer;
+    public void setIsDijitContainer(Boolean isDijitContainer) {
+        this.isDijitContainer = isDijitContainer;
     }
 
 }
