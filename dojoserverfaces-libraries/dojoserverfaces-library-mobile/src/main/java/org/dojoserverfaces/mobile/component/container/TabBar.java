@@ -7,6 +7,7 @@ package org.dojoserverfaces.mobile.component.container;
 
 import org.dojoserverfaces.build.annotation.Container;
 import org.dojoserverfaces.build.annotation.Property;
+import org.dojoserverfaces.constants.RendersChildren;
 import org.dojoserverfaces.mobile.component.WidgetBase;
 import org.dojoserverfaces.widget.property.EnumPropertyBase;
 
@@ -16,7 +17,7 @@ import org.dojoserverfaces.widget.property.EnumPropertyBase;
  * dojox.mobile.TabContainer in dojo-1.5, but it is obsolete. In dojo-1.6 or
  * later, use TabBar instead of TabContainer.
  */
-@Container(dojoType = "dojox.mobile.TabBar", requiredCss = "dojox/mobile/themes/{theme}/TabBar.css")
+@Container(dojoType = "dojox.mobile.TabBar", requiredCss = "dojox/mobile/themes/{theme}/TabBar.css", rendersChildren = RendersChildren.YES_USE_ADD_CHILD)
 class TabBar extends WidgetBase {
     static class BarTypeProperty extends EnumPropertyBase {
         private static String[] validValues = { "tabBar", "segmentedControl" };
