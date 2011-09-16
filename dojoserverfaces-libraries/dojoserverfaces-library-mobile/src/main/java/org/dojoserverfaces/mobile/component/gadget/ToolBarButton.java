@@ -6,6 +6,7 @@
 package org.dojoserverfaces.mobile.component.gadget;
 
 import org.dojoserverfaces.build.annotation.ActionSource;
+import org.dojoserverfaces.build.annotation.Event;
 import org.dojoserverfaces.build.annotation.Property;
 import org.dojoserverfaces.mobile.component.ItemBase;
 
@@ -23,5 +24,10 @@ public class ToolBarButton extends ItemBase {
      */
     @Property
     Object selected;
+    /**
+     * The event handler script to execute when the button is clicked.
+     */
+    @Event(isDefault = true)
+    String onClick;
 
 }
