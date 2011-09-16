@@ -9,8 +9,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.faces.component.UIComponent;
+import javax.faces.component.behavior.ClientBehavior;
+import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.convert.ConverterException;
@@ -276,6 +280,37 @@ public class ComponentRenderer extends Renderer {
 
         // TODO: If there are any attached client behaviors we need to also
         // decode those.
+        if (component instanceof ClientBehaviorHolder) {
+            decodeClientBehaviors(context, component);
+        }
+    }
+
+    public void decodeClientBehaviors(FacesContext context,
+            UIComponent component) {
+        if (!(component instanceof ClientBehaviorHolder)) {
+            return;
+        }
+        Map<String, List<ClientBehavior>> clientBehaviorMap = ((ClientBehaviorHolder) component)
+                .getClientBehaviors();
+        if (clientBehaviorMap == null || clientBehaviorMap.isEmpty()) {
+            return;
+        }
+
+        Map<String, String> paramMap = context.getExternalContext()
+                .getRequestParameterMap();
+        // Just decode the behaviors bound to postback event?
+        String eventName = paramMap.get("javax.faces.behavior.event");
+        if (eventName != null) {
+            List<ClientBehavior> behaviors = clientBehaviorMap.get(eventName);
+            if (behaviors != null && !behaviors.isEmpty()) {
+                String source = paramMap.get("javax.faces.source");
+                if (component.getClientId().equals(source)) {
+                    for (ClientBehavior behavior : behaviors) {
+                        behavior.decode(context, component);
+                    }
+                }
+            }
+        }
     }
 
     /*
