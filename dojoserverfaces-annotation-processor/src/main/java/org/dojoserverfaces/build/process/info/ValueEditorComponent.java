@@ -54,7 +54,10 @@ public class ValueEditorComponent extends GeneratedComponentInfo {
                 "required",
                 "Indicates a value is required to be submitted for this component.",
                 false, "java.lang.Boolean"));
-
+        addAttribute(new AttributeInfo(
+                "converter",
+                "The id or class name of a custom converter to use with this component. If a custom converter may also be specified by using the converter tag as a child tag of the component.",
+                false, "java.lang.String"));
         // from UIInput
         addAttribute(new AttributeInfo("requiredMessage",
                 "Message to be used when reporting no value was submitted.",
