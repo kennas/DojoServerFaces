@@ -1,0 +1,25 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testAjaxRefresh() -->
+	<div class="testCase">
+	<f:subview id="ajaxRefresh">
+		<span class="testTitle">Test case which ajaxically updates ManagedBean's value bound to the component</span>
+		<h:panelGrid columns="3">
+			<jd:inlineEditBox id="widgetAjaxCall" value="#{inlineEditBoxBean.beanBoundValue.data}" autoSave="true" renderAsHtml="false" editing="false" noValueIndicator="edit here" width="700px">
+		        <dojoBehaviors:behaviorCopyValue event="change" source="widgetAjaxCall" destination="description" />
+		    </jd:inlineEditBox>
+		    <jd:button id="button" label="Submit">
+			    <f:ajax execute="@form" render="result" />
+		    </jd:button>
+		    <h:inputHidden id="description" value="#{inlineEditBoxBean.beanBoundValue.data}"/>
+		    <h:outputText id="result" value="#{inlineEditBoxBean.beanBoundValue.data}"></h:outputText>
+		</h:panelGrid>
+	</f:subview>
+	</div>
+</ui:composition>
