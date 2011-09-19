@@ -1,0 +1,44 @@
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+	xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
+	<!-- Selenium test method: org.dojoserverfaces.tests.category.component.ComponentSelenium.testAjaxRefresh() -->
+	<div class="testCase"><f:subview id="ajaxRefresh">
+		<span class="testTitle">Test case which ajaxically updates
+		ManagedBean's value bound to the component</span>
+		<h:panelGrid columns="1">
+			<jd:progressBar id="progressbar" style="width:300px;height:14px"
+				indeterminate="#{progressBarBean.indeterminate}"
+				label="#{progressBarBean.beanBoundValue.data}"
+				progress="#{progressBarBean.progress}"
+				maximum="#{progressBarBean.maximum}"
+				places="#{progressBarBean.places}" />
+			<jd:tableContainer cols="2" orientation="horiz" spacing="1"
+				style="width: 100%;">
+				<jd:booleanCheckBox id="indeter" title="Indeterminate"
+					value="#{progressBarBean.indeterminate}" />
+				<jd:textBox id="label" title="Label" value="#{progressBarBean.beanBoundValue.data}" >
+				<f:ajax execute="@form" event="change" render="progressbar"></f:ajax></jd:textBox>
+				<jd:textBox id="progress" title="Progress"
+					value="#{progressBarBean.progress}">
+					
+				</jd:textBox>
+				<jd:textBox id="max" title="Maximum"
+					value="#{progressBarBean.maximum}" />
+				<jd:textBox id="places" title="Places"
+					value="#{progressBarBean.places}" />
+			</jd:tableContainer>
+			<jd:button id="button" label="Apply">
+				<f:ajax execute="@form" event="click" render="result"></f:ajax>
+			</jd:button>
+			<h:outputText id="result" value="#{progressBarBean.beanBoundValue.data}"></h:outputText>
+		</h:panelGrid>
+	</f:subview></div>
+</ui:composition>
