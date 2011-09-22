@@ -62,7 +62,7 @@ class RoundRectList extends WidgetBase {
      * can be only one selected item at a time. If "multiple", there can be
      * multiple selected items at a time. Defaults to "".
      */
-    @Property
+    @Property(handler = SelectionModeProperty.class)
     String select;
 
     /**
