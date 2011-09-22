@@ -7,7 +7,6 @@ package org.dojoserverfaces.mobile.component.container;
 
 import org.dojoserverfaces.build.annotation.Container;
 import org.dojoserverfaces.build.annotation.Property;
-import org.dojoserverfaces.mobile.component.WidgetBase;
 import org.dojoserverfaces.widget.property.EnumPropertyBase;
 
 /**
@@ -22,7 +21,7 @@ import org.dojoserverfaces.widget.property.EnumPropertyBase;
  * realize fixed-positioned header and/or footer bars.
  */
 @Container(dojoType = "dojox.mobile.ScrollableView", requiredCss = "dojox/mobile/themes/{theme}/ScrollableView.css")
-class ScrollableView extends WidgetBase {
+class ScrollableView extends View {
     static class ScrollDirProperty extends EnumPropertyBase {
         private static String[] validValues = { "v", "h", "vh" };
 
@@ -30,19 +29,6 @@ class ScrollableView extends WidgetBase {
             super(name, propertyName, validValues);
         }
     }
-
-    /**
-     * If true, the view is displayed at startup time. Defaults to false.
-     */
-    @Property
-    Boolean selected;
-
-    /**
-     * If true, the scroll position is kept when transition occurs between
-     * views. Defaults to true.
-     */
-    @Property
-    Boolean keepScrollPos;
 
     /**
      * If true, scroll bar is displayed. Defaults to true.
