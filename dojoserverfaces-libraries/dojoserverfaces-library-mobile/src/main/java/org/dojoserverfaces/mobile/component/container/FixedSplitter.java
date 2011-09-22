@@ -34,6 +34,6 @@ class FixedSplitter extends WidgetBase {
      * horizontally. If "V" is specified, panes are split vertically. Defaults
      * to "H".
      */
-    @Property
+    @Property(handler = OrientationProperty.class)
     String orientation;
 }
