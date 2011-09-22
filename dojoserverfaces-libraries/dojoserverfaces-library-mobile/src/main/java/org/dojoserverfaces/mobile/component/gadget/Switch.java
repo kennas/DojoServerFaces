@@ -38,22 +38,22 @@ public class Switch extends WidgetBase {
     @Event
     String onClick;
     /**
-     * Internal function to handle touchStart events.
+     * The event handler script to execute when the widget is click touchStart.
      */
     @Event
     String onTouchStart;
     /**
-     * Internal function to handle touchMove events.
+     * The event handler script to execute when the widget touchMove events.
      */
     @Event
     String onTouchMove;
     /**
-     * Internal function to handle touchEnd events.
+     * The event handler script to execute when the widget is click touchStart.
      */
     @Event
     String onTouchEnd;
     /**
-     * Called when the state has been changed.
+     * The event handler script to execute when the widget‘s stateChanged.
      */
     @Event
     String onStateChanged;
