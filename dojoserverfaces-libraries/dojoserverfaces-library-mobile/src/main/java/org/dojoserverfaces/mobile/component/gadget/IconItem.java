@@ -17,7 +17,7 @@ import org.dojoserverfaces.mobile.component.ItemBase;
  * the moveTo, href or url parameters.
  * 
  */
-@Gadget(dojoType = "dojox.mobile.IconItem", requiredCss = { "dojox/mobile/themes/{theme}/IconItem.css" })
+@Gadget(dojoType = "dojox.mobile.IconItem")
 public class IconItem extends ItemBase {
     /**
      * If true, the content of the item, which includes dojo markup, is

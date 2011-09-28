@@ -15,7 +15,9 @@ import org.dojoserverfaces.mobile.component.WidgetBase;
  * and forth without page transitions.
  * 
  */
-@Container(dojoType = "dojox.mobile.View", requiredCss = "dojox/mobile/themes/{theme}/ScrollableView.css")
+@Container(dojoType = "dojox.mobile.View", requiredCss = {
+        "dojox/mobile/themes/{theme}/View.css",
+        "dojox/mobile/themes/{theme}/{theme}.css" })
 public class View extends WidgetBase {
     /**
      * If true, the view is displayed at startup time. Defaults to false.
