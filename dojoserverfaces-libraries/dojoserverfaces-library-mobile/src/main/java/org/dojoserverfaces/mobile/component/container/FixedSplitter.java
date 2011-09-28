@@ -19,7 +19,7 @@ import org.dojoserverfaces.widget.property.EnumPropertyBase;
  * border of a child dom node with CSS. A child of the widget should be
  * FixedSplitterPane.
  */
-@Container(dojoType = "dojox.mobile.FixedSplitter", requiredCss = "dojox/mobile/themes/{theme}/FixedSplitter.css")
+@Container(dojoType = "dojox.mobile.FixedSplitter", requiredCss = "dojox/mobile/themes/common/FixedSplitter.css")
 class FixedSplitter extends WidgetBase {
     static class OrientationProperty extends EnumPropertyBase {
         private static String[] validValues = { "H", "V" };

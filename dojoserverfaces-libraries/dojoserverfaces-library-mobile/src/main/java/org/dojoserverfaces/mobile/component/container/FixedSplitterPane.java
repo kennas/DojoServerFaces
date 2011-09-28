@@ -13,6 +13,6 @@ import org.dojoserverfaces.mobile.component.WidgetBase;
  * dojox.mobile.FixedSplitter. It is a widget, but can be regarded as a simple
  * <div> element.
  */
-@Container(dojoType = "dojox.mobile.FixedSplitterPane", requiredCss = "dojox/mobile/themes/{theme}/FixedSplitterPane.css")
+@Container(dojoType = "dojox.mobile.FixedSplitterPane")
 class FixedSplitterPane extends WidgetBase {
 }

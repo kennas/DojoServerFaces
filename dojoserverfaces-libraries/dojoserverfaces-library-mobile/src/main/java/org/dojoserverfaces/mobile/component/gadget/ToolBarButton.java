@@ -5,8 +5,8 @@
  *******************************************************************************/
 package org.dojoserverfaces.mobile.component.gadget;
 
-import org.dojoserverfaces.build.annotation.ActionSource;
 import org.dojoserverfaces.build.annotation.Event;
+import org.dojoserverfaces.build.annotation.Gadget;
 import org.dojoserverfaces.build.annotation.Property;
 import org.dojoserverfaces.mobile.component.ItemBase;
 
@@ -16,7 +16,7 @@ import org.dojoserverfaces.mobile.component.ItemBase;
  * icon support, transition, etc.
  * 
  */
-@ActionSource(dojoType = "dojox.mobile.ToolBarButton", requiredCss = { "dojox/mobile/themes/{theme}/ToolBarButton.css" })
+@Gadget(dojoType = "dojox.mobile.ToolBarButton", requiredCss = { "dojox/mobile/themes/{theme}/ToolBarButton.css" })
 public class ToolBarButton extends ItemBase {
 
     /**

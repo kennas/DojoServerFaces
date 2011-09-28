@@ -5,11 +5,11 @@
  *******************************************************************************/
 package org.dojoserverfaces.mobile.component.gadget;
 
-import org.dojoserverfaces.build.annotation.Container;
+import org.dojoserverfaces.build.annotation.Gadget;
 
 /**
  * EdgeToEdgeCategory is a category header for an edge-to-edge list.
  */
-@Container(dojoType = "dojox.mobile.EdgeToEdgeCategory", requiredCss = "dojox/mobile/themes/{theme}/EdgeToEdgeCategory.css")
+@Gadget(dojoType = "dojox.mobile.EdgeToEdgeCategory", requiredCss = "dojox/mobile/themes/{theme}/EdgeToEdgeCategory.css")
 class EdgeToEdgeCategory extends RoundRectCategory {
 }
