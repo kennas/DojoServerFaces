@@ -5,8 +5,8 @@
  *******************************************************************************/
 package org.dojoserverfaces.mobile.component.gadget;
 
-import org.dojoserverfaces.build.annotation.ActionSource;
 import org.dojoserverfaces.build.annotation.Event;
+import org.dojoserverfaces.build.annotation.Gadget;
 import org.dojoserverfaces.build.annotation.Property;
 import org.dojoserverfaces.mobile.component.ItemBase;
 
@@ -17,7 +17,7 @@ import org.dojoserverfaces.mobile.component.ItemBase;
  * support, transition, etc.
  * 
  */
-@ActionSource(dojoType = "dojox.mobile.TabBarButton", requiredCss = { "dojox/mobile/themes/{theme}/TabBarButton.css","dojox/mobile/themes/{theme}/{theme}.css" })
+@Gadget(dojoType = "dojox.mobile.TabBarButton", requiredCss = { "dojox/mobile/themes/{theme}/TabBarButton.css","dojox/mobile/themes/{theme}/{theme}.css" })
 public class TabBarButton extends ItemBase {
     /**
      * A path for the unselected (typically dark) icon. If icon is not
