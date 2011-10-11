@@ -26,7 +26,7 @@
 	<dsf:scrollableView id="textBoxView" 
 		selected="true" style="width: 300px; text-align: center;">
 		<h:form>
-			<h:panelGrid columns="2" style="margin: 8px auto;">
+			<h:panelGrid columns="2">
 				<h:outputLabel value="Username: " />
 				<dsf:textBox placeHolder="Enter your name" 
 					selectOnClick="true" value="#{textBox.username}" />
@@ -37,18 +37,17 @@
 				
 				<h:outputLabel value="" />
 				<dsf:button label="Login" style="width: 100%;">
-					<f:ajax render="" event="click"
-						onevent="function(e){if(e.status=='success')dijit.byId('textBoxView').performTransition('welcome');}"/>
+					<f:ajax render=":welcomeView" event="click" execute="@form"
+						 onevent="function(e){if(e.status=='success')setTimeout(function(){dijit.byId('textBoxView').performTransition('welcomeView',1,'slide');},0);}" />
 				</dsf:button>
 			</h:panelGrid>
 		</h:form>
 	</dsf:scrollableView>
 	
 	<dsf:scrollableView id="welcomeView">
-		<dsf:edgeToEdgeCategory
-			style="text-align:center;vertical-align:middle;">
-			<div>Welcome to Dojo Mobile Showcase</div>
-		</dsf:edgeToEdgeCategory>
+		<dsf:heading back="Back" moveTo="textBoxView" transition="slide"
+			label="Welcome to DSF, #{textBox.username}!">
+		</dsf:heading>
 	</dsf:scrollableView>
 </h:body>
 </html>
