@@ -47,33 +47,27 @@ public class ComponentRenderer extends Renderer {
         StringBuilder widgetPostCreateInitializationScript = new StringBuilder();
         DojoType dojoType = dojoWidget.getWidgetType();
         StringBuilder widgetInitialization = new StringBuilder();
-        //String varName = null;
+        String varName = null;
         DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
                 .findInitBlockComponent(facesContext.getViewRoot());
-      /*  if (dojoWidget.getRenderChildrenType().equals(
-                RendersChildren.YES_USE_ADD_CHILD)) {
+        if (dojoWidget.renderPosition().equals(RenderPosition.EN_CODE_BEGIN)) {
             varName = component.getId();
             widgetInitialization.append("var ").append(varName).append("=");
-        }*/
+        }
         getWidgetInitializationScript(component, widgetInitialization,
                 widgetPostCreateInitializationScript);
         if (dojoType.isDijit()) {
-            // since all the widget who has children isDijit=true
-            // I write here.
-          /*  if (dojoWidget.getRenderChildrenType().equals(
-                    RendersChildren.YES_USE_ADD_CHILD)) {
-                widgetInitialization.append(";");
-                addComponentChildren(initScriptBlock, component,
-                        widgetInitialization,
-                        widgetPostCreateInitializationScript, varName);
-                widgetInitialization.append(varName);
-            }*/
 
             String startUpContainerId = (String) facesContext.getAttributes()
                     .get(START_UP_CONTAINER_ID);
-            if (startUpContainerId == null
-                    || component.getId().equals(startUpContainerId)) {
-                widgetInitialization.append(".startup();");
+            if (dojoWidget.renderPosition().equals(RenderPosition.EN_CODE_END)) {
+                if (startUpContainerId == null
+                        || component.getId().equals(startUpContainerId)) {
+                    widgetInitialization.append(".startup();");
+                }
+                else {
+                    widgetInitialization.append(";");
+                }
             }
             else {
                 widgetInitialization.append(";");
@@ -150,24 +144,6 @@ public class ComponentRenderer extends Renderer {
             widgetCreateScript.append("})");
         }
     }
-
-    // handle component's children
- /*   private void addComponentChildren(DojoScriptBlockComponent initScriptBlock,
-            UIComponent component, StringBuilder widgetInitialization,
-            StringBuilder postWidgetInitialization, String varName) {
-        for (UIComponent child : component.getChildren()) {
-            StringBuilder childCreation = new StringBuilder();
-            StringBuilder postChildCreation = new StringBuilder();
-            getWidgetInitializationScript(child, childCreation,
-                    postChildCreation);
-            // do we need this?
-            postWidgetInitialization.append(postChildCreation);
-            widgetInitialization.append(varName).append(".addChild(")
-                    .append(childCreation.toString()).append(");");
-            addComponentRequires(initScriptBlock, child);
-        }
-
-    }*/
 
     private void addComponentRequires(DojoScriptBlockComponent initScriptBlock,
             UIComponent component) {
@@ -254,6 +230,9 @@ public class ComponentRenderer extends Renderer {
         }
         if (dojoWidget.renderPosition().equals(RenderPosition.EN_CODE_END)) {
             addInitScriptToScriptBlock(context, component);
+        }
+        else {
+            // add container's startup()
         }
 
         if (component.getId().equals(
