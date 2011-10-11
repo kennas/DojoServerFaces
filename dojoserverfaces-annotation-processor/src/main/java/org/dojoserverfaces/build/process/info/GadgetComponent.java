@@ -30,5 +30,6 @@ public class GadgetComponent extends GeneratedComponentInfo {
         setDisplayName(annotation.displayName());
         setJsfNode(annotation.jsfNode());
         setRendersChildren(annotation.rendersChildren());
+        setRenderPosition(annotation.renderPosition());
     }
 }

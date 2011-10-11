@@ -9,6 +9,7 @@ import java.util.Collection;
 
 import javax.faces.component.behavior.ClientBehaviorHolder;
 
+import org.dojoserverfaces.constants.RenderPosition;
 import org.dojoserverfaces.constants.RendersChildren;
 import org.dojoserverfaces.widget.element.HtmlElement;
 import org.dojoserverfaces.widget.property.Property;
@@ -58,4 +59,10 @@ public interface DojoWidget extends ClientBehaviorHolder {
      *         otherwise
      */
     public boolean isDijitContainer();
+
+    /**
+     * 
+     * @return where rendering the script
+     */
+    public RenderPosition renderPosition();
 }

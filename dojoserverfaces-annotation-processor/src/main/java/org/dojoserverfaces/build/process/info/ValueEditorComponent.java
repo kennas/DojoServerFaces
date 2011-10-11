@@ -37,6 +37,7 @@ public class ValueEditorComponent extends GeneratedComponentInfo {
         setElementType(annotation.elementType());
         setJsfNode(annotation.jsfNode());
         setRendersChildren(annotation.rendersChildren());
+        setRenderPosition(annotation.renderPosition());
     }
 
     protected ValueEditorComponent(java.lang.annotation.Annotation annotation,

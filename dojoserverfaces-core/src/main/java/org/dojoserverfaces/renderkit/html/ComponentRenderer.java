@@ -22,7 +22,7 @@ import javax.faces.render.FacesRenderer;
 import javax.faces.render.Renderer;
 
 import org.dojoserverfaces.component.dojo.DojoScriptBlockComponent;
-import org.dojoserverfaces.constants.RendersChildren;
+import org.dojoserverfaces.constants.RenderPosition;
 import org.dojoserverfaces.widget.DojoType;
 import org.dojoserverfaces.widget.DojoWidget;
 import org.dojoserverfaces.widget.PostBackHandler;
@@ -47,27 +47,27 @@ public class ComponentRenderer extends Renderer {
         StringBuilder widgetPostCreateInitializationScript = new StringBuilder();
         DojoType dojoType = dojoWidget.getWidgetType();
         StringBuilder widgetInitialization = new StringBuilder();
-        String varName = null;
+        //String varName = null;
         DojoScriptBlockComponent initScriptBlock = DojoScriptBlockComponent
                 .findInitBlockComponent(facesContext.getViewRoot());
-        if (dojoWidget.getRenderChildrenType().equals(
+      /*  if (dojoWidget.getRenderChildrenType().equals(
                 RendersChildren.YES_USE_ADD_CHILD)) {
             varName = component.getId();
             widgetInitialization.append("var ").append(varName).append("=");
-        }
+        }*/
         getWidgetInitializationScript(component, widgetInitialization,
                 widgetPostCreateInitializationScript);
         if (dojoType.isDijit()) {
             // since all the widget who has children isDijit=true
             // I write here.
-            if (dojoWidget.getRenderChildrenType().equals(
+          /*  if (dojoWidget.getRenderChildrenType().equals(
                     RendersChildren.YES_USE_ADD_CHILD)) {
                 widgetInitialization.append(";");
                 addComponentChildren(initScriptBlock, component,
                         widgetInitialization,
                         widgetPostCreateInitializationScript, varName);
                 widgetInitialization.append(varName);
-            }
+            }*/
 
             String startUpContainerId = (String) facesContext.getAttributes()
                     .get(START_UP_CONTAINER_ID);
@@ -152,7 +152,7 @@ public class ComponentRenderer extends Renderer {
     }
 
     // handle component's children
-    private void addComponentChildren(DojoScriptBlockComponent initScriptBlock,
+ /*   private void addComponentChildren(DojoScriptBlockComponent initScriptBlock,
             UIComponent component, StringBuilder widgetInitialization,
             StringBuilder postWidgetInitialization, String varName) {
         for (UIComponent child : component.getChildren()) {
@@ -167,7 +167,7 @@ public class ComponentRenderer extends Renderer {
             addComponentRequires(initScriptBlock, child);
         }
 
-    }
+    }*/
 
     private void addComponentRequires(DojoScriptBlockComponent initScriptBlock,
             UIComponent component) {
@@ -219,6 +219,9 @@ public class ComponentRenderer extends Renderer {
             context.getAttributes().put(START_UP_CONTAINER_ID,
                     component.getId());
         }
+        if (dojoWidget.renderPosition().equals(RenderPosition.EN_CODE_BEGIN)) {
+            addInitScriptToScriptBlock(context, component);
+        }
     }
 
     /*
@@ -249,7 +252,9 @@ public class ComponentRenderer extends Renderer {
                 writer.write(closeTag);
             }
         }
-        addInitScriptToScriptBlock(context, component);
+        if (dojoWidget.renderPosition().equals(RenderPosition.EN_CODE_END)) {
+            addInitScriptToScriptBlock(context, component);
+        }
 
         if (component.getId().equals(
                 context.getAttributes().get(START_UP_CONTAINER_ID))) {

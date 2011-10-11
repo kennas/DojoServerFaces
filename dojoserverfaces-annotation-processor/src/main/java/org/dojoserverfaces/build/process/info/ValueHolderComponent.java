@@ -25,6 +25,7 @@ public class ValueHolderComponent extends GeneratedComponentInfo {
         setElementType(annotation.elementType());
         setJsfNode(annotation.jsfNode());
         setRendersChildren(annotation.rendersChildren());
+        setRenderPosition(annotation.renderPosition());
     }
 
     protected ValueHolderComponent(java.lang.annotation.Annotation annotation,

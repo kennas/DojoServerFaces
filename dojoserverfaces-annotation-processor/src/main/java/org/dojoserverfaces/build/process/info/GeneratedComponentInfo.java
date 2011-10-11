@@ -16,6 +16,7 @@ import org.dojoserverfaces.build.annotation.GeneratedComponent;
 import org.dojoserverfaces.build.process.AnnotationProcessor;
 import org.dojoserverfaces.build.process.generator.GeneratorUtil;
 import org.dojoserverfaces.constants.HtmlElementType;
+import org.dojoserverfaces.constants.RenderPosition;
 import org.dojoserverfaces.constants.RendersChildren;
 
 /**
@@ -37,6 +38,7 @@ public class GeneratedComponentInfo extends ComponentInfo {
     private String jsfNode;
     private RendersChildren rendersChildren = RendersChildren.NO_NOT_RESPONSIBLE;
     private Boolean isDijitContainer = Boolean.FALSE;
+    private RenderPosition renderPosition = RenderPosition.EN_CODE_END;
 
     /**
      * indication that the component will handle postbacks
@@ -165,6 +167,14 @@ public class GeneratedComponentInfo extends ComponentInfo {
 
     public void setRendersChildren(RendersChildren rendersChildren) {
         this.rendersChildren = rendersChildren;
+    }
+
+    public RenderPosition getRenderPosition() {
+        return renderPosition;
+    }
+
+    public void setRenderPosition(RenderPosition renderPosition) {
+        this.renderPosition = renderPosition;
     }
 
     public Boolean getIsWidget() {
