@@ -6,7 +6,8 @@
 package org.dojoserverfaces.constants;
 
 /**
- * Constants of where calling addInitScriptBlock
+ * Constants of where calling addInitScriptBlock. This is mainly used for
+ * Container Components
  * 
  */
 public enum RenderPosition {
@@ -20,6 +21,7 @@ public enum RenderPosition {
     EN_CODE_END,
     /*
      * Call addInitScriptBlock at enCodeChildren method
+     * May be used in the future?
      */
     EN_CODE_CHILDREN
 }
