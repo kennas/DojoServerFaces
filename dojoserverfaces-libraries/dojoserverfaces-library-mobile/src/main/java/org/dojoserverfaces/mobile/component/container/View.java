@@ -7,6 +7,7 @@ package org.dojoserverfaces.mobile.component.container;
 
 import org.dojoserverfaces.build.annotation.Container;
 import org.dojoserverfaces.build.annotation.Property;
+import org.dojoserverfaces.constants.RenderPosition;
 import org.dojoserverfaces.mobile.component.WidgetBase;
 
 /**
@@ -15,9 +16,7 @@ import org.dojoserverfaces.mobile.component.WidgetBase;
  * and forth without page transitions.
  * 
  */
-@Container(dojoType = "dojox.mobile.View", requiredCss = {
-        "dojox/mobile/themes/{theme}/View.css",
-        "dojox/mobile/themes/{theme}/{theme}.css" })
+@Container(dojoType = "dojox.mobile.View", requiredCss = "dojox/mobile/themes/{theme}/View.css", renderPosition = RenderPosition.EN_CODE_BEGIN)
 public class View extends WidgetBase {
     /**
      * If true, the view is displayed at startup time. Defaults to false.

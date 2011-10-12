@@ -17,7 +17,7 @@ import org.dojoserverfaces.mobile.component.ItemBase;
  * support, transition, etc.
  * 
  */
-@Gadget(dojoType = "dojox.mobile.TabBarButton", requiredCss = { "dojox/mobile/themes/{theme}/TabBarButton.css","dojox/mobile/themes/{theme}/{theme}.css" })
+@Gadget(dojoType = "dojox.mobile.TabBarButton", requiredCss = { "dojox/mobile/themes/{theme}/TabBarButton.css" })
 public class TabBarButton extends ItemBase {
     /**
      * A path for the unselected (typically dark) icon. If icon is not

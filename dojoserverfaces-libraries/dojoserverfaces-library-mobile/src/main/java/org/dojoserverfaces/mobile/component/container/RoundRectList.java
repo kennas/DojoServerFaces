@@ -7,6 +7,7 @@ package org.dojoserverfaces.mobile.component.container;
 
 import org.dojoserverfaces.build.annotation.Container;
 import org.dojoserverfaces.build.annotation.Property;
+import org.dojoserverfaces.constants.RenderPosition;
 import org.dojoserverfaces.mobile.component.WidgetBase;
 import org.dojoserverfaces.mobile.property.TransitionProperty;
 import org.dojoserverfaces.widget.property.EnumPropertyBase;
@@ -15,7 +16,7 @@ import org.dojoserverfaces.widget.property.EnumPropertyBase;
  * RoundRectList is a rounded rectangle list, which can be used to display a
  * group of items. Each item must be dojox.mobile.ListItem.
  */
-@Container(dojoType = "dojox.mobile.RoundRectList", requiredCss = "dojox/mobile/themes/{theme}/RoundRectList.css")
+@Container(dojoType = "dojox.mobile.RoundRectList", requiredCss = "dojox/mobile/themes/{theme}/RoundRectList.css", renderPosition = RenderPosition.EN_CODE_BEGIN)
 class RoundRectList extends WidgetBase {
     static class SelectionModeProperty extends EnumPropertyBase {
         private static String[] validValues = { "single", "multiple", "" };

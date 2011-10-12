@@ -7,6 +7,7 @@ package org.dojoserverfaces.mobile.component.container;
 
 import org.dojoserverfaces.build.annotation.Container;
 import org.dojoserverfaces.build.annotation.Property;
+import org.dojoserverfaces.constants.RenderPosition;
 import org.dojoserverfaces.widget.property.EnumPropertyBase;
 
 /**
@@ -20,7 +21,7 @@ import org.dojoserverfaces.widget.property.EnumPropertyBase;
  * to scroll an inner DIV (containerNode). The main purpose of this widget is to
  * realize fixed-positioned header and/or footer bars.
  */
-@Container(dojoType = "dojox.mobile.ScrollableView")
+@Container(dojoType = "dojox.mobile.ScrollableView", renderPosition = RenderPosition.EN_CODE_BEGIN)
 class ScrollableView extends View {
     static class ScrollDirProperty extends EnumPropertyBase {
         private static String[] validValues = { "v", "h", "vh" };
