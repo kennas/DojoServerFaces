@@ -6,6 +6,7 @@
 package org.dojoserverfaces.mobile.component.container;
 
 import org.dojoserverfaces.build.annotation.Container;
+import org.dojoserverfaces.constants.RenderPosition;
 
 /**
  * SwapView is a container widget that represents entire mobile device screen,
@@ -14,6 +15,6 @@ import org.dojoserverfaces.build.annotation.Container;
  * swipe the screen left or right to move between the views. When SwapView is
  * swiped, it finds an adjacent SwapView to open it.
  */
-@Container(dojoType = "dojox.mobile.SwapView")
+@Container(dojoType = "dojox.mobile.SwapView", renderPosition = RenderPosition.EN_CODE_BEGIN)
 class SwapView extends View {
 }

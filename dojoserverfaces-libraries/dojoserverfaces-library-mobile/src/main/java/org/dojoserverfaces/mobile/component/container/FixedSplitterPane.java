@@ -6,6 +6,7 @@
 package org.dojoserverfaces.mobile.component.container;
 
 import org.dojoserverfaces.build.annotation.Container;
+import org.dojoserverfaces.constants.RenderPosition;
 import org.dojoserverfaces.mobile.component.WidgetBase;
 
 /**
@@ -13,6 +14,6 @@ import org.dojoserverfaces.mobile.component.WidgetBase;
  * dojox.mobile.FixedSplitter. It is a widget, but can be regarded as a simple
  * <div> element.
  */
-@Container(dojoType = "dojox.mobile.FixedSplitterPane")
+@Container(dojoType = "dojox.mobile.FixedSplitterPane",renderPosition = RenderPosition.EN_CODE_BEGIN)
 class FixedSplitterPane extends WidgetBase {
 }

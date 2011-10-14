@@ -7,7 +7,7 @@ package org.dojoserverfaces.mobile.component.container;
 
 import org.dojoserverfaces.build.annotation.Container;
 import org.dojoserverfaces.build.annotation.Property;
-import org.dojoserverfaces.constants.RendersChildren;
+import org.dojoserverfaces.constants.RenderPosition;
 import org.dojoserverfaces.mobile.component.WidgetBase;
 import org.dojoserverfaces.mobile.property.TransitionProperty;
 
@@ -15,7 +15,7 @@ import org.dojoserverfaces.mobile.property.TransitionProperty;
  * IconContainer is a container widget that holds multiple icons each of which
  * represents application component.
  */
-@Container(dojoType = "dojox.mobile.IconContainer", requiredCss = "dojox/mobile/themes/{theme}/IconContainer.css", rendersChildren = RendersChildren.YES_USE_ADD_CHILD)
+@Container(dojoType = "dojox.mobile.IconContainer", requiredCss = "dojox/mobile/themes/{theme}/IconContainer.css", renderPosition = RenderPosition.EN_CODE_BEGIN)
 public class IconContainer extends WidgetBase {
     /**
      * The default fall-back icon, which is displayed only when the specified

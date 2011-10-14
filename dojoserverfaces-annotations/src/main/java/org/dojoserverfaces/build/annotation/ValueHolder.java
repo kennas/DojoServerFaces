@@ -6,6 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.dojoserverfaces.constants.HtmlElementType;
+import org.dojoserverfaces.constants.RenderPosition;
 import org.dojoserverfaces.constants.RendersChildren;
 /**
  * Annotation to be applied to a class that defines a dojo widget to be wrapped
@@ -46,4 +47,9 @@ public @interface ValueHolder {
      * @return renderChildren type
      */
     public RendersChildren rendersChildren() default RendersChildren.NO_NOT_RESPONSIBLE;
+    /**
+     * 
+     * @return where rendering the script
+     */
+    public RenderPosition renderPosition() default RenderPosition.EN_CODE_END;
 }

@@ -31,5 +31,6 @@ public class ContainerComponent extends GeneratedComponentInfo {
         setJsfNode(annotation.jsfNode());
         setRendersChildren(annotation.rendersChildren());
         setIsDijitContainer(annotation.isDijitContainer());
+        setRenderPosition(annotation.renderPosition());
     }
 }
