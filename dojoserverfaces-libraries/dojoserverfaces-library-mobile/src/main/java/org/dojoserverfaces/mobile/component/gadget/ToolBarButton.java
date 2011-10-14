@@ -16,7 +16,7 @@ import org.dojoserverfaces.mobile.component.ItemBase;
  * icon support, transition, etc.
  * 
  */
-@Gadget(dojoType = "dojox.mobile.ToolBarButton", requiredCss = { "dojox/mobile/themes/{theme}/ToolBarButton.css" })
+@Gadget(dojoType = "dojox.mobile.ToolBarButton", requiredCss = { "dojox/mobile/themes/{theme}/ToolBarButton.css","dojox/mobile/themes/common/domButtons.css" })
 public class ToolBarButton extends ItemBase {
 
     /**

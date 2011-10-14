@@ -32,9 +32,10 @@ public final class ${context.unqualifiedClassName}<% if(context.superclass != nu
     private static final java.util.LinkedList<org.dojoserverfaces.widget.property.Property> propertyHandlers =
         new java.util.LinkedList<org.dojoserverfaces.widget.property.Property>();
         
-    private static final String jsfNode = "${context.componentInfo.jsfNode}";
+   private static final String jsfNode = "${context.componentInfo.jsfNode}";
 
    private static final org.dojoserverfaces.constants.RendersChildren renderChildren = org.dojoserverfaces.constants.RendersChildren.${context.componentInfo.rendersChildren};
+   private static final org.dojoserverfaces.constants.RenderPosition renderPosition = org.dojoserverfaces.constants.RenderPosition.${context.componentInfo.renderPosition};
   
     // dojo type for this component.
     private static final org.dojoserverfaces.widget.DojoType widgetType =
@@ -287,6 +288,14 @@ if (!context.componentInfo.isWidget){ %>
     */
     public boolean isDijitContainer() {
         return ${context.componentInfo.isDijitContainer};
+    }
+    
+    /* (non-Javadoc)
+    * @see org.dojoserverfaces.component.dojo.DojoWidget#renderPosition()
+    */
+    public org.dojoserverfaces.constants.RenderPosition renderPosition() {
+    
+        return renderPosition;
     }
     
     /* (non-Javadoc)
