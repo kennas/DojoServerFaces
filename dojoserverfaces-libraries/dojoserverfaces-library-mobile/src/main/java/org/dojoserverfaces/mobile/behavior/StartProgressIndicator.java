@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.faces.component.UIViewRoot;
 import javax.faces.component.behavior.ClientBehaviorContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 
 import org.dojoserverfaces.build.annotation.Attribute;
 import org.dojoserverfaces.build.annotation.Behavior;
@@ -117,6 +118,12 @@ public class StartProgressIndicator extends BehaviorBase {
         if (imagePath == null) {
             imagePath = contextParams
                     .get(CONTEXT_PARAM_PROGRESS_INDICATOR_IMAGE_PATH);
+            // TODO: should we handle the absolute path case?
+            if (imagePath != null && imagePath.startsWith("/")) {
+                ServletContext servletContext = (ServletContext) FacesContext
+                        .getCurrentInstance().getExternalContext().getContext();
+                imagePath = servletContext.getContextPath() + imagePath;
+            }
         }
         return imagePath;
     }
