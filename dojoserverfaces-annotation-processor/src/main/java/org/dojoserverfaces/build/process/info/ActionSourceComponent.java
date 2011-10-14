@@ -33,6 +33,7 @@ public class ActionSourceComponent extends GeneratedComponentInfo {
         setDisplayName(annotation.displayName());
         setJsfNode(annotation.jsfNode());
         setRendersChildren(annotation.rendersChildren());
+        setRenderPosition(annotation.renderPosition());
     }
 
     protected ActionSourceComponent(java.lang.annotation.Annotation annotation,

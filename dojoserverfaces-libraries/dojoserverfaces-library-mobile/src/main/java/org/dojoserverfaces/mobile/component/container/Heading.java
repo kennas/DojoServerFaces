@@ -7,6 +7,7 @@ package org.dojoserverfaces.mobile.component.container;
 
 import org.dojoserverfaces.build.annotation.Container;
 import org.dojoserverfaces.build.annotation.Property;
+import org.dojoserverfaces.constants.RenderPosition;
 import org.dojoserverfaces.mobile.component.WidgetBase;
 import org.dojoserverfaces.mobile.property.TransitionProperty;
 
@@ -19,7 +20,7 @@ import org.dojoserverfaces.mobile.property.TransitionProperty;
  * fixed header bar or the fixed="bottom" attribute to be a fixed footer bar.
  * Heading can have one or more ToolBarButton widgets as its children.
  */
-@Container(dojoType = "dojox.mobile.Heading", requiredCss = "dojox/mobile/themes/{theme}/Heading.css")
+@Container(dojoType = "dojox.mobile.Heading", requiredCss = "dojox/mobile/themes/{theme}/Heading.css", renderPosition = RenderPosition.EN_CODE_BEGIN)
 class Heading extends WidgetBase {
     /**
      * A label for the navigational control to return to the previous View.
