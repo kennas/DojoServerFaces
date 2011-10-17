@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+Available via Academic Free License >= 2.1 OR the modified BSD license.
+see: http://dojotoolkit.org/license for details
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:dojo="http://www.dojoserverfaces.org/library/mobile" xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
+    <dojo:view id="textarea">
+		<h:form>
+        Please input in the next TextArea.
+        <br/>
+        <dojo:textArea value="#{textArea.value}">
+        </dojo:textArea>
+		<br/>
+		 <dojo:button label="Submit" styleClass="mblBlueButton" duration="100">
+                <f:ajax execute="@form" render="textarea_showresult" />
+            </dojo:button><hr class="separator" /><br/>
+            <h:panelGroup id="textarea_showresult" styleClass="panelGroup">
+             You input is <br/>               <h:outputText value="#{textArea.value}" />
+            </h:panelGroup>
+		</h:form>
+    </dojo:view>
+</ui:composition>
