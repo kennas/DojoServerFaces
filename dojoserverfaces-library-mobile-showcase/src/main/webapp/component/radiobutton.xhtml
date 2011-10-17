@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+Available via Academic Free License >= 2.1 OR the modified BSD license.
+see: http://dojotoolkit.org/license for details
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:dojo="http://www.dojoserverfaces.org/library/mobile" xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
+    <dojo:view id="radiobutton">
+        <h:form id="form">
+            Which one do you like?
+            <h:panelGrid id="grid" columns="6">
+                <c:forEach items="#{store.record.radioOptions}" var="option">
+                    <h:outputText value="#{option.name}" /><dojo:booleanRadioButton value="#{option.selected}" groupId="options"/>
+                </c:forEach>
+            </h:panelGrid>
+            <dojo:button label="Submit" styleClass="mblBlueButton">
+                <f:ajax execute="@form" render=":showresult1" />
+            </dojo:button>
+        </h:form><hr class="separator" />
+        <h:panelGrid id="showresult1">
+            <p>
+                selected:
+            </p>
+            <ul>
+                <ui:repeat var="item" value="#{store.record.selectedRadioOptions}">
+                    <li>
+                        <h:outputText value="#{item}" />
+                    </li>
+                </ui:repeat>
+            </ul>
+        </h:panelGrid>
+    </dojo:view>
+</ui:composition>
