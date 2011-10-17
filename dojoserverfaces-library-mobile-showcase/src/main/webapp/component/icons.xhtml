@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+Available via Academic Free License >= 2.1 OR the modified BSD license.
+see: http://dojotoolkit.org/license for details
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:dojo="http://www.dojoserverfaces.org/library/mobile" xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
+    <dojo:view id="icons">
+        <dojo:iconContainer iconBase="imag/iconitems-all.png">
+            <dojo:iconItem iconPos="0,0,65,65" lazy="true">
+                <div style="padding: 20px 30px 20px ;">
+                    Hello World
+                </div>
+            </dojo:iconItem>
+            <dojo:iconItem id="moveToIcon" iconPos="65,0,65,65" moveTo="iconv2" transition="slide">
+            </dojo:iconItem>
+            <dojo:iconItem id="hrefId" iconPos="130,0,65,65" href="index.faces" transition="slide">
+            </dojo:iconItem>
+        </dojo:iconContainer>
+        <dojo:view id="iconv1">
+            <img src="imag/imageHoriz.jpg"/>
+        </dojo:view>
+        <dojo:view id="iconv2">
+            <dojo:heading back="back" moveTo="iconv1" transition="slide"/><img src="imag/imageHoriz2.jpg"/>
+        </dojo:view>
+    </dojo:view>
+</ui:composition>
