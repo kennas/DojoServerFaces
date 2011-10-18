@@ -78,6 +78,11 @@ public abstract class Property {
         return Helper.getAttributeValue(component, name);
     }
 
+    /**
+     * @param component
+     * @return true if the attribute is set to a value expression or the
+     *         attribute value is not null, false otherwise
+     */
     public boolean isSet(UIComponent component) {
         // we have avoided actually evaluating the expression
         if (null != component.getValueExpression(name)) {

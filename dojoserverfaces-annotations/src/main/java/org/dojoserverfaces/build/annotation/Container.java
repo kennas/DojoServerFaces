@@ -11,6 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.dojoserverfaces.constants.HtmlElementType;
+import org.dojoserverfaces.constants.RenderPosition;
 import org.dojoserverfaces.constants.RendersChildren;
 
 /**
@@ -46,4 +47,15 @@ public @interface Container {
      * @return renderChildren type
      */
     public RendersChildren rendersChildren() default RendersChildren.NO_NOT_RESPONSIBLE;
+
+    /**
+     * @return true if the widget is a Dijit Container, false otherwise. Defaults
+     *         to true.
+     */
+    public boolean isDijitContainer() default true;
+    /**
+     * 
+     * @return where rendering the script
+     */
+    public RenderPosition renderPosition() default RenderPosition.EN_CODE_END;
 }

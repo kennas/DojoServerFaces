@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+    	Available via Academic Free License >= 2.1 OR the modified BSD license.
+    	see: http://dojotoolkit.org/license for details
+ -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jd="http://www.dojoserverfaces.org/library/standard"
+	xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core" xml:lang="en"
+	lang="en">
+<ui:composition template="../../_template.xhtml">
+	<ui:define name="title">JSF-DOJO UpdateProgressBar</ui:define>
+	<ui:define name="header">
+		<div class="header">JSF-DOJO UpdateProgressBar</div>
+	</ui:define>
+	<ui:define name="tableContent">
+		<div class="testCase"><f:subview id="initialValues">
+			<span class="testTitle">Test case to display a value bound to
+			a managed bean</span>
+			<h:panelGrid cols="1" style="width: 100%;">
+				<jd:button id="fetchData" label="Get data from Server">
+					<dojoBehaviors:behaviorStartTimer event="click" time="200"
+						broadcastOnAlarm="progress-begin" />
+				</jd:button>
+				<jd:listener topic="progress-begin">
+					<dojoBehaviors:behaviorXhrGet url="#{updateProgressBarBean.url}"
+						broadcastOnComplete="progress-complete"
+						broadcastOnRecieve="update-progress" />
+				</jd:listener>
+				<jd:listener topic="update-progress">
+					<jd:behaviorUpdateProgressBar
+						target="form:initialValues:progressbar" progress="@event"
+						maximum="1" indeterminate="false" />
+					<dojoBehaviors:behaviorStartTimer time="500"
+						broadcastOnAlarm="progress-begin" />
+				</jd:listener>
+				<jd:listener topic="progress-complete">
+					<jd:behaviorUpdateProgressBar
+						target="form:initialValues:progressbar" progress="1"
+						indeterminate="false" />
+				</jd:listener>
+				<jd:progressBar id="progressbar" style="width:300px;height:14px" 
+					indeterminate="false" maximum="#{updateProgressBarBean.maximum}"/>
+			</h:panelGrid>
+		</f:subview></div>
+	</ui:define>
+</ui:composition>
+</html>

@@ -5,17 +5,9 @@
  *******************************************************************************/
 package org.dojoserverfaces.component.html.form;
 
-import java.util.Collection;
-
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.validator.Validator;
-import javax.faces.validator.ValidatorException;
-
 import org.dojoserverfaces.build.annotation.Property;
 import org.dojoserverfaces.build.annotation.SelectValueHolder;
-import org.dojoserverfaces.widget.DojoWidget;
-import org.dojoserverfaces.widget.property.DojoRefProperty;
+import org.dojoserverfaces.widget.property.DataStoreRefProperty;
 import org.dojoserverfaces.widget.property.StringArrayProperty;
 
 /**
@@ -26,53 +18,6 @@ import org.dojoserverfaces.widget.property.StringArrayProperty;
  */
 @SelectValueHolder(dojoType = "dijit.form.Select", displayName = "Select Listbox")
 class Select extends InputBase {
-
-    public static class DataStoreRefProperty extends DojoRefProperty implements
-            Validator {
-
-        public DataStoreRefProperty(String name) {
-            super(name);
-        }
-
-        public DataStoreRefProperty(String attributeName, String propertyName) {
-            super(attributeName, propertyName);
-        }
-
-        /*
-         * @see
-         * javax.faces.validator.Validator#validate(javax.faces.context.FacesContext
-         * , javax.faces.component.UIComponent, java.lang.Object)
-         */
-        @Override
-        public void validate(FacesContext context, UIComponent comp,
-                Object value) throws ValidatorException {
-            String storeId = (String) comp.getAttributes().get(this.getName());
-            if (storeId == null || value == null)
-                return;
-
-            UIComponent storeComp = context.getViewRoot()
-                    .findComponent(storeId);
-            if (storeComp != null && (storeComp instanceof DojoWidget)) {
-                Validator validator = getDataStroeValidator((DojoWidget) storeComp);
-                if (validator != null) {
-                    validator.validate(context, (UIComponent) storeComp, value);
-                }
-            }
-        }
-
-        private Validator getDataStroeValidator(DojoWidget selectItemStore) {
-            Collection<org.dojoserverfaces.widget.property.Property> propertyHandlers = selectItemStore
-                    .getPropertyHandlers();
-            for (org.dojoserverfaces.widget.property.Property property : propertyHandlers) {
-                if ("data".equals(property.getName())
-                        && property instanceof Validator) {
-                    return (Validator) property;
-                }
-            }
-            return null;
-        }
-    }
-
     /**
      * Indicates a value is required to be submitted for this component.
      */

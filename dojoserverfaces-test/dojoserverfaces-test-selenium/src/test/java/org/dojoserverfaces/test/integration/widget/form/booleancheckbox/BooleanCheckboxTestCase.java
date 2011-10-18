@@ -9,22 +9,29 @@ import org.dojoserverfaces.test.support.selenium.DojoServerFacesSeleniumTestCase
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
 public class BooleanCheckboxTestCase extends DojoServerFacesSeleniumTestCase {
-     @Before
+     
+	
+	@Before
      public void setUp() throws Exception {
           setUpTestCase ("test.main.contextRoot");
      }
 
      @Test
      public void testUntitled() throws Exception {
-          seleniumOpen("form/booleanCheckBox/index.jsf");
-          selenium.click("form:ajaxRefresh:widgetAjaxCall");
-          verifyEquals("false", selenium.getText("form:ajaxRefresh:outputAjaxCall"));
+          driver.get("form/booleanCheckBox/index.jsf");
+          //driver.findElement(By.name("form:ajaxRefresh:widgetAjaxCall")).click();
+          //verifyEquals("false", selenium.getText("form:ajaxRefresh:outputAjaxCall"));
      }
 
      @After
      public void tearDown() throws Exception {
-          selenium.stop();
+    	 driver.quit();
+ 		String verificationErrorString = verificationErrors.toString();
+ 		if (!"".equals(verificationErrorString)) {
+ 			fail(verificationErrorString);
+ 		}
      }
 }

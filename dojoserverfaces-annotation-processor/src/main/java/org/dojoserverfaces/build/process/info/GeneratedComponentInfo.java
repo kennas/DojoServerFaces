@@ -16,6 +16,7 @@ import org.dojoserverfaces.build.annotation.GeneratedComponent;
 import org.dojoserverfaces.build.process.AnnotationProcessor;
 import org.dojoserverfaces.build.process.generator.GeneratorUtil;
 import org.dojoserverfaces.constants.HtmlElementType;
+import org.dojoserverfaces.constants.RenderPosition;
 import org.dojoserverfaces.constants.RendersChildren;
 
 /**
@@ -31,10 +32,13 @@ public class GeneratedComponentInfo extends ComponentInfo {
     private String[] requiredCss = null;
     private HtmlElementType elementType;
     private String interfaceNames[];
+    private Boolean valueHolder = Boolean.FALSE;
     private Boolean valueEditor = Boolean.FALSE;
     private Boolean isActionSource = Boolean.FALSE;
     private String jsfNode;
     private RendersChildren rendersChildren = RendersChildren.NO_NOT_RESPONSIBLE;
+    private Boolean isDijitContainer = Boolean.FALSE;
+    private RenderPosition renderPosition = RenderPosition.EN_CODE_END;
 
     /**
      * indication that the component will handle postbacks
@@ -76,6 +80,7 @@ public class GeneratedComponentInfo extends ComponentInfo {
             this.elementType = generatedComponent.elementType();
             this.jsfNode = generatedComponent.jsfNode().trim();
             this.interfaceNames = generatedComponent.interfaceNames();
+            this.rendersChildren = generatedComponent.rendersChildren();
 
             if (this.baseClassName.equals("")
                     || this.baseClassName.equals("java.lang.Object")) {
@@ -162,6 +167,14 @@ public class GeneratedComponentInfo extends ComponentInfo {
 
     public void setRendersChildren(RendersChildren rendersChildren) {
         this.rendersChildren = rendersChildren;
+    }
+
+    public RenderPosition getRenderPosition() {
+        return renderPosition;
+    }
+
+    public void setRenderPosition(RenderPosition renderPosition) {
+        this.renderPosition = renderPosition;
     }
 
     public Boolean getIsWidget() {
@@ -258,6 +271,22 @@ public class GeneratedComponentInfo extends ComponentInfo {
     }
 
     /**
+     * @return indication that the component is a value holder
+     */
+    public Boolean getIsValueHolder() {
+        return valueHolder;
+    }
+
+    /**
+     * @param isValueHolder
+     *            indication that the component is a value holder
+     */
+    public void setIsValueHolder(Boolean isValueHolder) {
+        this.valueHolder = isValueHolder;
+
+    }
+
+    /**
      * @return indication that the component is a value editor
      */
     public Boolean getIsValueEditor() {
@@ -272,6 +301,7 @@ public class GeneratedComponentInfo extends ComponentInfo {
     public void setIsValueEditor(Boolean isValueEditor) {
         this.valueEditor = isValueEditor;
         this.handlesPostBack = isValueEditor;
+
     }
 
     public Boolean getIsActionSource() {
@@ -315,6 +345,14 @@ public class GeneratedComponentInfo extends ComponentInfo {
      */
     public String getPostBackHandler() {
         return postBackHandler;
+    }
+
+    public Boolean getIsDijitContainer() {
+        return isDijitContainer;
+    }
+
+    public void setIsDijitContainer(Boolean isDijitContainer) {
+        this.isDijitContainer = isDijitContainer;
     }
 
 }

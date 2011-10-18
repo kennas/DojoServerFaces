@@ -45,10 +45,8 @@
     
     <!-- Test properties.  Replace with custom values if necessary. -->
     
-    <test.browser>*firefox</test.browser>
-    <test.host.selenium.server>localhost</test.host.selenium.server>
+    <test.browser>firefox</test.browser>
     <test.host.server>localhost</test.host.server>
-    <test.port.selenium.server>4444</test.port.selenium.server>
     <test.port.server>8080</test.port.server>
     <tests.skip>true</tests.skip>
     
@@ -78,9 +76,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.seleniumhq.selenium.client-drivers</groupId>
-      <artifactId>selenium-java-client-driver</artifactId>
-      <version>${version.selenium.client}</version>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${version.selenium.java}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -213,35 +211,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>selenium-maven-plugin</artifactId>
-        <version>${version.plugin.selenium}</version>
-        <configuration>
-          <port>${test.port.selenium.server}</port>
-          <skip>${tests.skip}</skip>
-        </configuration>
-        <executions>
-          <execution>
-            <id>start-selenium</id>
-            <phase>pre-integration-test</phase>
-            <goals>
-              <goal>start-server</goal>
-            </goals>
-            <configuration>
-              <background>true</background>
-	      <forcedBrowserMode>${test.browser}</forcedBrowserMode>
-            </configuration>
-          </execution>
-          <execution>
-            <id>stop-selenium</id>
-            <phase>post-integration-test</phase>
-            <goals>
-              <goal>stop-server</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${version.plugin.surefire}</version>
@@ -258,15 +227,10 @@
             <configuration>
               <skip>${tests.skip}</skip>
               <systemPropertyVariables>
-                <test.host.selenium.server>
-                  ${test.host.selenium.server}
-                </test.host.selenium.server>
+                <test.browser>${test.browser}</test.browser>
                 <test.host.server>
                   ${test.host.server}
                 </test.host.server>
-                <test.port.selenium.server>
-                  ${test.port.selenium.server}
-                </test.port.selenium.server>
                 <test.port.server>
                   ${test.port.server}
                 </test.port.server>
@@ -277,6 +241,9 @@
                 <test.main.contextRoot>
                   ${test.main.contextRoot}
                 </test.main.contextRoot>
+                <webdriver.chrome.driver>
+                C:\Users\kennas\AppData\Local\Google\Chrome\Application\chrome.exe
+                </webdriver.chrome.driver>
               </systemPropertyVariables>
             </configuration>
           </execution>

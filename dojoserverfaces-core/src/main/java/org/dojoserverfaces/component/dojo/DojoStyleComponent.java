@@ -13,6 +13,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import org.dojoserverfaces.component.DojoResource;
+import org.dojoserverfaces.service.DojoThemeHandler;
+import org.dojoserverfaces.service.LibraryService;
 
 /**
  * This component will be used to collect and then emit CSS import statements
@@ -31,6 +33,14 @@ public class DojoStyleComponent extends DojoResource {
     private HashSet<String> requiredCssAdded = new HashSet<String>();
     private StringBuilder styleBlock = new StringBuilder();
 
+    private DojoThemeHandler themeHandler = null;
+
+    public DojoStyleComponent() {
+        LibraryService libraryService = LibraryService.getInstance();
+        // TODO: throw exception if libraryService is null?
+        themeHandler = libraryService.getThemeHandler();
+    }
+
     /**
      * @param view
      * @return the Style block component, if it exists, from the view
@@ -40,8 +50,8 @@ public class DojoStyleComponent extends DojoResource {
                 view, STYLE_BLOCK_ID, STYLE_TARGET);
         if (null == sb) {
             sb = new DojoStyleComponent();
-            view.addComponentResource(FacesContext.getCurrentInstance(),
-                    sb, STYLE_TARGET);
+            view.addComponentResource(FacesContext.getCurrentInstance(), sb,
+                    STYLE_TARGET);
         }
         return sb;
     }
@@ -56,9 +66,8 @@ public class DojoStyleComponent extends DojoResource {
         if (!requiredCssAdded.contains(requiredCss)) {
             styleBlock
                     .append("@import \"")
-                    .append(getLibraryUrlPrefix(getFacesContext()))
-                    .append(requiredCss)
-                    .append("\";\r\n");
+                    .append(themeHandler.getCssUrl(getFacesContext(),
+                            requiredCss)).append("\";\r\n");
             requiredCssAdded.add(requiredCss);
         }
     }
@@ -72,8 +81,10 @@ public class DojoStyleComponent extends DojoResource {
      */
     @Override
     public void encodeAll(FacesContext context) throws IOException {
-        String themeName = DojoTheme.findThemeComponent(context.getViewRoot()).getName();
-        String requiredCss = styleBlock.toString().replace("{theme}", themeName);
+        String themeName = DojoTheme.findThemeComponent(context.getViewRoot())
+                .getName();
+        String requiredCss = styleBlock.toString()
+                .replace("{theme}", themeName);
         ResponseWriter writer = context.getResponseWriter();
         writer.startElement("style", null);
         writer.writeAttribute("type", "text/css", null);

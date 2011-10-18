@@ -6,7 +6,6 @@
 package org.dojoserverfaces.component.dojo;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -22,6 +21,7 @@ import javax.faces.event.SystemEvent;
 import javax.faces.event.SystemEventListener;
 
 import org.dojoserverfaces.component.DojoResource;
+import org.dojoserverfaces.service.LibraryService;
 import org.dojoserverfaces.widget.DojoWidget;
 
 /**
@@ -105,8 +105,12 @@ public final class DojoScriptBlockComponent extends DojoResource implements
                 // will contain no script code
                 view.addComponentResource(context, sb, BODY_END);
             }
+
+            LibraryService libraryService = LibraryService.getInstance();
+            // TODO: throw exception if libraryService is null?
             // create a block to hold init code
-            sb = new DojoScriptBlockComponent(INIT_BLOCK_ID);
+            sb = new DojoScriptBlockComponent(INIT_BLOCK_ID,
+                    libraryService.getRequiredDojoModules());
             if (partialUpdate) {
                 // Partial update is tricky, unlike Sun's RI MyFaces does
                 // not render "resources" in the "body" at the end for a partial
@@ -220,8 +224,12 @@ public final class DojoScriptBlockComponent extends DojoResource implements
     private StringBuilder destroyWidgetsScriptBlock = new StringBuilder();
     private StringBuilder createWidgetsScriptBlock = new StringBuilder();
     private StringBuilder postWidgetCreateScriptBlock = new StringBuilder();
-  
+
     public DojoScriptBlockComponent(String id) {
+        this(id, null);
+    }
+
+    public DojoScriptBlockComponent(String id, String[] requires) {
         super();
         setId(id);
         // We need to move the init script block prior to rendering a
@@ -229,6 +237,11 @@ public final class DojoScriptBlockComponent extends DojoResource implements
         if (id.equals(INIT_BLOCK_ID)) {
             getFacesContext().getViewRoot().subscribeToViewEvent(
                     javax.faces.event.PreRenderViewEvent.class, this);
+        }
+        if (requires != null && requires.length > 0) {
+            for (String requiredModule : requires) {
+                addRequires(requiredModule);
+            }
         }
     }
 
@@ -302,8 +315,13 @@ public final class DojoScriptBlockComponent extends DojoResource implements
                 writer.write(newline);
             }
 
-            StringBuilder initScript = new StringBuilder(
-                    requiresScriptBlock.toString());
+            StringBuilder initScript = new StringBuilder();
+            if (requiresScriptBlock.length() > 0) {
+                initScript.append("require([")
+                        .append(requiresScriptBlock.toString())
+                        .append("], function(){");
+            }
+            // TODO: needs to consider how to add theme files
             initScript.append(getRequiredThemeFiles());
             if (!ajaxUpdate) {
                 initScript.append("dojo.addOnLoad(function(){");
@@ -334,6 +352,9 @@ public final class DojoScriptBlockComponent extends DojoResource implements
             if (!ajaxUpdate) {
                 initScript.append("});");
             }
+            if (requiresScriptBlock.length() > 0) {
+                initScript.append("});");
+            }
             writer.write(initScript.toString());
             if (!ajaxUpdate) {
                 writer.write(newline);
@@ -352,8 +373,13 @@ public final class DojoScriptBlockComponent extends DojoResource implements
      */
     public void addRequires(String requiredModule) {
         if (!requiredModulesAdded.contains(requiredModule)) {
-            requiresScriptBlock.append("dojo.require(\"")
-                    .append(requiredModule).append("\");");
+            if (requiresScriptBlock.length() > 0) {
+                requiresScriptBlock.append(",");
+            }
+            // Applying AMD module loading scheme
+            // e.g. dijit.form.Button -> dijit/form/Button
+            requiresScriptBlock.append("\"")
+                    .append(requiredModule.replaceAll("[.]", "/")).append("\"");
             requiredModulesAdded.add(requiredModule);
         }
     }
@@ -432,6 +458,5 @@ public final class DojoScriptBlockComponent extends DojoResource implements
     public void addPostWidgetCreateScript(String script) {
         postWidgetCreateScriptBlock.append(script);
     }
-
 
 }

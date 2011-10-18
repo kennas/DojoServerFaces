@@ -5,24 +5,26 @@
  *******************************************************************************/
 package org.dojoserverfaces.test.support.selenium;
 
-import com.thoughtworks.selenium.DefaultSelenium;
-import com.thoughtworks.selenium.SeleneseTestCase;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+
+import com.thoughtworks.selenium.SeleneseTestBase;
 
 /**
  * The DojoServerFacesSeleniumTestCase defines a Selenium test case used for
  * DojoServerFaces testing.
  */
 
-public class DojoServerFacesSeleniumTestCase extends SeleneseTestCase {
+public class DojoServerFacesSeleniumTestCase extends SeleneseTestBase {
      private static final String PARAM_BROWSER = "test.browser";
-     private static final String PARAM_HOST_SELENIUM_SERVER =
-          "test.host.selenium.server";
      private static final String PARAM_HOST_SERVER = "test.host.server";
-     private static final String PARAM_PORT_SELENIUM_SERVER =
-          "test.port.selenium.server";
      private static final String PARAM_PORT_SERVER = "test.port.server";
      
+     protected StringBuffer verificationErrors = new StringBuffer();
      private String contextRoot;
+     protected WebDriver driver;
      
      /**
       * Creates a DojoServerFacesSeleniumTestCase object.
@@ -43,8 +45,6 @@ public class DojoServerFacesSeleniumTestCase extends SeleneseTestCase {
      protected void setUpTestCase (String contextRootProperty)
           throws Exception {
           String browser;
-          String seleniumHost;
-          int seleniumPort = 4444;
           String serverHost;
           int serverPort = 8080;
           
@@ -52,26 +52,20 @@ public class DojoServerFacesSeleniumTestCase extends SeleneseTestCase {
           
           browser = System.getProperty
                (DojoServerFacesSeleniumTestCase.PARAM_BROWSER);
-          seleniumHost = System.getProperty
-               (DojoServerFacesSeleniumTestCase.PARAM_HOST_SELENIUM_SERVER);
           serverHost = System.getProperty
                (DojoServerFacesSeleniumTestCase.PARAM_HOST_SERVER);
           
           if (browser == null) {
-               browser = "*chrome";
+               browser = "firefox";
           }
           
-          if (seleniumHost == null) {
-               seleniumHost = "localhost";
-          }
+          browser = browser.toLowerCase().trim();
           
           if (serverHost == null) {
                serverHost = "localhost";
           }
           
           try {
-               seleniumPort = Integer.parseInt (System.getProperty
-                    (DojoServerFacesSeleniumTestCase.PARAM_PORT_SELENIUM_SERVER));
                serverPort = Integer.parseInt (System.getProperty
                     (DojoServerFacesSeleniumTestCase.PARAM_PORT_SERVER));
           }
@@ -88,22 +82,34 @@ public class DojoServerFacesSeleniumTestCase extends SeleneseTestCase {
                this.contextRoot = "";
           }
           
-          // Create the Selenium object.
+          WebDriver tmpDriver;
+          if (browser.equals ("chrome")) {
+        	  tmpDriver = new ChromeDriver();
+          }
           
-          this.selenium = new DefaultSelenium (seleniumHost, seleniumPort,
-               browser, "http://" + serverHost + ":" + serverPort + "/");
+          else if (browser.equals ("firefox")) {
+        	  tmpDriver = new FirefoxDriver();
+          }
           
-          this.selenium.start();
+          else if (browser.equals ("htmlunit")) {
+        	  tmpDriver = new HtmlUnitDriver();
+               
+               ((HtmlUnitDriver) tmpDriver).setJavascriptEnabled (true);
+               
+          } else {
+        	  //defaulting to htmlunit if none of the above were set - this may need a better default.
+        	  tmpDriver = new HtmlUnitDriver();
+              
+              ((HtmlUnitDriver) tmpDriver).setJavascriptEnabled (true);
+             
+          }
+          
+          this.driver = new WebDriverWrapper(tmpDriver, serverHost, serverPort, contextRoot);
+          
+          // Set timeout 
+          //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+          
+
      }
      
-     /**
-      * Opens a URL via Selenium using the context root associated with this
-      * test case.
-      * 
-      * @param url a String containing the URL to use.
-      */
-     
-     protected void seleniumOpen (String url) {
-          this.selenium.open (this.contextRoot + "/" + url);
-     }
 }

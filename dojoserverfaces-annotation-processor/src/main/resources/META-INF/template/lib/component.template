@@ -12,7 +12,7 @@ package ${context.packageName};
 @javax.faces.event.ListenerFor(systemEventClass=javax.faces.event.PostAddToViewEvent.class)
 public final class ${context.unqualifiedClassName}<% if(context.superclass != null) { 
 %> extends ${context.superclass}<% } %>
-    implements org.dojoserverfaces.widget.DojoWidget
+    implements org.dojoserverfaces.widget.DojoWidget, javax.faces.component.behavior.ClientBehaviorHolder
 <%if(context.interfaces.size() > 0) { %>,
      <% context.interfaces.eachWithIndex() { interfaceName, i -> %>${interfaceName} ${i <(context.interfaces.size() - 1) ? "," : ""}<% }
 }
@@ -32,9 +32,10 @@ public final class ${context.unqualifiedClassName}<% if(context.superclass != nu
     private static final java.util.LinkedList<org.dojoserverfaces.widget.property.Property> propertyHandlers =
         new java.util.LinkedList<org.dojoserverfaces.widget.property.Property>();
         
-    private static final String jsfNode = "${context.componentInfo.jsfNode}";
+   private static final String jsfNode = "${context.componentInfo.jsfNode}";
 
    private static final org.dojoserverfaces.constants.RendersChildren renderChildren = org.dojoserverfaces.constants.RendersChildren.${context.componentInfo.rendersChildren};
+   private static final org.dojoserverfaces.constants.RenderPosition renderPosition = org.dojoserverfaces.constants.RenderPosition.${context.componentInfo.renderPosition};
   
     // dojo type for this component.
     private static final org.dojoserverfaces.widget.DojoType widgetType =
@@ -49,6 +50,26 @@ if (context.componentInfo.isWidget){
 
 boolean hasValidators = false;
 String postBackHandler = "null";
+if(context.componentInfo.isValueHolder){
+ valuePropertyHandler = "org.dojoserverfaces.widget.property.ValueProperty";
+// Find the correct value property handler if a handler is defined.
+ for(property in context.componentInfo.properties) {
+        if(property.value) {
+            if(property.handler != null) {
+                valuePropertyHandler = property.handler;
+            }
+            property.getterName = "getNoValue";
+            property.setterName = "setNoValue";
+            break;
+        }
+       
+    }
+	  %>
+	  // The value property handler for this output component.
+	   private static final ${valuePropertyHandler} valueProperty = 
+        new ${valuePropertyHandler}("value", "value");
+<%	  
+}//end if (context.componentInfo.isValueHolder)
 if (context.componentInfo.isValueEditor){
     valuePropertyHandler = "org.dojoserverfaces.widget.property.ValueProperty";
     
@@ -104,7 +125,7 @@ String propertyGroups = "";
 boolean namePropertyFound = false;
 for(property in context.componentInfo.properties) {
     // We need to treat the value property handler special
-    if(!property.value) {
+ if(!property.value){
         
         if(property.propertyName.equals("name")){
             // found a name property so do not add the default
@@ -147,7 +168,7 @@ if (context.componentInfo.handlesPostBack && !namePropertyFound) {
         propertyHandlers.add(new org.dojoserverfaces.widget.property.ClientIdProperty("name"));
 <%
 }
-if (context.componentInfo.isValueEditor){
+if (context.componentInfo.isValueEditor||context.componentInfo.isValueHolder){
 %>        
         // add the value property handler
         propertyHandlers.add(valueProperty);
@@ -260,6 +281,21 @@ if (!context.componentInfo.isWidget){ %>
    		return true;
    <%}%>
        
+    }
+    
+    /* (non-Javadoc)
+    * @see org.dojoserverfaces.component.dojo.DojoWidget#isDijitContainer()
+    */
+    public boolean isDijitContainer() {
+        return ${context.componentInfo.isDijitContainer};
+    }
+    
+    /* (non-Javadoc)
+    * @see org.dojoserverfaces.component.dojo.DojoWidget#renderPosition()
+    */
+    public org.dojoserverfaces.constants.RenderPosition renderPosition() {
+    
+        return renderPosition;
     }
     
     /* (non-Javadoc)
