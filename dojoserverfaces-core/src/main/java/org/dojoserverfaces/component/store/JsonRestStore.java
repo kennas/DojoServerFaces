@@ -3,12 +3,11 @@
  *      Available via Academic Free License >= 2.1 OR the modified BSD license.
  *      see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.component.html.store;
+package org.dojoserverfaces.component.store;
 
 import org.dojoserverfaces.build.annotation.DojoObject;
 import org.dojoserverfaces.build.annotation.Event;
 import org.dojoserverfaces.build.annotation.Property;
-import org.dojoserverfaces.component.html.WidgetBase;
 
 /**
  * JsonRestStore is a lightweight DataStore implementation of an HTTP-based (RFC
@@ -18,7 +17,7 @@ import org.dojoserverfaces.component.html.WidgetBase;
  * 
  */
 @DojoObject(dojoType = "dojox.data.JsonRestStore")
-public class JsonRestStore extends WidgetBase {
+public class JsonRestStore {
     /**
      * This is the target URL for this Service store. This may be used in place
      * of a service parameter to connect directly to RESTful URL without using a

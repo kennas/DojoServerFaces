@@ -3,15 +3,13 @@
  * 	Available via Academic Free License >= 2.1 OR the modified BSD license.
  * 	see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.component.html.store;
+package org.dojoserverfaces.component.store;
 
 import org.dojoserverfaces.build.annotation.DojoObject;
 
 /**
- * A store for fetching data collections formated as Comma Separated Values
- * (csv).
- * 
+ * A store for reading and writing JSON formatted data.
  */
-@DojoObject(dojoType = "dojox.data.CsvStore")
-public class CsvStore extends StoreBase {
+@DojoObject(dojoType = "dojo.data.ItemFileWriteStore")
+class ItemFileWriteStore extends ItemFileReadStore {
 }

@@ -20,7 +20,7 @@ xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<h:panelGrid id="grid3" columns="3">
 		<dojo:editor name="edn" isTabIndent="#{editor.isTabIndent}"
 			disableSpellCheck="#{editor.disableSpellCheck}"
-			plugins="#{editor.plugins}">
+			plugins="#{editor.plugins}"			onLoadDeferred="alert('OnLoadDeferred')">
 		</dojo:editor>
 	</h:panelGrid>
 </ui:composition>

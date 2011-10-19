@@ -2,121 +2,4 @@
     	Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
     	Available via Academic Free License >= 2.1 OR the modified BSD license.
     	see: http://dojotoolkit.org/license for details
- -->
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
-xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-	<dojo:selectItemStore id="selectionMode">
-		<f:selectItem itemValue="single" itemLabel="single" />
-		<f:selectItem itemValue="multiple" itemLabel="multiple" />
-		<f:selectItem itemValue="extended" itemLabel="extended" />
-	</dojo:selectItemStore>
-	<dojo:selectItemStore id="headerMenuIdStore">
-		<f:selectItem itemValue="fruit" itemLabel="fruit" />
-		<f:selectItem itemValue="vehicle" itemLabel="vehicle" />
-	</dojo:selectItemStore>
-	<dojo:tableContainer cols="3" orientation="horiz" spacing="1"
-		style="width: 100%;">
-		<dojo:filteringSelect title="selectionMode: "
-			value="#{ dataGrid.selectionMode }" store="selectionMode" />
-		<dojo:filteringSelect title="headerMenu: "
-			value="#{ dataGrid.headerMenuId }" store="headerMenuIdStore" />
-		<dojo:textBox title="rowSelector: " value="#{dataGrid.rowSelector}" />
-		<ui:remove>
-			<dojo:textBox title="loadingMessage: "
-				value="#{ dataGrid.loadingMessage }" />
-		</ui:remove>
-		<dojo:textBox title="autoHeight: " value="#{ dataGrid.autoHeight }" />
-		<dojo:booleanCheckBox title="selectable"
-			value="#{dataGrid.selectable}"></dojo:booleanCheckBox>
-	</dojo:tableContainer>
-	<hr class="separator"/>
-	<ui:remove>
-		<dojo:tabContainer tabPosition="top" style="width: 60%; height:250px"
-			useMenu="true" doLayout="true" useSlider="true">
-			<dojo:tabContainer tabPosition="top" style="width: 60%; height:200px"
-				useMenu="true" doLayout="true" useSlider="true" title="View1">
-				<dojo:tableContainer title="View" cols="1" orientation="horiz"
-					spacing="1" style="width: 100%;">
-					<dojo:textBox disabled="true" title="Name"
-						value="#{dataGridView.name}"></dojo:textBox>
-					<dojo:booleanCheckBox title="noScroll:"
-						value="#{dataGridView.noScroll}"></dojo:booleanCheckBox>
-				</dojo:tableContainer>
-				<dojo:tableContainer title="Default" cols="1" orientation="horiz"
-					spacing="1" style="width: 100%;">
-					<dojo:textBox title="Styles:" value="#{defaultCell.styles}"></dojo:textBox>
-					<dojo:textBox title="Width:" value="#{defaultCell.width}"></dojo:textBox>
-					<dojo:textBox disabled="true" title="View:"
-						value="#{defaultCell.view}"></dojo:textBox>
-					<dojo:booleanCheckBox title="editable:"
-						value="#{defaultCell.editable}"></dojo:booleanCheckBox>
-				</dojo:tableContainer>
-				<dojo:tableContainer title="ID" cols="1" orientation="horiz"
-					spacing="1" style="width: 100%;">
-					<dojo:textBox disabled="true" title="Filed:" value="id"></dojo:textBox>
-					<dojo:textBox title="Name:" value="#{cellOne.name}"></dojo:textBox>
-					<dojo:textBox title="Styles:" value="#{cellOne.styles}"></dojo:textBox>
-					<dojo:textBox title="Width:" value="#{cellOne.width}"></dojo:textBox>
-					<dojo:textBox disabled="true" title="View:" value="#{cellOne.view}"></dojo:textBox>
-				</dojo:tableContainer>
-				<dojo:tableContainer title="Name" cols="1" orientation="horiz"
-					spacing="1" style="width: 100%;">
-					<dojo:textBox disabled="true" title="Filed:" value="name"></dojo:textBox>
-					<dojo:textBox title="Name:" value="#{cellTwo.name}"></dojo:textBox>
-					<dojo:textBox title="Width:" value="#{cellTwo.width}"></dojo:textBox>
-					<dojo:textBox disabled="true" title="View:" value="#{cellTwo.view}"></dojo:textBox>
-					<dojo:booleanCheckBox title="editable:" value="#{cellTwo.editable}"></dojo:booleanCheckBox>
-				</dojo:tableContainer>
-				<dojo:tableContainer title="Type" cols="1" orientation="horiz"
-					spacing="1" style="width: 100%;">
-					<dojo:textBox disabled="true" title="Filed:" value="type"></dojo:textBox>
-					<dojo:textBox title="Name:" value="#{cellThree.name}"></dojo:textBox>
-					<dojo:textBox disabled="true" title="View:"
-						value="#{cellThree.view}"></dojo:textBox>
-					<dojo:booleanCheckBox title="editable:"
-						value="#{cellThree.editable}"></dojo:booleanCheckBox>
-					<dojo:filteringSelect title="type:" value="#{cellThree.type}">
-						<f:selectItem itemValue="Select" itemLabel="Select" />
-						<f:selectItem itemValue="ComboBox" itemLabel="ComboBox" />
-					</dojo:filteringSelect>
-					<dojo:textBox title="Options:" value="#{cellThree.options}"></dojo:textBox>
-				</dojo:tableContainer>
-			</dojo:tabContainer>
-			<dojo:tabContainer tabPosition="top" style="width: 60%; height:200px"
-				useMenu="true" doLayout="true" useSlider="true" title="View2">
-				<dojo:tableContainer title="Population" cols="1" orientation="horiz"
-					spacing="1" style="width: 100%;">
-					<dojo:textBox disabled="true" title="Filed:" value="population"></dojo:textBox>
-					<dojo:textBox disabled="true" title="View:" value="second.0"></dojo:textBox>
-					<dojo:textBox disabled="true" title="Name" value="population"></dojo:textBox>
-					<dojo:booleanCheckBox title="editable:"
-						value="#{cellFour.editable}"></dojo:booleanCheckBox>
-					<dojo:textBox title="Width:" disabled="true" value="auto"></dojo:textBox>
-					<ui:remove>
-						<dojo:textBox title="Constraint:" value="#{cellFour.constraint}"></dojo:textBox>
-						<dojo:textBox title="formatter" value="#{cellFour.fomatter}"></dojo:textBox>
-					</ui:remove>
-				</dojo:tableContainer>
-				<dojo:tableContainer title="TimeZone" cols="1" orientation="horiz"
-					spacing="1" style="width: 100%;">
-					<dojo:textBox disabled="true" title="Filed:" value="timezone"></dojo:textBox>
-					<dojo:textBox disabled="true" title="View:" value="second.1"></dojo:textBox>
-					<dojo:textBox disabled="true" title="Name" value="timezone"></dojo:textBox>
-					<dojo:booleanCheckBox title="editable:"
-						value="#{cellFive.editable}"></dojo:booleanCheckBox>
-					<dojo:textBox disabled="true" title="Width:" value="auto"></dojo:textBox>
-				</dojo:tableContainer>
-			</dojo:tabContainer>
-		</dojo:tabContainer>
-	</ui:remove>
-	<dojo:button label="Apply">
-		<f:ajax execute="@form" render=":grid" />
-	</dojo:button>
-</ui:composition>
+ --><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><ui:composition xmlns="http://www.w3.org/1999/xhtml"	xmlns:ui="http://java.sun.com/jsf/facelets"	xmlns:f="http://java.sun.com/jsf/core"	xmlns:h="http://java.sun.com/jsf/html"	xmlns:c="http://java.sun.com/jsp/jstl/core"	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"	xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">	<dojoBehaviors:selectItemStore id="selectionMode">		<f:selectItem itemValue="single" itemLabel="single" />		<f:selectItem itemValue="multiple" itemLabel="multiple" />		<f:selectItem itemValue="extended" itemLabel="extended" />	</dojoBehaviors:selectItemStore>	<dojoBehaviors:selectItemStore id="headerMenuIdStore">		<f:selectItem itemValue="fruit" itemLabel="fruit" />		<f:selectItem itemValue="vehicle" itemLabel="vehicle" />	</dojoBehaviors:selectItemStore>	<dojo:tableContainer cols="3" orientation="horiz" spacing="1"		style="width: 100%;">		<dojo:filteringSelect title="selectionMode: "			value="#{ dataGrid.selectionMode }" store="selectionMode" />		<dojo:filteringSelect title="headerMenu: "			value="#{ dataGrid.headerMenuId }" store="headerMenuIdStore" />		<dojo:textBox title="rowSelector: " value="#{dataGrid.rowSelector}" />		<ui:remove>			<dojo:textBox title="loadingMessage: "				value="#{ dataGrid.loadingMessage }" />		</ui:remove>		<dojo:textBox title="autoHeight: " value="#{ dataGrid.autoHeight }" />		<dojo:booleanCheckBox title="selectable"			value="#{dataGrid.selectable}"></dojo:booleanCheckBox>	</dojo:tableContainer>	<hr class="separator" />	<ui:remove>		<dojo:tabContainer tabPosition="top" style="width: 60%; height:250px"			useMenu="true" doLayout="true" useSlider="true">			<dojo:tabContainer tabPosition="top" style="width: 60%; height:200px"				useMenu="true" doLayout="true" useSlider="true" title="View1">				<dojo:tableContainer title="View" cols="1" orientation="horiz"					spacing="1" style="width: 100%;">					<dojo:textBox disabled="true" title="Name"						value="#{dataGridView.name}"></dojo:textBox>					<dojo:booleanCheckBox title="noScroll:"						value="#{dataGridView.noScroll}"></dojo:booleanCheckBox>				</dojo:tableContainer>				<dojo:tableContainer title="Default" cols="1" orientation="horiz"					spacing="1" style="width: 100%;">					<dojo:textBox title="Styles:" value="#{defaultCell.styles}"></dojo:textBox>					<dojo:textBox title="Width:" value="#{defaultCell.width}"></dojo:textBox>					<dojo:textBox disabled="true" title="View:"						value="#{defaultCell.view}"></dojo:textBox>					<dojo:booleanCheckBox title="editable:"						value="#{defaultCell.editable}"></dojo:booleanCheckBox>				</dojo:tableContainer>				<dojo:tableContainer title="ID" cols="1" orientation="horiz"					spacing="1" style="width: 100%;">					<dojo:textBox disabled="true" title="Filed:" value="id"></dojo:textBox>					<dojo:textBox title="Name:" value="#{cellOne.name}"></dojo:textBox>					<dojo:textBox title="Styles:" value="#{cellOne.styles}"></dojo:textBox>					<dojo:textBox title="Width:" value="#{cellOne.width}"></dojo:textBox>					<dojo:textBox disabled="true" title="View:" value="#{cellOne.view}"></dojo:textBox>				</dojo:tableContainer>				<dojo:tableContainer title="Name" cols="1" orientation="horiz"					spacing="1" style="width: 100%;">					<dojo:textBox disabled="true" title="Filed:" value="name"></dojo:textBox>					<dojo:textBox title="Name:" value="#{cellTwo.name}"></dojo:textBox>					<dojo:textBox title="Width:" value="#{cellTwo.width}"></dojo:textBox>					<dojo:textBox disabled="true" title="View:" value="#{cellTwo.view}"></dojo:textBox>					<dojo:booleanCheckBox title="editable:" value="#{cellTwo.editable}"></dojo:booleanCheckBox>				</dojo:tableContainer>				<dojo:tableContainer title="Type" cols="1" orientation="horiz"					spacing="1" style="width: 100%;">					<dojo:textBox disabled="true" title="Filed:" value="type"></dojo:textBox>					<dojo:textBox title="Name:" value="#{cellThree.name}"></dojo:textBox>					<dojo:textBox disabled="true" title="View:"						value="#{cellThree.view}"></dojo:textBox>					<dojo:booleanCheckBox title="editable:"						value="#{cellThree.editable}"></dojo:booleanCheckBox>					<dojo:filteringSelect title="type:" value="#{cellThree.type}">						<f:selectItem itemValue="Select" itemLabel="Select" />						<f:selectItem itemValue="ComboBox" itemLabel="ComboBox" />					</dojo:filteringSelect>					<dojo:textBox title="Options:" value="#{cellThree.options}"></dojo:textBox>				</dojo:tableContainer>			</dojo:tabContainer>			<dojo:tabContainer tabPosition="top" style="width: 60%; height:200px"				useMenu="true" doLayout="true" useSlider="true" title="View2">				<dojo:tableContainer title="Population" cols="1" orientation="horiz"					spacing="1" style="width: 100%;">					<dojo:textBox disabled="true" title="Filed:" value="population"></dojo:textBox>					<dojo:textBox disabled="true" title="View:" value="second.0"></dojo:textBox>					<dojo:textBox disabled="true" title="Name" value="population"></dojo:textBox>					<dojo:booleanCheckBox title="editable:"						value="#{cellFour.editable}"></dojo:booleanCheckBox>					<dojo:textBox title="Width:" disabled="true" value="auto"></dojo:textBox>					<ui:remove>						<dojo:textBox title="Constraint:" value="#{cellFour.constraint}"></dojo:textBox>						<dojo:textBox title="formatter" value="#{cellFour.fomatter}"></dojo:textBox>					</ui:remove>				</dojo:tableContainer>				<dojo:tableContainer title="TimeZone" cols="1" orientation="horiz"					spacing="1" style="width: 100%;">					<dojo:textBox disabled="true" title="Filed:" value="timezone"></dojo:textBox>					<dojo:textBox disabled="true" title="View:" value="second.1"></dojo:textBox>					<dojo:textBox disabled="true" title="Name" value="timezone"></dojo:textBox>					<dojo:booleanCheckBox title="editable:"						value="#{cellFive.editable}"></dojo:booleanCheckBox>					<dojo:textBox disabled="true" title="Width:" value="auto"></dojo:textBox>				</dojo:tableContainer>			</dojo:tabContainer>		</dojo:tabContainer>	</ui:remove>	<dojo:button label="Apply">		<f:ajax execute="@form" render=":grid" />	</dojo:button></ui:composition>

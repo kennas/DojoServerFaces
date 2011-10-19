@@ -3,7 +3,7 @@
  * 	Available via Academic Free License >= 2.1 OR the modified BSD license.
  * 	see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.component.html.store;
+package org.dojoserverfaces.component.store;
 
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
