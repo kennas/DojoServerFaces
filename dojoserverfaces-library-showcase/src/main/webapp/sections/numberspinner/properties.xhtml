@@ -14,10 +14,10 @@
 	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
 xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
-	<dojo:selectItemStore id="showcasePatterns">		<f:selectItem itemValue="###" />		<f:selectItem itemValue="000" />	</dojo:selectItemStore>
-	<dojo:selectItemStore id="showcaseTypes">
+	<dojoBehaviors:selectItemStore id="showcasePatterns">		<f:selectItem itemValue="###" />		<f:selectItem itemValue="000" />	</dojoBehaviors:selectItemStore>
+	<dojoBehaviors:selectItemStore id="showcaseTypes">
 		<f:selectItems value="#{ numberSpinner.showcaseTypes }" />
-	</dojo:selectItemStore>
+	</dojoBehaviors:selectItemStore>
 
 	<dojo:tableContainer
 		cols="3" orientation="horiz" spacing="1"
