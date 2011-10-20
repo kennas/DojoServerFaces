@@ -4,50 +4,64 @@ Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
 Available via Academic Free License >= 2.1 OR the modified BSD license.
 see: http://dojotoolkit.org/license for details
 -->
-<ui:composition template="/template/sample-template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:dojo="http://www.dojoserverfaces.org/library/mobile" xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-    <ui:define name="toc">
-        <ui:include src="/template/toc.xhtml" />
-    </ui:define>
-    <ui:define name="pswitch">
-        <ui:include src="/component/switch.xhtml" />
-    </ui:define>
-    <ui:define name="ptabbar">
-        <ui:include src="/component/tabbar.xhtml" />
-    </ui:define>
-    <ui:define name="pcheckbox">
-        <ui:include src="/component/checkbox.xhtml" />
-    </ui:define>
-    <ui:define name="pradiobutton">
-        <ui:include src="/component/radiobutton.xhtml" />
-    </ui:define>
-    <ui:define name="picons">
-        <ui:include src="/component/icons.xhtml" />
-    </ui:define>
-    <ui:define name="pheading">
-        <ui:include src="/component/heading.xhtml" />
-    </ui:define>
-    <ui:define name="pedge2edgelist">
-        <ui:include src="/component/edge2edgelist.xhtml" />
-    </ui:define>
-	    <ui:define name="pedge2edgedatalist">
-        <ui:include src="/component/edge2edgedatalist.xhtml" />
-    </ui:define>
-    <ui:define name="ptextarea">
-        <ui:include src="/component/textarea.xhtml" />
-    </ui:define>
-    <ui:define name="pexptextarea">
-        <ui:include src="/component/expandingtextarea.xhtml" />
-    </ui:define>
-    <ui:define name="proundrectlist">
-        <ui:include src="/component/roundrectlist.xhtml" />
-    </ui:define>
-	   <ui:define name="proundrectdatalist">
-        <ui:include src="/component/roundrectdatalist.xhtml" />
-    </ui:define>
-    <ui:define name="pswapview">
-        <ui:include src="/component/swapview.xhtml" />
-    </ui:define>
-    <ui:define name="pscrollableview">
-        <ui:include src="/component/scrollableview.xhtml" />
-    </ui:define>
+<ui:composition template="/template/sample-template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<ui:define name="toc">
+		<dsf:edgeToEdgeCategory label="Forms" transition="slide" />
+		<dsf:listItem label="Check Box" moveTo="checkBox" transition="slide" />
+		<dsf:listItem label="Expanding Text Area" moveTo="expandingTextArea"
+			transition="slide" />
+		<dsf:listItem label="Radio Button" moveTo="radioButton"
+			transition="slide" />
+		<dsf:listItem label="Text Area" moveTo="textArea" transition="slide" />
+		<dsf:listItem label="Text Box" moveTo="textBox" transition="slide" />
+
+		<dsf:edgeToEdgeCategory label="Containers" transition="slide" />
+		<dsf:listItem label="Edge To Edge Data List"
+			moveTo="edgeToEdgeDataList" transition="slide" />
+		<dsf:listItem label="Edge To Edge List" moveTo="edgeToEdgeList"
+			transition="slide" />
+		<dsf:listItem label="Heading" moveTo="heading" transition="slide" />
+		<dsf:listItem label="Round Rect Data List" moveTo="roundRectDataList"
+			transition="slide" />
+		<dsf:listItem label="Round Rect List" moveTo="roundRectList"
+			transition="slide" />
+		<dsf:listItem label="Scrollable View" moveTo="scrollableView"
+			transition="slide" />
+		<dsf:listItem label="Swap View" moveTo="swapView" transition="slide" />
+		<dsf:listItem label="Tab Bar" moveTo="tabBar" transition="slide" />
+
+		<dsf:edgeToEdgeCategory label="Gadgets" />
+		<dsf:listItem label="Buttons" moveTo="buttons" transition="slide" />
+		<dsf:listItem label="Icons" moveTo="icons" transition="slide" />
+		<dsf:listItem label="Switch" moveTo="switch" transition="slide" />
+		<dsf:listItem label="Tool Bar Button" moveTo="toolBarButton"
+			transition="slide" />
+	</ui:define>
+
+	<ui:define name="componentPages">
+		<ui:include src="/component/switch.xhtml" />
+		<ui:include src="/component/tabbar.xhtml" />
+		<ui:include src="/component/checkbox.xhtml" />
+		<ui:include src="/component/radiobutton.xhtml" />
+		<ui:include src="/component/icons.xhtml" />
+		<ui:include src="/component/heading.xhtml" />
+		<ui:include src="/component/edge2edgelist.xhtml" />
+		<ui:include src="/component/edge2edgedatalist.xhtml" />
+		<ui:include src="/component/textarea.xhtml" />
+		<ui:include src="/component/expandingtextarea.xhtml" />
+		<ui:include src="/component/roundrectlist.xhtml" />
+		<ui:include src="/component/roundrectdatalist.xhtml" />
+		<ui:include src="/component/swapview.xhtml" />
+		<ui:include src="/component/scrollableview.xhtml" />
+		<ui:include src="/component/buttons.xhtml" />
+		<ui:include src="/component/textbox.xhtml" />
+		<ui:include src="/component/toolbarbutton.xhtml" />
+	</ui:define>
 </ui:composition>

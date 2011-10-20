@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+Available via Academic Free License >= 2.1 OR the modified BSD license.
+see: http://dojotoolkit.org/license for details
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<dsf:view id="toolBarButton" style="text-align: center;">
+		<dsf:heading id="dashboard" label="Dashboard">
+			<dsf:toolBarButton id="selectAll" label="Select All"
+				style="float:left;display:none;" />
+			<dsf:toolBarButton id="add" icon="mblDomButtonWhitePlus"
+				style="float:left;" />
+
+			<dsf:toolBarButton id="doneBtn1" label="Done" selected="true"
+				style="float:right;display:none;">
+				<dsfc:behaviorSetDisplay event="click" value="false"
+					target="selectAll" />
+				<dsfc:behaviorSetDisplay event="click" value="true" target="add" />
+				<dsfc:behaviorSetDisplay event="click" value="true"
+					target="editBtn1" />
+				<dsfc:behaviorSetDisplay event="click" value="false"
+					target="doneBtn1" />
+			</dsf:toolBarButton>
+			<dsf:toolBarButton id="editBtn1" label="Edit" style="float:right;">
+				<dsfc:behaviorSetDisplay event="click" value="true"
+					target="selectAll" />
+				<dsfc:behaviorSetDisplay event="click" value="false" target="add" />
+				<dsfc:behaviorSetDisplay event="click" value="false"
+					target="editBtn1" />
+				<dsfc:behaviorSetDisplay event="click" value="true"
+					target="doneBtn1" />
+			</dsf:toolBarButton>
+		</dsf:heading>
+
+		<dsf:heading label="Home" id="home" moveTo="#" back="Dashboard">
+			<dsf:toolBarButton id="doneBtn2" label="Done" selected="true"
+				style="float:right;display:none;">
+				<dsfc:behaviorSetDisplay event="click" value="true"
+					target="editBtn2" />
+				<dsfc:behaviorSetDisplay event="click" value="false"
+					target="doneBtn2" />
+			</dsf:toolBarButton>
+			<dsf:toolBarButton id="editBtn2" label="Edit" style="float:right;">
+				<dsfc:behaviorSetDisplay event="click" value="false"
+					target="editBtn2" />
+				<dsfc:behaviorSetDisplay event="click" value="true"
+					target="doneBtn2" />
+			</dsf:toolBarButton>
+		</dsf:heading>
+	</dsf:view>
+</ui:composition>

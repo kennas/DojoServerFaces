@@ -4,27 +4,34 @@ Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
 Available via Academic Free License >= 2.1 OR the modified BSD license.
 see: http://dojotoolkit.org/license for details
 -->
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:dojo="http://www.dojoserverfaces.org/library/mobile" xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-    <dojo:view id="tabbar">
-        <dojo:tabBar barType="">
-            <dojo:tabBarButton icon1="imag/tab-icon-15.png" icon2="imag/tab-icon-15h.png" selected="true" moveTo="tb_v" transition="slide"/><dojo:tabBarButton icon1="imag/tab-icon-16.png" icon2="imag/tab-icon-16h.png" moveTo="tb_v2" transition="slide"/>
-        </dojo:tabBar>
-		
-        <dojo:view id="tb_v">
-              <img src="imag/flip1.jpg"/>
-        </dojo:view>
-        <dojo:view id="tb_v2">
-              <img src="imag/flip2.jpg"/>
-        </dojo:view>
-		 <dojo:view id="tb_v3">
-              <img src="imag/flip3.jpg"/>
-        </dojo:view>
-        <dojo:view id="tb_v4">
-              <img src="imag/imageVert.jpg"/>
-        </dojo:view>
-		  <dojo:tabBar barType="segmentedControl" >
-            <dojo:tabBarButton label="Hot"  moveTo="tb_v3" transition="slide"/>
-			<dojo:tabBarButton label="New" moveTo="tb_v4" transition="slide"/>
-        </dojo:tabBar>
-    </dojo:view>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
+	<dojo:view id="tabBar">
+		<dojo:tabBar barType="">
+			<dojo:tabBarButton icon1="resources/images/tab-icon-15.png"
+				icon2="resources/images/tab-icon-15h.png" selected="true"
+				moveTo="tb_v" transition="slide" />
+			<dojo:tabBarButton icon1="resources/images/tab-icon-16.png"
+				icon2="resources/images/tab-icon-16h.png" moveTo="tb_v2"
+				transition="slide" />
+			<dojo:tabBarButton icon1="resources/images/tab-icon-19.png"
+				icon2="resources/images/tab-icon-19h.png" moveTo="tb_v3"
+				transition="slide" />
+		</dojo:tabBar>
+
+		<dojo:view id="tb_v">
+			<div class="image"><img src="resources/images/flip1.jpg" /></div>
+		</dojo:view>
+		<dojo:view id="tb_v2">
+			<div class="image"><img src="resources/images/flip2.jpg" /></div>
+		</dojo:view>
+		<dojo:view id="tb_v3">
+			<div class="image"><img src="resources/images/flip3.jpg" /></div>
+		</dojo:view>
+	</dojo:view>
 </ui:composition>

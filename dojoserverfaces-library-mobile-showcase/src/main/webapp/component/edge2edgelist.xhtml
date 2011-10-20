@@ -5,20 +5,20 @@ Available via Academic Free License >= 2.1 OR the modified BSD license.
 see: http://dojotoolkit.org/license for details
 -->
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:dojo="http://www.dojoserverfaces.org/library/mobile" xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-    <dojo:view id="edge2edgelist">
+    <dojo:view id="edgeToEdgeList">
         <dojo:edgeToEdgeCategory label="Applications">
         </dojo:edgeToEdgeCategory>
         <dojo:edgeToEdgeList>
             <dojo:listItem rightText="Off" label="Video" moveTo="edge_list_v" transition="slide">
             </dojo:listItem>
-            <dojo:listItem icon="imag/tab-icon-15.png" rightText="VPN"  moveTo="edge_list_v2" transition="slide">
+            <dojo:listItem icon="resources/images/tab-icon-15.png" rightText="VPN"  moveTo="edge_list_v2" transition="slide">
             </dojo:listItem>
             <dojo:listItem rightText="Off" label="Phone Number"  moveTo="edge_list_v3" transition="slide">
             </dojo:listItem>
         </dojo:edgeToEdgeList>
     </dojo:view>
 	  <dojo:view id="edge_list_v">
-        <dojo:heading back="back" moveTo="edge2edgelist" transition="slide">
+        <dojo:heading back="back" moveTo="edgeToEdgeList" transition="slide">
         </dojo:heading>
         <dojo:roundRectList>
             <dojo:listItem rightText="Off" label="Video">
@@ -30,7 +30,7 @@ see: http://dojotoolkit.org/license for details
         </dojo:roundRectList>
     </dojo:view>
     <dojo:view id="edge_list_v2">
-        <dojo:heading back="back" moveTo="edge2edgelist" transition="slide">
+        <dojo:heading back="back" moveTo="edgeToEdgeList" transition="slide">
         </dojo:heading>
         <dojo:roundRectList>
             <dojo:listItem rightText="Off" label="Maps1">
@@ -42,7 +42,7 @@ see: http://dojotoolkit.org/license for details
         </dojo:roundRectList>
     </dojo:view>
     <dojo:view id="edge_list_v3">
-        <dojo:heading back="back" moveTo="edge2edgelist" transition="slide">
+        <dojo:heading back="back" moveTo="edgeToEdgeList" transition="slide">
         </dojo:heading>
         <dojo:roundRectList>
             <dojo:listItem rightText="Off" label="Phone1">
