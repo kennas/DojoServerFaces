@@ -12,12 +12,12 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
 xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-	<dojo:selectItemStore id="country">
+	<dojoBehaviors:selectItemStore id="country">
 		<f:selectItem itemLabel="USA" itemValue="USA" />
 		<f:selectItem itemLabel="China" itemValue="China" />
 		<f:selectItem itemLabel="Canada" itemValue="Canada" />
 		<f:selectItem itemLabel="India" itemValue="India" />
-	</dojo:selectItemStore>
+	</dojoBehaviors:selectItemStore>
 	<h:form id="form">
 		<h:panelGroup>
 			<dojo:comboBox id="comboBox" value="#{comboBox.value}"
