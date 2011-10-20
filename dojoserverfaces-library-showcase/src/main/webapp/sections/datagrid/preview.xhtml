@@ -11,16 +11,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
 xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-	<dojo:menu id="fruit" style="display:none">
-		<dojo:menuItem label="apple"></dojo:menuItem>
-		<dojo:menuItem label="pear"></dojo:menuItem>
-		<dojo:menuItem label="banana"></dojo:menuItem>
-	</dojo:menu>
-	<dojo:menu id="vehicle" style="display:none">
-		<dojo:menuItem label="car"></dojo:menuItem>
-		<dojo:menuItem label="truck"></dojo:menuItem>
-		<dojo:menuItem label="train"></dojo:menuItem>
-	</dojo:menu>
+	
 	<dojo:dataGrid id="grid" store="#{dataGrid.store}"
 		headerMenuId="#{dataGrid.headerMenuId}"
 		selectable="#{dataGrid.selectable}"
@@ -47,6 +38,6 @@ xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 			width="auto" />
 
 	</dojo:dataGrid>
-	<dojo:itemFileReadStore id="st" url="#{itemFileWriteStore.url}"/>
-
+	<dojoBehaviors:itemFileReadStore id="st" url="#{itemFileWriteStore.url}"/>
+<dojo:menu id="fruit" style="display:none">		<dojo:menuItem label="apple"></dojo:menuItem>		<dojo:menuItem label="pear"></dojo:menuItem>		<dojo:menuItem label="banana"></dojo:menuItem>	</dojo:menu>	<dojo:menu id="vehicle" style="display:none">		<dojo:menuItem label="car"></dojo:menuItem>		<dojo:menuItem label="truck"></dojo:menuItem>		<dojo:menuItem label="train"></dojo:menuItem>	</dojo:menu>
 </ui:composition>

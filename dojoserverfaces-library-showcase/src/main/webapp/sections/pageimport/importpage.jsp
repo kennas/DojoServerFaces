@@ -18,9 +18,7 @@
 	color: red
 }
 </style>
-<script type="text/javascript">
-	document.getElementById('headHello').innerHTML = 'Hello World script from head';
-</script>
+
 </head>
 <body>
 <script type="text/javascript">
@@ -29,5 +27,8 @@
 <div id="bodyHello"></div>
 <br />
 <div id="headHello"></div>
+<script type="text/javascript">
+	document.getElementById('headHello').innerHTML = 'Hello World script from head';
+</script>
 </body>
 </html>

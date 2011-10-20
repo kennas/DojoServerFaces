@@ -12,10 +12,10 @@
 	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
 xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
-	<dojo:selectItemStore id="states">
+	<dojoBehaviors:selectItemStore id="states">
 		<f:selectItem itemValue="" itemLabel="" />
 		<f:selectItems value="#{ store.states }" />
-	</dojo:selectItemStore>
+	</dojoBehaviors:selectItemStore>
 	
 	<h:form id="form">
 		<h:panelGrid id="grid" columns="1">
