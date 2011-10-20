@@ -5,12 +5,9 @@
  *******************************************************************************/
 package org.dojoserverfaces.mobile.behavior;
 
-import java.util.Map;
-
 import javax.faces.component.UIViewRoot;
 import javax.faces.component.behavior.ClientBehaviorContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletContext;
 
 import org.dojoserverfaces.build.annotation.Attribute;
 import org.dojoserverfaces.build.annotation.Behavior;
@@ -23,16 +20,9 @@ import org.dojoserverfaces.component.dojo.DojoStyleComponent;
  */
 @Behavior
 public class StartProgressIndicator extends BehaviorBase {
-    private static final String CONTEXT_PARAM_PROGRESS_INDICATOR_INTERVAL = "dojoserverfaces.dojo.progressindicator.interval";
-    private static final String CONTEXT_PARAM_PROGRESS_INDICATOR_COLORS = "dojoserverfaces.dojo.progressindicator.colors";
-    private static final String CONTEXT_PARAM_PROGRESS_INDICATOR_IMAGE_PATH = "dojoserverfaces.dojo.progressindicator.imagepath";
-
-    private Map<String, String> contextParams;
 
     public StartProgressIndicator() {
         super();
-        contextParams = FacesContext.getCurrentInstance().getExternalContext()
-                .getInitParameterMap();
         UIViewRoot view = FacesContext.getCurrentInstance().getViewRoot();
         DojoStyleComponent.findStyleBlockComponent(view).addRequiredCss(
                 "dojox/mobile/themes/{theme}/ProgressIndicator.css");
@@ -47,12 +37,12 @@ public class StartProgressIndicator extends BehaviorBase {
     public String getScript(ClientBehaviorContext behaviorContext) {
         StringBuilder script = new StringBuilder(
                 "var prog=dojox.mobile.ProgressIndicator.getInstance();");
-        if (getInterval() != null) {
-            script.append("prog.interval=").append(getInterval()).append(";");
+        if (interval != null) {
+            script.append("prog.interval=").append(interval).append(";");
         }
-        if (getColors() != null) {
+        if (colors != null && colors.length() > 0) {
             StringBuilder colorsArray = new StringBuilder();
-            String[] splitedColors = getColors().split("\\s");
+            String[] splitedColors = colors.split("\\s");
             for (int i = 0; i < splitedColors.length; i++) {
                 if (i > 0) {
                     colorsArray.append(",");
@@ -63,12 +53,12 @@ public class StartProgressIndicator extends BehaviorBase {
                 script.append("prog.colors=[").append(colorsArray).append("];");
             }
         }
-        if (getImagePath() != null) {
+        if (imagePath != null) {
             // TODO: we need to invoke setImage() first to remove any existing
             // image first, otherwise the dojo will create many images, it's a
             // dojo's bug
             script.append("prog.setImage();").append("prog.setImage(\"")
-                    .append(getImagePath()).append("\");");
+                    .append(imagePath).append("\");");
         }
         if (null != target) {
             appendGetElement(script, target);
@@ -96,13 +86,6 @@ public class StartProgressIndicator extends BehaviorBase {
      */
     @Attribute
     public Integer getInterval() {
-        if (interval == null) {
-            String intervalString = contextParams
-                    .get(CONTEXT_PARAM_PROGRESS_INDICATOR_INTERVAL);
-            if (intervalString != null) {
-                interval = Integer.valueOf(intervalString);
-            }
-        }
         return interval;
     }
 
@@ -115,16 +98,6 @@ public class StartProgressIndicator extends BehaviorBase {
      */
     @Attribute
     public String getImagePath() {
-        if (imagePath == null) {
-            imagePath = contextParams
-                    .get(CONTEXT_PARAM_PROGRESS_INDICATOR_IMAGE_PATH);
-            // TODO: should we handle the absolute path case?
-            if (imagePath != null && imagePath.startsWith("/")) {
-                ServletContext servletContext = (ServletContext) FacesContext
-                        .getCurrentInstance().getExternalContext().getContext();
-                imagePath = servletContext.getContextPath() + imagePath;
-            }
-        }
         return imagePath;
     }
 
@@ -149,9 +122,6 @@ public class StartProgressIndicator extends BehaviorBase {
      */
     @Attribute
     public String getColors() {
-        if (colors == null) {
-            colors = contextParams.get(CONTEXT_PARAM_PROGRESS_INDICATOR_COLORS);
-        }
         return colors;
     }
 
