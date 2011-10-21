@@ -4,32 +4,34 @@ Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
 Available via Academic Free License >= 2.1 OR the modified BSD license.
 see: http://dojotoolkit.org/license for details
 -->
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:dojo="http://www.dojoserverfaces.org/library/mobile" xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-    <dojo:view id="checkbox">
-        <h:form id="form1">
-            <div style="width: 100%">
-                Which fruits do you like? 
-                <h:panelGrid id="grid" columns="6">
-                    <c:forEach items="#{store.record.options}" var="option">
-                        <h:outputText value="#{option.name}" /><dojo:booleanCheckBox value="#{option.selected}" />
-                    </c:forEach>
-                </h:panelGrid>
-            </div>
-            <dojo:button label="Submit" styleClass="mblBlueButton">
-                <f:ajax execute="@form" render="showresult" />
-            </dojo:button><hr class="separator" />
-            <h:panelGroup id="showresult" styleClass="panelGroup">
-                <p>
-                    selected:
-                </p>
-                <ul>
-                    <ui:repeat var="item" value="#{store.record.selectedOptions}">
-                        <li>
-                            <h:outputText value="#{item}" />
-                        </li>
-                    </ui:repeat>
-                </ul>
-            </h:panelGroup>
-        </h:form>
-    </dojo:view>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
+	<dojo:view id="checkBox">
+		<h:form id="form1">
+			<div>Which fruits do you like? </div>
+			<h:panelGrid id="grid" columns="6">
+				<c:forEach items="#{store.record.options}" var="option">
+					<h:outputText value="#{option.name}" />
+					<dojo:booleanCheckBox value="#{option.selected}" />
+				</c:forEach>
+			</h:panelGrid>
+			<dojo:button label="Submit" styleClass="mblBlueButton">
+				<f:ajax execute="@form" render="showresult" />
+			</dojo:button>
+			<hr class="separator" />
+			<h:panelGroup id="showresult" styleClass="panelGroup">
+				<p>selected:</p>
+				<ul>
+					<ui:repeat var="item" value="#{store.record.selectedOptions}">
+						<li><h:outputText value="#{item}" /></li>
+					</ui:repeat>
+				</ul>
+			</h:panelGroup>
+		</h:form>
+	</dojo:view>
 </ui:composition>

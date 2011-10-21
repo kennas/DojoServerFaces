@@ -1,0 +1,80 @@
+#dojoserverfaces_script {
+	display: none;
+}
+
+body {
+	background: #1e3246;
+	font: 14px "CartoGothicBook", Lucida Grande, Helvetica Neue, Arial,
+		sans-serif;
+}
+
+#rightPane form {
+	margin: 8px;
+}
+
+form .label {
+	display: inline-block;
+	width: 100px;
+}
+
+form input[type=text],form select {
+	width: 150px;
+}
+
+form textarea {
+	width: 350px;
+}
+
+#buttons button {
+	width: 240px;
+	height: 35px;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 10px;
+}
+
+#buttons .round {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#bde),
+		color-stop(6%, #7ad), to(#358) );
+	border-radius: 18px;
+	font: bold "Lucida Grande", Verdana, sans-serif;
+	border-color: #2d4769;
+	border-top-color: #426c95;
+	color: white;
+	box-shadow: 0 1px 3px #333;
+}
+
+#buttons .roundSelected {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#9bc),
+		color-stop(6%, #69c), to(#247) );
+	box-shadow: none;
+}
+
+#buttons .classy,#textBox .classy {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#0CA6DD),
+		to(#0770A0) );
+	border-bottom-color: #0770A0;
+	color: white;
+}
+
+#buttons .classySelected,#textBox .classySelected {
+	border-top-color: #0770A0;
+	background: -webkit-gradient(linear, left bottom, left top, from(#0CA6DD),
+		to(#0770A0) );
+}
+
+#tabBar div.image {
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 5%;
+}
+
+#tabBar div>img {
+	height: 60%;
+}
+
+.separator {
+	border: none;
+	border-top: 1px solid #D9D9D9;
+	width: 100%;
+}
