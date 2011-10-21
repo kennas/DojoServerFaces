@@ -14,7 +14,7 @@
 	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
 xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
-	<dojo:selectItemStore id="showcasePatterns">        <f:selectItem itemValue="#,##0.## ¤" />        <f:selectItem itemValue="¤ #,##0.##" />        <f:selectItem itemValue="###0.#####" />	</dojo:selectItemStore>	<dojo:selectItemStore id="showcaseCurrencyCodes">		<f:selectItem itemValue="USD" />		<f:selectItem itemValue="EUR" />	</dojo:selectItemStore>	<dojo:selectItemStore id="showcaseSymbols">		<f:selectItem itemValue="" />		<f:selectItem itemValue="$" />	</dojo:selectItemStore>
+	<dojoBehaviors:selectItemStore id="showcasePatterns">        <f:selectItem itemValue="#,##0.## ¤" />        <f:selectItem itemValue="¤ #,##0.##" />        <f:selectItem itemValue="###0.#####" />	</dojoBehaviors:selectItemStore>	<dojoBehaviors:selectItemStore id="showcaseCurrencyCodes">		<f:selectItem itemValue="USD" />		<f:selectItem itemValue="EUR" />	</dojoBehaviors:selectItemStore>	<dojoBehaviors:selectItemStore id="showcaseSymbols">		<f:selectItem itemValue="" />		<f:selectItem itemValue="$" />	</dojoBehaviors:selectItemStore>
 	<dojo:tableContainer
 		cols="3" orientation="horiz" spacing="1"
 		style="width: 100%;"

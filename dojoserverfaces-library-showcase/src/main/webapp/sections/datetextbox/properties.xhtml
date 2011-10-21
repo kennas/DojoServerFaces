@@ -14,10 +14,10 @@
 	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
 xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
-	<dojo:selectItemStore id="showcasePatterns">		<f:selectItem itemValue="MM/dd/yyyy" />		<f:selectItem itemValue="yyyy-MM-dd" />		<f:selectItem itemValue="yyyy/MM/dd" />	</dojo:selectItemStore>
-	<dojo:selectItemStore id="showcaseFormatLengths">
+	<dojoBehaviors:selectItemStore id="showcasePatterns">		<f:selectItem itemValue="MM/dd/yyyy" />		<f:selectItem itemValue="yyyy-MM-dd" />		<f:selectItem itemValue="yyyy/MM/dd" />	</dojoBehaviors:selectItemStore>
+	<dojoBehaviors:selectItemStore id="showcaseFormatLengths">
 		<f:selectItems value="#{ dateTextBox.showcaseFormatLengths }" />
-	</dojo:selectItemStore>
+	</dojoBehaviors:selectItemStore>
 
 	<dojo:tableContainer
 		cols="3" orientation="horiz" spacing="1"

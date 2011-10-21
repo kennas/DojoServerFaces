@@ -26,5 +26,5 @@ xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 			type="#{cellThree.type}" options="#{cellThree.options}"
 			editable="#{cellThree.editable}"></dojo:cell>
 	</dojo:dataGrid>
-	<dojo:itemFileReadStore id="st" url="#{itemFileWriteStore.behaviorUrl}"/>
+	<dojoBehaviors:itemFileReadStore id="st" url="#{itemFileWriteStore.behaviorUrl}"/>
 </ui:composition>

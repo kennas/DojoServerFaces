@@ -7,7 +7,7 @@ package org.dojoserverfaces.component.html.form;
 
 import javax.faces.component.UIComponent;
 
-import org.dojoserverfaces.component.html.store.SelectItemStore;
+import org.dojoserverfaces.component.store.SelectItemStore;
 import org.dojoserverfaces.util.Helper;
 import org.dojoserverfaces.widget.property.StringProperty;
 
