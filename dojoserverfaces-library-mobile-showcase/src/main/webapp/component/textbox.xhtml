@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+Available via Academic Free License >= 2.1 OR the modified BSD license.
+see: http://dojotoolkit.org/license for details
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<dsf:view id="textBox">
+		<h:form>
+			<h:panelGrid columns="2" style="margin:8px auto;">
+				<h:outputLabel value="Username: " />
+				<dsf:textBox placeHolder="Enter your name" selectOnClick="true"
+					value="#{textBox.username}" />
+
+				<h:outputLabel value="Password: " />
+				<dsf:textBox secret="true" placeHolder="Enter your password"
+					value="#{textBox.password}" />
+
+				<h:outputLabel value="" />
+				<dsf:button label="Login" styleClass="classy" duration="500"
+					style="width:100%;font-size:15px;font-weight:bold;">
+					<f:ajax render=":textBoxWelcome" event="click" execute="@form"
+						onevent="function(e){if(e.status=='success')setTimeout(function(){dijit.byId('textBox').performTransition('textBoxWelcome',1,'slide');},0);}" />
+				</dsf:button>
+			</h:panelGrid>
+		</h:form>
+	</dsf:view>
+
+	<dsf:view id="textBoxWelcome">
+		<dsf:heading back="Back" moveTo="textBox" transition="slide"
+			label="Welcome to DSF, #{textBox.username}!">
+		</dsf:heading>
+	</dsf:view>
+</ui:composition>
