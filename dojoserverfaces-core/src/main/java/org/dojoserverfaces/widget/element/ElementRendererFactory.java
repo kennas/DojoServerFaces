@@ -37,6 +37,7 @@ public class ElementRendererFactory {
 
         case INPUT_RANGE:
             return inputRangeElement;
+
         case INPUT_PASSWORD:
             return inputPasswordElement;
 
