@@ -4,25 +4,62 @@
 
 body {
 	background: #1e3246;
-	font: 14px "CartoGothicBook", Lucida Grande, Helvetica Neue, Arial,
+	font: 14px "CartoGothicBook", "Lucida Grande", "Helvetica Neue", Arial,
 		sans-serif;
 }
 
 #rightPane form {
-	margin: 8px;
-}
-
-form .label {
-	display: inline-block;
-	width: 100px;
-}
-
-form input[type=text],form select {
-	width: 150px;
+	margin: 5px;
 }
 
 form textarea {
-	width: 350px;
+	width: 250px;
+}
+
+form.dsfmForm .formTitle {
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 1em;
+	margin-bottom: .3em;
+	margin-left: 10px;
+}
+
+.dsfmForm .formField,.dsfmForm .formFooter {
+	border: none;
+	font-size: 16px;
+}
+
+.formField table td {
+	margin: 3px;
+}
+
+.formField .labelColumn {
+	display: inline-block;
+	width: 150px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.formField .classy {
+	font-size: 16px;
+	font-weight: bold;
+	width: 80%;
+}
+
+.formField .inputColumn input {
+	margin-bottom: 8px;
+}
+
+.formFooter .formResult pre {
+	font: 16px "CartoGothicBook", "Lucida Grande", "Helvetica Neue", Arial,
+		sans-serif;
+	font-weight: bold;
+	color: blue;
+	margin: 3px;
+}
+
+.formFooter .formResult .empty pre {
+	color: green;
 }
 
 #buttons button {
@@ -50,7 +87,7 @@ form textarea {
 	box-shadow: none;
 }
 
-#buttons .classy,#textBox .classy {
+#buttons .classy,.dsfmForm .classy {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#0CA6DD),
 		to(#0770A0) );
 	border-bottom-color: #0770A0;
@@ -63,18 +100,76 @@ form textarea {
 		to(#0770A0) );
 }
 
-#tabBar div.image {
+#icons ul[dojoType="dojox.mobile.IconContainer"] li {
+	float: none;
+}
+
+#icons .mblIconContentHeading {
+	background: -webkit-gradient(linear, left top, left bottom, from(#FEF39A),
+		to(#E2CD60) );
+	border-color: #F7E980;
+}
+
+#icons .mblIconItemSub {
+	background-color: #F7E980;
+	margin-left: 10px;
+	margin-right: 10px;
+	max-width: 300px;
+}
+
+#icons .mblIconContentHeading .mblDomButtonBlueMinus.mblDomButton {
+	background-color: transparent;
+	border: 0px;
+	right: 4px;
+	left: auto !important;
+}
+
+#icons .mblIconContentHeading .mblDomButtonBlueMinus.mblDomButton>div {
+	background-image:
+		url(#{facesContext.externalContext.context.contextPath}/resources/images/iconitems-all.png);
+	background-repeat: no-repeat;
+	background-position: 0 -196px;
+	margin-right: auto !important;
+	margin-left: 7px;
+}
+
+#icons .mblIconContentHeading .mblDomButtonBlueMinus div {
+	background-image: none;
+	background-color: transparent;
+	border: 0px;
+}
+
+#tabBar .image,#icons .image {
 	text-align: center;
 	vertical-align: middle;
 	margin-top: 5%;
 }
 
-#tabBar div>img {
+#tabBar .image>img,#icons .image>img {
 	height: 60%;
+}
+
+#switch h3 {
+	margin: 3px auto 2px;
+}
+
+#switch .left {
+	float: left;
+	margin-right: 8px;
+}
+
+#switch .mblSwRoundShape1 .mblSwitchBgLeft {
+	background: -webkit-gradient(linear, left top, left bottom, from(#28B159),
+		to(#75FBAC), color-stop(0.5, #3FEB84), color-stop(0.5, #4CEE8E) );
+}
+
+#switch .mblSwRoundShape2 .mblSwitchBgLeft {
+	background: -webkit-gradient(linear, left top, left bottom, from(#FF9D00),
+		to(#FFCE80), color-stop(0.5, #FFBB4D), color-stop(0.5, #FFC871) );
 }
 
 .separator {
 	border: none;
 	border-top: 1px solid #D9D9D9;
-	width: 100%;
+	width: 99%;
 }

@@ -4,15 +4,30 @@ Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
 Available via Academic Free License >= 2.1 OR the modified BSD license.
 see: http://dojotoolkit.org/license for details
 -->
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:dojo="http://www.dojoserverfaces.org/library/mobile" xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-    <dojo:view id="switch">
-        <dojo:switch value="on" leftLabel="Start" rightLabel="Stop">
-        </dojo:switch>
-        <br/>
-        <dojo:switch styleClass="mblSwRoundShape1" value="on" leftLabel="Start" rightLabel="Stop">
-        </dojo:switch>
-        <br/>
-        <dojo:switch styleClass="mblSwArcShape1 color1" value="on" leftLabel="Start" rightLabel="Stop">
-        </dojo:switch>
-    </dojo:view>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<dsf:view id="switch">
+		<dsf:roundRect style="margin-top:16px;border:none;">
+			<h3>Default Shape</h3>
+			<dsf:switch value="off" styleClass="left" />
+			<dsf:switch value="on" leftLabel="Start" rightLabel="Stop" />
+		</dsf:roundRect>
+		<dsf:roundRect style="border:none;">
+			<h3>Round Shape 1</h3>
+			<dsf:switch value="off" styleClass="mblSwRoundShape1 left" />
+			<dsf:switch value="on" styleClass="mblSwRoundShape1"
+				leftLabel="Start" rightLabel="Stop" />
+		</dsf:roundRect>
+		<dsf:roundRect style="border:none;">
+			<h3>Round Shape 2</h3>
+			<dsf:switch value="off" styleClass="mblSwRoundShape2 left" />
+			<dsf:switch value="on" styleClass="mblSwRoundShape2"
+				leftLabel="Start" rightLabel="Stop" />
+		</dsf:roundRect>
+	</dsf:view>
 </ui:composition>

@@ -10,25 +10,27 @@ see: http://dojotoolkit.org/license for details
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
-	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	xmlns:dsfBehaviors="http://www.dojoserverfaces.org/core">
 	<dsf:view id="textBox">
-		<h:form>
-			<h:panelGrid columns="2" style="margin:8px auto;">
-				<h:outputLabel value="Username: " />
-				<dsf:textBox placeHolder="Enter your name" selectOnClick="true"
-					value="#{textBox.username}" />
-
-				<h:outputLabel value="Password: " />
-				<dsf:textBox secret="true" placeHolder="Enter your password"
-					value="#{textBox.password}" />
-
-				<h:outputLabel value="" />
-				<dsf:button label="Login" styleClass="classy" duration="500"
-					style="width:100%;font-size:15px;font-weight:bold;">
-					<f:ajax render=":textBoxWelcome" event="click" execute="@form"
-						onevent="function(e){if(e.status=='success')setTimeout(function(){dijit.byId('textBox').performTransition('textBoxWelcome',1,'slide');},0);}" />
-				</dsf:button>
-			</h:panelGrid>
+		<h:form styleClass="dsfmForm">
+			<div class="formTitle">Please Login</div>
+			<dsf:roundRect styleClass="formField">
+				<h:panelGrid columns="2" columnClasses="labelColumn,inputColumn">
+					<h:outputLabel value="Username: " />
+					<dsf:textBox placeHolder="Enter your name" selectOnClick="true"
+						value="#{textBox.username}" />
+	
+					<h:outputLabel value="Password: " />
+					<dsf:secretBox placeHolder="Enter your password"
+						value="#{textBox.password}" />
+	
+					<h:outputLabel value="" />
+					<dsf:button label="Login" styleClass="classy" duration="500" style="width:100%;">
+						<f:ajax render=":textBoxWelcome" event="click" execute="@form"
+							onevent="function(e){if(e.status=='success')setTimeout(function(){dijit.byId('textBox').performTransition('textBoxWelcome',1,'slide');},0);}" />
+					</dsf:button>
+				</h:panelGrid>
+			</dsf:roundRect>
 		</h:form>
 	</dsf:view>
 
