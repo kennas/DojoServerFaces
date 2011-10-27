@@ -14,6 +14,7 @@ public enum HtmlElementType {
     INPUT_TEXT,
     INPUT_TEXTAREA,
     INPUT_PASSWORD,
+    INPUT_RANGE,
     DIV,
     DIV_JSF_FORM,
     DIV_AND_INPUT,

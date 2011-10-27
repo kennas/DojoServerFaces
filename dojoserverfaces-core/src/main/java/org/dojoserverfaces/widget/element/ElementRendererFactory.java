@@ -35,6 +35,8 @@ public class ElementRendererFactory {
         case INPUT_TEXT:
             return inputTextElement;
 
+        case INPUT_RANGE:
+            return inputRangeElement;
         case INPUT_PASSWORD:
             return inputPasswordElement;
 
@@ -58,6 +60,7 @@ public class ElementRendererFactory {
 
     private static final String TEXTAREA = "textarea";
     private static final String PASSWORD = "password";
+    private static final String RANGE = "range";
     private static final HtmlElement spanElement = new DivHtmlElement();
     private static final HtmlElement divElement = new DivHtmlElement();
     private static final HtmlElement divJsfFormElement = new DivJsfFormHtmlElement();
@@ -70,6 +73,8 @@ public class ElementRendererFactory {
             TEXTAREA);
     private static final HtmlElement inputPasswordElement = new InputHtmlElement(
             PASSWORD);
+    private static final HtmlElement inputRangeElement = new InputHtmlElement(
+            RANGE);
     private static final HtmlElement selectElement = new SelectHtmlElement();
     private static final HtmlElement optionSelectElement = new OptionSelectHtmlElement();
     private static final HtmlElement tableElement = new TableHtmlElement();
