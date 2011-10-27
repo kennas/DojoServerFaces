@@ -6,7 +6,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class DynamicArea {
-    String value;
+    String value = "Try to enter some text, \nI will expand automatically with input.";
 
     public String getValue() {
         return value;
@@ -15,5 +15,4 @@ public class DynamicArea {
     public void setValue(String value) {
         this.value = value;
     }
-
 }

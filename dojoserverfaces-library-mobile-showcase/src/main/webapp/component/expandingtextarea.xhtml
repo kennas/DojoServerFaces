@@ -12,21 +12,34 @@ see: http://dojotoolkit.org/license for details
 	xmlns:dojo="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<dojo:view id="expandingTextArea">
-		<h:form>
-            Please input in the next expandingTextArea
-            <br />
-			<dojo:expandingTextArea value="#{dynamicArea.value}">
-			</dojo:expandingTextArea>
-			<br />
-			<dojo:button label="Submit" styleClass="mblBlueButton">
-				<f:ajax execute="@form" render="exptextarea_showresult" />
-			</dojo:button>
-			<hr class="separator" />
-			<h:panelGroup id="exptextarea_showresult" styleClass="panelGroup">
-                Your input is 
-                <br />
-				<h:outputText value="#{dynamicArea.value}" />
-			</h:panelGroup>
+		<h:form styleClass="dsfmForm">
+			<div class="formTitle">Please fill out the form</div>
+			<dojo:roundRect styleClass="formField">
+				<h:panelGrid columns="1" columnClasses="labelColumn,inputColumn">
+					<h:outputLabel value="Input some text:" />
+					<dojo:expandingTextArea value="#{dynamicArea.value}" />
+				</h:panelGrid>
+				
+				<h:panelGrid columns="2" columnClasses="labelColumn,inputColumn">
+					<dojo:button label="Submit" styleClass="classy" duration="500">
+						<f:ajax execute="@form" render="result" />
+					</dojo:button>
+				</h:panelGrid>
+			</dojo:roundRect>
+			
+			<div class="formTitle">You entered</div>
+			<dojo:roundRect styleClass="formFooter">
+				<h:panelGroup id="result" class="formResult">
+					<h:panelGroup styleClass="empty"
+						rendered="#{empty dynamicArea.value.trim()}">
+						<pre>Nothing</pre>
+					</h:panelGroup>
+					<h:panelGroup 
+						rendered="#{not empty dynamicArea.value.trim()}">
+						<pre>#{dynamicArea.value}</pre>
+					</h:panelGroup>
+				</h:panelGroup>
+			</dojo:roundRect>
 		</h:form>
 	</dojo:view>
 </ui:composition>

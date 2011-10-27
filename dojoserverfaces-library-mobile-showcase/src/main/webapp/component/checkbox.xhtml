@@ -12,26 +12,37 @@ see: http://dojotoolkit.org/license for details
 	xmlns:dojo="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
 	<dojo:view id="checkBox">
-		<h:form id="form1">
-			<div>Which fruits do you like? </div>
-			<h:panelGrid id="grid" columns="6">
-				<c:forEach items="#{store.record.options}" var="option">
-					<h:outputText value="#{option.name}" />
-					<dojo:booleanCheckBox value="#{option.selected}" />
-				</c:forEach>
-			</h:panelGrid>
-			<dojo:button label="Submit" styleClass="mblBlueButton">
-				<f:ajax execute="@form" render="showresult" />
-			</dojo:button>
-			<hr class="separator" />
-			<h:panelGroup id="showresult" styleClass="panelGroup">
-				<p>selected:</p>
-				<ul>
-					<ui:repeat var="item" value="#{store.record.selectedOptions}">
-						<li><h:outputText value="#{item}" /></li>
-					</ui:repeat>
-				</ul>
-			</h:panelGroup>
+		<h:form styleClass="dsfmForm">
+			<div class="formTitle">Which fruits do you like?</div>
+			<dojo:roundRect styleClass="formField">
+				<h:panelGrid columns="2" columnClasses="labelColumn,inputColumn">
+					<c:forEach items="#{store.record.options}" var="option">
+						<h:outputLabel value="#{option.name}" />
+						<dojo:booleanCheckBox value="#{option.selected}" />
+					</c:forEach>
+				</h:panelGrid>
+				
+				<hr class="separator" />
+				<h:panelGrid columns="2" columnClasses="labelColumn,inputColumn">
+					<dojo:button label="Submit" styleClass="classy" duration="500">
+						<f:ajax execute="@form" render="result" />
+					</dojo:button>
+				</h:panelGrid>
+			</dojo:roundRect>
+			
+			<div class="formTitle">You selected: </div>
+			<dojo:roundRect styleClass="formFooter">
+				<h:panelGroup id="result" class="formResult">
+					<h:panelGroup styleClass="empty"
+						rendered="#{empty store.record.selectedOptions}">
+						<pre>Nothing</pre>
+					</h:panelGroup>
+					<h:panelGroup 
+						rendered="#{not empty store.record.selectedOptions}">
+						<pre>#{store.record.selectedOptions}</pre>
+					</h:panelGroup>
+				</h:panelGroup>
+			</dojo:roundRect>
 		</h:form>
 	</dojo:view>
 </ui:composition>
