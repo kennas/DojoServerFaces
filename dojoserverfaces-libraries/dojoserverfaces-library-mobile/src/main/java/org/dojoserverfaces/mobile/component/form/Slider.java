@@ -19,7 +19,7 @@ import org.dojoserverfaces.widget.property.ValueProperty;
  * A non-templated Slider widget similar to the HTML5 INPUT type=range.
  * 
  */
-@EditableValueHolder(dojoType = "dojox.mobile.Slider", requiredCss = { "dojox/mobile/themes/{theme}/Slider.css" }, elementType = HtmlElementType.INPUT_TEXT)
+@EditableValueHolder(dojoType = "dojox.mobile.Slider", requiredCss = { "dojox/mobile/themes/{theme}/Slider.css" }, elementType = HtmlElementType.INPUT_RANGE)
 public class Slider extends InputBase {
 
     static class NumberValue extends ValueProperty {
@@ -37,8 +37,7 @@ public class Slider extends InputBase {
             if (component instanceof javax.faces.component.EditableValueHolder) {
                 // if editableValueHolder then the value could be from alternate
                 // variables
-                javax.faces.component.EditableValueHolder editableValue = 
-                    (javax.faces.component.EditableValueHolder) component;
+                javax.faces.component.EditableValueHolder editableValue = (javax.faces.component.EditableValueHolder) component;
                 Object submittedValue = editableValue.getSubmittedValue();
                 if (null != submittedValue) {
                     // if there is a submitted value we'll not try to make a
@@ -65,12 +64,12 @@ public class Slider extends InputBase {
             return valueAsString;
         }
     }
+
     /**
      * The value, a number, for this component.
      */
     @Property(handler = NumberValue.class)
     Number value;
-
 
     /**
      * The first value the slider can be set to.
