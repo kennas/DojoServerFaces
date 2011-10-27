@@ -35,6 +35,9 @@ public class ElementRendererFactory {
         case INPUT_TEXT:
             return inputTextElement;
 
+        case INPUT_PASSWORD:
+            return inputPasswordElement;
+
         case INPUT_TEXTAREA:
             return inputTextAreaElement;
 
@@ -52,7 +55,9 @@ public class ElementRendererFactory {
         }
         return null;
     }
+
     private static final String TEXTAREA = "textarea";
+    private static final String PASSWORD = "password";
     private static final HtmlElement spanElement = new DivHtmlElement();
     private static final HtmlElement divElement = new DivHtmlElement();
     private static final HtmlElement divJsfFormElement = new DivJsfFormHtmlElement();
@@ -61,7 +66,10 @@ public class ElementRendererFactory {
     private static final HtmlElement inputCheckboxElement = new CheckboxHtmlElement();
     private static final HtmlElement inputRadioElement = new RadioHtmlElement();
     private static final HtmlElement inputTextElement = new TextHtmlElement();
-    private static final HtmlElement inputTextAreaElement = new InputHtmlElement(TEXTAREA);
+    private static final HtmlElement inputTextAreaElement = new InputHtmlElement(
+            TEXTAREA);
+    private static final HtmlElement inputPasswordElement = new InputHtmlElement(
+            PASSWORD);
     private static final HtmlElement selectElement = new SelectHtmlElement();
     private static final HtmlElement optionSelectElement = new OptionSelectHtmlElement();
     private static final HtmlElement tableElement = new TableHtmlElement();

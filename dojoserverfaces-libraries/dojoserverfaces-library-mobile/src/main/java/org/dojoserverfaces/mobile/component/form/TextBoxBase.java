@@ -5,6 +5,8 @@
  *******************************************************************************/
 package org.dojoserverfaces.mobile.component.form;
 
+import javax.faces.component.UIComponent;
+
 import org.dojoserverfaces.build.annotation.Event;
 import org.dojoserverfaces.build.annotation.Property;
 
@@ -44,5 +46,42 @@ abstract class TextBoxBase extends InputBase {
      */
     @Event
     String onSelect;
+
+    public static class ForceCaseProperty extends
+            org.dojoserverfaces.widget.property.Property {
+        public ForceCaseProperty() {
+            super("forceCase");
+        }
+
+        public ForceCaseProperty(String name) {
+            super(name);
+        }
+
+        public ForceCaseProperty(String name, String propertyName) {
+            super(name, propertyName);
+        }
+
+        @Override
+        public String getAsPropertyValue(UIComponent component) {
+            return null;
+        }
+
+        @Override
+        public String getAsJsonPropertySetting(UIComponent component) {
+            Object forceCase = getAttributeValue(component);
+            if (null != forceCase) {
+                String propertyName = forceCase + "case";
+                return buildJsonPropertySetting(propertyName, "true");
+            }
+            return null;
+        }
+    }
+
+    /**
+     * The text case (upper, lower, proper) to which the entered text will be
+     * forced.
+     */
+    @Property(handler = ForceCaseProperty.class)
+    String forceCase;
 
 }

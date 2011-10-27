@@ -53,7 +53,7 @@ public class Switch extends WidgetBase {
     @Event
     String onTouchEnd;
     /**
-     * The event handler script to execute when the widget‘s stateChanged.
+     * The event handler script to execute when the widget's stateChanged.
      */
     @Event
     String onStateChanged;

@@ -13,6 +13,7 @@ public enum HtmlElementType {
     INPUT_RADIO,
     INPUT_TEXT,
     INPUT_TEXTAREA,
+    INPUT_PASSWORD,
     DIV,
     DIV_JSF_FORM,
     DIV_AND_INPUT,
