@@ -1,8 +1,3 @@
-/*******************************************************************************
- *      Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
- *      Available via Academic Free License >= 2.1 OR the modified BSD license.
- *      see: http://dojotoolkit.org/license for details
- *******************************************************************************/
 package org.dojoserverfaces.mobile.behavior;
 
 import javax.faces.component.UIComponent;
@@ -13,7 +8,7 @@ import org.dojoserverfaces.build.annotation.Behavior;
 import org.dojoserverfaces.component.behavior.BehaviorBase;
 
 /**
- * Show method of mobile opener.
+ * Show method of mobile tooltip and opener.
  * 
  */
 @Behavior
@@ -62,16 +57,16 @@ public class Open extends BehaviorBase {
                 appendGetDijit(script, targetComp.getClientId());
                 script.append(".show(this.domNode,");
                 if ("above".equals(position)) {
-                    script.append("['below','above-centered','after','before']");
+                    script.append("['above-centered','below-centered','before','after']");
                 }
                 else if ("below".equals(position)) {
-                    script.append("['above','below-centered','before','after']");
+                    script.append("['below-centered','above','before','after']");
                 }
                 else if ("right".equals(position)) {
-                    script.append("['before','after','below-centered','above-centered']");
+                    script.append("['after','before','below-centered','above-centered']");
                 }
                 else if ("left".equals(position)) {
-                    script.append("['after','before','above','below']");
+                    script.append("['before','after','above','below']");
                 }
                 else {
                     // wrong value
