@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+Available via Academic Free License >= 2.1 OR the modified BSD license.
+see: http://dojotoolkit.org/license for details
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<dsf:view id="combobox">
+	  <dsfc:memory id="combo_st">
+		<f:selectItem itemValue="Red" />
+		<f:selectItem itemValue="Yellow" />
+		<f:selectItem  itemValue="Blue" />
+	   </dsfc:memory>
+    	<h:form>
+    		Which color do you like?<br/>
+	<!--	<dojoCore:memory id="st" idProperty="name" data="[{ name: 'Red' }, { name: 'Blue' },{ name: 'Yellow' }]"/>-->
+		<dsf:comboBox store="combo_st" value="#{comboBox.value}"></dsf:comboBox>
+		<dsf:button label="Submit"  styleClass="mblBlueButton">
+			<f:ajax execute="@form" render=":combo_rs" />
+		</dsf:button>
+		</h:form>
+		<h:panelGrid id="combo_rs">
+		<p>You selected:</p>
+				<li><h:outputText value="#{comboBox.value}" /></li>
+	</h:panelGrid>
+	</dsf:view>
+</ui:composition>
