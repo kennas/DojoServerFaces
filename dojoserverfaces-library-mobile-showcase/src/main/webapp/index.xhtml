@@ -13,11 +13,14 @@ see: http://dojotoolkit.org/license for details
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
 	<ui:define name="toc">
-		<dsf:edgeToEdgeCategory label="Forms" transition="slide" />
+			<dsf:edgeToEdgeCategory label="Forms" transition="slide" />
 		<dsf:listItem label="Check Box" moveTo="checkBox" transition="slide" />
+		<dsf:listItem label="Combo Box" moveTo="combobox" transition="slide" />
 		<dsf:listItem label="Expanding Text Area" moveTo="expandingTextArea"
 			transition="slide" />
 		<dsf:listItem label="Radio Button" moveTo="radioButton"
+			transition="slide" />
+					<dsf:listItem label="Slider" moveTo="slider"
 			transition="slide" />
 		<dsf:listItem label="Text Area" moveTo="textArea" transition="slide" />
 		<dsf:listItem label="Text Box" moveTo="textBox" transition="slide" />
@@ -28,6 +31,7 @@ see: http://dojotoolkit.org/license for details
 		<dsf:listItem label="Edge To Edge List" moveTo="edgeToEdgeList"
 			transition="slide" />
 		<dsf:listItem label="Heading" moveTo="heading" transition="slide" />
+		<dsf:listItem label="Opener" moveTo="opener" transition="slide" />
 		<dsf:listItem label="Round Rect Data List" moveTo="roundRectDataList"
 			transition="slide" />
 		<dsf:listItem label="Round Rect List" moveTo="roundRectList"
@@ -46,6 +50,9 @@ see: http://dojotoolkit.org/license for details
 	</ui:define>
 
 	<ui:define name="componentPages">
+		<ui:include src="/component/slider.xhtml" />
+		<ui:include src="/component/combobox.xhtml" />
+		<ui:include src="/component/opener.xhtml" />
 		<ui:include src="/component/switch.xhtml" />
 		<ui:include src="/component/tabbar.xhtml" />
 		<ui:include src="/component/checkbox.xhtml" />

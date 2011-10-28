@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+Available via Academic Free License >= 2.1 OR the modified BSD license.
+see: http://dojotoolkit.org/license for details
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<dsf:view id="opener">
+			<dsf:button label="Show(Right)"  styleClass="mblBlueButton" style="position:fixed;top:25%;left:50%;direction:ltr;">
+				<dsf:behaviorOpen target="op" position="right"></dsf:behaviorOpen>
+				</dsf:button>
+					<dsf:button label="Show(Left)"  styleClass="mblBlueButton"  style="position:fixed;top:50%;left:50%;direction:ltr;">
+				<dsf:behaviorOpen target="op" position="left"></dsf:behaviorOpen>
+				</dsf:button>
+					<dsf:button label="Show(Above)"  styleClass="mblBlueButton" style="position:fixed;top:50%;left:75%;direction:ltr;" >
+				<dsf:behaviorOpen target="op" position="above"></dsf:behaviorOpen>
+				</dsf:button>
+				<dsf:button label="Show(Below)"  styleClass="mblBlueButton" style="position:fixed;top:25%;left:75%;direction:ltr;">
+				<dsf:behaviorOpen target="op" position="below"></dsf:behaviorOpen>
+				</dsf:button>
+			
+		<dsf:opener id="op" styleClass="mblTooltipBubble">
+			<dsf:heading>
+				<dsf:button label="Cancel">
+					<dsfc:behaviorHide target="op"></dsfc:behaviorHide>
+			    </dsf:button>
+			</dsf:heading>
+		 <div style="padding: 20px 30px 20px ;">
+                    Hello World
+                </div>
+		</dsf:opener>
+	</dsf:view>
+</ui:composition>

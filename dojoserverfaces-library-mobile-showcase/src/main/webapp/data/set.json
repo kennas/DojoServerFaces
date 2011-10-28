@@ -1,0 +1,9 @@
+{
+  "items" : [
+    { "label" : "Wi-Fi",                         "moveTo": "rdata_v2"                              },
+    { "label" : "Brightness & Wallpaper",      "moveTo": "rdata_v2"                            },
+    { "label" : "Picture Frame",                  "moveTo": "rdata_v2"                           },
+    { "label" : "General",                       "moveTo": "rdata_v2",  "selected": "true"      },
+    { "label" : "Store",                       "moveTo": "rdata_v2"                            }
+  ]
+}

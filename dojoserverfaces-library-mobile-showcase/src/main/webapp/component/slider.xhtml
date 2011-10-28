@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+Available via Academic Free License >= 2.1 OR the modified BSD license.
+see: http://dojotoolkit.org/license for details
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<dsf:view id="slider">
+    	<h:form>
+    		Please choose 1 to 10 through the slider <br/>
+    	<dsf:slider   style="width :500px" id="dd" value="#{comboBox.num}" min="0" max="10" step="2" orientation="H">
+		</dsf:slider>
+	  	<dsf:button label="submit"  styleClass="mblBlueButton">
+    		<f:ajax execute="@form" render=":slider_result" event="click"></f:ajax>
+      	</dsf:button>
+		</h:form>
+		<h:panelGrid columns="1" id="slider_result">
+			You input number is  #{comboBox.num}
+		<dsf:slider style="height :500px" value="#{comboBox.num}" min="0" max="10" step="2" orientation="V"></dsf:slider>
+	</h:panelGrid>
+	</dsf:view>
+</ui:composition>
