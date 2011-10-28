@@ -1,11 +1,11 @@
 {
 items: [ 
-					{label: "Apple", 	moveTo: "v2"},
-					{label: "Banana", 	moveTo: "v2"},
-					{label: "Cherry", 	moveTo: "v2"},
-					{label: "Grape", 	moveTo: "v2"},
-					{label: "Kiwi", 	moveTo: "v2"},
-					{label: "Lemon", 	moveTo: "v2"},
+					{label: "Apple", 	moveTo: "edgedata_v2"},
+					{label: "Banana", 	moveTo: "edgedata_v2"},
+					{label: "Cherry", 	moveTo: "edgedata_v2"},
+					{label: "Grape", 	moveTo: "edgedata_v2"},
+					{label: "Kiwi", 	moveTo: "edgedata_v2"},
+					{label: "Lemon", 	moveTo: "edgedata_v2"},
 					{label: "Melon", 	moveTo: "dummy"},
 					{label: "Orange", 	moveTo: "dummy"},
 					{label: "Peach", 	moveTo: "dummy"}
