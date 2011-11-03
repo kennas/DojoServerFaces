@@ -9,37 +9,36 @@ see: http://dojotoolkit.org/license for details
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/library/mobile"
-	xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-	<dojo:view id="textArea">
+	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<dsf:view id="textArea" rendered="#{componentViews.shouldRender('textArea')}">
 		<h:form styleClass="dsfmForm">
 			<div class="formTitle">Please fill out the form</div>
-			<dojo:roundRect styleClass="formField">
+			<dsf:roundRect styleClass="formField">
 				<h:panelGrid columns="1" columnClasses="labelColumn,inputColumn">
 					<h:outputLabel value="Input some text:" />
-					<dojo:textArea value="#{textArea.value}" rows="5" />
+					<dsf:textArea value="#{textArea.value}" rows="5" />
 				</h:panelGrid>
-				
+
 				<h:panelGrid columns="2" columnClasses="labelColumn,inputColumn">
-					<dojo:button label="Submit" styleClass="classy" duration="500">
+					<dsf:button label="Submit" styleClass="classy" duration="500">
 						<f:ajax execute="@form" render="result" />
-					</dojo:button>
+					</dsf:button>
 				</h:panelGrid>
-			</dojo:roundRect>			
-			
+			</dsf:roundRect>
+
 			<div class="formTitle">You entered</div>
-			<dojo:roundRect styleClass="formFooter">
+			<dsf:roundRect styleClass="formFooter">
 				<h:panelGroup id="result" class="formResult">
 					<h:panelGroup styleClass="empty"
 						rendered="#{empty textArea.value.trim()}">
 						<pre>Nothing</pre>
 					</h:panelGroup>
-					<h:panelGroup 
-						rendered="#{not empty textArea.value.trim()}">
+					<h:panelGroup rendered="#{not empty textArea.value.trim()}">
 						<pre>#{textArea.value}</pre>
 					</h:panelGroup>
 				</h:panelGroup>
-			</dojo:roundRect>
+			</dsf:roundRect>
 		</h:form>
-	</dojo:view>
+	</dsf:view>
 </ui:composition>

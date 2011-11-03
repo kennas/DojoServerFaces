@@ -9,42 +9,42 @@ see: http://dojotoolkit.org/license for details
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/library/mobile"
-	xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-	<dojo:view id="radioButton">
+	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<dsf:view id="radioButton"
+		rendered="#{componentViews.shouldRender('radioButton')}">
 		<h:form styleClass="dsfmForm">
 			<div class="formTitle">Which one do you like?</div>
-			<dojo:roundRect styleClass="formField">
-				<h:panelGrid columns="2"
-					columnClasses="labelColumn,inputColumn">
+			<dsf:roundRect styleClass="formField">
+				<h:panelGrid columns="2" columnClasses="labelColumn,inputColumn">
 					<c:forEach items="#{store.record.radioOptions}" var="option">
 						<h:outputText value="#{option.name}" />
-						<dojo:booleanRadioButton value="#{option.selected}"
+						<dsf:booleanRadioButton value="#{option.selected}"
 							groupId="options" />
 					</c:forEach>
 				</h:panelGrid>
 
 				<hr class="separator" />
 				<h:panelGrid columns="2" columnClasses="labelColumn,inputColumn">
-					<dojo:button label="Submit" styleClass="classy" duration="500">
+					<dsf:button label="Submit" styleClass="classy" duration="500">
 						<f:ajax execute="@form" render="result" />
-					</dojo:button>
+					</dsf:button>
 				</h:panelGrid>
-			</dojo:roundRect>
+			</dsf:roundRect>
 
-			<div class="formTitle">You selected: </div>
-			<dojo:roundRect styleClass="formFooter">
+			<div class="formTitle">You selected:</div>
+			<dsf:roundRect styleClass="formFooter">
 				<h:panelGroup id="result" class="formResult">
 					<h:panelGroup styleClass="empty"
 						rendered="#{empty store.record.selectedRadioOptions}">
 						<pre>Nothing</pre>
 					</h:panelGroup>
-					<h:panelGroup 
+					<h:panelGroup
 						rendered="#{not empty store.record.selectedRadioOptions}">
 						<pre>#{store.record.selectedRadioOptions[0]}</pre>
 					</h:panelGroup>
 				</h:panelGroup>
-			</dojo:roundRect>
+			</dsf:roundRect>
 		</h:form>
-	</dojo:view>
+	</dsf:view>
 </ui:composition>

@@ -9,40 +9,39 @@ see: http://dojotoolkit.org/license for details
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/library/mobile"
-	xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-	<dojo:view id="checkBox">
+	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<dsf:view id="checkBox" rendered="#{componentViews.shouldRender('checkBox')}">
 		<h:form styleClass="dsfmForm">
 			<div class="formTitle">Which fruits do you like?</div>
-			<dojo:roundRect styleClass="formField">
+			<dsf:roundRect styleClass="formField">
 				<h:panelGrid columns="2" columnClasses="labelColumn,inputColumn">
 					<c:forEach items="#{store.record.options}" var="option">
 						<h:outputLabel value="#{option.name}" />
-						<dojo:booleanCheckBox value="#{option.selected}" />
+						<dsf:booleanCheckBox value="#{option.selected}" />
 					</c:forEach>
 				</h:panelGrid>
-				
+
 				<hr class="separator" />
 				<h:panelGrid columns="2" columnClasses="labelColumn,inputColumn">
-					<dojo:button label="Submit" styleClass="classy" duration="500">
+					<dsf:button label="Submit" styleClass="classy" duration="500">
 						<f:ajax execute="@form" render="result" />
-					</dojo:button>
+					</dsf:button>
 				</h:panelGrid>
-			</dojo:roundRect>
-			
-			<div class="formTitle">You selected: </div>
-			<dojo:roundRect styleClass="formFooter">
+			</dsf:roundRect>
+
+			<div class="formTitle">You selected:</div>
+			<dsf:roundRect styleClass="formFooter">
 				<h:panelGroup id="result" class="formResult">
 					<h:panelGroup styleClass="empty"
 						rendered="#{empty store.record.selectedOptions}">
 						<pre>Nothing</pre>
 					</h:panelGroup>
-					<h:panelGroup 
-						rendered="#{not empty store.record.selectedOptions}">
+					<h:panelGroup rendered="#{not empty store.record.selectedOptions}">
 						<pre>#{store.record.selectedOptions}</pre>
 					</h:panelGroup>
 				</h:panelGroup>
-			</dojo:roundRect>
+			</dsf:roundRect>
 		</h:form>
-	</dojo:view>
+	</dsf:view>
 </ui:composition>

@@ -11,24 +11,25 @@ see: http://dojotoolkit.org/license for details
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
-	<dsf:view id="swapView">
+	<dsf:view id="swapView" rendered="#{componentViews.shouldRender('swapView')}">
 		<dsf:swapView>
-			<dsf:edgeToEdgeCategory label="Traffic" />
-			<dsf:edgeToEdgeList>
-				<dsf:listItem rightText="Off" label="Car" />
-				<dsf:listItem label="Truck" rightText="On" />
-				<dsf:listItem rightText="On" label="Bus" />
-			</dsf:edgeToEdgeList>
+			<div class="image">
+				<img src="resources/images/flip1.jpg" />
+				<h3>Picture 1/3</h3>
+			</div>
 		</dsf:swapView>
 		<dsf:swapView>
-			<dsf:edgeToEdgeCategory label="Person" />
-			<dsf:edgeToEdgeList>
-				<dsf:listItem rightText="At work" label="Tom" />
-				<dsf:listItem label="Kate" rightText="At school" />
-				<dsf:listItem rightText="Retired" label="Tim" />
-			</dsf:edgeToEdgeList>
+			<div class="image">
+				<img src="resources/images/flip2.jpg" />
+				<h3>Picture 2/3</h3>
+			</div>
 		</dsf:swapView>
-
+		<dsf:swapView>
+			<div class="image">
+				<img src="resources/images/flip3.jpg" />
+				<h3>Picture 3/3</h3>
+			</div>
+		</dsf:swapView>
 		<dsf:pageIndicator style="position:absolute;bottom:0;" />
 	</dsf:view>
 </ui:composition>
