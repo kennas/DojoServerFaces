@@ -8,24 +8,6 @@ body {
 		sans-serif;
 }
 
-#showcaseLoader {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 999;
-	display: table;
-	text-align: center;
-	background-color: black;
-	opacity: 0.5;
-}
-
-#showcaseLoader span {
-	display: table-cell;
-	vertical-align: middle;
-}
-
 #rightPane form {
 	padding: 5px;
 }
@@ -120,7 +102,7 @@ form.dsfmForm .formTitle {
 	color: white;
 }
 
-#buttons .classySelected,#textBox .classySelected {
+#buttons .classySelected,.dsfmForm .classySelected {
 	border-top-color: #0770A0;
 	background: -webkit-gradient(linear, left bottom, left top, from(#0CA6DD),
 		to(#0770A0) );
