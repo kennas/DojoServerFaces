@@ -17,6 +17,12 @@ see: http://dojotoolkit.org/license for details
 			<dsf:button label="Blue" styleClass="mblBlueButton" duration="500" />
 			<dsf:button label="Round" styleClass="round" duration="500" />
 			<dsf:button label="Classy" styleClass="classy" duration="500" />
+			<dsf:toggleButton id="tb" label="togglebutton" checked="false" styleClass="mblBlueButton">
+		    <dsfc:behaviorToggleProperty target="@this" 
+				name="iconClass" initialValue="dijitCheckBoxIcon" compareValue="dijitRadioIcon" />
+			<dsfc:behaviorToggleProperty target="@this" 
+				name="label" initialValue="Toggle me off" compareValue="Toggle me on" />
+           </dsf:toggleButton>
 		</h:panelGrid>
 	</dsf:view>
 </ui:composition>
