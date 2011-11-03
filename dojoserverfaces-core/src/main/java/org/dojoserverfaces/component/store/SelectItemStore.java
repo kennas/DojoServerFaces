@@ -32,7 +32,7 @@ import org.dojoserverfaces.util.Helper;
  * A store for using <f:item> tags as its children.
  * 
  */
-@DojoObject(dojoType = "dojo.data.ItemFileReadStore")
+@DojoObject(dojoType = "dojo.store.Memory")
 public class SelectItemStore extends StoreBase {
 
 	public static class DataStoreProperty extends
@@ -40,7 +40,7 @@ public class SelectItemStore extends StoreBase {
 		/**
 		 * the attribute name to use for finding matching selection
 		 */
-		public static final String SEARCH_ATTR_NAME = "l";
+		public static final String SEARCH_ATTR_NAME = "name";
 
 		public DataStoreProperty(String name) {
 			super(name);
@@ -55,7 +55,7 @@ public class SelectItemStore extends StoreBase {
 		@Override
 		public String getAsPropertyValue(UIComponent component) {
 			StringBuilder storeDeclaration = new StringBuilder(
-					"{identifier:'v',label: 'l',items: [");
+					"{identifier:'id',label: 'name',items: [");
 			getSelectItems(component, storeDeclaration);
 			storeDeclaration.append("]}");
 			return storeDeclaration.toString();
@@ -177,11 +177,11 @@ public class SelectItemStore extends StoreBase {
 			// TODO: handle escape setting?
 			Converter converter = Helper.getConverter(component);
 			optionStore
-					.append("{v:")
+					.append("{id:")
 					.append(Helper.makeStringVar(null == converter ? itemValue
 							.toString() : converter.getAsString(
 							FacesContext.getCurrentInstance(), component,
-							itemValue))).append(',').append("l:")
+							itemValue))).append(',').append("name:")
 					.append(Helper.makeStringVar(itemLabel)).append("}");
 		}
 

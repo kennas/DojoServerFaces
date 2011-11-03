@@ -1,10 +1,9 @@
-package org.dojoserverfaces.component.store;
-
 /*******************************************************************************
- *      Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
- *      Available via Academic Free License >= 2.1 OR the modified BSD license.
- *      see: http://dojotoolkit.org/license for details
+ *   Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+ *   Available via Academic Free License >= 2.1 OR the modified BSD license.
+ *   see: http://dojotoolkit.org/license for details
  *******************************************************************************/
+package org.dojoserverfaces.component.html.store;
 
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -30,19 +29,18 @@ import org.dojoserverfaces.build.annotation.Property;
 import org.dojoserverfaces.util.Helper;
 
 /**
+ * A store for using <f:item> tags as its children. It is especially used by
+ * "select" component It would be removed after dojo1.8?
  * 
- * This component is an object store wrapper for JavaScript/JSON available
- * directly with an array. This store implements the new Dojo Object Store API.
  */
-@DojoObject(dojoType = "dojo.store.Memory")
-public class Memory {
-
+@DojoObject(dojoType = "dojo.data.ItemFileReadStore")
+public class SelectData {
     public static class DataStoreProperty extends
             org.dojoserverfaces.widget.property.Property implements Validator {
         /**
          * the attribute name to use for finding matching selection
          */
-        private String idProperty = "name";
+        public static final String SEARCH_ATTR_NAME = "name";
 
         public DataStoreProperty(String name) {
             super(name);
@@ -56,11 +54,10 @@ public class Memory {
 
         @Override
         public String getAsPropertyValue(UIComponent component) {
-            StringBuilder storeDeclaration = new StringBuilder("[");
-            // idProperty =
-            // component.getAttributes().get("idProperty").toString();
+            StringBuilder storeDeclaration = new StringBuilder(
+                    "{identifier:'id',label: 'name',items: [");
             getSelectItems(component, storeDeclaration);
-            storeDeclaration.append("]");
+            storeDeclaration.append("]}");
             return storeDeclaration.toString();
         }
 
@@ -106,7 +103,8 @@ public class Memory {
                             for (Map.Entry<Object, Object> mapEntry : ((Map<Object, Object>) value)
                                     .entrySet()) {
                                 append(component, optionStore, addComma,
-                                        mapEntry.getValue());
+                                        mapEntry.getValue(), mapEntry.getKey()
+                                                .toString(), true);
                                 // TODO: is using escape true above correct for
                                 // map?
                                 addComma = true;
@@ -159,7 +157,8 @@ public class Memory {
                                         }
 
                                         append(component, optionStore,
-                                                addComma, propertyValue);
+                                                addComma, propertyValue, name,
+                                                true);
 
                                         addComma = true;
                                     }
@@ -172,27 +171,32 @@ public class Memory {
         }
 
         void append(UIComponent component, StringBuilder optionStore,
-                boolean needComma, Object itemValue) {
+                boolean needComma, Object itemValue, String itemLabel,
+                boolean escape) {
+            if (null == itemLabel) {
+                itemLabel = itemValue.toString();
+            }
             if (needComma) {
                 optionStore.append(',');
             }
             // TODO: handle escape setting?
             Converter converter = Helper.getConverter(component);
             optionStore
-                    .append("{")
-                    .append(idProperty)
-                    .append(":")
+                    .append("{id:")
                     .append(Helper.makeStringVar(null == converter ? itemValue
                             .toString() : converter.getAsString(
                             FacesContext.getCurrentInstance(), component,
-                            itemValue))).append("}");
+                            itemValue))).append(',').append("name:")
+                    .append(Helper.makeStringVar(itemLabel)).append("}");
         }
 
         void append(UIComponent component, StringBuilder optionStore,
                 boolean needComma, SelectItem selectItem) {
             // TODO: better handling of isNoSelectionOption and disabled
             if (!selectItem.isNoSelectionOption() && !selectItem.isDisabled()) {
-                append(component, optionStore, needComma, selectItem.getValue());
+                append(component, optionStore, needComma,
+                        selectItem.getValue(), selectItem.getLabel(),
+                        selectItem.isEscape());
             }
         }
 
@@ -205,7 +209,9 @@ public class Memory {
                         && !selectItemComp.isItemDisabled()
                         && selectItemComp.isRendered()) {
                     append(component, optionStore, needComma,
-                            selectItemComp.getItemValue());
+                            selectItemComp.getItemValue(),
+                            selectItemComp.getItemLabel(),
+                            selectItemComp.isItemEscaped());
                 }
             }
             else if (value instanceof SelectItem) {
@@ -300,31 +306,9 @@ public class Memory {
     }
 
     /**
-     * If the store has a collection of cached objects, it can make this
-     * available in this property. This is included so an additional layer could
-     * add referential integrity cleanup on object deletion (which is a pain to
-     * implement).
+     * data source
      */
     @Property(exposed = false, handler = DataStoreProperty.class)
     Object data;
 
-    public static class IDProperty extends
-            org.dojoserverfaces.widget.property.Property {
-        private String idProperty = "name";
-
-        protected IDProperty(String name, String propertyName) {
-            super(name, propertyName);
-        }
-
-        @Override
-        public String getAsPropertyValue(UIComponent component) {
-            return Helper.quote(idProperty);
-        }
-    }
-
-    /**
-     * Name of the property to use as the identifier
-     */
-    @Property(exposed = false, handler = IDProperty.class)
-    String idProperty;
 }
