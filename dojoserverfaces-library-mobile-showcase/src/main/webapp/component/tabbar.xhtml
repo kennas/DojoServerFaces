@@ -9,29 +9,29 @@ see: http://dojotoolkit.org/license for details
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dojo="http://www.dojoserverfaces.org/library/mobile"
-	xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-	<dojo:view id="tabBar">
-		<dojo:tabBar barType="">
-			<dojo:tabBarButton icon1="resources/images/tab-icon-15.png"
+	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<dsf:view id="tabBar" rendered="#{componentViews.shouldRender('tabBar')}">
+		<dsf:tabBar barType="">
+			<dsf:tabBarButton icon1="resources/images/tab-icon-15.png"
 				icon2="resources/images/tab-icon-15h.png" selected="true"
 				moveTo="tb_v" transition="slide" />
-			<dojo:tabBarButton icon1="resources/images/tab-icon-16.png"
+			<dsf:tabBarButton icon1="resources/images/tab-icon-16.png"
 				icon2="resources/images/tab-icon-16h.png" moveTo="tb_v2"
 				transition="slide" />
-			<dojo:tabBarButton icon1="resources/images/tab-icon-19.png"
+			<dsf:tabBarButton icon1="resources/images/tab-icon-19.png"
 				icon2="resources/images/tab-icon-19h.png" moveTo="tb_v3"
 				transition="slide" />
-		</dojo:tabBar>
+		</dsf:tabBar>
 
-		<dojo:view id="tb_v">
+		<dsf:view id="tb_v">
 			<div class="image"><img src="resources/images/flip1.jpg" /></div>
-		</dojo:view>
-		<dojo:view id="tb_v2">
+		</dsf:view>
+		<dsf:view id="tb_v2">
 			<div class="image"><img src="resources/images/flip2.jpg" /></div>
-		</dojo:view>
-		<dojo:view id="tb_v3">
+		</dsf:view>
+		<dsf:view id="tb_v3">
 			<div class="image"><img src="resources/images/flip3.jpg" /></div>
-		</dojo:view>
-	</dojo:view>
+		</dsf:view>
+	</dsf:view>
 </ui:composition>

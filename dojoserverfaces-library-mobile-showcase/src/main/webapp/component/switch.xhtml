@@ -11,23 +11,77 @@ see: http://dojotoolkit.org/license for details
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
-	<dsf:view id="switch">
-		<dsf:roundRect style="margin-top:16px;border:none;">
-			<h3>Default Shape</h3>
-			<dsf:switch value="off" styleClass="left" />
-			<dsf:switch value="on" leftLabel="Start" rightLabel="Stop" />
-		</dsf:roundRect>
-		<dsf:roundRect style="border:none;">
-			<h3>Round Shape 1</h3>
-			<dsf:switch value="off" styleClass="mblSwRoundShape1 left" />
-			<dsf:switch value="on" styleClass="mblSwRoundShape1"
-				leftLabel="Start" rightLabel="Stop" />
-		</dsf:roundRect>
-		<dsf:roundRect style="border:none;">
-			<h3>Round Shape 2</h3>
-			<dsf:switch value="off" styleClass="mblSwRoundShape2 left" />
-			<dsf:switch value="on" styleClass="mblSwRoundShape2"
-				leftLabel="Start" rightLabel="Stop" />
-		</dsf:roundRect>
+	<dsf:view id="switch"
+		rendered="#{componentViews.shouldRender('switch')}">
+		<dsf:heading>Settings</dsf:heading>
+		<h:form styleClass="dsfmForm">
+			<f:ajax event="stateChanged" render="result">
+				<div class="formTitle">Sounds</div>
+				<dsf:roundRect styleClass="formField">
+					<h:panelGrid columns="3" styleClass="entry"
+						columnClasses="marginColumnLeft,mainColumn,marginColumnRight">
+						<h:outputLabel value="" />
+						<dsf:slider value="#{switchComp.volume}" min="0" max="1"
+							orientation="H" style="width:100%;margin:0;padding:0;">
+							<f:ajax event="change" render="result" />
+						</dsf:slider>
+					</h:panelGrid>
+					<hr class="separator" style="width: 100%;" />
+					<h:panelGrid columns="3" styleClass="entry"
+						columnClasses="labelColumn,inputColumn,marginColumnRight">
+						<h:outputLabel value="Change with Buttons" />
+						<dsf:switch value="#{switchComp.changeWithButtons}" leftLabel="ON"
+							rightLabel="OFF" style="float:right;" />
+					</h:panelGrid>
+				</dsf:roundRect>
+
+				<div class="formTitle">Network</div>
+				<dsf:roundRect styleClass="formField">
+					<h:panelGrid columns="3" styleClass="entry"
+						columnClasses="labelColumn,inputColumn,marginColumnRight">
+						<h:outputLabel value="WI-FI" />
+						<dsf:switch value="#{switchComp.wifi}" leftLabel="ON"
+							rightLabel="OFF" styleClass="mblSwRoundShape1 right" />
+					</h:panelGrid>
+					<hr class="separator" style="width: 100%;" />
+					<h:panelGrid columns="3" styleClass="entry"
+						columnClasses="labelColumn,inputColumn,marginColumnRight">
+						<h:outputLabel value="Enable 3G" />
+						<dsf:switch value="#{switchComp.enable3G}" leftLabel="ON"
+							rightLabel="OFF" styleClass="mblSwRoundShape2 right" />
+					</h:panelGrid>
+					<hr class="separator" style="width: 100%;" />
+					<h:panelGrid columns="3" styleClass="entry"
+						columnClasses="labelColumn,inputColumn,marginColumnRight">
+						<h:outputLabel value="Cellular Data" />
+						<dsf:switch value="#{switchComp.cellularData}" leftLabel="ON"
+							rightLabel="OFF" styleClass="mblSwArcShape1 right" />
+					</h:panelGrid>
+				</dsf:roundRect>
+			</f:ajax>
+
+			<div class="formTitle">Status:</div>
+			<dsf:roundRect styleClass="formFooter">
+				<h:panelGroup id="result" class="formResult">
+					<h:panelGrid columns="2" styleClass="labelColumn,inputColumn"
+						style="margin:3px 8px;">
+						<h:outputLabel value="Volume:" />
+						<h:outputText value="#{switchComp.displayedVolume}" />
+
+						<h:outputLabel value="Change with Buttons:" />
+						<h:outputText value="#{switchComp.changeWithButtons}" />
+
+						<h:outputLabel value="WI-FI:" />
+						<h:outputText value="#{switchComp.wifi}" />
+
+						<h:outputLabel value="Enable 3G:" />
+						<h:outputText value="#{switchComp.enable3G}" />
+
+						<h:outputLabel value="Cellular Data:" />
+						<h:outputText value="#{switchComp.cellularData}" />
+					</h:panelGrid>
+				</h:panelGroup>
+			</dsf:roundRect>
+		</h:form>
 	</dsf:view>
 </ui:composition>

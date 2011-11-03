@@ -10,49 +10,50 @@ see: http://dojotoolkit.org/license for details
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
 	<ui:define name="toc">
-			<dsf:edgeToEdgeCategory label="Forms" transition="slide" />
-		<dsf:listItem label="Check Box" moveTo="checkBox" transition="slide" />
-		<dsf:listItem label="Combo Box" moveTo="combobox" transition="slide" />
-		<dsf:listItem label="Expanding Text Area" moveTo="expandingTextArea"
-			transition="slide" />
-		<dsf:listItem label="Radio Button" moveTo="radioButton"
-			transition="slide" />
-					<dsf:listItem label="Slider" moveTo="slider"
-			transition="slide" />
-		<dsf:listItem label="Text Area" moveTo="textArea" transition="slide" />
-		<dsf:listItem label="Text Box" moveTo="textBox" transition="slide" />
+		<h:form id="form">
+			<h:inputHidden id="loadViewId" value="#{componentViews.loadViewId}" />
+				<dojo:edgeToEdgeCategory label="Forms" />
+				<dojo:listItem label="Check Box" moveTo="checkBox"
+					transition="slide" />
+				<dojo:listItem label="Combo Box" moveTo="comboBox"
+					transition="slide" />
+				<dojo:listItem label="Expanding Text Area"
+					moveTo="expandingTextArea" transition="slide" />
+				<dojo:listItem label="Radio Button" moveTo="radioButton"
+					transition="slide" />
+				<dojo:listItem label="Switch/Slider" moveTo="switch" transition="slide" />					
+				<dojo:listItem label="Text Area" moveTo="textArea"
+					transition="slide" />
+				<dojo:listItem label="Text Box" moveTo="textBox" transition="slide" />
 
-		<dsf:edgeToEdgeCategory label="Containers" transition="slide" />
-		<dsf:listItem label="Edge To Edge Data List"
-			moveTo="edgeToEdgeDataList" transition="slide" />
-		<dsf:listItem label="Edge To Edge List" moveTo="edgeToEdgeList"
-			transition="slide" />
-		<dsf:listItem label="Heading" moveTo="heading" transition="slide" />
-		<dsf:listItem label="Opener" moveTo="opener" transition="slide" />
-		<dsf:listItem label="Round Rect Data List" moveTo="roundRectDataList"
-			transition="slide" />
-		<dsf:listItem label="Round Rect List" moveTo="roundRectList"
-			transition="slide" />
-		<dsf:listItem label="Scrollable View" moveTo="scrollableView"
-			transition="slide" />
-		<dsf:listItem label="Swap View" moveTo="swapView" transition="slide" />
-		<dsf:listItem label="Tab Bar" moveTo="tabBar" transition="slide" />
+				<dojo:edgeToEdgeCategory label="Containers" transition="slide" />
+				<dojo:listItem label="Edge To Edge Data List"
+					moveTo="edgeToEdgeDataList" transition="slide" />
+				<dojo:listItem label="Edge To Edge List" moveTo="edgeToEdgeList"
+					transition="slide" />
+				<dojo:listItem label="Heading" moveTo="heading" transition="slide" />
+				<dojo:listItem label="Round Rect Data List"
+					moveTo="roundRectDataList" transition="slide" />
+				<dojo:listItem label="Round Rect List" moveTo="roundRectList"
+					transition="slide" />
+				<dojo:listItem label="Scrollable View" moveTo="scrollableView"
+					transition="slide" />
+				<dojo:listItem label="Swap View" moveTo="swapView"
+					transition="slide" />
+				<dojo:listItem label="Tab Bar" moveTo="tabBar" transition="slide" />
 
-		<dsf:edgeToEdgeCategory label="Gadgets" />
-		<dsf:listItem label="Buttons" moveTo="buttons" transition="slide" />
-		<dsf:listItem label="Icons" moveTo="icons" transition="slide" />
-		<dsf:listItem label="Switch" moveTo="switch" transition="slide" />
-		<dsf:listItem label="Tool Bar Button" moveTo="toolBarButton"
-			transition="slide" />
+				<dojo:edgeToEdgeCategory label="Gadgets" />
+				<dojo:listItem label="Buttons" moveTo="buttons" transition="slide" />
+				<dojo:listItem label="Icons" moveTo="icons" transition="slide" />
+				<dojo:listItem label="Tool Bar Button" moveTo="toolBarButton"
+					transition="slide" />
+		</h:form>
 	</ui:define>
 
 	<ui:define name="componentPages">
-		<ui:include src="/component/slider.xhtml" />
-		<ui:include src="/component/combobox.xhtml" />
-		<ui:include src="/component/opener.xhtml" />
 		<ui:include src="/component/switch.xhtml" />
 		<ui:include src="/component/tabbar.xhtml" />
 		<ui:include src="/component/checkbox.xhtml" />
@@ -67,8 +68,49 @@ see: http://dojotoolkit.org/license for details
 		<ui:include src="/component/roundrectdatalist.xhtml" />
 		<ui:include src="/component/swapview.xhtml" />
 		<ui:include src="/component/scrollableview.xhtml" />
-		<ui:include src="/component/buttons.xhtml" />
 		<ui:include src="/component/textbox.xhtml" />
 		<ui:include src="/component/toolbarbutton.xhtml" />
+		<ui:include src="/component/buttons.xhtml" />
+		<ui:include src="/component/combobox.xhtml" />
+	</ui:define>
+
+	<ui:define name="scripts">
+		<script type="text/javascript">
+			require(['dojo/_base/lang',
+			         'dojo/ready', 
+			         'dojo/_base/query',
+			         'dojo/_base/connect', 
+			         'dojo/dom-construct', 
+			         'dojo/dom-attr', 
+			         'dojo/dom-style',
+			         'dojox/mobile/TransitionEvent'], function(lang, ready, query, connect, ctr, attr, style, TransitionEvent) {
+				ready(function() {
+					connect.subscribe('dojoserverfaces-init-complete', function() {
+						query('#leftPane .mblListItem').forEach(function(node) {
+							var dNode = dijit.byNode(node);
+							var ajaxHandler = connect.connect(dNode, 'onClick', function(event) {
+								var moveTo = dNode.get('moveTo');
+								attr.set('form:loadViewId','value',moveTo);
+								var transOpts = {
+									moveTo:moveTo, transition:'slide', transitionDir:1
+								};
+								var onSuccessHandler = function(evt) {
+									if(evt.status == 'success') {
+										style.set(moveTo, 'display', 'none');
+										ctr.place(moveTo, 'rightPane', 'last');
+										new TransitionEvent(dNode.domNode, transOpts, evt).dispatch();
+										connect.disconnect(ajaxHandler);
+									}
+								};
+								jsf.ajax.request(dNode.domNode,event,{
+									'javax.faces.behavior.event':'click',
+									execute:'form:loadViewId',render:'compViewPane',onevent:onSuccessHandler
+								});
+							});
+						});
+					});
+				});
+			});
+		</script>
 	</ui:define>
 </ui:composition>
