@@ -4,22 +4,49 @@ Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
 Available via Academic Free License >= 2.1 OR the modified BSD license.
 see: http://dojotoolkit.org/license for details
 -->
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:dojo="http://www.dojoserverfaces.org/library/mobile" xmlns:dojoCore="http://www.dojoserverfaces.org/core">
-    <dojo:view id="edgeToEdgeDataList">
-      	<dojoCore:itemFileWriteStore id="st" url="data/fruits.json"></dojoCore:itemFileWriteStore>
-		<dojoCore:itemFileWriteStore id="st2" url="data/settings.json"></dojoCore:itemFileWriteStore>
-        <dojo:view id="edgedata_v1" selected="true">
-            <dojo:edgeToEdgeCategory label="Fruits">
-            </dojo:edgeToEdgeCategory>
-            <dojo:edgeToEdgeDataList store="st">
-            </dojo:edgeToEdgeDataList>
-        </dojo:view>
-        <dojo:view id="edgedata_v2" selected="false">
-        	<dojo:heading back="back" moveTo="edgedata_v1"></dojo:heading>
-             <dojo:roundRectCategory label="Settings">
-            </dojo:roundRectCategory>
-            <dojo:roundRectDataList store="st2">
-            </dojo:roundRectDataList>
-        </dojo:view>
-    </dojo:view>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<dsf:view id="edgeToEdgeDataList"
+		rendered="#{componentViews.shouldRender('edgeToEdgeDataList')}">
+		<dsf:view id="edge_datalist_v">
+			<dsf:edgeToEdgeCategory label="Applications" />
+			<dsf:edgeToEdgeList>
+				<dsf:listItem rightText="Off" label="Video"
+					moveTo="edge_datalist_v1" transition="slide" />
+				<dsf:listItem icon="imag/tab-icon-15.png" rightText="VPN"
+					moveTo="edge_datalist_v2" transition="slide" />
+				<dsf:listItem rightText="Off" label="Phone Number"
+					moveTo="edge_datalist_v3" transition="slide" />
+			</dsf:edgeToEdgeList>
+		</dsf:view>
+		<dsf:view id="edge_datalist_v1">
+			<dsf:heading back="back" moveTo="edge_datalist_v" transition="slide" />
+			<dsf:roundRectList>
+				<dsf:listItem rightText="Off" label="Video" />
+				<dsf:listItem label="Viedo2" rightText="Off" />
+				<dsf:listItem rightText="Off" label="Video3" />
+			</dsf:roundRectList>
+		</dsf:view>
+		<dsf:view id="edge_datalist_v2">
+			<dsf:heading back="back" moveTo="edge_datalist_v" transition="slide" />
+			<dsf:roundRectList>
+				<dsf:listItem rightText="Off" label="Maps1" />
+				<dsf:listItem label="Maps2" rightText="Off" />
+				<dsf:listItem rightText="Off" label="Maps3" />
+			</dsf:roundRectList>
+		</dsf:view>
+		<dsf:view id="edge_datalist_v3">
+			<dsf:heading back="back" moveTo="edge_datalist_v" transition="slide" />
+			<dsf:roundRectList>
+				<dsf:listItem rightText="Off" label="Phone1" />
+				<dsf:listItem label="Phone2" rightText="Off" />
+				<dsf:listItem rightText="Off" label="Phone3" />
+			</dsf:roundRectList>
+		</dsf:view>
+	</dsf:view>
 </ui:composition>
