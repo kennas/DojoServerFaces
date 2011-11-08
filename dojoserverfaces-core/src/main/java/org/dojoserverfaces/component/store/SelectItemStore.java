@@ -55,7 +55,7 @@ public class SelectItemStore extends StoreBase {
 		@Override
 		public String getAsPropertyValue(UIComponent component) {
 			StringBuilder storeDeclaration = new StringBuilder(
-					"{identifier:'id',label: 'name',items: [");
+					"{items: [");
 			getSelectItems(component, storeDeclaration);
 			storeDeclaration.append("]}");
 			return storeDeclaration.toString();
