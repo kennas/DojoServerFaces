@@ -11,7 +11,7 @@ see: http://dojotoolkit.org/license for details
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
-	<dsf:view id="buttons" rendered="#{componentViews.shouldRender('buttons')}">
+	<dsf:scrollableView id="buttons" rendered="#{componentViews.shouldRender('buttons')}">
 		<h:panelGrid columns="1" style="margin:0 auto;padding-top:8px;">
 			<dsf:button label="Default" />
 			<dsf:button label="Blue" styleClass="mblBlueButton" duration="500" />
@@ -24,5 +24,5 @@ see: http://dojotoolkit.org/license for details
 				name="label" initialValue="Toggle me off" compareValue="Toggle me on" />
            </dsf:toggleButton>
 		</h:panelGrid>
-	</dsf:view>
+	</dsf:scrollableView>
 </ui:composition>

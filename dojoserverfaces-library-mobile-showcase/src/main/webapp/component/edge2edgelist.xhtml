@@ -11,7 +11,7 @@ see: http://dojotoolkit.org/license for details
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
-	<dsf:view id="edgeToEdgeList"
+	<dsf:scrollableView id="edgeToEdgeList"
 		rendered="#{componentViews.shouldRender('edgeToEdgeList')}">
 		<dsf:view id="edge_list_v">
 			<dsf:edgeToEdgeCategory label="Applications" />
@@ -48,5 +48,5 @@ see: http://dojotoolkit.org/license for details
 				<dsf:listItem rightText="Off" label="Phone3" />
 			</dsf:roundRectList>
 		</dsf:view>
-	</dsf:view>
+	</dsf:scrollableView>
 </ui:composition>

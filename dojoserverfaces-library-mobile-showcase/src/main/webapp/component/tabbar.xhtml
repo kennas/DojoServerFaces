@@ -11,7 +11,7 @@ see: http://dojotoolkit.org/license for details
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
-	<dsf:view id="tabBar" rendered="#{componentViews.shouldRender('tabBar')}">
+	<dsf:scrollableView id="tabBar" rendered="#{componentViews.shouldRender('tabBar')}">
 		<dsf:tabBar barType="">
 			<dsf:tabBarButton icon1="resources/images/tab-icon-15.png"
 				icon2="resources/images/tab-icon-15h.png" selected="true"
@@ -33,5 +33,5 @@ see: http://dojotoolkit.org/license for details
 		<dsf:view id="tb_v3">
 			<div class="image"><img src="resources/images/flip3.jpg" /></div>
 		</dsf:view>
-	</dsf:view>
+	</dsf:scrollableView>
 </ui:composition>

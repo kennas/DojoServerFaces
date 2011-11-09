@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+Available via Academic Free License >= 2.1 OR the modified BSD license.
+see: http://dojotoolkit.org/license for details
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
+
+<c:set var="contextPath"
+	value="${ facesContext.externalContext.context.contextPath }" />
+
+<f:view contentType="text/html" />
+<h:head>
+	<title>Showcase</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<ui:insert name="stylesheet">
+		<h:outputStylesheet library="css" name="styles.css" />
+	</ui:insert>
+</h:head>
+<h:body>
+	<dojo:fixedSplitter id="splitter" orientation="H">
+		<dojo:fixedSplitterPane id="rightPane">
+			<dojo:scrollableView id="welcomeView" selected="true">
+					<dojo:heading label="Welcome" />
+				<dojo:roundRectCategory style="text-align:center;font-size:1.8em;">
+					DojoServerFaces Mobile Showcase
+				</dojo:roundRectCategory>
+				<ui:insert name="toc" />
+			</dojo:scrollableView>
+			<div id="showcaseLoader" style="display: none; visibility: hidden;"><span>Loading...</span></div>
+			<dojo:fixedSplitterPane id="compViewPane">
+				<ui:insert name="componentPages" />
+			</dojo:fixedSplitterPane>
+		</dojo:fixedSplitterPane>
+	</dojo:fixedSplitter>
+	<ui:insert name="scripts" />
+</h:body>
+</html>

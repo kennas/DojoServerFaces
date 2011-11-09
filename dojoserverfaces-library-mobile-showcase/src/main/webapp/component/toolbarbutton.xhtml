@@ -11,7 +11,7 @@ see: http://dojotoolkit.org/license for details
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
-	<dsf:view id="toolBarButton" style="text-align: center;" 
+	<dsf:scrollableView id="toolBarButton" style="text-align: center;" 
 		rendered="#{componentViews.shouldRender('toolBarButton')}">
 		<dsf:heading id="dashboard" label="Dashboard">
 			<dsf:toolBarButton id="selectAll" label="Select All"
@@ -57,5 +57,5 @@ see: http://dojotoolkit.org/license for details
 					target="doneBtn2" />
 			</dsf:toolBarButton>
 		</dsf:heading>
-	</dsf:view>
+	</dsf:scrollableView>
 </ui:composition>
