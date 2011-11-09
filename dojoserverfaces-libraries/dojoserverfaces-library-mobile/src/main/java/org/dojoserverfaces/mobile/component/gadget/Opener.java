@@ -3,10 +3,9 @@
  *      Available via Academic Free License >= 2.1 OR the modified BSD license.
  *      see: http://dojotoolkit.org/license for details
  *******************************************************************************/
-package org.dojoserverfaces.mobile.component.container;
+package org.dojoserverfaces.mobile.component.gadget;
 
-import org.dojoserverfaces.build.annotation.Container;
-import org.dojoserverfaces.constants.RenderPosition;
+import org.dojoserverfaces.build.annotation.Gadget;
 import org.dojoserverfaces.mobile.component.WidgetBase;
 
 /**
@@ -14,7 +13,7 @@ import org.dojoserverfaces.mobile.component.WidgetBase;
  * devices or as a Tooltip otherwise.
  * 
  */
-@Container(dojoType = "dojox.mobile.Opener", requiredCss = "dojox/mobile/themes/{theme}/Opener.css", renderPosition = RenderPosition.EN_CODE_BEGIN)
+@Gadget(dojoType = "dojox.mobile.Opener", requiredCss = "dojox/mobile/themes/{theme}/Opener.css")
 public class Opener extends WidgetBase {
 
 }
