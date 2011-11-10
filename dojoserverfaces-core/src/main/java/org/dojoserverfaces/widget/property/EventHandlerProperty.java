@@ -173,7 +173,7 @@ public class EventHandlerProperty extends Property {
         if (containsAjaxBehavior) {
             // if there are ajax behaviors attached, we need to return false to
             // prevent some default submit
-            functionDeclaration.append(";return false;");
+            functionDeclaration.append(";event.preventDefault();");
         }
         functionDeclaration.append('}');
         return functionDeclaration.toString();
