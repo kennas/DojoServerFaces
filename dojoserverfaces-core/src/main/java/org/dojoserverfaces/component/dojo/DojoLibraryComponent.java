@@ -14,6 +14,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
+import javax.servlet.http.HttpServletRequest;
 
 import org.dojoserverfaces.component.DojoResource;
 
@@ -132,12 +133,18 @@ public final class DojoLibraryComponent extends DojoResource {
             djConfig.append("isDebug:true");
             addComma = true;
         }
+
+        Object hideAddress = ((HttpServletRequest) context.getExternalContext()
+                .getRequest())
+                .getAttribute(CONTEXT_PARAM_DOJO_MOBILE_HIDEADDRESSBAR);
         if (context.getExternalContext().getInitParameter(
                 CONTEXT_PARAM_DOJO_MOBILE_HIDEADDRESSBAR) != null) {
-
-            Boolean hideAddressBar = Boolean.valueOf(context
-                    .getExternalContext().getInitParameter(
-                            CONTEXT_PARAM_DOJO_MOBILE_HIDEADDRESSBAR));
+            hideAddress = context.getExternalContext().getInitParameter(
+                    CONTEXT_PARAM_DOJO_MOBILE_HIDEADDRESSBAR);
+        }
+        if (hideAddress != null
+                && (hideAddress.equals("true") || hideAddress.equals("false"))) {
+            Boolean hideAddressBar = Boolean.valueOf(hideAddress.toString());
             if (addComma) {
                 djConfig.append(",");
             }
