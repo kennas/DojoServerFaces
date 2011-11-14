@@ -25,6 +25,7 @@ public final class DojoLibraryComponent extends DojoResource {
     private static final String CONTEXT_PARAM_DOJO_CONFIG_ASYNC = CONTEXT_PARAM_PREFIX
             + ".async_module_loading";
     private static final String DOJO_LIBRARY = "dojo/dojo.js";
+    private static final String CONTEXT_PARAM_DOJO_MOBILE_HIDEADDRESSBAR = "dojoserverfaces.mobile.hideaddressbar";
 
     /**
      * @param context
@@ -130,6 +131,18 @@ public final class DojoLibraryComponent extends DojoResource {
             }
             djConfig.append("isDebug:true");
             addComma = true;
+        }
+        if (context.getExternalContext().getInitParameter(
+                CONTEXT_PARAM_DOJO_MOBILE_HIDEADDRESSBAR) != null) {
+
+            Boolean hideAddressBar = Boolean.valueOf(context
+                    .getExternalContext().getInitParameter(
+                            CONTEXT_PARAM_DOJO_MOBILE_HIDEADDRESSBAR));
+            if (addComma) {
+                djConfig.append(",");
+            }
+            djConfig.append("mblAlwaysHideAddressBar:").append(hideAddressBar)
+                    .append(",mblHideAddressBar:").append(hideAddressBar);
         }
         String async = context.getExternalContext().getInitParameter(
                 CONTEXT_PARAM_DOJO_CONFIG_ASYNC);
