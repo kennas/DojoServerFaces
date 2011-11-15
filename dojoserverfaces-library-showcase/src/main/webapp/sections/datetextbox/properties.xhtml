@@ -15,9 +15,9 @@
 xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
 	<dojoBehaviors:selectItemStore id="showcasePatterns">		<f:selectItem itemValue="MM/dd/yyyy" />		<f:selectItem itemValue="yyyy-MM-dd" />		<f:selectItem itemValue="yyyy/MM/dd" />	</dojoBehaviors:selectItemStore>
-	<dojoBehaviors:selectItemStore id="showcaseFormatLengths">
+	<dojo:selectData id="showcaseFormatLengths">
 		<f:selectItems value="#{ dateTextBox.showcaseFormatLengths }" />
-	</dojoBehaviors:selectItemStore>
+	</dojo:selectData>
 
 	<dojo:tableContainer
 		cols="3" orientation="horiz" spacing="1"

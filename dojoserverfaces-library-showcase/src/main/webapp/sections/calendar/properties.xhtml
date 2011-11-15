@@ -12,11 +12,11 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
 xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core">
-	<dojoBehaviors:selectItemStore id="dayWidth">
+	<dojo:selectData id="dayWidth">
 		<f:selectItem itemLabel="abbr" itemValue="abbr" />
 		<f:selectItem itemLabel="wide" itemValue="wide" />
 		<f:selectItem itemLabel="narrow" itemValue="narrow" />
-	</dojoBehaviors:selectItemStore>
+	</dojo:selectData>
 	<dojo:tableContainer cols="3" orientation="horiz" spacing="1"
 		style="width: 100%;">
 		<dojo:filteringSelect title="dayWidth: "
