@@ -13,12 +13,12 @@
 	xmlns:dojo="http://www.dojoserverfaces.org/library/standard"
 xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
-	<dojoBehaviors:selectItemStore id="orientations">
+	<dojo:selectData id="orientations">
 		<f:selectItems value="#{ tableContainer.orientations }" />
-	</dojoBehaviors:selectItemStore>
-	<dojoBehaviors:selectItemStore id="customClasses">
+	</dojo:selectData>
+	<dojo:selectData id="customClasses">
 		<f:selectItems value="#{ tableContainer.customClasses }" />
-	</dojoBehaviors:selectItemStore>
+	</dojo:selectData>
 
 	<dojo:tableContainer
 		cols="3" orientation="horiz" spacing="1"

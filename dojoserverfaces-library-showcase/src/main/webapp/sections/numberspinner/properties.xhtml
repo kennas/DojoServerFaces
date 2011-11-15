@@ -15,9 +15,9 @@
 xmlns:dojoBehaviors="http://www.dojoserverfaces.org/core"
 >
 	<dojoBehaviors:selectItemStore id="showcasePatterns">		<f:selectItem itemValue="###" />		<f:selectItem itemValue="000" />	</dojoBehaviors:selectItemStore>
-	<dojoBehaviors:selectItemStore id="showcaseTypes">
+	<dojo:selectData id="showcaseTypes">
 		<f:selectItems value="#{ numberSpinner.showcaseTypes }" />
-	</dojoBehaviors:selectItemStore>
+	</dojo:selectData>
 
 	<dojo:tableContainer
 		cols="3" orientation="horiz" spacing="1"
