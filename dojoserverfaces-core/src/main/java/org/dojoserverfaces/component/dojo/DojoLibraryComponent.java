@@ -133,7 +133,8 @@ public final class DojoLibraryComponent extends DojoResource {
             djConfig.append("isDebug:true");
             addComma = true;
         }
-
+        // add a parameter to let the developer set whether show the addressbar
+        // in the mobile device web browser
         Object hideAddress = ((HttpServletRequest) context.getExternalContext()
                 .getRequest())
                 .getAttribute(CONTEXT_PARAM_DOJO_MOBILE_HIDEADDRESSBAR);
@@ -150,6 +151,8 @@ public final class DojoLibraryComponent extends DojoResource {
             }
             djConfig.append("mblAlwaysHideAddressBar:").append(hideAddressBar)
                     .append(",mblHideAddressBar:").append(hideAddressBar);
+            // .append(",mblAndroidWorkaround: false");
+            addComma = true;
         }
         String async = context.getExternalContext().getInitParameter(
                 CONTEXT_PARAM_DOJO_CONFIG_ASYNC);
@@ -159,6 +162,7 @@ public final class DojoLibraryComponent extends DojoResource {
             }
             djConfig.append("async:").append(async);
         }
+
         if (djConfig.length() > 0) {
             // lets avoid "validation" errors on emitted markup
             writer.write("\n");

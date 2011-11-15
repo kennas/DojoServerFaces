@@ -2,7 +2,6 @@ package org.dojoserverfaces.model.component;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,19 +27,19 @@ public class WelcomeServlet extends HttpServlet {
     protected void service(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         String agent = request.getHeader("User-Agent").toLowerCase();
-        System.out.println(agent);
-        RequestDispatcher dispatcher; 
-        if (agent.contains("iphone")||agent.contains("android")){
-            dispatcher= request.getRequestDispatcher("/index-phone.faces");
-        }else
-        {
-            dispatcher= request.getRequestDispatcher("/index.faces");
+        String hideAdressbar = "dojoserverfaces.mobile.hideaddressbar";
+        String targetUrl = "/index.faces";
+        if (agent.contains("iphone") || agent.contains("android")) {
+            if (agent.contains("iphone")) {
+                request.setAttribute(hideAdressbar, "false");
+            }
+            if (agent.contains("android")) {
+                request.setAttribute(hideAdressbar, "null");
+            }
+            targetUrl = "/index-phone.faces";
         }
-        dispatcher .forward(request, response);
-        
-        // TODO Auto-generated method stub
-    }
+        request.getRequestDispatcher(targetUrl).forward(request, response);
 
-   
+    }
 
 }
