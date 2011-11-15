@@ -11,7 +11,7 @@ see: http://dojotoolkit.org/license for details
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
-	<dsf:view id="icons" rendered="#{componentViews.shouldRender('icons')}">
+	<dsf:scrollableView id="icons" rendered="#{componentViews.shouldRender('icons')}">
 		<dsf:view id="iconBtns" selected="true">
 			<dsf:iconContainer iconBase="resources/images/iconitems-all.png"
 				style="margin:0;padding:5px;">
@@ -21,7 +21,7 @@ see: http://dojotoolkit.org/license for details
 				<dsf:iconItem id="moveToIcon" iconPos="65,0,65,65" moveTo="iconv2"
 					transition="slide">
 				</dsf:iconItem>
-				<dsf:iconItem id="hrefId" iconPos="130,0,65,65" href="index.faces"
+				<dsf:iconItem id="hrefId" iconPos="130,0,65,65" href=""
 					transition="slide">
 				</dsf:iconItem>
 			</dsf:iconContainer>
@@ -31,5 +31,5 @@ see: http://dojotoolkit.org/license for details
 			<dsf:heading back="Back" moveTo="iconBtns" transition="slide" />
 			<div class="image"><img src="resources/images/flip1.jpg" /></div>
 		</dsf:view>
-	</dsf:view>
+	</dsf:scrollableView>
 </ui:composition>

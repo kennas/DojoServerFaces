@@ -11,7 +11,7 @@ see: http://dojotoolkit.org/license for details
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
-	<dsf:view id="textArea" rendered="#{componentViews.shouldRender('textArea')}">
+	<dsf:scrollableView id="textArea" rendered="#{componentViews.shouldRender('textArea')}">
 		<h:form styleClass="dsfmForm">
 			<div class="formTitle">Please fill out the form</div>
 			<dsf:roundRect styleClass="formField">
@@ -40,5 +40,5 @@ see: http://dojotoolkit.org/license for details
 				</h:panelGroup>
 			</dsf:roundRect>
 		</h:form>
-	</dsf:view>
+	</dsf:scrollableView>
 </ui:composition>

@@ -11,7 +11,7 @@ see: http://dojotoolkit.org/license for details
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
-	<dsf:view id="roundRectDataList"
+	<dsf:scrollableView id="roundRectDataList"
 		rendered="#{componentViews.shouldRender('roundRectDataList')}">
 		<dsf:view id="round_datalist_v">
 			<dsf:roundRectCategory label="Applications" />
@@ -50,5 +50,5 @@ see: http://dojotoolkit.org/license for details
 				<dsf:listItem rightText="Off" label="Phone3" />
 			</dsf:roundRectList>
 		</dsf:view>
-	</dsf:view>
+	</dsf:scrollableView>
 </ui:composition>
