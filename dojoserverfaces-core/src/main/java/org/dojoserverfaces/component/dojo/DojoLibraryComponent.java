@@ -14,6 +14,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
+import javax.servlet.http.HttpServletRequest;
 
 import org.dojoserverfaces.component.DojoResource;
 
@@ -25,6 +26,7 @@ public final class DojoLibraryComponent extends DojoResource {
     private static final String CONTEXT_PARAM_DOJO_CONFIG_ASYNC = CONTEXT_PARAM_PREFIX
             + ".async_module_loading";
     private static final String DOJO_LIBRARY = "dojo/dojo.js";
+    private static final String CONTEXT_PARAM_DOJO_MOBILE_HIDEADDRESSBAR = "dojoserverfaces.mobile.hideaddressbar";
 
     /**
      * @param context
@@ -131,6 +133,27 @@ public final class DojoLibraryComponent extends DojoResource {
             djConfig.append("isDebug:true");
             addComma = true;
         }
+        // add a parameter to let the developer set whether show the addressbar
+        // in the mobile device web browser
+        Object hideAddress = ((HttpServletRequest) context.getExternalContext()
+                .getRequest())
+                .getAttribute(CONTEXT_PARAM_DOJO_MOBILE_HIDEADDRESSBAR);
+        if (context.getExternalContext().getInitParameter(
+                CONTEXT_PARAM_DOJO_MOBILE_HIDEADDRESSBAR) != null) {
+            hideAddress = context.getExternalContext().getInitParameter(
+                    CONTEXT_PARAM_DOJO_MOBILE_HIDEADDRESSBAR);
+        }
+        if (hideAddress != null
+                && (hideAddress.equals("true") || hideAddress.equals("false"))) {
+            Boolean hideAddressBar = Boolean.valueOf(hideAddress.toString());
+            if (addComma) {
+                djConfig.append(",");
+            }
+            djConfig.append("mblAlwaysHideAddressBar:").append(hideAddressBar)
+                    .append(",mblHideAddressBar:").append(hideAddressBar);
+            // .append(",mblAndroidWorkaround: false");
+            addComma = true;
+        }
         String async = context.getExternalContext().getInitParameter(
                 CONTEXT_PARAM_DOJO_CONFIG_ASYNC);
         if (null != async) {
@@ -139,6 +162,7 @@ public final class DojoLibraryComponent extends DojoResource {
             }
             djConfig.append("async:").append(async);
         }
+
         if (djConfig.length() > 0) {
             // lets avoid "validation" errors on emitted markup
             writer.write("\n");

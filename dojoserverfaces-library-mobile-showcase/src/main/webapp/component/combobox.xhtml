@@ -11,7 +11,7 @@ see: http://dojotoolkit.org/license for details
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
-	<dsf:view id="comboBox" rendered="#{componentViews.shouldRender('comboBox')}">
+	<dsf:scrollableView id="comboBox" rendered="#{componentViews.shouldRender('comboBox')}">
 		<dsfc:selectItemStore id="comboStore">
 			<f:selectItem itemValue="Red" />
 			<f:selectItem itemValue="Yellow" />
@@ -48,5 +48,5 @@ see: http://dojotoolkit.org/license for details
 				</h:panelGroup>
 			</dsf:roundRect>
 		</h:form>
-	</dsf:view>
+	</dsf:scrollableView>
 </ui:composition>

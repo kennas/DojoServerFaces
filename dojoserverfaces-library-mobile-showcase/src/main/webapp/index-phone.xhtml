@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+Available via Academic Free License >= 2.1 OR the modified BSD license.
+see: http://dojotoolkit.org/license for details
+-->
+<ui:composition template="/template/phone-template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:dojo="http://www.dojoserverfaces.org/library/mobile"
+	xmlns:dsfc="http://www.dojoserverfaces.org/core">
+	<ui:define name="toc">
+		<h:form id="form">
+			<h:inputHidden id="loadViewId" value="#{componentViews.loadViewId}" />
+				<dojo:edgeToEdgeCategory label="Forms" />
+				<dojo:listItem label="Check Box" moveTo="checkBox"
+					transition="slide" />
+				<dojo:listItem label="Combo Box" moveTo="comboBox"
+					transition="slide" />
+				<dojo:listItem label="Expanding Text Area"
+					moveTo="expandingTextArea" transition="slide" />
+				<dojo:listItem label="Radio Button" moveTo="radioButton"
+					transition="slide" />
+				<dojo:listItem label="Switch/Slider" moveTo="switch" transition="slide" />					
+				<dojo:listItem label="Text Area" moveTo="textArea"
+					transition="slide" />
+				<dojo:listItem label="Text Box" moveTo="textBox" transition="slide" />
+
+				<dojo:edgeToEdgeCategory label="Containers" transition="slide" />
+				<dojo:listItem label="Edge To Edge Data List"
+					moveTo="edgeToEdgeDataList" transition="slide" />
+				<dojo:listItem label="Edge To Edge List" moveTo="edgeToEdgeList"
+					transition="slide" />
+				<dojo:listItem label="Heading" moveTo="heading" transition="slide" />
+				<dojo:listItem label="Round Rect Data List"
+					moveTo="roundRectDataList" transition="slide" />
+				<dojo:listItem label="Round Rect List" moveTo="roundRectList"
+					transition="slide" />
+				<dojo:listItem label="Scrollable View" moveTo="scrollableView"
+					transition="slide" />
+				<dojo:listItem label="Swap View" moveTo="swapView"
+					transition="slide" />
+				<dojo:listItem label="Tab Bar" moveTo="tabBar" transition="slide" />
+
+				<dojo:edgeToEdgeCategory label="Gadgets" />
+				<dojo:listItem label="Buttons" moveTo="buttons" transition="slide" />
+				<dojo:listItem label="Icons" moveTo="icons" transition="slide" />
+				<dojo:listItem label="Tool Bar Button" moveTo="toolBarButton"
+					transition="slide" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="componentPages">
+		<ui:include src="/component/switch.xhtml" />
+		<ui:include src="/component/tabbar.xhtml" />
+		<ui:include src="/component/checkbox.xhtml" />
+		<ui:include src="/component/radiobutton.xhtml" />
+		<ui:include src="/component/icons.xhtml" />
+		<ui:include src="/component/heading.xhtml" />
+		<ui:include src="/component/edge2edgelist.xhtml" />
+		<ui:include src="/component/edge2edgedatalist.xhtml" />
+		<ui:include src="/component/textarea.xhtml" />
+		<ui:include src="/component/expandingtextarea.xhtml" />
+		<ui:include src="/component/roundrectlist.xhtml" />
+		<ui:include src="/component/roundrectdatalist.xhtml" />
+		<ui:include src="/component/swapview.xhtml" />
+		<ui:include src="/component/scrollableview.xhtml" />
+		<ui:include src="/component/textbox.xhtml" />
+		<ui:include src="/component/toolbarbutton.xhtml" />
+		<ui:include src="/component/buttons.xhtml" />
+		<ui:include src="/component/combobox.xhtml" />
+	</ui:define>
+
+	<ui:define name="scripts">
+		<script type="text/javascript">
+		require(['dojo/_base/lang',
+			         'dojo/ready', 
+			         'dojo/_base/query',
+			         'dojo/_base/connect', 
+			         'dojo/dom-construct', 
+			         'dojo/dom-attr', 
+			         'dojo/dom-style',
+			         'dojox/mobile/TransitionEvent'], function(lang, ready, query, connect, ctr, attr, style, TransitionEvent) {
+				ready(function() {
+					connect.subscribe('dojoserverfaces-init-complete', function() {
+							var moveTo;
+						query('.mblListItem').forEach(function(node) {
+							var dNode = dijit.byNode(node);
+							var ajaxHandler = connect.connect(dNode, 'onClick', function(event) {
+								moveTo = dNode.get('moveTo');
+								attr.set('form:loadViewId','value',moveTo);
+								var transOpts = {
+									moveTo:moveTo, transition:'slide', transitionDir:1
+								};
+								var onSuccessHandler = function(evt) {
+									if(evt.status == 'success') {
+										style.set(moveTo, 'display', 'none');
+										ctr.place(moveTo, 'rightPane', 'last');
+										new TransitionEvent(dNode.domNode, transOpts, evt).dispatch();
+								        dijit.byId(moveTo).addChild(new dojox.mobile.Heading({back:"Back to Menu",moveTo:"welcomeView"}),0);
+										connect.disconnect(ajaxHandler);
+									}
+								};
+								jsf.ajax.request(dNode.domNode,event,{
+									'javax.faces.behavior.event':'click',
+									execute:'form:loadViewId',render:'compViewPane',onevent:onSuccessHandler
+								});
+							});
+						});
+					});
+				});
+			});
+		</script>
+	</ui:define>
+</ui:composition>

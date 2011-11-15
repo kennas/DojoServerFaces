@@ -11,7 +11,7 @@ see: http://dojotoolkit.org/license for details
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:dsf="http://www.dojoserverfaces.org/library/mobile"
 	xmlns:dsfc="http://www.dojoserverfaces.org/core">
-	<dsf:view id="textBox" rendered="#{componentViews.shouldRender('textBox')}">
+	<dsf:scrollableView id="textBox" rendered="#{componentViews.shouldRender('textBox')}">
 		<dsf:view id="textBoxForm">
 			<h:form styleClass="dsfmForm">
 				<div class="formTitle">Please Login</div>
@@ -41,5 +41,5 @@ see: http://dojotoolkit.org/license for details
 				label="Welcome to DSF, #{textBox.username}!">
 			</dsf:heading>
 		</dsf:view>
-	</dsf:view>
+	</dsf:scrollableView>
 </ui:composition>
