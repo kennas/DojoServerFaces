@@ -41,7 +41,12 @@ public class DojoTheme extends DojoResource implements SystemEventListener {
     public DojoTheme() {
         this(true);
     }
-
+    /*
+     * This constructor is for MobileTheme not let the DojoTheme subscribe any events listeners
+     */
+    public DojoTheme(String noEvent) {
+        super.setId(DojoTheme.RESOURCE_ID);
+    }
     DojoTheme(boolean moveIfNecessary) {
         super();
         UIViewRoot viewRoot = getFacesContext().getViewRoot();
